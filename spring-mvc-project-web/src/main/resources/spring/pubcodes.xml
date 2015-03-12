@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 公共代码注入 -->
+	<bean id="pubcode" class="com.spring.mvc.project.domain.PubCode">
+		<property name="province">
+			<map>
+				<entry key="11" value="北京市"/>
+				<entry key="12" value="天津市"/>
+				<entry key="13" value="河北省"/>
+				<entry key="14" value="山西省"/>
+				<entry key="15" value="内蒙古自治区"/>
+				<entry key="21" value="辽宁省"/>
+				<entry key="22" value="吉林省"/>
+				<entry key="23" value="黑龙江省"/>
+				<entry key="31" value="上海市"/>
+				<entry key="32" value="江苏省"/>
+				<entry key="33" value="浙江省"/>
+				<entry key="34" value="安徽省"/>
+				<entry key="35" value="福建省"/>
+				<entry key="36" value="江西省"/>
+				<entry key="37" value="山东省"/>
+				<entry key="41" value="河南省"/>
+				<entry key="42" value="湖北省"/>
+				<entry key="43" value="湖南省"/>
+				<entry key="44" value="广东省"/>
+				<entry key="45" value="广西壮族自治区"/>
+				<entry key="46" value="海南省"/>
+				<entry key="50" value="重庆市"/>
+				<entry key="51" value="四川省"/>
+				<entry key="52" value="贵州省"/>
+				<entry key="53" value="云南省"/>
+				<entry key="54" value="西藏自治区"/>
+				<entry key="61" value="陕西省"/>
+				<entry key="62" value="甘肃省"/>
+				<entry key="63" value="青海省"/>
+				<entry key="64" value="宁夏回族自治区"/>
+				<entry key="65" value="新疆维吾尔自治区"/>
+				<entry key="71" value="台湾省"/>
+				<entry key="81" value="香港特别行政区"/>
+				<entry key="82" value="澳门特别行政区"/>
+			</map>
+		</property>
+	</bean>
+</beans>
