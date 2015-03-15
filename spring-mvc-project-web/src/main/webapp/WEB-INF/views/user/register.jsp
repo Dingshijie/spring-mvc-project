@@ -34,7 +34,7 @@
 				<form class="form-horizontal" id="myForm" role="form">
 					<fieldset>
 						<div class="col-md-7 col-md-offset-5">
-							<h3>register</h3>
+							<h3>用户注册</h3>
 						</div>
 						<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
 							<li role="presentation" class="active"><a href="#bussiness" aria-controls="bussiness" data-toggle="tab" class="btn">商家用户</a></li>
