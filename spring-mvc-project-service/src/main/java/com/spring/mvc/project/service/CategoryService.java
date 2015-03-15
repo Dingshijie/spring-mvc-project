@@ -7,6 +7,13 @@ import com.spring.mvc.project.domain.Category;
 public interface CategoryService {
 
 	/**
+	 * 根据id分类的信息
+	 * @param id
+	 * @return
+	 */
+	public Category find(String id);
+
+	/**
 	 * 添加新的类别
 	 * @param category
 	 * @return
@@ -30,7 +37,7 @@ public interface CategoryService {
 	 * @param pageSize
 	 * @return
 	 */
-	public List<Category> findList(String categoryCode, String keyword, int pageIndex, int pageSize);
+	public List<Category> findList(String categoryCode, int hot, int enable, String keyword, int pageIndex, int pageSize);
 
 	/**
 	 * 查询列表数目
@@ -38,5 +45,5 @@ public interface CategoryService {
 	 * @param keyword
 	 * @return
 	 */
-	public int findCount(String categoryCode, String keyword);
+	public int findCount(String categoryCode, int hot, int enable, String keyword);
 }

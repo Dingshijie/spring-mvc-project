@@ -28,6 +28,11 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 	}
 
 	@Override
+	public Category find(String id) {
+		return (Category) this.getSession().get(Category.class, id);
+	}
+
+	@Override
 	public boolean add(Category category) {
 		return this.getSession().save(category) != null;
 	}
@@ -43,10 +48,16 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Category> findList(String categoryCode, String keyword, int pageIndex, int pageSize) {
+	public List<Category> findList(String categoryCode, int hot, int enable, String keyword, int pageIndex, int pageSize) {
 		Criteria crit = this.getSession().createCriteria(Category.class);
 		crit.add(Restrictions.like("code", categoryCode, MatchMode.START));
 		crit.add(Restrictions.like("name", keyword, MatchMode.ANYWHERE));
+		if (hot != 10) {
+			crit.add(Restrictions.eq("hot", hot));
+		}
+		if (enable != 10) {
+			crit.add(Restrictions.eq("enable", enable));
+		}
 		if (pageSize > 0) {
 			crit.setMaxResults(pageSize);
 			crit.setFirstResult(pageIndex);
@@ -55,10 +66,16 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 	}
 
 	@Override
-	public int findCount(String categoryCode, String keyword) {
+	public int findCount(String categoryCode, int hot, int enable, String keyword) {
 		Criteria crit = this.getSession().createCriteria(Category.class);
 		crit.add(Restrictions.like("code", categoryCode, MatchMode.START));
 		crit.add(Restrictions.like("name", keyword, MatchMode.ANYWHERE));
+		if (hot != 10) {
+			crit.add(Restrictions.eq("hot", hot));
+		}
+		if (enable != 10) {
+			crit.add(Restrictions.eq("enable", enable));
+		}
 		crit.setProjection(Projections.rowCount());
 		return Integer.parseInt(crit.uniqueResult().toString());
 	}

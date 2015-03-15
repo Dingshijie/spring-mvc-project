@@ -32,7 +32,7 @@ public class Category implements Serializable {
 	private String name;
 
 	@Column(name = "HOT", nullable = false)
-	private int hot = 0;//是否是热门 0 ，表示不是热门
+	private int hot = 0;//是否是热门, 0 表示不是热门,1表示是热门
 
 	@Column(name = "ENABLE")
 	private int enable = 1;//是否可用，1表示该分类可用,0表示不可用

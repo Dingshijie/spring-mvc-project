@@ -21,6 +21,12 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryRepository categoryService;
 
 	@Override
+	public Category find(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	@Transactional(readOnly = false)
 	public boolean add(Category category) {
 		Subject currentUser = SecurityUtils.getSubject();
@@ -43,13 +49,13 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<Category> findList(String categoryCode, String keyword, int pageIndex, int pageSize) {
-		return categoryService.findList(categoryCode, keyword, pageIndex, pageSize);
+	public List<Category> findList(String categoryCode, int hot, int enable, String keyword, int pageIndex, int pageSize) {
+		return categoryService.findList(categoryCode, hot, enable, keyword, pageIndex, pageSize);
 	}
 
 	@Override
-	public int findCount(String categoryCode, String keyword) {
-		return categoryService.findCount(categoryCode, keyword);
+	public int findCount(String categoryCode, int hot, int enable, String keyword) {
+		return categoryService.findCount(categoryCode, hot, enable, keyword);
 	}
 
 }
