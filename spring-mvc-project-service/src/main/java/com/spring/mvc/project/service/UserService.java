@@ -39,8 +39,7 @@ public interface UserService {
 
 	/**
 	 * 更新用户的某个信息
-	 * @param fieldName
-	 * @param fieldValue
+	 * @param paramter
 	 * @param id
 	 * @return
 	 */
