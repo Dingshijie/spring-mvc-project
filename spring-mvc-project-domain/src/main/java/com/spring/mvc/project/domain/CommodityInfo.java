@@ -80,7 +80,7 @@ public class CommodityInfo implements Serializable {
 	private int recommend = 0;//推广，0表示不被推广，1表示被推广,由于mysql不支持boolean值
 
 	@Column(name = "USED", nullable = false)
-	private int used = 0;//1表示是二手
+	private int used = 0;//0,表示全新，1表示是二手
 
 	@Length(min = 0, max = 16, message = "com.spring.mvc.project.validator.Length.message")
 	@Column(name = "NEW_CONDITION", length = 16)
@@ -93,7 +93,7 @@ public class CommodityInfo implements Serializable {
 	@NotBlank(message = "com.spring.mvc.project.validator.NotBlank.message")
 	@Column(name = "USERNAME", length = 24)
 	@Length(min = 2, max = 24, message = "com.spring.mvc.project.validator.Length.message")
-	private String userName;//上传的用户的用户名
+	private String username;//上传的用户的用户名
 
 	public String getId() {
 		return id;
@@ -223,12 +223,12 @@ public class CommodityInfo implements Serializable {
 		this.addTime = addTime;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	//获取包装清单列表形式

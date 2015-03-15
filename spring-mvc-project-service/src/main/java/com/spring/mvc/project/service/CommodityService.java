@@ -2,24 +2,22 @@ package com.spring.mvc.project.service;
 
 import java.util.List;
 
-import javax.activation.CommandInfo;
-
-import com.spring.mvc.project.domain.Category;
+import com.spring.mvc.project.domain.CommodityInfo;
 
 public interface CommodityService {
 
 	/**
 	 * 添加商品
-	 * @param commandInfo
+	 * @param CommodityInfo
 	 * @return
 	 */
-	public boolean add(CommandInfo commandInfo);
+	public boolean add(CommodityInfo CommodityInfo);
 
 	/**
 	 * 更新商品信息
-	 * @param commandInfo
+	 * @param CommodityInfo
 	 */
-	public void update(CommandInfo commandInfo);
+	public void update(CommodityInfo CommodityInfo);
 
 	/**
 	 * 更新商品的某些字段的信息
@@ -31,9 +29,16 @@ public interface CommodityService {
 
 	/**
 	 * 删除商品
-	 * @param commandInfo
+	 * @param CommodityInfo
 	 */
-	public void delete(CommandInfo commandInfo);
+	public void delete(CommodityInfo CommodityInfo);
+
+	/**
+	 * 通过商品的id，查询商品的信息
+	 * @param id
+	 * @return
+	 */
+	public CommodityInfo find(String id);
 
 	/**
 	 * 根据条件查询商品列表
@@ -45,8 +50,8 @@ public interface CommodityService {
 	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
-	public List<CommandInfo> findList(Category category, int status, int recommend, int used, int pageIndex,
-			int pageSize);
+	public List<CommodityInfo> findList(String category, int status, int recommend, int used, String keyword,
+			int pageIndex, int pageSize);
 
 	/**
 	 * 根据条件查询商品数目
@@ -57,6 +62,6 @@ public interface CommodityService {
 	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
-	public List<CommandInfo> findCount(Category category, int status, int recommend, int used);
+	public int findCount(String category, int status, int recommend, int used, String keyword);
 
 }
