@@ -31,11 +31,11 @@ public class Category implements Serializable {
 	@Column(name = "NAME", length = 32, nullable = false)
 	private String name;
 
-	@Column(name = "IS_HOT")
-	private boolean isHot = false;
+	@Column(name = "HOT", nullable = false)
+	private int hot = 0;//是否是热门 0 ，表示不是热门
 
-	@Column(name = "IS_ENABLE")
-	private boolean isEnable = true;
+	@Column(name = "ENABLE")
+	private int enable = 1;//是否可用，1表示该分类可用,0表示不可用
 
 	public String getId() {
 		return id;
@@ -61,20 +61,20 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
-	public boolean isHot() {
-		return isHot;
+	public int getHot() {
+		return hot;
 	}
 
-	public void setHot(boolean isHot) {
-		this.isHot = isHot;
+	public void setHot(int hot) {
+		this.hot = hot;
 	}
 
-	public boolean isEnable() {
-		return isEnable;
+	public int getEnable() {
+		return enable;
 	}
 
-	public void setEnable(boolean isEnable) {
-		this.isEnable = isEnable;
+	public void setEnable(int enable) {
+		this.enable = enable;
 	}
 
 }

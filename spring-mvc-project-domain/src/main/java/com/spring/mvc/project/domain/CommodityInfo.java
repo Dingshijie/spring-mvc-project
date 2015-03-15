@@ -77,14 +77,14 @@ public class CommodityInfo implements Serializable {
 	private int status = 1;//0表示下架，1表示在售，2表示被强制下架(不可再次销售)
 
 	@Column(name = "RECOMMEND", nullable = false)
-	private boolean recommend = false;//推广，false表示不被推广，true表示被推广
+	private int recommend = 0;//推广，0表示不被推广，1表示被推广,由于mysql不支持boolean值
 
 	@Column(name = "USED", nullable = false)
-	private boolean used = false;//true表示是二手
+	private int used = 0;//1表示是二手
 
 	@Length(min = 0, max = 16, message = "com.spring.mvc.project.validator.Length.message")
-	@Column(name = "CONDITION", length = 16)
-	private String condition;//全新，九成新，八成新，六成新，六成以下
+	@Column(name = "NEW_CONDITION", length = 16)
+	private String newCondition;//全新，九成新，八成新，六成新，六成以下
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	@Column(name = "ADD_TIME")
@@ -191,28 +191,28 @@ public class CommodityInfo implements Serializable {
 		this.status = status;
 	}
 
-	public boolean isRecommend() {
+	public int getRecommend() {
 		return recommend;
 	}
 
-	public void setRecommend(boolean recommend) {
+	public void setRecommend(int recommend) {
 		this.recommend = recommend;
 	}
 
-	public boolean isUsed() {
+	public int getUsed() {
 		return used;
 	}
 
-	public void setUsed(boolean used) {
+	public void setUsed(int used) {
 		this.used = used;
 	}
 
-	public String getCondition() {
-		return condition;
+	public String getNewCondition() {
+		return newCondition;
 	}
 
-	public void setCondition(String condition) {
-		this.condition = condition;
+	public void setNewCondition(String newCondition) {
+		this.newCondition = newCondition;
 	}
 
 	public Date getAddTime() {
@@ -243,4 +243,5 @@ public class CommodityInfo implements Serializable {
 		}
 		return goodslist;
 	}
+
 }

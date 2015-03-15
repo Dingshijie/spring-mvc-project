@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
@@ -152,7 +153,7 @@ public class UserInfo implements Serializable {
 	private Role role = Role.VISITOR;
 
 	@Column(name = "ENABLE")
-	private boolean enable = true;//（仅限于修改Role 为manager的用户，其余用户全部默认为true）true表示账户在用，
+	private int enable = 1;//（仅限于修改Role 为manager的用户，其余用户全部默认为1）1表示账户在用，
 
 	public enum Authentication {
 		/**
@@ -424,11 +425,11 @@ public class UserInfo implements Serializable {
 		this.role = role;
 	}
 
-	public boolean isEnable() {
+	public int getEnable() {
 		return enable;
 	}
 
-	public void setEnable(boolean enable) {
+	public void setEnable(int enable) {
 		this.enable = enable;
 	}
 
@@ -436,6 +437,7 @@ public class UserInfo implements Serializable {
 	 * 判断是否是管理员（包括超级管理员）
 	 * @return
 	 */
+	@Transient
 	public boolean isManager() {
 		return Role.MANAGER.name().equals(role) || Role.ADMIN.name().equals(role);
 	}
@@ -444,6 +446,7 @@ public class UserInfo implements Serializable {
 	 * 判断是否是超级管理员（包括超级管理员）
 	 * @return
 	 */
+	@Transient
 	public boolean isAdministrator() {
 		return Role.ADMIN.name().equals(role);
 	}
