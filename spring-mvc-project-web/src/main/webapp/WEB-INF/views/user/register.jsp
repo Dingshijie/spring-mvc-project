@@ -22,7 +22,7 @@
 <script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
 <!-- md5 的 js 文件 -->
 <script type="text/javascript" src="${initParam.resourceRoot}/lib/md5.js"></script>
-<!-- 页面的和css -->
+<!-- 页面的和css 文件必须放到bootstrap。min.cs之后-->
 <script type="text/javascript" src="${initParam.resourceRoot}/js/user/register.js"></script>
 <link rel="stylesheet" href="${initParam.resourceRoot}/css/user/register.css" />
 

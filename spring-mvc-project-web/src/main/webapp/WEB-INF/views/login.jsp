@@ -21,7 +21,7 @@
 	<!-- md5 的 js 文件 -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/md5.js"></script>
 	
-	<!-- 页面的js文件 -->
+	<!-- 页面的js文件 文件必须放到bootstrap。min.cs之后 -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/js/login.js"></script>
 </head>
 <body>

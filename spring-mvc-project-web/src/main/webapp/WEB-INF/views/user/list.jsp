@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="${initParam.resourceRoot}/lib/select2/css/select2.min.css" />
 <script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
 
+<!-- list.css 文件必须放到bootstrap。min.cs之后 -->
 <link rel="stylesheet" href="${initParam.resourceRoot}/css/user/list.css">
 <script type="text/javascript" src="${initParam.resourceRoot}/js/user/list.js"></script>
 </head>
@@ -82,7 +83,6 @@
 					</div>
 					<button type="button" class="btn btn-success" id='keywordSearch'>查询</button>
 					<button type="reset" class="btn reset" ></button>
-					<span style="color: red; font-size: 15px;" id="error"></span>
 				</form>
 
 			</div>

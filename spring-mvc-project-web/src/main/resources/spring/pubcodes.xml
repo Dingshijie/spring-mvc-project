@@ -48,5 +48,17 @@
 				<entry key="82" value="澳门特别行政区"/>
 			</map>
 		</property>
+		<property name="category">
+			<map>
+				<entry key="11" value="娱乐"/>
+				<entry key="12" value="美食"/>
+				<entry key="13" value="丽人"/>
+				<entry key="14" value="旅游"/>
+				<entry key="15" value="购物"/>
+				<entry key="17" value="酒店"/>
+				<entry key="18" value="生活服务"/>
+				<entry key="91" value="其他"/>
+			</map>
+		</property>
 	</bean>
 </beans>

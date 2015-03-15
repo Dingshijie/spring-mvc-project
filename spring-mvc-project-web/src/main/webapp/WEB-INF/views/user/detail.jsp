@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="${initParam.resourceRoot}/lib/select2/css/select2.min.css" />
 <script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
 
-<!-- 页面的和css -->
+<!-- 页面的和css 文件必须放到bootstrap。min.cs之后-->
 <script type="text/javascript" src="${initParam.resourceRoot}/js/user/detail.js"></script>
 <link rel="stylesheet" href="${initParam.resourceRoot}/css/user/detail.css" />
 </head>

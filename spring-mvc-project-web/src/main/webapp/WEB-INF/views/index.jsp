@@ -17,6 +17,7 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
 
+<!-- index.css 文件必须放到bootstrap。min.cs之后 -->
 <script type="text/javascript" src="${initParam.resourceRoot}/js/index.js"></script>
 <link rel="stylesheet" href="${initParam.resourceRoot}/css/index.css">
 

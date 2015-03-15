@@ -31,6 +31,10 @@ public class Category implements Serializable {
 	@Column(name = "NAME", length = 32, nullable = false)
 	private String name;
 
+	@NotBlank
+	@Column(name = "CATEGORY", length = 2, nullable = false)
+	private String category;
+
 	@Column(name = "HOT", nullable = false)
 	private int hot = 0;//是否是热门, 0 表示不是热门,1表示是热门
 
@@ -59,6 +63,14 @@ public class Category implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public int getHot() {

@@ -23,6 +23,8 @@
 	<a href="${webRoot}/user/register.html" target="_blank">[注册]</a>
 	<a href="${webRoot}/user/list.html" target="_blank">[用户列表]</a>
 	<a href="${webRoot}/index.html" target="_blank">[首页]</a>
+	<a href="${webRoot}/category/category.html" target="_blank">[分类列表]</a>
+	<a href="${webRoot}/category/add.html" target="_blank">[添加分类]</a>
 	
 </body>
 </html>

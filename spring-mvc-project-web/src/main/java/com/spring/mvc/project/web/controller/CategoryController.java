@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,18 @@ public class CategoryController {
 
 	@Autowired
 	private CategoryService categoryService;
+
+	@RequestMapping(value = "category.html", method = RequestMethod.GET)
+	public String categoryListHtml(Model model) {
+		//转到商品分类界面
+		return "category/list";
+	}
+
+	@RequestMapping(value = "add.html", method = RequestMethod.GET)
+	public String categoryAddHtml(Model model) {
+		//进入添加界面
+		return "category/add";
+	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
