@@ -15,4 +15,9 @@ public class HomeController {
 		return "index";
 	}
 
+	@RequestMapping(value = "/manager.html", method = RequestMethod.GET)
+	public String managerHtml(Model model) {
+		return "manager";
+	}
+
 }
