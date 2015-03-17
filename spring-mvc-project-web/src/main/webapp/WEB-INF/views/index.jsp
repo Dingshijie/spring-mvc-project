@@ -19,74 +19,11 @@
 
 <!-- index.css 文件必须放到bootstrap。min.cs之后 -->
 <script type="text/javascript" src="${initParam.resourceRoot}/js/index.js"></script>
-<link rel="stylesheet" href="${initParam.resourceRoot}/css/index.css">
-
-
+<link rel="stylesheet" href="${initParam.resourceRoot}/css/index.css"/>
 </head>
 <body>
-	
-	<!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-	    
-      <div class="container">
-         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a class="tag-a" href="${webRoot}/login.html">登陆</a></li>
-            <li><a class="tag-a" href="${webRoot}/user/register.html">注册</a></li>
-          </ul>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="input-group">
-              <div class="input-group-btn">
-			    <div class="btn-group">
-			    <button type="button" id="btn-scope" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-used="">
-			    	全部&nbsp;<span class="caret"></span>
-			    </button>
-			    <ul class="dropdown-menu" role="menu" style="min-width: 80px;"><!-- 重写下来出来的列表的最小宽度由160px改成100px -->
-				    <li><a href="javascript:void(0)" class="scope" data-used="">全部</a></li>
-					<li><a href="javascript:void(0)" class="scope" data-used="true">二手</a></li>
-				</ul>
-				</div>
-			  </div>
-			  <input type="text" class="form-control" size="40" placeholder="请输入商品名称、商家等" aria-label="...">
-			  <div class="input-group-btn">
-			  	<button type="button" class="btn btn-success">搜索</button>
-			  </div>
-			</div>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a class="tag-a" href="${webRoot}/index.html">首页</a></li>
-            <li><a class="tag-a" href="#">我的收藏</a></li>
-            <li class="dropdown">
-            	<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">商家中心<span class="caret"></span></a>
-            	<ul class="dropdown-menu" role="menu" style="min-width: 80px;">
-	                <li><a href="#">我发布的</a></li>
-	                <li><a href="#">我想合作</a></li>
-             	</ul>
-            </li>
-            <li class="dropdown">
-            	<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">联系我们<span class="caret"></span></a>
-            	<ul class="dropdown-menu" role="menu" style="min-width: 80px;">
-	                <li><a href="#">常见问题</a></li>
-	                <li><a href="#">投诉建议</a></li>
-	                <li class="divider"></li>
-	                <li><a href="#">联系客服</a></li>
-             	</ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<c:import url="common/top.jsp"></c:import>
     <div class="container">
-
       <div class="row row-offcanvas row-offcanvas-right">
 		 <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
@@ -235,9 +172,7 @@
         </div><!--/.col-xs-12.col-sm-9-->
 
       </div><!--/row-->
-
       <hr>
-
       <footer>
         <p>&copy; Company 2014</p>
       </footer>

@@ -2,12 +2,10 @@
  * list.css
  */
 body {
-	background-color: #ECECEC;
+	background-color: #fff;
 }
 
-.navbar {
-	margin-top: 50px;
-}
+
 
 .pubtool a {
 	margin-left: 15px;
@@ -38,7 +36,7 @@ body {
 }
 
 #loadingImg {
-	width: 500px;
+	width: auto;
 	margin: 0px auto;
 }
 

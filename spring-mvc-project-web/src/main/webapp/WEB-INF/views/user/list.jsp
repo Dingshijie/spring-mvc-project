@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,10 +26,11 @@
 <script type="text/javascript" src="${initParam.resourceRoot}/js/user/list.js"></script>
 </head>
 <body>
-	<nav class="navbar" role="navigation">
-	<div class="container-fluid">
+	<c:import url="../common/manager-top.jsp"></c:import>
+	<c:import url="../common/manager-left.jsp"></c:import>
+	<div class="container-fluid col-md-8 col-md-offset-3" style="padding: 20px;">
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-10">
 				<form class="form-inline" role="form">
 					<div class="form-group">
 						<select id="province" name="province" class="form-control" style="width: auto; float: left;">
@@ -65,13 +67,13 @@
 							<option value="64">宁夏回族自治区</option>
 							<option value="65">新疆维吾尔自治区</option>
 						</select> 
-						<select id="city" class="form-control" style="width:auto; float: left;">
+						<select id="city" class="form-control" style="width: auto; float: left;">
 							<option value="" selected="selected">全部</option>
-						</select>
-						<select id="area" class="form-control" style="width:auto; float: left;">
+						</select> 
+						<select id="area" class="form-control" style="width: auto; float: left;">
 							<option value="" selected="selected">全部</option>
-						</select>
-						<select class="form-control" id="role">
+						</select> 
+						<select class="form-control" id="role" style="width: auto; float: left;">
 							<option value="" selected="selected">全部</option>
 							<option value="MANAGER">管理员</option>
 							<option value="BUSSINESS">商家</option>
@@ -79,15 +81,17 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<input type="text" placeholder="请输入查询的关键字或代码" class="form-control" style="width: 200px;" id="keyword">
+						<input type="text" placeholder="请输入查询的关键字或代码" class="form-control"
+							style="width: 200px;" id="keyword">
 					</div>
 					<button type="button" class="btn btn-success" id='keywordSearch'>查询</button>
-					<button type="reset" class="btn reset" ></button>
+					<button type="reset" class="btn reset"></button>
 				</form>
 
 			</div>
-			<div class=" col-md-3 pubtool">
-				<a href="javascript:void(0)" id="download" title="导出到处所有用户到excel文件" class="btn btn-info disabled pull-right"> <span class="glyphicon glyphicon-circle-arrow-down"></span> 导出到Excel
+			<div class=" col-md-2 pubtool">
+				<a href="javascript:void(0)" id="download" title="导出到处所有用户到excel文件" class="btn btn-info disabled pull-right"> 
+				<span class="glyphicon glyphicon-circle-arrow-down"></span> 导出到Excel
 				</a>
 			</div>
 		</div>
@@ -120,6 +124,5 @@
 			</div>
 		</div>
 	</div>
-	</nav>
 </body>
 </html>
