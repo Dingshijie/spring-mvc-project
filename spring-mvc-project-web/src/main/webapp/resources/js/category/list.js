@@ -17,7 +17,7 @@ $(function(){
 		"enable" : 10,
 		"keyword" : "",
 		"pageIndex" : 1,
-		"pageSize" : 15
+		"pageSize" : 10
 	}
 	
 	setting = {

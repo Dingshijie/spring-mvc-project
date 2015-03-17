@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +28,8 @@
 </head>
 <body>
 	<c:import url="../common/manager-top.jsp"></c:import>
-	<c:import url="../common/manager-left.jsp"></c:import>
-	<div class="container-fluid col-md-8 col-md-offset-3" style="padding: 20px;">
+	<c:import url="../common/manager-left.jsp"><c:param name="active">usermanager</c:param><c:param name="subactive">userlist</c:param></c:import>
+	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="row">
 			<div class="col-md-10">
 				<form class="form-inline" role="form">
@@ -103,8 +104,8 @@
 						<ul class="pagination pull-right pageWrap"></ul>
 						<div class="pull-left pageSizeWrap">
 							<select id="pageSize">
-								<option value="10">10</option>
-								<option value="15" selected="selected">15</option>
+								<option value="10" selected="selected">10</option>
+								<option value="15">15</option>
 								<option value="20">20</option>
 							</select> 条 / 页
 						</div>

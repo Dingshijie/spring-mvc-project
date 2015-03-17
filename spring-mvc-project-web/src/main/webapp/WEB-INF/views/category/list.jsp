@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +27,11 @@
 <script type="text/javascript" src="${initParam.resourceRoot}/js/user/list.js"></script>
 </head>
 <body>
-	<nav class="navbar" role="navigation">
-	<div class="container-fluid">
+
+	<c:import url="../common/manager-top.jsp"></c:import>
+	<c:import url="../common/manager-left.jsp"><c:param name="active">category</c:param><c:param name="subactive">categorylist</c:param></c:import>
+
+	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="row">
 			<div class="col-md-9">
 				<form class="form-inline" role="form">
@@ -99,8 +104,8 @@
 						<ul class="pagination pull-right pageWrap"></ul>
 						<div class="pull-left pageSizeWrap">
 							<select id="pageSize">
-								<option value="10">10</option>
-								<option value="15" selected="selected">15</option>
+								<option value="10" selected="selected">10</option>
+								<option value="15">15</option>
 								<option value="20">20</option>
 							</select> 条 / 页
 						</div>
@@ -120,6 +125,5 @@
 			</div>
 		</div>
 	</div>
-	</nav>
 </body>
 </html>

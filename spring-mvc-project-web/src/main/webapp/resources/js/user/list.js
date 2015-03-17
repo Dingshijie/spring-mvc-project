@@ -7,7 +7,7 @@ $(function(){
 	 * 刷新页面设置各个下拉框以及各个输入框的内容均为空
 	 */
 	$('.reset').click();
-	$('#pageSize').val('15');
+	$('#pageSize').val('10');
 	
 	/**
 	 * 定义变量
@@ -18,7 +18,7 @@ $(function(){
 		"schoolCode" : "",
 		"keyword" : "",
 		"pageIndex" : 1,
-		"pageSize" : 15
+		"pageSize" : 10
 	}
 	
 	setting = {

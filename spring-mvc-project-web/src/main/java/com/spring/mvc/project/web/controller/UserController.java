@@ -34,6 +34,12 @@ public class UserController {
 		return "user/register";
 	}
 
+	@RequestMapping(value = "/add.html", method = RequestMethod.GET)
+	public String addHtml(Model model) {
+		//进入到注册的页面
+		return "user/add";
+	}
+
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
 	public boolean add(UserInfo user, Model model) {
@@ -56,7 +62,7 @@ public class UserController {
 	@ResponseBody
 	public List<UserInfo> findList(Role role, String areaCode, String schoolCode, String keyword,
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
-			@RequestParam(value = "pageSize", defaultValue = "15") int pageSize) {
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 		return userService.findList(role, areaCode, schoolCode, keyword, pageIndex, pageSize);
 	}
 
@@ -67,10 +73,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "export", method = RequestMethod.GET)
-	public ModelAndView export(Role role, String areaCode, String schoolCode, String keyword,
-			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
-			@RequestParam(value = "pageSize", defaultValue = "15") int pageSize) {
-		List<UserInfo> list = userService.findList(role, areaCode, schoolCode, keyword, pageIndex, pageSize);
+	public ModelAndView export(Role role, String areaCode, String schoolCode, String keyword) {
+		List<UserInfo> list = userService.findList(role, areaCode, schoolCode, keyword, 0, 0);
 
 		List<ExportField> fields = new ArrayList<ExportField>();
 		setExportField(fields, list);
@@ -105,7 +109,7 @@ public class UserController {
 		fields.add(new ExportField("areaName", "所在地区名称", DataType.STRING));
 		fields.add(new ExportField("address", "详细地址", DataType.STRING));
 		fields.add(new ExportField("role", "角色", DataType.STRING));
-		fields.add(new ExportField("enable", "是否在用", DataType.BOOLEAN));
+		fields.add(new ExportField("enable", "是否在用", DataType.INT));
 		fields.add(new ExportField("authentication", "认证信息", DataType.STRING));
 	}
 

@@ -55,7 +55,7 @@ public class CategoryController {
 	public List<Category> findList(String categoryCode, @RequestParam(value = "hot", defaultValue = "10") int hot,
 			@RequestParam(value = "enable", defaultValue = "10") int enable, String keyword,
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
-			@RequestParam(value = "pageSize", defaultValue = "15") int pageSize) {
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 		return categoryService.findList(categoryCode, hot, enable, keyword, pageIndex, pageSize);
 	}
 

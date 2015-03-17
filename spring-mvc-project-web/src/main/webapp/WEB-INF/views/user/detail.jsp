@@ -26,7 +26,8 @@
 <link rel="stylesheet" href="${initParam.resourceRoot}/css/user/detail.css" />
 </head>
 <body>
-	<div class="container-fluid">
+	
+	<div class="container-fluid col-md-10 col-md-offset-2">
 		<div class="row show-grid">
 			<div id="mainList" class="col-md-8 col-md-offset-2">
 					<fieldset>
