@@ -108,11 +108,6 @@ $(function(){
 		}
 
 	
-		if($('#code').val().substring(0,2) != $('#category').val() ){
-			$('#categoryerror').addClass("error").css('color','red').html("× 上述代码不属于该分类");
-			$('#categoryerror').show();
-		}
-		
 		//检查是否有错误标记
 		var errorNum = $(".error").length;
 		if(errorNum == 0){
