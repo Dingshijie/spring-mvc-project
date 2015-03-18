@@ -23,7 +23,7 @@ public class Area implements Serializable {
 	private static final long serialVersionUID = 7756408880111796698L;
 
 	@Id
-	@Column(name = "ID", length = 32)
+	@Column(name = "ID", length = 128)
 	@GenericGenerator(name = "generator", strategy = "uuid")
 	@GeneratedValue(generator = "generator")
 	private String id;

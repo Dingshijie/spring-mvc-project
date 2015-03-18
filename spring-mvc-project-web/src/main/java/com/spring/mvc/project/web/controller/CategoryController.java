@@ -32,10 +32,16 @@ public class CategoryController {
 		return "category/add";
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/find/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Category find(String id) {
 		return categoryService.find(id);
+	}
+
+	@RequestMapping(value = "/exist", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean exist(String fieldName, String fieldValue) {
+		return categoryService.exist(fieldName, fieldValue);
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)

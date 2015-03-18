@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
@@ -18,7 +19,7 @@ public class Category implements Serializable {
 	private static final long serialVersionUID = -1371742329941754114L;
 
 	@Id
-	@Column(name = "ID", length = 22)
+	@Column(name = "ID", length = 128)
 	@GenericGenerator(name = "generator", strategy = "uuid")
 	@GeneratedValue(generator = "generator")
 	private String id;
@@ -89,4 +90,9 @@ public class Category implements Serializable {
 		this.enable = enable;
 	}
 
+	@Transient
+	public String getCategoryName() {
+		System.out.println(this.category);
+		return PubCode.getCategoryMap().get(this.category);
+	}
 }

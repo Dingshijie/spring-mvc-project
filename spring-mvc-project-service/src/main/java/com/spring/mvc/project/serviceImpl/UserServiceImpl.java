@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	public boolean isExsit(String fieldName, String fieldValue) {
-		return userRepository.isExsit(fieldName, fieldValue);
+	public boolean isExist(String fieldName, String fieldValue) {
+		return userRepository.isExist(fieldName, fieldValue);
 	}
 
 	@Override

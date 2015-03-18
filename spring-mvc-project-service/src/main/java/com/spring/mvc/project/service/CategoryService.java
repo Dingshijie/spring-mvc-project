@@ -14,6 +14,14 @@ public interface CategoryService {
 	public Category find(String id);
 
 	/**
+	 * 查询该类别是否存在指定字段的字段的指定值
+	 * @param fieldName 字段
+	 * @param fieldValue 字段值
+	 * @return
+	 */
+	public boolean exist(String fieldName, String fieldValue);
+
+	/**
 	 * 添加新的类别
 	 * @param category
 	 * @return

@@ -14,7 +14,7 @@ public interface UserService {
 	 * @param 字段值
 	 * @return
 	 */
-	public boolean isExsit(String fieldName, String fieldValue);
+	public boolean isExist(String fieldName, String fieldValue);
 
 	/**
 	 * 根据用户名称查询用户
