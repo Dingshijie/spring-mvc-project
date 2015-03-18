@@ -57,14 +57,14 @@
 							<div class="col-sm-4">
 								<select id="category" name="category" class="form-control" style="width: 100%; float: left;">
 									<option value="" selected="selected">所有类别</option>
-									<option value="11">娱乐</option>
-									<option value="12">美食</option>
-									<option value="13">丽人</option>
-									<option value="14">旅游</option>
-									<option value="15">购物</option>
-									<option value="16">酒店</option>
-									<option value="17">生活服务</option>
-									<option value="91">其他</option>
+									<option value="11">11 娱乐</option>
+									<option value="12">12 美食</option>
+									<option value="13">13 丽人</option>
+									<option value="14">14 旅游</option>
+									<option value="15">15 购物</option>
+									<option value="16">16 酒店</option>
+									<option value="17">17 生活服务</option>
+									<option value="91">91 其他</option>
 								</select>  
 							</div>
 							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
