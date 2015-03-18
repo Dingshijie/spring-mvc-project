@@ -153,7 +153,7 @@ $(function(){
 		}else{
 			var fieldName = $('#username').attr('name');
 
-			$.get('HTTP://'+window.location.host+'/user/exsit',{"fieldName":fieldName,"fieldValue":username},function(data){
+			$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":username},function(data){
 				if(data){
 					$('#usernameerror').addClass("error").css('color','red').html("× 该用户名已被注册！");
 				}
@@ -197,7 +197,7 @@ $(function(){
 		}else{
 			var fieldName = $('#mobilPhone').attr('name');
 
-			$.get('HTTP://'+window.location.host+'/user/exsit',{"fieldName":fieldName,"fieldValue":mobilePhone},function(data){
+			$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":mobilePhone},function(data){
 				if(data){
 					$('#mobilPhoneerror').addClass("error").css('color','red').html("× 该手机已被注册！");
 				}

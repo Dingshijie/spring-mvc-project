@@ -23,8 +23,8 @@
 <script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
 
 <!-- list.css 文件必须放到bootstrap。min.cs之后 -->
-<link rel="stylesheet" href="${initParam.resourceRoot}/css/user/list.css">
-<script type="text/javascript" src="${initParam.resourceRoot}/js/user/list.js"></script>
+<link rel="stylesheet" href="${initParam.resourceRoot}/css/category/list.css">
+<script type="text/javascript" src="${initParam.resourceRoot}/js/category/list.js"></script>
 </head>
 <body>
 
@@ -36,51 +36,26 @@
 			<div class="col-md-9">
 				<form class="form-inline" role="form">
 					<div class="form-group">
-						<select id="province" name="province" class="form-control" style="width: auto; float: left;">
-							<option value="" selected="selected">全部</option>
-							<option value="11">北京市</option>
-							<option value="12">天津市</option>
-							<option value="13">河北省</option>
-							<option value="14">山西省</option>
-							<option value="15">内蒙古自治区</option>
-							<option value="21">辽宁省</option>
-							<option value="22">吉林省</option>
-							<option value="23">黑龙江省</option>
-							<option value="31">上海市</option>
-							<option value="32">江苏省</option>
-							<option value="33">浙江省</option>
-							<option value="34">安徽省</option>
-							<option value="35">福建省</option>
-							<option value="36">江西省</option>
-							<option value="37">山东省</option>
-							<option value="41">河南省</option>
-							<option value="42">湖北省</option>
-							<option value="43">湖南省</option>
-							<option value="44">广东省</option>
-							<option value="45">广西壮族自治区</option>
-							<option value="46">海南省</option>
-							<option value="50">重庆市</option>
-							<option value="51">四川省</option>
-							<option value="52">贵州省</option>
-							<option value="53">云南省</option>
-							<option value="54">西藏自治区</option>
-							<option value="61">陕西省</option>
-							<option value="62">甘肃省</option>
-							<option value="63">青海省</option>
-							<option value="64">宁夏回族自治区</option>
-							<option value="65">新疆维吾尔自治区</option>
+						<select id="category" name="category" class="form-control" style="width: auto; float: left;">
+							<option value="" selected="selected">所有类别</option>
+							<option value="11">娱乐</option>
+							<option value="12">美食</option>
+							<option value="13">丽人</option>
+							<option value="14">旅游</option>
+							<option value="15">购物</option>
+							<option value="16">酒店</option>
+							<option value="17">生活服务</option>
+							<option value="91">其他</option>
 						</select> 
-						<select id="city" class="form-control" style="width:auto; float: left;">
-							<option value="" selected="selected">全部</option>
+						<select id="hot" class="form-control" style="width:auto; float: left;">
+							<option value="10" selected="selected">全部</option>
+							<option value="1">热门</option>
+							<option value="0">非热门</option>
 						</select>
-						<select id="area" class="form-control" style="width:auto; float: left;">
-							<option value="" selected="selected">全部</option>
-						</select>
-						<select class="form-control" id="role">
-							<option value="" selected="selected">全部</option>
-							<option value="MANAGER">管理员</option>
-							<option value="BUSSINESS">商家</option>
-							<option value="VISITOR">游客</option>
+						<select id="enable" class="form-control" style="width:auto; float: left;">
+							<option value="10" selected="selected">全部</option>
+							<option value="1">可用</option>
+							<option value="0">已禁用</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -89,7 +64,6 @@
 					<button type="button" class="btn btn-success" id='keywordSearch'>查询</button>
 					<button type="reset" class="btn reset" ></button>
 				</form>
-
 			</div>
 			<div class=" col-md-3 pubtool">
 				<a href="javascript:void(0)" id="download" title="导出到处所有用户到excel文件" class="btn btn-info disabled pull-right"> <span class="glyphicon glyphicon-circle-arrow-down"></span> 导出到Excel

@@ -32,7 +32,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public boolean isExsit(String fieldName, String fieldValue) {
+	public boolean isExist(String fieldName, String fieldValue) {
 		String hql = "SELECT COUNT(id) FROM UserInfo WHERE " + fieldName + "=:fieldValue";
 		Query query = this.getSession().createQuery(hql);
 		query.setParameter("fieldValue", fieldValue);

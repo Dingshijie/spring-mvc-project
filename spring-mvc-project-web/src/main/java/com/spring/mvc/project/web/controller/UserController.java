@@ -52,10 +52,10 @@ public class UserController {
 		return "user/list";
 	}
 
-	@RequestMapping(value = "exsit", method = RequestMethod.GET)
+	@RequestMapping(value = "exist", method = RequestMethod.GET)
 	@ResponseBody
-	public boolean isExsit(String fieldName, String fieldValue) {
-		return userService.isExsit(fieldName, fieldValue);
+	public boolean isExist(String fieldName, String fieldValue) {
+		return userService.isExist(fieldName, fieldValue);
 	}
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)

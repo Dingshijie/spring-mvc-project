@@ -140,7 +140,7 @@
 							<div class="col-sm-offset-2 col-sm-10">
 							     <button type="button" id="btn-submit" class="btn btn-info col-sm-offset-1" >保存</button>
 							     <button type="reset" class="btn reset" ></button>
-							     <button type="button" class="btn btn-default col-sm-offset-1" >返回</button>
+							     <button type="button" class="btn btn-default col-sm-offset-1" onclick="window.history.go(-1);">返回</button>
 						    </div>
 					  </div>
 					</fieldset>

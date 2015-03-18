@@ -37,19 +37,19 @@
 						<div class="form-group" style="margin-top: 20px;">
 							<label for="username" class="col-sm-4 control-label">代码:</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"> 
+								<input type="text" class="form-control" id="code" name="code" placeholder="类别代码"> 
 							</div>
 							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="usernameerror"></span>
+								<span class="help-block" id="codeerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-sm-4 control-label">名称:</label>
 							<div class="col-sm-4">
-								<input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"> 
+								<input type="text" class="form-control" id="name" name="name" placeholder="类别名称"> 
 							</div>
 							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="passworderror"></span>
+								<span class="help-block" id="nameerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -68,11 +68,11 @@
 								</select>  
 							</div>
 							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="mobilPhoneerror"></span>
+								<span class="help-block" id="categoryerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="address" class="col-sm-4 control-label">是否设置为热门:</label>
+							<label for="hot" class="col-sm-4 control-label">是否设置为热门:</label>
 							<div class="col-sm-4 control-label">
 								<div class="col-sm-5 ">
 									<input name="hot" type="radio" value="1" >是
@@ -81,29 +81,23 @@
 									<input name="hot" type="radio" value="0" checked>否
 								</div>
 							</div>
-							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="addresserror"></span>
-							</div>
 						</div>
 						<div class="form-group">
-							<label for="address" class="col-sm-4 control-label">是否设置为可用:</label>
+							<label for="hot" class="col-sm-4 control-label">是否设置为可用:</label>
 							<div class="col-sm-4 control-label">
 								<div class="col-sm-5">
-								<input name="enable" type="radio" value="1" checked>是
+									<input name="enable" type="radio" value="1" checked>是
 								</div>
 								<div class="col-sm-5">
-								<input name="enable" type="radio" value="0">否
+									<input name="enable" type="radio" value="0">否
 								</div>
-							</div>
-							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="addresserror"></span>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-6">
 							     <button type="button" id="btn-submit" class="btn btn-info col-sm-offset-1" >保存</button>
 							     <button type="reset" class="btn reset" ></button>
-							     <button type="button" class="btn btn-default col-sm-offset-1" >返回</button>
+							     <button type="button" class="btn btn-default col-sm-offset-1" onclick="window.history.go(-1);" >返回</button>
 						    </div>
 						</div>
 					</fieldset>
@@ -119,7 +113,7 @@
 				     <h4 class="modal-title" id="myModalLabel">Info</h4>
 				</div>
 			    <div class="modal-body">
-		    	 表单提交成功，即将跳转到登录页面&hellip;
+		    	 表单提交成功，即将跳转到列表页面&hellip;
 			    </div>
 		  </div>
 	   </div>

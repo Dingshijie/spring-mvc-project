@@ -22,8 +22,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Category find(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryService.find(id);
+	}
+
+	@Override
+	public boolean exist(String fieldName, String fieldValue) {
+		return categoryService.exist(fieldName, fieldValue);
 	}
 
 	@Override
@@ -31,10 +35,10 @@ public class CategoryServiceImpl implements CategoryService {
 	public boolean add(Category category) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		if (userInfo.isManager()) {
-			return categoryService.add(category);
-		}
-		return false;
+		//		if (userInfo.isManager()) {
+		return categoryService.add(category);
+		//		}
+		//		return false;
 	}
 
 	@Override
