@@ -178,25 +178,17 @@ $(function(){
 	//改变参数中的pageSize后重新load
 	$('#pageSize').on('change',function(){
 		par.pageSize = parseInt($(this).val()) || 15;
-		par.pageSize = par.pageSize;
 		loadData(par);
 	});
 	//点击查询
-//	$('#keywordSearch').on('click',function(){
-//		par.keyword = $('#keyword').val();
-//		par.role = $('#role option:selected').val();
-//		if($('#area').val()==''){
-//			if($('#city').val() == ''){
-//				par.areaCode = $('#province').val();
-//			}else{
-//				par.areaCode = $('#area').val().substring(0,4);
-//			}
-//		}else{
-//			par.areaCode = $('#area').val();
-//		}
-//		
-//		loadData(par);
-//	});
+	$('#keywordSearch').on('click',function(){
+		par.keyword = $('#keyword').val();
+		par.categoryCode = $('#category').val();
+		par.hot = $('#hot').val();
+		par.enable = $('#enable').val();
+		
+		loadData(par);
+	});
 	$('#download').on('click',function(){
 		window.location = "HTTP://"+ window.location.host + "/category/export?categoryCode="+par.categoryCode+"&hot="+par.hot+"&enable="+par.enable+"&keyword="+par.keyword;
 	});
