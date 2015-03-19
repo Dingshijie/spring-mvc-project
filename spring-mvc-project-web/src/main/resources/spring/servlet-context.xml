@@ -36,4 +36,5 @@
 	<!-- User-defined @Controller beans that process client requests -->
 	<context:component-scan base-package="com.spring.mvc.project.web.controller" /> 
 	
+	<beans:import resource="pubcodes.xml"/>
 </beans:beans>

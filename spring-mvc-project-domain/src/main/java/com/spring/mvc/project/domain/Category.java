@@ -92,7 +92,6 @@ public class Category implements Serializable {
 
 	@Transient
 	public String getCategoryName() {
-		System.out.println(this.category);
 		return PubCode.getCategoryMap().get(this.category);
 	}
 }

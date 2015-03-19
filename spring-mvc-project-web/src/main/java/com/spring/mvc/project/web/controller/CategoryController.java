@@ -1,5 +1,6 @@
 package com.spring.mvc.project.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.mvc.project.domain.Category;
+import com.spring.mvc.project.domain.util.ExportField;
+import com.spring.mvc.project.domain.util.ExportField.DataType;
 import com.spring.mvc.project.service.CategoryService;
+import com.spring.mvc.project.web.util.ExportExcel2007;
+import com.spring.mvc.project.web.util.FileUtil.FileType;
 
 @Controller
 @RequestMapping(value = "/category")
@@ -70,5 +76,30 @@ public class CategoryController {
 	public int findList(String categoryCode, @RequestParam(value = "hot", defaultValue = "10") int hot,
 			@RequestParam(value = "enable", defaultValue = "10") int enable, String keyword) {
 		return categoryService.findCount(categoryCode, hot, enable, keyword);
+	}
+
+	@RequestMapping(value = "export", method = RequestMethod.GET)
+	public ModelAndView export(String categoryCode, @RequestParam(value = "hot", defaultValue = "10") int hot,
+			@RequestParam(value = "enable", defaultValue = "10") int enable, String keyword) {
+		List<Category> list = categoryService.findList(categoryCode, hot, enable, keyword, 0, 0);
+
+		List<ExportField> fields = new ArrayList<ExportField>();
+		setExportField(fields, list);
+		String filename = "类别信息";//"就业统计";
+		String sheetName = "sheet";
+		return new ModelAndView(new ExportExcel2007(filename, FileType.XLSX, sheetName, list, fields));
+	}
+
+	/**
+	 * 设置到处用户的信息项
+	 * @param fields
+	 * @param list
+	 */
+	public void setExportField(List<ExportField> fields, List<Category> list) {
+		fields.add(new ExportField("name", "类别名称", DataType.STRING));
+		fields.add(new ExportField("code", "类别代码", DataType.STRING));
+		fields.add(new ExportField("categoryName", "所在类别", DataType.STRING));
+		fields.add(new ExportField("hot", "是否热门", DataType.INT));
+		fields.add(new ExportField("enable", "是否在用", DataType.INT));
 	}
 }
