@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -63,6 +64,8 @@ public class EduPubCodeRepositoryImpl implements EduPubCodeRepository {
 							Restrictions.or(Restrictions.like("firstName", keyword, MatchMode.ANYWHERE),
 									Restrictions.like("secondName", keyword, MatchMode.ANYWHERE)))));
 		}
+		crit.addOrder(Order.asc("eduLevel"));
+		crit.addOrder(Order.asc("code"));
 		if (pageSize > 0) {
 			crit.setFirstResult((pageIndex - 1) * pageSize);
 			crit.setMaxResults(pageSize);

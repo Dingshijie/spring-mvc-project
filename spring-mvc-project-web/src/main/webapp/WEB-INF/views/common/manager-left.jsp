@@ -25,6 +25,18 @@
 					<li <c:if test="${param.subactive=='addarea'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/area/add.html">添加地区</a></li>
 				</ul>
 			</li>
+			<li <c:if test="${param.active=='schoolmanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/school/school.html">学校管理</a>
+				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2">
+					<li <c:if test="${param.subactive=='schoollist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/school/school.html">学校列表</a></li>
+					<li <c:if test="${param.subactive=='addschool'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/school/add.html">添加学校</a></li>
+				</ul>
+			</li>
+			<li <c:if test="${param.active=='edupubcodemanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/edupubcode/edupubcode.html">专业代码管理</a>
+				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2">
+					<li <c:if test="${param.subactive=='edupubcodelist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/edupubcode/edupubcode.html">专业代码列表</a></li>
+					<li <c:if test="${param.subactive=='addedupubcode'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/edupubcode/add.html">添加专业代码</a></li>
+				</ul>
+			</li>
 			<li style="white-space:nowrap; display:inline-block;width: 100%"><a href="#">Analytics</a></li>
 			<li style="white-space:nowrap; display:inline-block;width: 100%"><a href="#">Export</a></li>
 		</ul>
