@@ -70,7 +70,7 @@ public class AreaRepositoryImpl implements AreaRepository {
 		}
 		crit.addOrder(Order.asc("code"));
 		if (pageSize > 0) {
-			crit.setFirstResult(pageIndex);
+			crit.setFirstResult((pageIndex - 1) * pageSize);
 			crit.setMaxResults(pageSize);
 		}
 		return crit.list();

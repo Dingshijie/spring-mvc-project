@@ -29,7 +29,7 @@
 <body>
 
 	<c:import url="../common/manager-top.jsp"></c:import>
-	<c:import url="../common/manager-left.jsp"><c:param name="active">category</c:param><c:param name="subactive">categorylist</c:param></c:import>
+	<c:import url="../common/manager-left.jsp"><c:param name="active">categorymanager</c:param><c:param name="subactive">categorylist</c:param></c:import>
 
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="row">
