@@ -1,27 +1,25 @@
 /**
- *category.js 
+ * list.js
  */
-
 $(function(){
-	
-	
+	/**
+	 * 刷新页面设置各个下拉框以及各个输入框的内容均为空
+	 */
 	$('.reset').click();
-	
+	$('#pageSize').val('10');
 	
 	/**
 	 * 定义变量
 	 */
 	var par={
-		"categoryCode" : "",
-		"hot" : 10,
-		"enable" : 10,
+		"areaCode" : "",
 		"keyword" : "",
 		"pageIndex" : 1,
 		"pageSize" : 10
 	}
 	
 	setting = {
-		"listUrl" : "HTTP://"+window.location.host+"/category/list",
+		"listUrl" : "HTTP://"+window.location.host+"/area/list",
 		//加载页面的包含框（jquery对象）
 		'pageWrap' : $('#loadContentWrap'),
 		//放置翻页的包含狂（jquery对象）
@@ -45,25 +43,24 @@ $(function(){
 	};
 	
 	function loadData(par){
-
 		var baseUrl = "http://"+window.location.host+"/resources/";
 		//加载等待效果
 		setting.pageWrap.append('<div id="loadingImg"><img width="580px" height="435px" src="'+baseUrl+'/img/loading.gif"/></div>');
 
-		$.get("HTTP://"+window.location.host+"/category/list",par,function(data){
+		$.get("HTTP://"+window.location.host+"/area/list",par,function(data){
 			if(data == ''){
 				var html = "<div style='font-size:16px;text-align:center;line-height:120px;' class='alert-info' role='alert'><strong>提示</strong>：未查询到相关数据！</div>"
 			}else{
-				var html = "<table class='table table-hover table-striped'><colgroup><col width='5%'></col><col width='15%'></col><col width='15%'></col><col width='10%'></col><col width='10%'><col width='10%'></col><col width='20%'></col></colgroup><thead><tr><th>序号</th><th>名称</th><th>代码</th><th>所属类别</th><th>是否热门</th><th>是否可用</th><th>操作</th></tr></thead><tbody>";
+				var html = "<table class='table table-hover table-striped'><colgroup><col width='5%'></col><col width='15%'></col><col width='15%'></col><col width='15%'></col><col width='15%'></col><col width='20%'></col></colgroup><thead><tr><th>序号</th><th>地区代码</th><th>地区名称</th><th>显示名称</th><th>地区类型</th><th>操作</th></tr></thead><tbody>";
 				for(var i = 0; i < data.length; i++){
-					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].name +"</td><td>" + data[i].code + "</td><td>" + data[i].categoryName + "</td><td> " + (data[i].hot==1?'√':'×') + " </td><td> " + (data[i].enable==1?'√':'×') + " </td><td><a href='HTTP://"+window.location.host+"/category/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
+					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].code +"</td><td>" + data[i].name + "</td><td>" + data[i].display + "</td><td> " + data[i].typeName + " </td><td><a href='HTTP://"+window.location.host+"/area/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
 				}
 				html + "</tbody></table>";
 			}
 			setting.pageWrap.empty().append(html);
 		});
 		
-		$.get("HTTP://"+window.location.host+"/category/count",par,function(data){
+		$.get("HTTP://"+window.location.host+"/area/count",par,function(data){
 			if(data != 0){
 				$('#download').removeClass('disabled');
 			}else{
@@ -75,6 +72,14 @@ $(function(){
 		});
 		
 	}
+	
+	/**
+	 * 选择省份
+	 */
+	$('#province').on('change',function(){
+		par.areaCode = $(this).val() || ""; 
+	});
+	
 	
 	/**
 	 * 分页
@@ -178,19 +183,19 @@ $(function(){
 	//改变参数中的pageSize后重新load
 	$('#pageSize').on('change',function(){
 		par.pageSize = parseInt($(this).val()) || 10;
+		par.pageSize = par.pageSize;
 		loadData(par);
 	});
 	//点击查询
 	$('#keywordSearch').on('click',function(){
 		par.keyword = $('#keyword').val();
-		par.categoryCode = $('#category').val();
-		par.hot = $('#hot').val();
-		par.enable = $('#enable').val();
+		par.role = $('#role option:selected').val();
 		
 		loadData(par);
 	});
 	$('#download').on('click',function(){
-		window.location = "HTTP://"+ window.location.host + "/category/export?categoryCode="+par.categoryCode+"&hot="+par.hot+"&enable="+par.enable+"&keyword="+par.keyword;
+		window.location = "HTTP://"+ window.location.host + "/area/export?areaCode="+par.areaCode+"&keyword="+par.keyword;
 	});
+	
 	
 });

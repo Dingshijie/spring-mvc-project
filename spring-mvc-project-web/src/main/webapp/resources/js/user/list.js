@@ -240,7 +240,7 @@ $(function(){
 	
 	//改变参数中的pageSize后重新load
 	$('#pageSize').on('change',function(){
-		par.pageSize = parseInt($(this).val()) || 15;
+		par.pageSize = parseInt($(this).val()) || 10;
 		par.pageSize = par.pageSize;
 		loadData(par);
 	});
