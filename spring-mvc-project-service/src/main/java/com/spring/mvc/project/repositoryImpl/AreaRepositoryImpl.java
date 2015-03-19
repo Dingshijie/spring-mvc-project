@@ -35,12 +35,8 @@ public class AreaRepositoryImpl implements AreaRepository {
 	}
 
 	@Override
-	public boolean update(String fieldName, String fieldValue, String id) {
-		String hql = "UPDATE Area SET" + fieldName + "=:fieldValue WHERE id=:id";
-		Query query = this.getSession().createQuery(hql);
-		query.setParameter("fieldValue", fieldValue);
-		query.setParameter("id", id);
-		return query.executeUpdate() != 0;
+	public void update(Area area) {
+		this.getSession().update(area);
 	}
 
 	@Override
@@ -51,6 +47,14 @@ public class AreaRepositoryImpl implements AreaRepository {
 	@Override
 	public Area find(String id) {
 		return (Area) this.getSession().get(Area.class, id);
+	}
+
+	@Override
+	public boolean isExist(String fieldName, String fieldValue) {
+		String sql = "SELECT COUNT(id) FROM Area WHERE" + fieldName + "=:fieldValue";
+		Query query = this.getSession().createQuery(sql);
+		query.setParameter("fieldValue", fieldValue);
+		return Integer.parseInt(query.uniqueResult().toString()) != 0;
 	}
 
 	@SuppressWarnings("unchecked")

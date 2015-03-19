@@ -35,6 +35,11 @@ public class SchoolRepositoryImpl implements SchoolRepository {
 	}
 
 	@Override
+	public void update(SchoolInfo schoolInfo) {
+		this.getSession().update(schoolInfo);
+	}
+
+	@Override
 	public boolean update(String fieldName, String fieldValue, String id) {
 		String hql = "UPDATE SchoolInfo SET " + fieldName + "=:fieldValue WHERE id=:id";
 		Query query = this.getSession().createQuery(hql);

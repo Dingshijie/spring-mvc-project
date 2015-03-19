@@ -20,7 +20,7 @@ public interface EduPubCodeRepository {
 	 * @param id
 	 * @return
 	 */
-	public boolean update(String fieldName, String fieldValue, String id);
+	public void update(EduPubCode eduPubCode);
 
 	/**
 	 * 根据id查询专业代码

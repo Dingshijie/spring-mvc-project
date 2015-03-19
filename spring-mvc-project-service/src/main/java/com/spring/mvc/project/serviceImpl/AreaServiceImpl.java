@@ -35,11 +35,12 @@ public class AreaServiceImpl implements AreaService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public boolean update(String fieldName, String fieldValue, String id) {
+	public boolean update(Area area) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager()) {
-			return areaRepository.update(fieldName, fieldValue, id);
+			areaRepository.update(area);
+			return true;
 		}
 		return false;
 	}
@@ -47,6 +48,11 @@ public class AreaServiceImpl implements AreaService {
 	@Override
 	public Area find(String id) {
 		return areaRepository.find(id);
+	}
+
+	@Override
+	public boolean isExist(String fieldName, String fieldValue) {
+		return areaRepository.isExist(fieldName, fieldValue);
 	}
 
 	@Override
@@ -99,5 +105,4 @@ public class AreaServiceImpl implements AreaService {
 		}
 		return valueList;
 	}
-
 }

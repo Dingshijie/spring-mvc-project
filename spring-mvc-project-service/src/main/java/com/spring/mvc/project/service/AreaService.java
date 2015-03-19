@@ -21,7 +21,7 @@ public interface AreaService {
 	 * @param id
 	 * @return
 	 */
-	public boolean update(String fieldName, String fieldValue, String id);
+	public boolean update(Area area);
 
 	/**
 	 * 删除地区信息
@@ -36,6 +36,14 @@ public interface AreaService {
 	 * @return
 	 */
 	public Area find(String id);
+
+	/**
+	 * 查询数据库中fieldName字段是否有值为fieldValue
+	 * @param fieldName
+	 * @param fieldValue
+	 * @return
+	 */
+	public boolean isExist(String fieldName, String fieldValue);
 
 	/**
 	 * 查询地区的列表

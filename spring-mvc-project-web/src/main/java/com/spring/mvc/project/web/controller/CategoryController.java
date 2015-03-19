@@ -38,31 +38,31 @@ public class CategoryController {
 		return "category/add";
 	}
 
-	@RequestMapping(value = "/find/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Category find(String id) {
 		return categoryService.find(id);
 	}
 
-	@RequestMapping(value = "/exist", method = RequestMethod.GET)
+	@RequestMapping(value = "exist", method = RequestMethod.GET)
 	@ResponseBody
 	public boolean exist(String fieldName, String fieldValue) {
 		return categoryService.exist(fieldName, fieldValue);
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
 	public boolean add(Category category) {
 		return categoryService.add(category);
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "update", method = RequestMethod.POST)
 	@ResponseBody
 	public boolean update(String fieldName, Object fieldValue, String id) {
 		return categoryService.update(fieldName, fieldValue, id);
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "list", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Category> findList(String categoryCode, @RequestParam(value = "hot", defaultValue = "10") int hot,
 			@RequestParam(value = "enable", defaultValue = "10") int enable, String keyword,
@@ -71,7 +71,7 @@ public class CategoryController {
 		return categoryService.findList(categoryCode, hot, enable, keyword, pageIndex, pageSize);
 	}
 
-	@RequestMapping(value = "/count", method = RequestMethod.GET)
+	@RequestMapping(value = "count", method = RequestMethod.GET)
 	@ResponseBody
 	public int findList(String categoryCode, @RequestParam(value = "hot", defaultValue = "10") int hot,
 			@RequestParam(value = "enable", defaultValue = "10") int enable, String keyword) {
@@ -91,7 +91,7 @@ public class CategoryController {
 	}
 
 	/**
-	 * 设置到处用户的信息项
+	 * 设置导处用户的信息项
 	 * @param fields
 	 * @param list
 	 */

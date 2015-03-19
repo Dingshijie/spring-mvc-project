@@ -15,12 +15,10 @@ public interface AreaRepository {
 
 	/**
 	 * 更新地区信息
-	 * @param fieldName
-	 * @param fieldValue
-	 * @param id
+	 * @param area
 	 * @return
 	 */
-	public boolean update(String fieldName, String fieldValue, String id);
+	public void update(Area area);
 
 	/**
 	 * 删除地区信息
@@ -35,6 +33,14 @@ public interface AreaRepository {
 	 * @return
 	 */
 	public Area find(String id);
+
+	/**
+	 * 查询数据库中fieldName字段是否有值为fieldValue
+	 * @param fieldName
+	 * @param fieldValue
+	 * @return
+	 */
+	public boolean isExist(String fieldName, String fieldValue);
 
 	/**
 	 * 查询地区的列表

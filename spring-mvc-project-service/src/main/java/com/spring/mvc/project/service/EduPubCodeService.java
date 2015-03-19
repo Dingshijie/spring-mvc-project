@@ -16,12 +16,10 @@ public interface EduPubCodeService {
 
 	/**
 	 * 修改专业代码的单个字段信息
-	 * @param fieldName
-	 * @param fieldValue
-	 * @param id
+	 * @param eduPubCode
 	 * @return
 	 */
-	public boolean update(String fieldName, String fieldValue, String id);
+	public boolean update(EduPubCode eduPubCode);
 
 	/**
 	 * 根据id查询专业代码

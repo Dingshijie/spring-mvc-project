@@ -15,6 +15,13 @@ public interface SchoolRepository {
 
 	/**
 	 * 更新学校的单个信息
+	 * @param schoolInfo
+	 * @return
+	 */
+	public void update(SchoolInfo schoolInfo);
+
+	/**
+	 * 更新学校的单个信息
 	 * @param fieldName
 	 * @param fieldValue
 	 * @param code

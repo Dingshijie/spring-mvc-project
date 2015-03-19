@@ -35,6 +35,18 @@ public class SchoolServiceImpl implements SchoolService {
 
 	@Override
 	@Transactional(readOnly = false)
+	public boolean update(SchoolInfo schoolInfo) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		if (userInfo.isManager()) {
+			schoolRepositry.update(schoolInfo);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	@Transactional(readOnly = false)
 	public boolean update(String fieldName, String fieldValue, String id) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();

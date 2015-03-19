@@ -92,7 +92,7 @@
 			</div>
 			<div class=" col-md-2 pubtool">
 				<a href="javascript:void(0)" id="download" title="导出到处所有用户到excel文件" class="btn btn-info disabled pull-right"> 
-				<span class="glyphicon glyphicon-circle-arrow-down"></span> 导出到Excel
+				<span class="glyphicon glyphicon-save"></span> 导出到Excel
 				</a>
 			</div>
 		</div>

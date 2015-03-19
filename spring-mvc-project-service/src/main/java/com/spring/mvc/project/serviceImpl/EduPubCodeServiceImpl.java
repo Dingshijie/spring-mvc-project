@@ -36,11 +36,12 @@ public class EduPubCodeServiceImpl implements EduPubCodeService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public boolean update(String fieldName, String fieldValue, String id) {
+	public boolean update(EduPubCode eduPubCode) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager()) {
-			return eduPubCodeRepository.update(fieldName, fieldValue, id);
+			eduPubCodeRepository.update(eduPubCode);
+			return true;
 		}
 		return false;
 	}

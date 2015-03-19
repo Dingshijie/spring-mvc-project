@@ -3,7 +3,6 @@ package com.spring.mvc.project.repositoryImpl;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -35,12 +34,8 @@ public class EduPubCodeRepositoryImpl implements EduPubCodeRepository {
 	}
 
 	@Override
-	public boolean update(String fieldName, String fieldValue, String id) {
-		String hql = "UPDATE EduPubCode SET " + fieldName + "=:fieldValue WHERE id=:id";
-		Query query = this.getSession().createQuery(hql);
-		query.setParameter("fieldValue", fieldValue);
-		query.setParameter("id", id);
-		return query.executeUpdate() != 0;
+	public void update(EduPubCode eduPubCode) {
+		this.getSession().update(eduPubCode);
 	}
 
 	@Override
