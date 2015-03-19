@@ -20,23 +20,51 @@
 <script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- list.css 文件必须放到bootstrap。min.cs之后 -->
-<link rel="stylesheet" href="${initParam.resourceRoot}/css/edupubcode/list.css">
-<script type="text/javascript" src="${initParam.resourceRoot}/js/edupubcode/list.js"></script>
+<link rel="stylesheet" href="${initParam.resourceRoot}/css/school/list.css">
+<script type="text/javascript" src="${initParam.resourceRoot}/js/school/list.js"></script>
 </head>
 <body>
 	<c:import url="../common/manager-top.jsp"></c:import>
-	<c:import url="../common/manager-left.jsp"><c:param name="active">edupubcodemanager</c:param><c:param name="subactive">edupubcodelist</c:param></c:import>
+	<c:import url="../common/manager-left.jsp"><c:param name="active">schoolmanager</c:param><c:param name="subactive">schoollist</c:param></c:import>
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="row">
 			<div class="col-md-10">
 				<form class="form-inline" role="form">
 					<div class="form-group">
-						<select class="form-control" id="eduLevel">
-	  						<option value="" selected="selected">全部学历</option>
-	  						<option value="3">专科专业</option>
-	  						<option value="2">本科专业</option>
-	  						<option value="1">研究生专业</option>
-	  					</select>
+						<select id="province" name="province" class="form-control" style="width: auto; float: left;">
+							<option value="" selected="selected">全部</option>
+							<option value="11">北京市</option>
+							<option value="12">天津市</option>
+							<option value="13">河北省</option>
+							<option value="14">山西省</option>
+							<option value="15">内蒙古自治区</option>
+							<option value="21">辽宁省</option>
+							<option value="22">吉林省</option>
+							<option value="23">黑龙江省</option>
+							<option value="31">上海市</option>
+							<option value="32">江苏省</option>
+							<option value="33">浙江省</option>
+							<option value="34">安徽省</option>
+							<option value="35">福建省</option>
+							<option value="36">江西省</option>
+							<option value="37">山东省</option>
+							<option value="41">河南省</option>
+							<option value="42">湖北省</option>
+							<option value="43">湖南省</option>
+							<option value="44">广东省</option>
+							<option value="45">广西壮族自治区</option>
+							<option value="46">海南省</option>
+							<option value="50">重庆市</option>
+							<option value="51">四川省</option>
+							<option value="52">贵州省</option>
+							<option value="53">云南省</option>
+							<option value="54">西藏自治区</option>
+							<option value="61">陕西省</option>
+							<option value="62">甘肃省</option>
+							<option value="63">青海省</option>
+							<option value="64">宁夏回族自治区</option>
+							<option value="65">新疆维吾尔自治区</option>
+						</select> 
 					</div>
 					<div class="form-group">
 						<input type="text" placeholder="请输入查询的关键字或代码" class="form-control"
