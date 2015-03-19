@@ -1,0 +1,8 @@
+/**
+ * manager-left.js
+ */
+$(function(){
+	
+	
+	
+});

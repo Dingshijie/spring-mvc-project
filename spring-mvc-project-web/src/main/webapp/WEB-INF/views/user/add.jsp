@@ -35,16 +35,9 @@
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
 			<div id="mainList">
-				<form class="form-horizontal" id="myForm" role="form">
+				<form class="form-horizontal col-md-offset-1 col-md-10" id="myForm" role="form">
 					<fieldset>
-						<div class="col-md-7 col-md-offset-5">
-							<h3>用户注册</h3>
-						</div>
-						<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
-							<li role="presentation" class="active"><a href="#bussiness" aria-controls="bussiness" data-toggle="tab" class="btn">商家用户</a></li>
-							<li role="presentation"><a href="#student" aria-controls="student" data-toggle="tab" class="btn">学生用户</a></li>
-						</ul>
-						<!-- <legend>基本信息</legend> -->
+						<legend>添加用户</legend>
 						<div class="form-group" style="margin-top: 20px;">
 							<label for="username" class="col-sm-2 control-label">用户名:</label>
 							<div class="col-sm-4">
@@ -74,7 +67,7 @@
 						</div>
 						<div class="form-group">
 							<label for="province" class="col-sm-2 control-label">地区:</label>
-							<div class="col-sm-7">
+							<div class="col-sm-10">
 							<select id="province" name="province" class="form-control js-example-data-array-selected" style="width:auto;float: left;">
 		                        <option value="" selected="selected">请选择</option>
 		                        <option value="11">北京市</option>
@@ -118,19 +111,10 @@
 							<span class="help-block" id="areaerror">地区不能为空！</span>
 							</div>
 						</div>
-						<div class="form-group student">
-							<label class="col-sm-2 control-label">院校:</label>
-							<div class="col-sm-5">
-								<select id="school" name="user.schoolCode" class="form-control js-example-data-array-selected" style="width: 50%;float: left">
-									<option value="" selected="selected">请选择院校</option>
-								</select>
-								<span class="help-block" id="schoolerror">院校不能为空！</span>
-							</div>
-						</div>
 						<div class="form-group">
-							<label for="address" class="col-sm-2 control-label">街道地址:</label>
+							<label for="address" class="col-sm-2 control-label">详细地址:</label>
 							<div class="col-sm-5">
-								<input type="text" class="form-control" id="address" name="address" placeholder="请输入街道地址"> 
+								<input type="text" class="form-control" id="address" name="address" placeholder="请输入详细地址"> 
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="addresserror"></span>

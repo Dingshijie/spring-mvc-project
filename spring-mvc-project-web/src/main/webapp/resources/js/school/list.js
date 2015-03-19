@@ -12,14 +12,14 @@ $(function(){
 	 * 定义变量
 	 */
 	var par={
-		"eduLevel" : "",
+		"provinceCode" : "",
 		"keyword" : "",
 		"pageIndex" : 1,
 		"pageSize" : 10
 	}
 	
 	setting = {
-		"listUrl" : "HTTP://"+window.location.host+"/edupubcode/list",
+		"listUrl" : "HTTP://"+window.location.host+"/school/list",
 		//加载页面的包含框（jquery对象）
 		'pageWrap' : $('#loadContentWrap'),
 		//放置翻页的包含狂（jquery对象）
@@ -47,20 +47,20 @@ $(function(){
 		//加载等待效果
 		setting.pageWrap.append('<div id="loadingImg"><img width="580px" height="435px" src="'+baseUrl+'/img/loading.gif"/></div>');
 
-		$.get("HTTP://"+window.location.host+"/edupubcode/list",par,function(data){
+		$.get("HTTP://"+window.location.host+"/school/list",par,function(data){
 			if(data == ''){
 				var html = "<div style='font-size:16px;text-align:center;line-height:120px;' class='alert-info' role='alert'><strong>提示</strong>：未查询到相关数据！</div>"
 			}else{
-				var html = "<table class='table table-hover table-striped'><colgroup><col width='5%'></col><col width='10%'></col><col width='10%'></col><col width='20%'></col><col width='15%'></col><col width='15%'></col><col width='10%'></col></colgroup><thead><tr><th>序号</th><th>学历层次</th><th>专业代码</th><th>专业名称</th><th>专业学科门类</th><th>专业学科中类</th><th>操作</th></tr></thead><tbody>";
+				var html = "<table class='table table-hover table-striped' style='font-size:12px;'><colgroup><col width='5%'></col><col width='5%'></col><col width='15%'><col width='8%'><col width='8%'><col width='8%'><col width='8%'></col><col width='5%'><col width='5%'><col width='5%'><col width='5%'><col width='5%'><col width='5%'><col width='5%'></col><col width='8%'></col></colgroup><thead><tr><th>序号</th><th>院校代码</th><th>院校名称</th><th>隶属单位</th><th>学校性质</th><th>办学类型</th><th>所在地</th><th>211</th><th>985</th><th>独立学院</th><th>新增本科</th><th>示范高职</th><th>科研机构</th><th>民办院校</th><th>操作</th></tr></thead><tbody>";
 				for(var i = 0; i < data.length; i++){
-					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].category + "</td><td>" + data[i].code +"</td><td>" + data[i].name + "</td><td> " + data[i].firstName + " </td><td> " + data[i].secondName + " </td><td><a href='HTTP://"+window.location.host+"/edupubcode/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
+					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].code + "</td><td>" + data[i].name +"</td><td>" + data[i].beUnderName + "</td><td> " + data[i].typeName + " </td><td> " + data[i].buildTypeName + " </td><td> " + data[i].provinceName + " </td><td> " + (data[i].is211==true?"√":"×" ) + " </td><td> " + (data[i].is985==true?"√":"×" ) + " </td><td> " + (data[i].isIndependent==true?"√":"×" ) + " </td><td> " + (data[i].isNew==true?"√":"×" ) + " </td><td> " + (data[i].isModelVocational==true?"√":"×" ) + " </td><td> " + (data[i].isResearchInst==true?"√":"×" ) + " </td><td> " + (data[i].isPrivate==true?"√":"×" ) + " </td><td><a href='HTTP://"+window.location.host+"/edupubcode/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
 				}
 				html + "</tbody></table>";
 			}
 			setting.pageWrap.empty().append(html);
 		});
 		
-		$.get("HTTP://"+window.location.host+"/edupubcode/count",par,function(data){
+		$.get("HTTP://"+window.location.host+"/school/count",par,function(data){
 			if(data != 0){
 				$('#download').removeClass('disabled');
 			}else{
@@ -76,8 +76,8 @@ $(function(){
 	/**
 	 * 选择省份
 	 */
-	$('#eduLevel').on('change',function(){
-		par.eduLevel = $(this).val() || ""; 
+	$('#province').on('change',function(){
+		par.provinceCode = $(this).val() || ""; 
 	});
 	
 	
@@ -189,12 +189,12 @@ $(function(){
 	//点击查询
 	$('#keywordSearch').on('click',function(){
 		par.keyword = $('#keyword').val();
-		par.role = $('#role option:selected').val();
+		par.provinceCode = $('#province').val();
 		
 		loadData(par);
 	});
 	$('#download').on('click',function(){
-		window.location = "HTTP://"+ window.location.host + "/edupubcode/export?areaCode="+par.eduLevel+"&keyword="+par.keyword;
+		window.location = "HTTP://"+ window.location.host + "/school/export?provinceCode="+par.provinceCode+"&keyword="+par.keyword;
 	});
 	
 	

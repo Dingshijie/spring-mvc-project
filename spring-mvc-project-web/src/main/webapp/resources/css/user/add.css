@@ -88,3 +88,7 @@ div.show-grid  header {
 #myModal{
 	display: none;
 }
+legend {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

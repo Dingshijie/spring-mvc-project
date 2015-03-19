@@ -19,3 +19,6 @@
 .nav{
 	padding-right: 0px;
 }
+.nav-sidebar-custom{
+	display: none;
+}

@@ -119,19 +119,6 @@ public class SchoolInfo implements Serializable {
 	private int tags;
 
 	/**
-	 * 邮政编码
-	 */
-	@Length(max = 6)
-	@Column(name = "POSTCODE", length = 6)
-	private String postcode;
-	/**
-	 * 地址
-	 */
-	@Length(max = 128)
-	@Column(name = "ADDRESS", length = 128)
-	private String address;
-
-	/**
 	 * 获取学校主键
 	 * @return
 	 */
@@ -282,44 +269,12 @@ public class SchoolInfo implements Serializable {
 		return explainTags(IS_PRIVATE);
 	}
 
-	/**
-	 *  获取邮政编码
-	 * @return
-	 */
-	public String getPostcode() {
-		return postcode;
-	}
-
 	public int getTags() {
 		return tags;
 	}
 
 	public void setTags(int tags) {
 		this.tags = tags;
-	}
-
-	/**
-	 * 设置邮政编码
-	 * @param postcode
-	 */
-	public void setPostcode(String postcode) {
-		this.postcode = StringUtils.trimAllWhitespace(postcode);
-	}
-
-	/**
-	 * 获取地址
-	 * @return
-	 */
-	public String getAddress() {
-		return address;
-	}
-
-	/**
-	 * 设置地址
-	 * @param address
-	 */
-	public void setAddress(String address) {
-		this.address = StringUtils.trimAllWhitespace(address);
 	}
 
 	/**

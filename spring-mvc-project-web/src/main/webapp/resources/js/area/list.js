@@ -189,7 +189,7 @@ $(function(){
 	//点击查询
 	$('#keywordSearch').on('click',function(){
 		par.keyword = $('#keyword').val();
-		par.role = $('#role option:selected').val();
+		par.areaCode = $('#province').val();
 		
 		loadData(par);
 	});
