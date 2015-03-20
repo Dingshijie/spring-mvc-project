@@ -60,5 +60,35 @@
 				<entry key="91" value="其他"/>
 			</map>
 		</property>
+		<property name="schoolType">
+			<map>
+				<entry key="01" value="综合大学"/>
+				<entry key="02" value="理工院校"/>
+				<entry key="03" value="农业院校"/>
+				<entry key="04" value="林业院校"/>
+				<entry key="05" value="医药院校"/>
+				<entry key="06" value="师范院校"/>
+				<entry key="07" value="语文院校"/>
+				<entry key="08" value="财经院校"/>
+				<entry key="09" value="政法院校"/>
+				<entry key="10" value="体育院校"/>
+				<entry key="11" value="艺术院校"/>
+				<entry key="12" value="民族院校"/>
+				<entry key="14" value="社会科学研究机构"/>
+				<entry key="15" value="自然科学研究机构"/>
+				<entry key="17" value="党政院校"/>
+			</map>
+		</property>
+		<property name="buildType">
+			<map>
+				<entry key="1" value="大学"/>
+				<entry key="2" value="学院"/>
+				<entry key="3" value="独立学院"/>
+				<entry key="4" value="高专"/>
+				<entry key="5" value="高职"/>
+				<entry key="6" value="民办院校"/>
+				<entry key="9" value="科研机构"/>
+			</map>
+		</property>
 	</bean>
 </beans>

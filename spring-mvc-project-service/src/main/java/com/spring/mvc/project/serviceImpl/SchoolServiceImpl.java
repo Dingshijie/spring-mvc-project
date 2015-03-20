@@ -24,22 +24,22 @@ public class SchoolServiceImpl implements SchoolService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public boolean add(SchoolInfo schoolInfo) {
+	public boolean add(SchoolInfo school) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager()) {
-			return schoolRepositry.add(schoolInfo);
+			return schoolRepositry.add(school);
 		}
 		return false;
 	}
 
 	@Override
 	@Transactional(readOnly = false)
-	public boolean update(SchoolInfo schoolInfo) {
+	public boolean update(SchoolInfo school) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager()) {
-			schoolRepositry.update(schoolInfo);
+			schoolRepositry.update(school);
 			return true;
 		}
 		return false;
@@ -59,6 +59,11 @@ public class SchoolServiceImpl implements SchoolService {
 	@Override
 	public SchoolInfo find(String id) {
 		return schoolRepositry.find(id);
+	}
+
+	@Override
+	public boolean isExist(String fieldName, String fieldValue) {
+		return schoolRepositry.isExist(fieldName, fieldValue);
 	}
 
 	@Override
@@ -100,5 +105,4 @@ public class SchoolServiceImpl implements SchoolService {
 		}
 		return valueList;
 	}
-
 }

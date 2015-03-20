@@ -42,7 +42,7 @@ public class UserController {
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean add(UserInfo user, Model model) {
+	public boolean add(UserInfo user) {
 		return userService.add(user);
 	}
 

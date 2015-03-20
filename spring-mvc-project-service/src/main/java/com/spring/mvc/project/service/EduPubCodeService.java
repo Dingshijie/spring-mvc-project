@@ -29,6 +29,14 @@ public interface EduPubCodeService {
 	public EduPubCode find(String id);
 
 	/**
+	 * 查询数据库中fieldName字段是否有值为fieldValue
+	 * @param fieldName
+	 * @param fieldValue
+	 * @return
+	 */
+	public boolean isExist(String fieldName, String fieldValue);
+
+	/**
 	 * 删除专业代码
 	 * @param id
 	 * @return

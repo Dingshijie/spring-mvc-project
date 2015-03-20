@@ -3,6 +3,7 @@ package com.spring.mvc.project.repositoryImpl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -42,6 +43,14 @@ public class EduPubCodeRepositoryImpl implements EduPubCodeRepository {
 	@Override
 	public EduPubCode find(String id) {
 		return (EduPubCode) this.getSession().get(EduPubCode.class, id);
+	}
+
+	@Override
+	public boolean isExist(String fieldName, String fieldValue) {
+		String sql = "SELECT COUNT(id) FROM EduPubCode WHERE " + fieldName + "=:fieldValue";
+		Query query = this.getSession().createQuery(sql);
+		query.setParameter("fieldValue", fieldValue);
+		return Integer.parseInt(query.uniqueResult().toString()) != 0;
 	}
 
 	@Override

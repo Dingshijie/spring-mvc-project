@@ -29,7 +29,7 @@
 			<li <c:if test="${param.active=='schoolmanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/school/school.html">学校管理</a>
 				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='schoolmanager'}">style="display:inline-block"</c:if> >
 					<li <c:if test="${param.subactive=='schoollist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/school/school.html">学校列表</a></li>
-					<li <c:if test="${param.subactive=='addschool'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:alert('该模块正在建设中。。。');">添加学校</a></li>
+					<li <c:if test="${param.subactive=='addschool'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/school/add.html">添加学校</a></li>
 				</ul>
 			</li>
 			<li <c:if test="${param.active=='edupubcodemanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/edupubcode/edupubcode.html">专业代码管理</a>

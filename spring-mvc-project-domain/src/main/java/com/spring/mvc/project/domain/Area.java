@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.util.StringUtils;
 
@@ -37,25 +38,22 @@ public class Area implements Serializable {
 	 * 地区名称
 	 */
 	@NotBlank
+	@Length(min = 2, max = 32)
 	@Column(name = "NAME", length = 32, nullable = false)
 	private String name;
 	/**
 	 * 显示名称
 	 */
 	@NotBlank
+	@Length(min = 2, max = 32)
 	@Column(name = "DISPLAY", length = 32, nullable = false)
 	private String display;
 	/**
-	 * 地区类型代码：直辖市1、省会城市2、计划单列市3、地级市4、县级市5、县6
+	 * 地区类型代码：直辖市1; 省会城市2; 计划单列市3; 地级市4; 县级市5; 县6
 	 */
 	@NotBlank
 	@Column(name = "TYPE_CODE", length = 1, nullable = false)
 	private String typeCode;
-	/**
-	 * 地区类型名称：直辖市1、省会城市2、计划单列市3、地级市4、县级市5、县6
-	 */
-	@Transient
-	private String typeName;
 
 	public String getId() {
 		return id;
@@ -97,30 +95,26 @@ public class Area implements Serializable {
 		this.typeCode = StringUtils.trimAllWhitespace(typeCode);
 	}
 
+	/**
+	 * 地区类型名称：直辖市1; 省会城市2; 计划单列市3; 地级市4; 县级市5; 县6
+	 */
+	@Transient
 	public String getTypeName() {
 		switch (typeCode) {
 		case "1":
-			typeName = "直辖市";
-			break;
+			return "直辖市";
 		case "2":
-			typeName = "省会城市";
-			break;
+			return "省会城市";
 		case "3":
-			typeName = "计划单列市";
-			break;
+			return "计划单列市";
 		case "4":
-			typeName = "地级市";
-			break;
+			return "地级市";
 		case "5":
-			typeName = "县级市";
-			break;
+			return "县级市";
 		case "6":
-			typeName = "县";
-			break;
+			return "县";
 		default:
-			typeName = typeCode;
-			break;
+			return typeCode;
 		}
-		return typeName;
 	}
 }

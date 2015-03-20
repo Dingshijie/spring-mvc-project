@@ -52,6 +52,11 @@ public class EduPubCodeServiceImpl implements EduPubCodeService {
 	}
 
 	@Override
+	public boolean isExist(String fieldName, String fieldValue) {
+		return eduPubCodeRepository.isExist(fieldName, fieldValue);
+	}
+
+	@Override
 	@Transactional(readOnly = false)
 	public boolean delete(String id) {
 		Subject currentUser = SecurityUtils.getSubject();
@@ -101,4 +106,5 @@ public class EduPubCodeServiceImpl implements EduPubCodeService {
 		}
 		return value_list;
 	}
+
 }

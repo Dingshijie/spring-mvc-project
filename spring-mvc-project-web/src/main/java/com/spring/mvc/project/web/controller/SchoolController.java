@@ -50,10 +50,22 @@ public class SchoolController {
 		return schoolService.find(id);
 	}
 
+	@RequestMapping(value = "exist", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean isExist(String fieldName, String fieldValue) {
+		return schoolService.isExist(fieldName, fieldValue);
+	}
+
+	@RequestMapping(value = "add", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean add(SchoolInfo school) {
+		return schoolService.add(school);
+	}
+
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean update(SchoolInfo schoolInfo) {
-		return schoolService.update(schoolInfo);
+	public boolean update(SchoolInfo school) {
+		return schoolService.update(school);
 	}
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)

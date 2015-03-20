@@ -186,7 +186,7 @@ $(function(){
 			$('#passworderror').show();
 		}
 		if($('#mobilPhone').val() == ''){
-			$('#mobilPhoneerror').addClass("error").css('color','red').html("× 手机长度只能为11位！");
+			$('#mobilPhoneerror').addClass("error").css('color','red').html("× 手机长度不能为空！");
 			$('#mobilPhoneerror').show();
 		}
 		if($('#area').val() == ''){
@@ -227,7 +227,7 @@ $(function(){
 						location.href="HTTP://"+window.location.host+"/user/list";
 					}, 3000);
 				}else{
-					$('.modal-body').empty().append("提交失败，即将返回注册页面&hellip;");
+					$('.modal-body').empty().append("提交失败，即将返回添加页面&hellip;");
 					$('#myModal').modal('show');
 					setTimeout(function(){
 						location.href="HTTP://"+window.location.host+"/user/add";
@@ -239,7 +239,7 @@ $(function(){
 	
 	//字符串编码
 	function strUniCode(value){
-		return value.replace(/>/g,"&gt").replace(/</g,"&lt");
+		return value.trim().replace(/>/g,"&gt").replace(/</g,"&lt");
 	};
 	//字符串转码
 	function strUnUniCode(value){

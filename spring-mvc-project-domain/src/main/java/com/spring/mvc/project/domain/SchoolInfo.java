@@ -66,48 +66,43 @@ public class SchoolInfo implements Serializable {
 	 */
 	@NotBlank
 	@Length(max = 8)
-	@Column(name = "CODE", length = 8, nullable = false, updatable = false)
+	@Column(name = "CODE", length = 6, nullable = false, updatable = false)
 	private String code;
 	/**
 	 * 院校名称
 	 */
-	@Length(max = 32)
+	@NotBlank
+	@Length(min = 2, max = 32)
 	@Column(name = "NAME", length = 32)
 	private String name;
 
 	/**
 	 * 隶属单位名称
 	 */
-	@Length(max = 32)
+	@NotBlank
+	@Length(min = 2, max = 32)
 	@Column(name = "BE_UNDER_NAME", length = 32)
 	private String beUnderName;
 	/**
 	 * 学校性质代码
 	 */
+	@NotBlank
 	@Length(max = 2)
 	@Column(name = "TYPE", length = 2)
 	private String type;
+
 	/**
-	 * 学校性质名称
+	 * 办学类型代码
 	 */
-	@Length(max = 32)
-	@Column(name = "TYPE_NAME", length = 32)
-	private String typeName;
-	/**
-	 * 办学类型
-	 */
+	@NotBlank
 	@Length(max = 1)
 	@Column(name = "BUILD_TYPE", length = 1)
 	private String buildType;
-	/**
-	 * 办学类型名称
-	 */
-	@Length(max = 32)
-	@Column(name = "BUILD_TYPE_NAME", length = 32)
-	private String buildTypeName;
+
 	/**
 	 * 所在地代码
 	 */
+	@NotBlank
 	@Length(max = 2)
 	@Column(name = "AREA_CODE", length = 2)
 	private String areaCode;
@@ -116,7 +111,7 @@ public class SchoolInfo implements Serializable {
 	 * 标签（二进制）
 	 */
 	@Column(name = "TAGS")
-	private int tags;
+	private int tags = 0;
 
 	/**
 	 * 获取学校主键
@@ -301,20 +296,14 @@ public class SchoolInfo implements Serializable {
 		this.beUnderName = StringUtils.trimAllWhitespace(beUnderName);
 	}
 
+	@Transient
 	public String getTypeName() {
-		return typeName;
+		return PubCode.getSchoolTypeMap().get(this.type);
 	}
 
-	public void setTypeName(String typeName) {
-		this.typeName = StringUtils.trimAllWhitespace(typeName);
-	}
-
+	@Transient
 	public String getBuildTypeName() {
-		return buildTypeName;
-	}
-
-	public void setBuildTypeName(String buildTypeName) {
-		this.buildTypeName = StringUtils.trimAllWhitespace(buildTypeName);
+		return PubCode.getBuildTypeMap().get(this.buildType);
 	}
 
 	public String getProvinceName() {

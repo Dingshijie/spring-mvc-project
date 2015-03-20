@@ -11,14 +11,14 @@ public interface SchoolRepository {
 	 * @param schoolInfo
 	 * @return
 	 */
-	public boolean add(SchoolInfo schoolInfo);
+	public boolean add(SchoolInfo school);
 
 	/**
 	 * 更新学校的单个信息
 	 * @param schoolInfo
 	 * @return
 	 */
-	public void update(SchoolInfo schoolInfo);
+	public void update(SchoolInfo school);
 
 	/**
 	 * 更新学校的单个信息
@@ -35,6 +35,14 @@ public interface SchoolRepository {
 	 * @return
 	 */
 	public SchoolInfo find(String id);
+
+	/**
+	 * 查询数据库中fieldName字段是否有值为fieldValue
+	 * @param fieldName
+	 * @param fieldValue
+	 * @return
+	 */
+	public boolean isExist(String fieldName, String fieldValue);
 
 	/**
 	 * 删除学校

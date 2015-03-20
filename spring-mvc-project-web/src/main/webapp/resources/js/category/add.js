@@ -138,7 +138,7 @@ $(function(){
 	
 	//字符串编码
 	function strUniCode(value){
-		return value.replace(/>/g,"&gt").replace(/</g,"&lt");
+		return value.trim().replace(/>/g,"&gt").replace(/</g,"&lt");
 	};
 	//字符串转码
 	function strUnUniCode(value){

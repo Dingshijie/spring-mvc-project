@@ -61,6 +61,18 @@ public class EduPubCodeController {
 		return eduPubCodeService.find(id);
 	}
 
+	@RequestMapping(value = "exist", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean isExist(String fieldName, String fieldValue) {
+		return eduPubCodeService.isExist(fieldName, fieldValue);
+	}
+
+	@RequestMapping(value = "add", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean add(EduPubCode eduPubCode) {
+		return eduPubCodeService.add(eduPubCode);
+	}
+
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	@ResponseBody
 	public boolean update(EduPubCode eduPubCode) {

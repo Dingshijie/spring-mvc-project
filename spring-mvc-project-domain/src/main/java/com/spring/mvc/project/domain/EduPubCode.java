@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.util.StringUtils;
 
@@ -50,33 +51,38 @@ public class EduPubCode implements Serializable {
 	 * 专业代码
 	 */
 	@NotBlank
-	@Column(name = "CODE", length = 8, nullable = false, updatable = false)
+	@Column(name = "CODE", length = 6, nullable = false, updatable = false)
 	private String code;
 	/**
 	 * 专业名称
 	 */
 	@NotBlank
+	@Length(min = 2, max = 32, message = "com.spring.mvc.project.validator.Length.message")
 	@Column(name = "NAME", length = 32, nullable = false, updatable = false)
 	private String name;
 
 	/**
 	 * 专业学科大类代码
 	 */
+	@NotBlank
 	@Column(name = "FIRST_CODE", length = 2, nullable = false, updatable = false)
 	private String firstCode;
 	/**
 	 * 专业学科大类名称
 	 */
+	@NotBlank
 	@Column(name = "FIRST_NAME", length = 16, nullable = false, updatable = false)
 	private String firstName;
 	/**
 	 * 专业学科中类代码
 	 */
+	@NotBlank
 	@Column(name = "SECOND_CODE", length = 4, nullable = false, updatable = false)
 	private String secondCode;
 	/**
 	 * 专业学科中类名称
 	 */
+	@NotBlank
 	@Column(name = "SECOND_NAME", length = 32, nullable = false, updatable = false)
 	private String secondName;
 

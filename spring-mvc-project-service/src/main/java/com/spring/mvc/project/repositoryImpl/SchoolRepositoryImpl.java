@@ -30,13 +30,13 @@ public class SchoolRepositoryImpl implements SchoolRepository {
 	}
 
 	@Override
-	public boolean add(SchoolInfo schoolInfo) {
-		return this.getSession().save(schoolInfo) != null;
+	public boolean add(SchoolInfo school) {
+		return this.getSession().save(school) != null;
 	}
 
 	@Override
-	public void update(SchoolInfo schoolInfo) {
-		this.getSession().update(schoolInfo);
+	public void update(SchoolInfo school) {
+		this.getSession().update(school);
 	}
 
 	@Override
@@ -51,6 +51,14 @@ public class SchoolRepositoryImpl implements SchoolRepository {
 	@Override
 	public SchoolInfo find(String id) {
 		return (SchoolInfo) this.getSession().get(SchoolInfo.class, id);
+	}
+
+	@Override
+	public boolean isExist(String fieldName, String fieldValue) {
+		String sql = "SELECT COUNT(id) FROM SchoolInfo WHERE " + fieldName + ":=fieldValue";
+		Query query = this.getSession().createQuery(sql);
+		query.setParameter("fieldValue", fieldValue);
+		return Integer.parseInt(query.uniqueResult().toString()) != 0;
 	}
 
 	@Override

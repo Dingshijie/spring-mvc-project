@@ -11,62 +11,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="${initParam.resourceRoot}/lib/bootstrap/css/bootstrap.min.css">
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script type="text/javascript" src="${initParam.resourceRoot}/lib/jquery.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
-<!-- select2 css和js -->
-<link rel="stylesheet" href="${initParam.resourceRoot}/lib/select2/css/select2.min.css" />
-<script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
-<!-- md5 的 js 文件 -->
-<script type="text/javascript" src="${initParam.resourceRoot}/lib/md5.js"></script>
-<!-- 页面的和css 文件必须放到bootstrap。min.cs之后-->
-<script type="text/javascript" src="${initParam.resourceRoot}/js/user/add.js"></script>
-<link rel="stylesheet" href="${initParam.resourceRoot}/css/user/add.css" />
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="${initParam.resourceRoot}/lib/bootstrap/css/bootstrap.min.css">
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
+	<!-- select2 css和js -->
+	<link rel="stylesheet" href="${initParam.resourceRoot}/lib/select2/css/select2.min.css" />
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
+
+	<!-- iCheck css和JavaScript文件 -->
+	<link href="${initParam.resourceRoot}/lib/iCheck/skins/square/blue.css" rel="stylesheet">
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/iCheck/js/icheck.min.js"></script>
+	<!-- 页面的和css 文件必须放到bootstrap。min.cs之后-->
+	<script type="text/javascript" src="${initParam.resourceRoot}/js/school/add.js"></script>
+	<link rel="stylesheet" href="${initParam.resourceRoot}/css/school/add.css" />
 
 </head>
 <body>
 
 	<c:import url="../common/manager-top.jsp"></c:import>
-	<c:import url="../common/manager-left.jsp"><c:param name="active">usermanager</c:param><c:param name="subactive">adduser</c:param></c:import>
+	<c:import url="../common/manager-left.jsp"><c:param name="active">schoolmanager</c:param><c:param name="subactive">addschool</c:param></c:import>
 	
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
 			<div id="mainList">
 				<form class="form-horizontal col-md-offset-1 col-md-10" id="myForm" role="form">
 					<fieldset>
-						<legend>添加用户</legend>
+						<legend>添加学校</legend>
 						<div class="form-group" style="margin-top: 20px;">
-							<label for="username" class="col-sm-2 control-label">用户名:</label>
+							<label for="username" class="col-sm-2 control-label">院校名称:</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"> 
+								<input type="text" class="form-control" id="name" name="name" placeholder="请输入院校名称"> 
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="usernameerror"></span>
+								<span class="help-block" id="nameerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="password" class="col-sm-2 control-label">密码:</label>
+							<label for="code" class="col-sm-2 control-label">院校代码:</label>
 							<div class="col-sm-4">
-								<input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"> 
+								<input type="text" class="form-control" id="code" name="code" placeholder="请输入院校代码"> 
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="passworderror"></span>
+								<span class="help-block" id="codeerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="mobilPhone" class="col-sm-2 control-label">手机:</label>
+							<label for="beUnderName" class="col-sm-2 control-label">隶属单位名称:</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="mobilPhone" name="mobilPhone" placeholder="请输入手机号码"> 
+								<input type="text" class="form-control" id="beUnderName" name="beUnderName" placeholder="请输入隶属单位名称"> 
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="mobilPhoneerror"></span>
+								<span class="help-block" id="beUnderNameerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="province" class="col-sm-2 control-label">地区:</label>
+							<label for="type" class="col-sm-2 control-label">学校性质:</label>
+							<div class="col-sm-8">
+							<select id="type" name="type" class="form-control  js-example-data-array-selected" style="width:auto;float: left;">
+		                        <option value="" selected="selected">请选择</option>
+		                        <option value="01">综合大学</option>
+		                        <option value="02">理工院校</option>
+		                        <option value="03">农业院校</option>
+		                        <option value="04">林业院校</option>
+		                        <option value="05">医药院校</option>
+		                        <option value="06">师范院校</option>
+		                        <option value="07">语文院校</option>
+		                        <option value="08">财经院校</option>
+		                        <option value="09">政法院校</option>
+		                        <option value="10">体育院校</option>
+		                        <option value="11">艺术院校</option>
+		                        <option value="12">民族院校</option>
+		                        <option value="14">社会科学研究机构</option>
+		                        <option value="15">自然科学研究机构</option>
+		                        <option value="17">党政院校</option>
+		                    </select>
+							</div>
+							<div class="col-sm-2" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+								<span class="help-block" id="typeerror"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="buildType" class="col-sm-2 control-label">办学类型:</label>
+							<div class="col-sm-8">
+							<select id="buildType" name="buildType" class="form-control  js-example-data-array-selected" style="width:auto;float: left;">
+		                        <option value="" selected="selected">请选择</option>
+		                        <option value="1">大学</option>
+		                        <option value="2">学院</option>
+		                        <option value="3">独立学院</option>
+		                        <option value="4">高专</option>
+		                        <option value="5">高职</option>
+		                        <option value="6">民办院校</option>
+		                        <option value="9">科研机构</option>
+		                    </select>
+							</div>
+							<div class="col-sm-2" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+								<span class="help-block" id="typeerror"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="province" class="col-sm-2 control-label">所在地:</label>
 							<div class="col-sm-10">
 							<select id="province" name="province" class="form-control js-example-data-array-selected" style="width:auto;float: left;">
 		                        <option value="" selected="selected">请选择</option>
@@ -112,12 +158,15 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="address" class="col-sm-2 control-label">详细地址:</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="address" name="address" placeholder="请输入详细地址"> 
-							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="addresserror"></span>
+							<label for="address" class="col-sm-2 control-label">院校类别:</label>
+							<div class="col-sm-10">
+								<input type="checkbox" name="tags" value="1"> 211
+								<input type="checkbox" name="tags" value="2"> 985
+								<input type="checkbox" name="tags" value="4"> 独立学院
+								<input type="checkbox" name="tags" value="8"> 新增本科
+								<input type="checkbox" name="tags" value="16"> 示范高职
+								<input type="checkbox" name="tags" value="32"> 科研机构
+								<input type="checkbox" name="tags" value="64"> 民办院校
 							</div>
 						</div>
 						<div class="form-group">
