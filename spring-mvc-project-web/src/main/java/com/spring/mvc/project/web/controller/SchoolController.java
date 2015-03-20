@@ -28,7 +28,7 @@ public class SchoolController {
 	@Autowired
 	private SchoolService schoolService;
 
-	@RequestMapping(value = "school.html", method = RequestMethod.GET)
+	@RequestMapping(value = "list.html", method = RequestMethod.GET)
 	public String schoolHtml(Model model) {
 		return "school/list";
 	}

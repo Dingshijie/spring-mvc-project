@@ -55,7 +55,7 @@ public class SchoolRepositoryImpl implements SchoolRepository {
 
 	@Override
 	public boolean isExist(String fieldName, String fieldValue) {
-		String sql = "SELECT COUNT(id) FROM SchoolInfo WHERE " + fieldName + ":=fieldValue";
+		String sql = "SELECT COUNT(id) FROM SchoolInfo WHERE " + fieldName + "=:fieldValue";
 		Query query = this.getSession().createQuery(sql);
 		query.setParameter("fieldValue", fieldValue);
 		return Integer.parseInt(query.uniqueResult().toString()) != 0;

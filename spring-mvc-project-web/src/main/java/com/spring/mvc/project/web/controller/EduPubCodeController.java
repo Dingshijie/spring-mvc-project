@@ -27,7 +27,7 @@ public class EduPubCodeController {
 	@Autowired
 	private EduPubCodeService eduPubCodeService;
 
-	@RequestMapping(value = "edupubcode.html", method = RequestMethod.GET)
+	@RequestMapping(value = "list.html", method = RequestMethod.GET)
 	public String edupubcodeHtml(Model model) {
 		return "edupubcode/list";
 	}

@@ -36,7 +36,7 @@
 			<div id="mainList">
 				<form class="form-horizontal col-md-offset-1 col-md-10" id="myForm" role="form">
 					<fieldset>
-						<legend>添加专业代码</legend>
+						<legend>添加地区</legend>
 						<div class="form-group">
 							<label for="code" class="col-sm-2 control-label">地区代码:</label>
 							<div class="col-sm-4">

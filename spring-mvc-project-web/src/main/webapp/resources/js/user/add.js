@@ -152,6 +152,15 @@ $(function(){
 		$('#mobilPhoneerror').hide();
 	});
 	
+	
+	$('#area').on('change',function(){
+		$('#areaerror').removeClass("error").css('color','green').html("√");
+		var areaCode = $('#area').val();
+		if(areaCode == ''){
+			$('#areaerror').addClass("error").css('color','red').html("× 请选择地区！");
+		}
+		$('#areaerror').show();
+	});
 	/**
 	 * 焦点定位和离开地址的输入框的时候
 	 */
@@ -224,13 +233,13 @@ $(function(){
 				if(data==true){
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/user/list";
+						location.href="HTTP://"+window.location.host+"/user/list.html";
 					}, 3000);
 				}else{
 					$('.modal-body').empty().append("提交失败，即将返回添加页面&hellip;");
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/user/add";
+						location.href="HTTP://"+window.location.host+"/user/add.html";
 					}, 3000);
 				}
 			});

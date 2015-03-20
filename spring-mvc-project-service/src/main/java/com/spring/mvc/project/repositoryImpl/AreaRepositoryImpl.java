@@ -51,7 +51,7 @@ public class AreaRepositoryImpl implements AreaRepository {
 
 	@Override
 	public boolean isExist(String fieldName, String fieldValue) {
-		String sql = "SELECT COUNT(id) FROM Area WHERE" + fieldName + "=:fieldValue";
+		String sql = "SELECT COUNT(id) FROM Area WHERE " + fieldName + "=:fieldValue";
 		Query query = this.getSession().createQuery(sql);
 		query.setParameter("fieldValue", fieldValue);
 		return Integer.parseInt(query.uniqueResult().toString()) != 0;
@@ -65,8 +65,10 @@ public class AreaRepositoryImpl implements AreaRepository {
 			crit.add(Restrictions.like("code", areaCode, MatchMode.START));
 		}
 		if (StringUtils.hasText(keyword)) {
-			crit.add(Restrictions.or(Restrictions.like("name", keyword, MatchMode.ANYWHERE),
-					Restrictions.like("display", areaCode, MatchMode.ANYWHERE)));
+			crit.add(Restrictions.or(
+					Restrictions.like("code", keyword, MatchMode.ANYWHERE),
+					Restrictions.or(Restrictions.like("name", keyword, MatchMode.ANYWHERE),
+							Restrictions.like("display", keyword, MatchMode.ANYWHERE))));
 		}
 		crit.addOrder(Order.asc("code"));
 		if (pageSize > 0) {
@@ -83,8 +85,10 @@ public class AreaRepositoryImpl implements AreaRepository {
 			crit.add(Restrictions.like("code", areaCode, MatchMode.START));
 		}
 		if (StringUtils.hasText(keyword)) {
-			crit.add(Restrictions.or(Restrictions.like("name", keyword, MatchMode.ANYWHERE),
-					Restrictions.like("display", areaCode, MatchMode.ANYWHERE)));
+			crit.add(Restrictions.or(
+					Restrictions.like("code", keyword, MatchMode.ANYWHERE),
+					Restrictions.or(Restrictions.like("name", keyword, MatchMode.ANYWHERE),
+							Restrictions.like("display", keyword, MatchMode.ANYWHERE))));
 		}
 		crit.setProjection(Projections.rowCount());
 		return Integer.parseInt(crit.uniqueResult().toString());

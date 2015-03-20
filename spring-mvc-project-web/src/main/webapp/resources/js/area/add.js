@@ -136,18 +136,18 @@ $(function(){
 			area.typeCode = $('#typeCode').val();
 			
 			
-			$.post("HTTP://"+window.location.host+"/area/add",edupubcode,function(data){
+			$.post("HTTP://"+window.location.host+"/area/add",area,function(data){
 				
 				if(data==true){
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/area/list";
+						location.href="HTTP://"+window.location.host+"/area/list.html";
 					}, 3000);
 				}else{
 					$('.modal-body').empty().append("提交失败，即将返回添加页面&hellip;");
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/area/add";
+						location.href="HTTP://"+window.location.host+"/area/add.html";
 					}, 3000);
 				}
 			});

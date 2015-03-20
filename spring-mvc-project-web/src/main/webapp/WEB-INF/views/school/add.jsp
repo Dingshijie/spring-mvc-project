@@ -69,8 +69,8 @@
 						</div>
 						<div class="form-group">
 							<label for="type" class="col-sm-2 control-label">学校性质:</label>
-							<div class="col-sm-8">
-							<select id="type" name="type" class="form-control  js-example-data-array-selected" style="width:auto;float: left;">
+							<div class="col-sm-4">
+							<select id="type" name="type" class="form-control  js-example-data-array-selected" style="width:100%;float: left;">
 		                        <option value="" selected="selected">请选择</option>
 		                        <option value="01">综合大学</option>
 		                        <option value="02">理工院校</option>
@@ -89,14 +89,14 @@
 		                        <option value="17">党政院校</option>
 		                    </select>
 							</div>
-							<div class="col-sm-2" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="typeerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="buildType" class="col-sm-2 control-label">办学类型:</label>
-							<div class="col-sm-8">
-							<select id="buildType" name="buildType" class="form-control  js-example-data-array-selected" style="width:auto;float: left;">
+							<div class="col-sm-4">
+							<select id="buildType" name="buildType" class="form-control  js-example-data-array-selected" style="width:100%;float: left;">
 		                        <option value="" selected="selected">请选择</option>
 		                        <option value="1">大学</option>
 		                        <option value="2">学院</option>
@@ -107,13 +107,13 @@
 		                        <option value="9">科研机构</option>
 		                    </select>
 							</div>
-							<div class="col-sm-2" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="typeerror"></span>
+							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+								<span class="help-block" id="buildTypeerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="province" class="col-sm-2 control-label">所在地:</label>
-							<div class="col-sm-10">
+							<div class="col-sm-4">
 							<select id="province" name="province" class="form-control js-example-data-array-selected" style="width:auto;float: left;">
 		                        <option value="" selected="selected">请选择</option>
 		                        <option value="11">北京市</option>
@@ -148,13 +148,9 @@
 		                        <option value="64">宁夏回族自治区</option>
 		                        <option value="65">新疆维吾尔自治区</option>
 		                    </select>
-		                    <select id="city" name="city" class="form-control js-example-data-array-selected" style="width:112px; float: left;">
-								<option value="" selected="selected">请选择</option>
-							</select>
-							<select id="area" name="user.areaCode" class="form-control js-example-data-array-selected" style="width:auto; float: left;">
-								<option value="" selected="selected">请选择</option>
-							</select>
-							<span class="help-block" id="areaerror">地区不能为空！</span>
+							</div>
+							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+								<span class="help-block" id="provinceerror"></span>
 							</div>
 						</div>
 						<div class="form-group">

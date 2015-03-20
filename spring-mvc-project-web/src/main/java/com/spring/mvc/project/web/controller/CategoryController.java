@@ -26,7 +26,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@RequestMapping(value = "category.html", method = RequestMethod.GET)
+	@RequestMapping(value = "list.html", method = RequestMethod.GET)
 	public String categoryListHtml(Model model) {
 		//转到商品分类界面
 		return "category/list";

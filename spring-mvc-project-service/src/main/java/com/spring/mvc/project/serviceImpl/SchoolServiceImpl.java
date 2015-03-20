@@ -27,10 +27,10 @@ public class SchoolServiceImpl implements SchoolService {
 	public boolean add(SchoolInfo school) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		if (userInfo.isManager()) {
-			return schoolRepositry.add(school);
-		}
-		return false;
+		//		if (userInfo.isManager()) {
+		return schoolRepositry.add(school);
+		//		}
+		//		return false;
 	}
 
 	@Override

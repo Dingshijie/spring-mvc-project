@@ -190,7 +190,8 @@ $(function(){
 	$('#keywordSearch').on('click',function(){
 		par.keyword = $('#keyword').val();
 		par.areaCode = $('#province').val();
-		
+		console.log(par.areaCode);
+		console.log(par.keyword);
 		loadData(par);
 	});
 	$('#download').on('click',function(){

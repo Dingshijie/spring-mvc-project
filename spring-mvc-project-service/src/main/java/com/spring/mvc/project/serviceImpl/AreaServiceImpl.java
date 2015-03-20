@@ -27,10 +27,10 @@ public class AreaServiceImpl implements AreaService {
 	public boolean add(Area area) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		if (userInfo.isManager()) {
-			return areaRepository.add(area);
-		}
-		return false;
+		//		if (userInfo.isManager()) {
+		return areaRepository.add(area);
+		//		}
+		//		return false;
 	}
 
 	@Override
@@ -69,7 +69,8 @@ public class AreaServiceImpl implements AreaService {
 
 	@Override
 	public List<Area> findList(String areaCode, String keyword, int pageIndex, int pageSize) {
-		return areaRepository.findList(areaCode, keyword, pageIndex, pageSize);
+		List<Area> list = areaRepository.findList(areaCode, keyword, pageIndex, pageSize);
+		return list;
 	}
 
 	@Override

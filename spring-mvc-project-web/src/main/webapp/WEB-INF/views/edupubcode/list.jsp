@@ -33,9 +33,9 @@
 					<div class="form-group">
 						<select class="form-control" id="eduLevel">
 	  						<option value="" selected="selected">全部学历</option>
-	  						<option value="3">专科专业</option>
-	  						<option value="2">本科专业</option>
 	  						<option value="1">研究生专业</option>
+	  						<option value="2">本科专业</option>
+	  						<option value="3">专科专业</option>
 	  					</select>
 					</div>
 					<div class="form-group">

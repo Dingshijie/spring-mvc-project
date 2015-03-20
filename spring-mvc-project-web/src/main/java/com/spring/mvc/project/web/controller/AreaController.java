@@ -27,9 +27,14 @@ public class AreaController {
 	@Autowired
 	private AreaService areaService;
 
-	@RequestMapping(value = "area.html", method = RequestMethod.GET)
+	@RequestMapping(value = "list.html", method = RequestMethod.GET)
 	public String areaListHtml(Model model) {
 		return "area/list";
+	}
+
+	@RequestMapping(value = "add.html", method = RequestMethod.GET)
+	public String addAreaListHtml(Model model) {
+		return "area/add";
 	}
 
 	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)

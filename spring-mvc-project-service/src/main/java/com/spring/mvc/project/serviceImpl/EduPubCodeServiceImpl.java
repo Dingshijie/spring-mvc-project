@@ -28,10 +28,10 @@ public class EduPubCodeServiceImpl implements EduPubCodeService {
 	public boolean add(EduPubCode eduPubCode) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		if (userInfo.isManager()) {
-			return eduPubCodeRepository.add(eduPubCode);
-		}
-		return false;
+		//		if (userInfo.isManager()) {
+		return eduPubCodeRepository.add(eduPubCode);
+		//		}
+		//		return false;
 	}
 
 	@Override

@@ -27,9 +27,12 @@ $(function(){
 	$('#eduLevel').on('change',function(){
 		
 		par.eduLevel = $(this).val();
-		$('#beUnderNameerror').removeClass("error").css('color','green').html("√");
+		$('#eduLevelerror').hide();
+		$('#eduLevelerror').removeClass("error").css('color','green').html("√");
 		if(par.eduLevel == ''){
-			$('#eduLevelerror').addClass("error").css('color','red').html("× 请选择学历类别！");
+			$('#firstCode').val("").trigger("change");
+			$('#secondCode').val("").trigger("change");
+			return;
 		}else{
 			var edupubcode = {
 					"eduLevel": "",
@@ -49,11 +52,10 @@ $(function(){
 				}
 				$('#firstCode').append(zydlHtml);
 				//设置area的长度
-				$('#firstCode').next('span').css("width", (maxlength*14+28+maxlength-1) < 93 ? 93 : (maxlength*14+28+maxlength-1));  
-		
+				//$('#firstCode').next('span').css("width", (maxlength*14+28+maxlength-1) < 93 ? 93 : (maxlength*14+28+maxlength-1));  
+				$('#firstCode').val("").trigger("change");
+				$('#secondCode').val("").trigger("change");
 			});
-			//重置市、区的值
-			$('#firstCode').val("").trigger("change");
 		}
 		$('#eduLevelerror').show();
 	});
@@ -62,10 +64,12 @@ $(function(){
 	 * 改变firstCode
 	 */
 	$('#firstCode').on('change',function(){
-		var firstCode = $(this.val());
+		var firstCode = $(this).val();
+		$('#firstCodeerror').hide();
 		$('#firstCodeerror').removeClass("error").css('color','green').html("√");
 		if(firstCode == ''){
-			$('#firstCodeerror').addClass("error").css('color','red').html("× 请选择专业学科大类！");
+			$('#secondCode').val("").trigger("change");
+			return;
 		}else{
 			var edupubcode = {
 					"eduLevel": "",
@@ -87,11 +91,9 @@ $(function(){
 				}
 				$('#secondCode').append(zyzlHtml);
 				//设置area的长度
-				$('#secondCode').next('span').css("width", (maxlength*14+28+maxlength-1) < 93 ? 93 : (maxlength*14+28+maxlength-1));  
-		
+				//$('#secondCode').next('span').css("width", (maxlength*14+28+maxlength-1) < 93 ? 93 : (maxlength*14+28+maxlength-1));  
+				$('#secondCode').val("").trigger("change");
 			});
-			//重置市、区的值
-			$('#secondCode').val("").trigger("change");
 		}
 		$('#firstCodeerror').show();
 	});
@@ -100,9 +102,10 @@ $(function(){
 	 * 选择专业学科中类
 	 */
 	$('#secondCode').on('change',function(){
+		$('#secondCodeerror').hide();
 		$('#secondCodeerror').removeClass("error").css('color','green').html("√");
-		if(firstCode == ''){
-			$('#secondCodeerror').addClass("error").css('color','red').html("× 请选择专业学科中类！");
+		if($(this).val() == ''){
+			return;
 		}
 		$('#secondCodeerror').show();
 	});
@@ -215,13 +218,13 @@ $(function(){
 				if(data==true){
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/edupubcode/list";
+						location.href="HTTP://"+window.location.host+"/edupubcode/list.html";
 					}, 3000);
 				}else{
 					$('.modal-body').empty().append("提交失败，即将返回添加页面&hellip;");
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/edupubcode/add";
+						location.href="HTTP://"+window.location.host+"/edupubcode/add.html";
 					}, 3000);
 				}
 			});

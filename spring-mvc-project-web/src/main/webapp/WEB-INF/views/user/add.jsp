@@ -105,7 +105,7 @@
 		                    <select id="city" name="city" class="form-control js-example-data-array-selected" style="width:112px; float: left;">
 								<option value="" selected="selected">请选择</option>
 							</select>
-							<select id="area" name="user.areaCode" class="form-control js-example-data-array-selected" style="width:auto; float: left;">
+							<select id="area" name="area" class="form-control js-example-data-array-selected" style="width:auto; float: left;">
 								<option value="" selected="selected">请选择</option>
 							</select>
 							<span class="help-block" id="areaerror">地区不能为空！</span>

@@ -32,60 +32,12 @@ $(function(){
 	 * 选择省份
 	 */
 	$('#province').on('change',function(){
-		par.areaCode = $(this).val() || ""; 
-		if(par.areaCode==""){
-			return;
+		$('#provinceerror').hide();
+		$('#provinceerror').removeClass("error").css('color','green').html("√");
+		if($(this).val() == ''){
+			$('#provinceerror').addClass("error").css('color','red').html("请选择所在地区");
 		}
-		$.get("HTTP://"+window.location.host+"/area/list/city",par,function(cityData){
-			
-			//省份改变且不为空的时候直接将地区的不能为空的信息和学校不能为空的信息隐藏
-			$('#areaerror').hide();
-			
-			if(cityData != ""){
-				//移出原来的数据（除了第一个，即：请选择）
-				$('#city').find("option:not(:first)").remove();
-				$('#area').find("option:not(:first)").remove();
-				//向select中新增加数据
-				var cityHtml = "",maxlength = 0;
-				for(var i = 0; i < cityData.length; i++){
-					cityHtml+="<option value='"+cityData[i].code+"'>"+cityData[i].name+"</option>";
-					if(cityData[i].name.length > maxlength){
-						maxlength = cityData[i].name.length;
-					}
-				}
-				$('#city').append(cityHtml);
-				//设置city的select的长度，这里不必重新设置area的长度，因为它的值暂未变化
-				$('#city').next('span').css("width", (maxlength*14+28+maxlength-1) < 93 ? 93 : (maxlength*14+28+maxlength-1));  
-			}
-		});
-	});
-	
-	/**
-	 * 选择市
-	 */
-	$('#city').on('change',function(){
-		par.areaCode = $(this).val() || "";
-		if(par.areaCode==""){
-			return;
-		}
-		$.get("HTTP://"+window.location.host+"/area/list/area",par,function(data){
-			//移出原来的值
-			$('#area').find("option:not(:first)").remove();
-			//重新添加select内容
-			var areaHtml = "",maxlength = 0;
-			for(var i = 0; i < data.length; i++){
-				areaHtml+="<option value='"+data[i].code+"'>"+data[i].name+"</option>";
-				if(data[i].name.length > maxlength){
-					maxlength = data[i].name.length;
-				}
-			}
-			$('#area').append(areaHtml);
-			//设置area的长度
-			$('#area').next('span').css("width", (maxlength*14+28+maxlength-1) < 93 ? 93 : (maxlength*14+28+maxlength-1));  
-			
-		});
-		//重置市、区的值
-		$('#area').val("").trigger("change");
+		$('#provinceerror').show();
 	});
 	
 	
@@ -163,6 +115,7 @@ $(function(){
 	 * 改变学校类型代码
 	 */
 	$('#type').on('change',function(){
+		$('#typeerror').hide();
 		$('#typeerror').removeClass("error").css('color','green').html("√");
 		var type = $(this).val();
 		if(type == ''){
@@ -188,6 +141,7 @@ $(function(){
 	 */
 	$('#btn-submit').on('click',function(event){
 		event.preventDefault();
+		
 		//检查是否有空的
 		if($('#name').val() == ''){
 			$('#nameerror').addClass("error").css('color','red').html("× 院校名不能为空！");
@@ -225,28 +179,33 @@ $(function(){
 				"beUnderName":"",
 				"type":"",
 				"buildType":"",
-				"areaCode" : ""
+				"areaCode" : "",
+				"tags": 0
 			}
 			school.name = strUniCode($('#name').val());
 			school.code = strUniCode($('#code').val());
-			school.beUnderName = trUniCode($('#beUnderName').val());
+			school.beUnderName = strUniCode($('#beUnderName').val());
 			school.type = strUniCode($('#type').val());
 			school.buildType = strUniCode($('#buildType').val());
 			school.type = strUniCode($('#type').val());
-			school.areaCode = $('#area option:selected').val();
+			school.areaCode = $('#province').val();
+			
+			$('input[name="tags"]:checked').each(function(){
+				school.tags += parseInt(this.value,10);
+			 }); 
 			
 			$.post("HTTP://"+window.location.host+"/school/add",school,function(data){
 				
 				if(data==true){
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/school/list";
+						location.href="HTTP://"+window.location.host+"/school/list.html";
 					}, 3000);
 				}else{
 					$('.modal-body').empty().append("提交失败，即将返回添加页面&hellip;");
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/school/add";
+						location.href="HTTP://"+window.location.host+"/school/add.html";
 					}, 3000);
 				}
 			});

@@ -40,36 +40,36 @@
 						<div class="form-group" style="margin-top: 20px;">
 							<label for="eduLevel" class="col-sm-2 control-label">学历类别:</label>
 							<div class="col-sm-4">
-								<select id="eduLevel" name="eduLevel" class="form-control  js-example-data-array-selected" style="width:auto;float: left;">
+								<select id="eduLevel" name="eduLevel" class="form-control js-example-data-array-selected" style="width:100%;float: left;">
 			                        <option value="" selected="selected">请选择</option>
 			                        <option value="1">研究生</option>
 			                        <option value="2">本科生</option>
 			                        <option value="3">专科生</option>
 			                    </select> 
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="eduLevelerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="firstCode" class="col-sm-2 control-label">专业学科大类:</label>
-							<div class="col-sm-8">
-							<select id="firstCode" name="firstCode" class="form-control  js-example-data-array-selected" style="width:auto;float: left;">
+							<div class="col-sm-4">
+							<select id="firstCode" name="firstCode" class="form-control  js-example-data-array-selected" style="width:100%;float: left;">
 		                        <option value="" selected="selected">请选择</option>
 		                    </select>
 							</div>
-							<div class="col-sm-2" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="firstCodeerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="secondCode" class="col-sm-2 control-label">专业学科中类:</label>
-							<div class="col-sm-8">
-							<select id="secondCode" name="secondCode" class="form-control  js-example-data-array-selected" style="width:auto;float: left;">
+							<div class="col-sm-4">
+							<select id="secondCode" name="secondCode" class="form-control  js-example-data-array-selected" style="width:100%;float: left;">
 		                        <option value="" selected="selected">请选择</option>
 		                    </select>
 							</div>
-							<div class="col-sm-2" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="secondCodeerror"></span>
 							</div>
 						</div>
@@ -78,7 +78,7 @@
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="code" name="code" placeholder="请输入专业代码"> 
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="codeerror"></span>
 							</div>
 						</div>
@@ -87,7 +87,7 @@
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="name" name="name" placeholder="请输入专业名称"> 
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="nameerror"></span>
 							</div>
 						</div>
