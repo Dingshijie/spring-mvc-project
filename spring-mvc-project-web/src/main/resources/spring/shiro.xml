@@ -35,10 +35,11 @@
             <value>
                 /login** = anon
                 /resources/** = anon
-                /area/*.html = authc
-                /category/*.html = authc
-                /edupubcode/*.html = authc
-                /school/*.html = authc
+                /user/**.html = authc
+                /area/**.html = authc
+                /category/**.html = authc
+                /edupubcode/**.html = authc
+                /school/**.html = authc
             </value>
         </property>
     </bean>
