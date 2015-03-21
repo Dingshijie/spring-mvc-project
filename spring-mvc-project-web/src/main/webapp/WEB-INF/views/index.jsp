@@ -27,15 +27,15 @@
       <div class="row row-offcanvas row-offcanvas-right">
 		 <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
-         	<a href="#" class="list-group-item active">所有分类</a>
-            <a href="#" class="list-group-item">娱乐</a>
-            <a href="#" class="list-group-item">美食</a>
-            <a href="#" class="list-group-item">丽人</a>
-            <a href="#" class="list-group-item">旅游</a>
-            <a href="#" class="list-group-item">购物</a>
-            <a href="#" class="list-group-item">酒店</a>
-            <a href="#" class="list-group-item">生活服务</a>
-            <a href="#" class="list-group-item">其他</a>
+         	<a href="javascritp:void(0);" class="list-group-item active" data-code="">所有分类</a>
+            <a href="#" class="list-group-item" data-code='11'>娱乐</a>
+            <a href="#" class="list-group-item" data-code='12'>美食</a>
+            <a href="#" class="list-group-item" data-code='13'>丽人</a>
+            <a href="#" class="list-group-item" data-code='14'>旅游</a>
+            <a href="#" class="list-group-item" data-code='15'>购物</a>
+            <a href="#" class="list-group-item" data-code='16'>酒店</a>
+            <a href="#" class="list-group-item" data-code='17'>生活服务</a>
+            <a href="#" class="list-group-item" data-code='91'>其他</a>
           </div>
         </div><!--/.sidebar-offcanvas-->
         <div class="col-xs-12 col-sm-10">
@@ -178,6 +178,8 @@
       </footer>
 
     </div><!--/.container-->
-	
+	<div class="form-control" id="popover" style="left: 50px;top: 50px;width:20%; position: absolute;z-index: 9999" >
+			modal-content
+	</div>
 </body>
 </html>
