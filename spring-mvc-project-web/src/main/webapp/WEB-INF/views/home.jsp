@@ -20,7 +20,7 @@
 </head>
 <body>
 	<a href="${webRoot}/login.html" target="_blank">[登陆]</a>
-	<a href="${webRoot}/user/register.html" target="_blank">[注册]</a>
+	<a href="${webRoot}/register.html" target="_blank">[注册]</a>
 	<a href="${webRoot}/user/list.html" target="_blank">[管理界面]</a>
 	<a href="${webRoot}/index.html" target="_blank">[首页]</a>
 	<a href="${webRoot}/category/category.html" target="_blank">[分类列表]</a>

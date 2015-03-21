@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <link rel="stylesheet" href="${initParam.resourceRoot}/css/common/top.css"/>
@@ -20,8 +21,21 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a class="tag-a" href="${webRoot}/login.html">登陆</a></li>
-            <li><a class="tag-a" href="${webRoot}/user/register.html">注册</a></li>
+          	<shiro:guest>
+	            <li><a class="tag-a" href="${webRoot}/login.html">登陆</a></li>
+	            <li><a class="tag-a" href="${webRoot}/register.html">注册</a></li>
+            </shiro:guest>
+            <shiro:authenticated>
+            	<li>
+            	<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><shiro:principal></shiro:principal><span class="caret"></span></a>
+            	<ul class="dropdown-menu" role="menu" style="min-width: 80px;">
+	                <li><a href="${webRoot}/logout.html.html">退出</a></li>
+             	</ul>
+            	</li>
+            	<li>
+            	 <a class="tag-a" href="#">&nbsp;</a>
+            	</li>
+            </shiro:authenticated>
           </ul>
           <form class="navbar-form navbar-left" role="search">
             <div class="input-group">

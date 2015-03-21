@@ -13,8 +13,9 @@
 	 <description>Shiro Configuration</description>
 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realms" ref="userRealm" />
+        <property name="realm" ref="userRealm"/>
         <property name="cacheManager" ref="shiroEhcacheManager"/>
+        <property name="sessionManager" ref="sessionManager" />
     </bean>
     
      <!-- 用户授权信息Cache, 采用EhCache，直接使用spring的ehcache缓存工厂 -->
@@ -28,14 +29,16 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="successUrl" value="/" />
-        <property name="loginUrl" value="/login.jsp" />
-     <!--    <property name="unauthorizedUrl" value="/"/>  -->
+        <property name="loginUrl" value="/index.html" />
+     	<property name="unauthorizedUrl" value="/index.html"/>
         <property name="filterChainDefinitions">
             <value>
                 /login** = anon
                 /resources/** = anon
-            <!--     /** = authc  -->
-            <!--    /**.html = authc -->  
+                /area/** = authc
+                /category/** = authc
+                /edupubcode/** = authc
+                /school/** = authc
             </value>
         </property>
     </bean>
@@ -46,7 +49,7 @@
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
     	<property name="sessionFactory" ref="webSessionFactory" />
     </bean>
-
+    
     <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 

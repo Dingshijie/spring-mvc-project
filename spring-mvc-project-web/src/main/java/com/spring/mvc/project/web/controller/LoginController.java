@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.mvc.project.domain.UserInfo;
+
 @Controller
 public class LoginController {
 
@@ -37,7 +39,16 @@ public class LoginController {
 			AuthenticationToken token = new UsernamePasswordToken(username, password, rememberMe);
 			try {
 				currentUser.login(token);
-				return "home";
+
+				if (currentUser.hasRole(UserInfo.Role.ADMIN.name())
+						|| currentUser.hasRole(UserInfo.Role.MANAGER.name())) {
+					//管理员登陆
+					return "redirect:/user/list.html";
+				} else if (currentUser.hasRole(UserInfo.Role.BUSSINESS.name())) {
+					//商家用户登陆
+				}
+				//学生登陆
+				return "redirect:/index.html";
 			} catch (UnknownAccountException e) {
 				logger.info("Unknown account login");
 				model.addAttribute("errorMsg", "没有该账户信息！");
@@ -47,6 +58,17 @@ public class LoginController {
 			}
 		}
 		return "login";
+	}
+
+	/**
+	 * 用户退出登录
+	 * @return 退出后跳转的视图
+	 */
+	@RequestMapping("/logout.html")
+	public String logout() {
+		logger.debug("Show index page.");
+		SecurityUtils.getSubject().logout();
+		return "redirect:/index.html";
 	}
 
 	/**
