@@ -178,8 +178,8 @@
       </footer>
 
     </div><!--/.container-->
-	<div class="form-control" id="popover"  >
-			modal-content
+	<div id="popover" style="background-color:#fff;color: #555;font-size: 14px;" >
+	
 	</div>
 </body>
 </html>
