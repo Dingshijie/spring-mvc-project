@@ -34,7 +34,7 @@ public class UserInfo implements Serializable {
 	private String id;
 
 	@NotBlank(message = "com.spring.mvc.project.validator.NotBlank.message")
-	@Column(name = "USERNAME", length = 24)
+	@Column(name = "USERNAME", length = 24, unique = true, nullable = false)
 	@Length(min = 2, max = 24, message = "com.spring.mvc.project.validator.Length.message")
 	private String username;
 
@@ -76,7 +76,7 @@ public class UserInfo implements Serializable {
 	@Length(min = 0, max = 24, message = "com.spring.mvc.project.validator.Length.message")
 	private String telPhone;
 
-	@Column(name = "MOBILE_PHONE", length = 11)
+	@Column(name = "MOBILE_PHONE", length = 11, unique = true, nullable = false)
 	@Length(min = 0, max = 11, message = "com.spring.mvc.project.validator.Length.message")
 	private String mobilPhone;
 

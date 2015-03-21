@@ -153,7 +153,7 @@ $(function(){
 	 */
 	$('#username').on('blur',function(){
 		$('#usernameerror').removeClass("error").css('color','green').html("√");
-		var username = $('#username').val();
+		var username = $.trim($('#username').val());
 		var len = username.length;
 		if(len==0){
 			$('#usernameerror').addClass("error").css('color','red').html("× 用户名不能为空！");
@@ -179,7 +179,7 @@ $(function(){
 	 */
 	$('#password').on('blur',function(){
 		$('#passworderror').removeClass("error").css('color','green').html("√");
-		var len = $('#password').val().length;
+		var len = $.trim($('#password').val()).length;
 		if(len==0){
 			$('#passworderror').addClass("error").css('color','red').html("× 密码不能为空！");
 		}else if(len<6 || len >128){
@@ -196,7 +196,7 @@ $(function(){
 	 */
 	$('#mobilPhone').on('blur',function(){
 		$('#mobilPhoneerror').removeClass("error").css('color','green').html("√");
-		var mobilePhone = $('#mobilPhone').val();
+		var mobilePhone = $.trim($('#mobilPhone').val());
 		var len = mobilePhone.length;
 		var reg = /^(1[0-9]{10})?$/;
 		if(len!=11){
@@ -225,7 +225,7 @@ $(function(){
 	 */
 	$('#address').on('blur',function(){
 		$('#addresserror').removeClass("error").css('color','green').html("√");
-		var len = $('#address').val().length;
+		var len = $.trim($('#address').val()).length;
 		if(len==0){
 			$('#addresserror').addClass("error").css('color','red').html("× 街道地址长度不能为空！");
 		}else if(len>128){
