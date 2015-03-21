@@ -2,3 +2,7 @@
  * index.css Style
  * --------------------------------------------------
  */
+#popover{
+	position: absolute;
+	z-index: 9999
+}

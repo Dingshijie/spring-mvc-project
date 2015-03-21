@@ -178,7 +178,7 @@
       </footer>
 
     </div><!--/.container-->
-	<div class="form-control" id="popover" style="left: 50px;top: 50px;width:20%; position: absolute;z-index: 9999" >
+	<div class="form-control" id="popover"  >
 			modal-content
 	</div>
 </body>

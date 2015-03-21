@@ -18,25 +18,43 @@ $(function(){
 		
 		$(this).addClass('active');
 		
-		
+		//距离左边的位置:a标签距离左边的位置+a标签的宽度（带padding）+边框的宽度（目前两边都是1 ）
+		var widthWithPadding = $(this).innerWidth();
+		var left = $(this).offset().left + widthWithPadding + 2;
+		var top = $(this).offset().top;
 		
 		var code = $(this).attr('data-code');
-		if(code != ''){
-			
+		if(code == ''){
+			$('#popover').hide();
+		}else{
 			$.get("HTTP://" + window.location.host + "/category/list/"+code,function(data){
 				if(data != ''){
-					var html = "<table><tr><td>"+ data[0].name+"</td></tr></table>";
+					var html = "<table style='width:100%'><colgroup><col width='30%'></col><col width='30%'></col><col width='30%'></col></colgroup>";
+					for(var i = 0;i < data.length; i++){
+						if((i+1)%3==1){
+							html += "<tr>";
+						}
+						html += "<td><a href='#'>"+ data[i].name +"</a></td>"
+						if((i+1)%3==0){
+							html += "</tr>";
+						}
+					}
+					html +="</html>"
 				}
-				$('#popover').css("position","absolute").css("left",50+"px").css("top",50+"px").empty().append(html).show();
-			
+				$('#popover').css("position","absolute").css('width',widthWithPadding +"px").css("left",left + "px").css("top",top+"px").empty().append(html).show();
 			});
 		}
 		
 	},function(){
-			
+		
 		return;
+		
 	});
 	
+	$(document).on('click',function(event){
+		//隐藏
+		$('#popover').hide();
+	});
 	
 	
 });
