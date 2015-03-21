@@ -28,12 +28,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/register.html", method = RequestMethod.GET)
-	public String registerHtml(Model model) {
-		//进入到注册的页面
-		return "user/register";
-	}
-
 	@RequestMapping(value = "/add.html", method = RequestMethod.GET)
 	public String addHtml(Model model) {
 		//进入到注册的页面

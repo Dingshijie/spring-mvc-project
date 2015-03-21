@@ -15,6 +15,12 @@ public class HomeController {
 		return "index";
 	}
 
+	@RequestMapping(value = "/register.html", method = RequestMethod.GET)
+	public String registerHtml(Model model) {
+		//进入到注册的页面
+		return "register";
+	}
+
 	@RequestMapping(value = "/manager.html", method = RequestMethod.GET)
 	public String managerHtml(Model model) {
 		return "manager";

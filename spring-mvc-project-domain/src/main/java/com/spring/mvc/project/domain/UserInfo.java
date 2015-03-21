@@ -451,4 +451,10 @@ public class UserInfo implements Serializable {
 		return Role.ADMIN.name().equals(role);
 	}
 
+	@Override
+	public String toString() {
+
+		return this.username;
+	}
+
 }
