@@ -35,7 +35,7 @@
             <value>
                 /login** = anon
                 /resources/** = anon
-                /user/**.html = authc
+                /user/**.html = authc 
                 /area/**.html = authc
                 /category/**.html = authc
                 /edupubcode/**.html = authc
