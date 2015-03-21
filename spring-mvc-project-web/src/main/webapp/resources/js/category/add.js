@@ -123,7 +123,7 @@ $(function(){
 				if(data==true){
 					$('#myModal').modal('show');
 					setTimeout(function(){
-						location.href="HTTP://"+window.location.host+"/category/category.html";
+						location.href="HTTP://"+window.location.host+"/category/list.html";
 					}, 3000);
 				}else{
 					$('.modal-body').empty().append("提交失败，即将返回注册页面&hellip;");
