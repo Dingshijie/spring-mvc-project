@@ -4,6 +4,7 @@
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <link rel="stylesheet" href="${initParam.resourceRoot}/css/common/top.css"/>
+<script type="text/javascript" src="${initParam.resourceRoot}/js/common/top.js"></script>
 	<!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
 	    

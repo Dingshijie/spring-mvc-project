@@ -2,6 +2,7 @@ package com.spring.mvc.project.service;
 
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
 import com.spring.mvc.project.domain.Category;
 
 public interface CategoryService {
@@ -54,4 +55,11 @@ public interface CategoryService {
 	 * @return
 	 */
 	public int findCount(String categoryCode, int hot, int enable, String keyword);
+
+	/**
+	 * 根据大类代码查询下辖下的所有小类
+	 * @param code
+	 * @return
+	 */
+	public List<JSONObject> findList(String code);
 }

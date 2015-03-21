@@ -6,12 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.spring.mvc.project.domain.Category;
 import com.spring.mvc.project.domain.util.ExportField;
 import com.spring.mvc.project.domain.util.ExportField.DataType;
@@ -76,6 +78,12 @@ public class CategoryController {
 	public int findList(String categoryCode, @RequestParam(value = "hot", defaultValue = "10") int hot,
 			@RequestParam(value = "enable", defaultValue = "10") int enable, String keyword) {
 		return categoryService.findCount(categoryCode, hot, enable, keyword);
+	}
+
+	@RequestMapping(value = "list/{code}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<JSONObject> findList(@PathVariable(value = "code") String code) {
+		return categoryService.findList(code);
 	}
 
 	@RequestMapping(value = "export", method = RequestMethod.GET)
