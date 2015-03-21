@@ -126,6 +126,15 @@ $(function(){
 		$('#area').val("").trigger("change");
 	});
 	
+	$('#area').on('change',function(){
+		$('#areaerror').removeClass("error").css('color','green').html("√");
+		var areaCode = $('#area').val();
+		if(areaCode == ''){
+			$('#areaerror').addClass("error").css('color','red').html("× 请选择地区！");
+		}
+		$('#areaerror').show();
+	});
+	
 	/**
 	 * 学校下拉框改变
 	 */
