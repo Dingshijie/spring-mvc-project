@@ -50,13 +50,14 @@
 		</property>
 		<property name="category">
 			<map>
-				<entry key="11" value="娱乐"/>
-				<entry key="12" value="美食"/>
-				<entry key="13" value="丽人"/>
-				<entry key="14" value="旅游"/>
-				<entry key="15" value="购物"/>
-				<entry key="17" value="酒店"/>
-				<entry key="18" value="生活服务"/>
+				<entry key="11" value="女装"/>
+				<entry key="12" value="男装"/>
+				<entry key="13" value="鞋靴箱包"/>
+				<entry key="14" value="运动户外"/>
+				<entry key="15" value="手机数码"/>
+				<entry key="16" value="美妆配饰"/>
+				<entry key="17" value="生活用品"/>
+				<entry key="18" value="学习用品"/>
 				<entry key="91" value="其他"/>
 			</map>
 		</property>

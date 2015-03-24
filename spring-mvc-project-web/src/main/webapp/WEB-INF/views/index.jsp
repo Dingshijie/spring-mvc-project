@@ -28,13 +28,14 @@
 		 <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
          	<a href="javascritp:void(0);" class="list-group-item active" data-code="">所有分类</a>
-            <a href="#" class="list-group-item" data-code='11'>娱乐</a>
-            <a href="#" class="list-group-item" data-code='12'>美食</a>
-            <a href="#" class="list-group-item" data-code='13'>丽人</a>
-            <a href="#" class="list-group-item" data-code='14'>旅游</a>
-            <a href="#" class="list-group-item" data-code='15'>购物</a>
-            <a href="#" class="list-group-item" data-code='16'>酒店</a>
-            <a href="#" class="list-group-item" data-code='17'>生活服务</a>
+            <a href="#" class="list-group-item" data-code='11'>女装</a>
+            <a href="#" class="list-group-item" data-code='12'>男装</a>
+            <a href="#" class="list-group-item" data-code='13'>鞋靴箱包</a>
+            <a href="#" class="list-group-item" data-code='14'>运动户外</a>
+            <a href="#" class="list-group-item" data-code='15'>手机数码</a>
+            <a href="#" class="list-group-item" data-code='16'>美妆配饰</a>
+            <a href="#" class="list-group-item" data-code='17'>生活用品</a>
+            <a href="#" class="list-group-item" data-code='18'>学习用品</a>
             <a href="#" class="list-group-item" data-code='91'>其他</a>
           </div>
         </div><!--/.sidebar-offcanvas-->
