@@ -7,3 +7,7 @@
 	z-index: 9999;
 	display: none;
 }
+.bs-docs-footer {
+    color: #767676;
+    text-align: center;
+}

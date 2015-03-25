@@ -140,33 +140,63 @@
           </div>
           <div class="row">
             <div class="col-xs-6 col-lg-4 col-md-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <img src="${initParam.resourceRoot}/img/list-1.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4 col-md-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <img src="${initParam.resourceRoot}/img/list-2.jpg" alt="..." style="width:100%;height: 200px;" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus.  </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4 col-md-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <img src="${initParam.resourceRoot}/img/list-3.jpg" alt="..." style="width:100%;height: 200px;" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus.  </p>            
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <img src="${initParam.resourceRoot}/img/list-4.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+               <img src="${initParam.resourceRoot}/img/list-5.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <img src="${initParam.resourceRoot}/img/list-6.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <img src="${initParam.resourceRoot}/img/list-7.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <img src="${initParam.resourceRoot}/img/list-8.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <img src="${initParam.resourceRoot}/img/list-9.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <img src="${initParam.resourceRoot}/img/list-10.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <img src="${initParam.resourceRoot}/img/list-11.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+              <img src="${initParam.resourceRoot}/img/list-12.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
           </div><!--/row-->
@@ -174,13 +204,12 @@
 
       </div><!--/row-->
       <hr>
-      <footer>
-        <p>&copy; Company 2014</p>
+      <footer class="bs-docs-footer">
+        <p>&copy; 2015 Zhengzhou University of Light Industry WangChen</p>
+        <p></p>
       </footer>
 
     </div><!--/.container-->
-	<div id="popover" style="background-color:#fff;color: #555;font-size: 14px;" >
 	
-	</div>
 </body>
 </html>
