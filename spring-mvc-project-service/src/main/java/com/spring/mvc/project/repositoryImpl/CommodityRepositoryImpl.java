@@ -6,13 +6,16 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.spring.mvc.project.domain.CommodityInfo;
+import com.spring.mvc.project.domain.UserInfo;
 import com.spring.mvc.project.repository.CommodityRepository;
 
 @Repository
@@ -26,13 +29,13 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 	}
 
 	@Override
-	public boolean add(CommodityInfo CommodityInfo) {
-		return this.getSession().save(CommodityInfo) != null;
+	public boolean add(CommodityInfo commodity) {
+		return this.getSession().save(commodity) != null;
 	}
 
 	@Override
-	public void update(CommodityInfo CommodityInfo) {
-		this.getSession().update(CommodityInfo);
+	public void update(CommodityInfo commodity) {
+		this.getSession().update(commodity);
 
 	}
 
@@ -45,8 +48,8 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 	}
 
 	@Override
-	public void delete(CommodityInfo CommodityInfo) {
-		this.getSession().delete(CommodityInfo);
+	public void delete(CommodityInfo commodity) {
+		this.getSession().delete(commodity);
 
 	}
 
@@ -57,8 +60,8 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<CommodityInfo> findList(String username, String category, int status, int recommend, int used,
-			String keyword, int pageIndex, int pageSize) {
+	public List<CommodityInfo> findList(String username, String category, String areaCode, String schoolCode,
+			int status, int recommend, int used, String keyword, int pageIndex, int pageSize) {
 		Criteria crit = this.getSession().createCriteria(CommodityInfo.class);
 		if (StringUtils.hasText(username)) {
 			crit.add(Restrictions.eq("userName", username));
@@ -66,6 +69,17 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 		if (StringUtils.hasText(category)) {
 			crit.add(Restrictions.eq("category", category));
 		}
+		//嵌套子查询
+		DetachedCriteria subCriteria = DetachedCriteria.forClass(UserInfo.class);
+		subCriteria.setProjection(Projections.property("username"));
+		if (StringUtils.hasText(areaCode)) {
+			subCriteria.add(Restrictions.like("areaCode", areaCode + "%"));
+		}
+		if (StringUtils.hasText(schoolCode)) {
+			subCriteria.add(Restrictions.like("schoolCode", schoolCode));
+		}
+		crit.add(Property.forName("username").eq(subCriteria));
+
 		if (status != 10) {
 			crit.add(Restrictions.eq("status", status));
 		}
@@ -95,7 +109,8 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 	}
 
 	@Override
-	public int findCount(String username, String category, int status, int recommend, int used, String keyword) {
+	public int findCount(String username, String category, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword) {
 		Criteria crit = this.getSession().createCriteria(CommodityInfo.class);
 		if (StringUtils.hasText(username)) {
 			crit.add(Restrictions.eq("userName", username));
@@ -103,6 +118,16 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 		if (StringUtils.hasText(category)) {
 			crit.add(Restrictions.eq("category", category));
 		}
+		//嵌套子查询
+		DetachedCriteria subCriteria = DetachedCriteria.forClass(UserInfo.class);
+		subCriteria.setProjection(Projections.property("username"));
+		if (StringUtils.hasText(areaCode)) {
+			subCriteria.add(Restrictions.like("areaCode", areaCode + "%"));
+		}
+		if (StringUtils.hasText(schoolCode)) {
+			subCriteria.add(Restrictions.like("schoolCode", schoolCode));
+		}
+		crit.add(Property.forName("username").eq(subCriteria));
 		if (status != 10) {
 			crit.add(Restrictions.eq("status", status));
 		}

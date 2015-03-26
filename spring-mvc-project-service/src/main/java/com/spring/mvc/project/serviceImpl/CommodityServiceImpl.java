@@ -25,14 +25,19 @@ public class CommodityServiceImpl implements CommodityService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public boolean add(CommodityInfo CommodityInfo) {
-		return commodityRepository.add(CommodityInfo);
+	public boolean add(CommodityInfo commodity) {
+		return commodityRepository.add(commodity);
 	}
 
 	@Override
 	@Transactional(readOnly = false)
-	public void update(CommodityInfo CommodityInfo) {
-		commodityRepository.update(CommodityInfo);
+	public boolean update(CommodityInfo commodity) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		//添加权限，管理员可以更新，用户自己也可以更新
+		commodityRepository.update(commodity);
+
+		return true;
 
 	}
 
@@ -61,8 +66,8 @@ public class CommodityServiceImpl implements CommodityService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public void delete(CommodityInfo CommodityInfo) {
-		commodityRepository.delete(CommodityInfo);
+	public void delete(CommodityInfo commodity) {
+		commodityRepository.delete(commodity);
 
 	}
 
@@ -72,27 +77,29 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
-	public List<CommodityInfo> findList(String category, int status, int recommend, int used, String keyword,
-			int pageIndex, int pageSize) {
+	public List<CommodityInfo> findList(String category, String areaCode, String schoolCode, int status, int recommend,
+			int used, String keyword, int pageIndex, int pageSize) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager() || userInfo.isAdministrator()) {
-			return commodityRepository.findList("", category, status, recommend, used, keyword, pageIndex, pageSize);
-		} else {
-			return commodityRepository.findList(userInfo.getUsername(), category, status, recommend, used, keyword,
+			return commodityRepository.findList("", category, areaCode, schoolCode, status, recommend, used, keyword,
 					pageIndex, pageSize);
+		} else {
+			return commodityRepository.findList(userInfo.getUsername(), category, areaCode, schoolCode, status,
+					recommend, used, keyword, pageIndex, pageSize);
 		}
 	}
 
 	@Override
-	public int findCount(String category, int status, int recommend, int used, String keyword) {
+	public int findCount(String category, String areaCode, String schoolCode, int status, int recommend, int used,
+			String keyword) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager() || userInfo.isAdministrator()) {
-			return commodityRepository.findCount("", category, status, recommend, used, keyword);
+			return commodityRepository.findCount("", category, areaCode, schoolCode, status, recommend, used, keyword);
 		} else {
-			return commodityRepository.findCount(userInfo.getUsername(), category, status, recommend, used, keyword);
+			return commodityRepository.findCount(userInfo.getUsername(), category, areaCode, schoolCode, status,
+					recommend, used, keyword);
 		}
 	}
-
 }

@@ -11,13 +11,13 @@ public interface CommodityService {
 	 * @param CommodityInfo
 	 * @return
 	 */
-	public boolean add(CommodityInfo CommodityInfo);
+	public boolean add(CommodityInfo commodity);
 
 	/**
 	 * 更新商品信息
 	 * @param CommodityInfo
 	 */
-	public void update(CommodityInfo CommodityInfo);
+	public boolean update(CommodityInfo commodity);
 
 	/**
 	 * 更新商品的某些字段的信息
@@ -31,7 +31,7 @@ public interface CommodityService {
 	 * 删除商品
 	 * @param CommodityInfo
 	 */
-	public void delete(CommodityInfo CommodityInfo);
+	public void delete(CommodityInfo commodity);
 
 	/**
 	 * 通过商品的id，查询商品的信息
@@ -50,8 +50,8 @@ public interface CommodityService {
 	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
-	public List<CommodityInfo> findList(String category, int status, int recommend, int used, String keyword,
-			int pageIndex, int pageSize);
+	public List<CommodityInfo> findList(String category, String areaCode, String schoolCode, int status, int recommend,
+			int used, String keyword, int pageIndex, int pageSize);
 
 	/**
 	 * 根据条件查询商品数目
@@ -62,6 +62,7 @@ public interface CommodityService {
 	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
-	public int findCount(String category, int status, int recommend, int used, String keyword);
+	public int findCount(String category, String areaCode, String schoolCode, int status, int recommend, int used,
+			String keyword);
 
 }
