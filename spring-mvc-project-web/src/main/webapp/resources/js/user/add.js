@@ -17,7 +17,7 @@ $(function(){
 	 * 此处的作用是将class是js-example-data-array-selected的select控件可以做select2使用，相当于初始化
 	 */
 	$(".js-example-data-array-selected").select2({
-
+		
 	});
 	
 	/**
