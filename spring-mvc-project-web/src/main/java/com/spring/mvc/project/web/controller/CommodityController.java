@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,26 +14,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spring.mvc.project.domain.CommodityInfo;
 import com.spring.mvc.project.service.CommodityService;
 
-@Controller(value = "/commodity")
+@Controller
+@RequestMapping(value = "/commodity")
 public class CommodityController {
 
 	@Autowired
 	private CommodityService commodityService;
 
+	@RequestMapping(value = "list.html", method = RequestMethod.GET)
+	public String commodityLitsHtml(Model model) {
+		//show list jsp
+		return "commodity/list";
+	}
+
+	@RequestMapping(value = "add.html", method = RequestMethod.GET)
+	public String commodityAddHtml(Model model) {
+		//show add jsp
+		return "commodity/add";
+	}
+
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	@ResponseBody
-	public List<CommodityInfo> findList(String category, String areaCode, String schoolCode, int status, int recommend,
-			int used, String keyword, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex) {
-		return commodityService.findList(category, areaCode, schoolCode, status, recommend, used, keyword, pageIndex,
-				pageSize);
+		return commodityService.findList(categoryCode, areaCode, schoolCode, status, recommend, used, keyword,
+				pageIndex, pageSize);
 	}
 
 	@RequestMapping(value = "count", method = RequestMethod.GET)
 	@ResponseBody
-	public int findList(String category, String areaCode, String schoolCode, int status, int recommend, int used,
+	public int findList(String categoryCode, String areaCode, String schoolCode, int status, int recommend, int used,
 			String keyword) {
-		return commodityService.findCount(category, areaCode, schoolCode, status, recommend, used, keyword);
+		return commodityService.findCount(categoryCode, areaCode, schoolCode, status, recommend, used, keyword);
 	}
 
 	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)

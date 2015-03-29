@@ -38,7 +38,12 @@
 					<li <c:if test="${param.subactive=='addedupubcode'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/edupubcode/add.html">添加专业代码</a></li>
 				</ul>
 			</li>
-			<li style="white-space:nowrap; display:inline-block;width: 100%"><a href="javascript:alert('该模块正在建设中。。。');" >商品管理</a></li>
+			<li <c:if test="${param.active=='commoditymanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/commodity/list.html">商品管理</a>
+				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='commoditymanager'}">style="display:inline-block"</c:if> >
+					<li <c:if test="${param.subactive=='commoditylist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/commodity/list.html">商品列表</a></li>
+					<li <c:if test="${param.subactive=='addcommodity'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/commodity/add.html">添加商品</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </div>
