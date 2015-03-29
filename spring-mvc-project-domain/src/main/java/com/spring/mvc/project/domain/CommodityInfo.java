@@ -74,13 +74,13 @@ public class CommodityInfo implements Serializable {
 	private String picture;//商品图片
 
 	@Column(name = "STATUS", nullable = false)
-	private int status = 1;//0表示下架，1表示在售，2表示被强制下架(不可再次销售)
+	private int status = 1;//0表示下架，1表示在售，2表示被强制下架(不可再次销售)，10表示全部
 
 	@Column(name = "RECOMMEND", nullable = false)
-	private int recommend = 0;//推广，0表示不被推广，1表示被推广,由于mysql不支持boolean值
+	private int recommend = 0;//推广，0表示不被推广，1表示被推广,10表示全部， 由于mysql不支持boolean值
 
 	@Column(name = "USED", nullable = false)
-	private int used = 0;//0,表示全新，1表示是二手
+	private int used = 0;//0,表示全新，1表示是二手,10表示全部
 
 	@Length(min = 0, max = 16, message = "com.spring.mvc.project.validator.Length.message")
 	@Column(name = "NEW_CONDITION", length = 16)

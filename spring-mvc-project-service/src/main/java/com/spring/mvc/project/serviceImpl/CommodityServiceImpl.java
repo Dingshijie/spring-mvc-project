@@ -77,28 +77,29 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
-	public List<CommodityInfo> findList(String category, String areaCode, String schoolCode, int status, int recommend,
-			int used, String keyword, int pageIndex, int pageSize) {
+	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword, int pageIndex, int pageSize) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager() || userInfo.isAdministrator()) {
-			return commodityRepository.findList("", category, areaCode, schoolCode, status, recommend, used, keyword,
-					pageIndex, pageSize);
+			return commodityRepository.findList("", categoryCode, areaCode, schoolCode, status, recommend, used,
+					keyword, pageIndex, pageSize);
 		} else {
-			return commodityRepository.findList(userInfo.getUsername(), category, areaCode, schoolCode, status,
+			return commodityRepository.findList(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
 					recommend, used, keyword, pageIndex, pageSize);
 		}
 	}
 
 	@Override
-	public int findCount(String category, String areaCode, String schoolCode, int status, int recommend, int used,
+	public int findCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend, int used,
 			String keyword) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager() || userInfo.isAdministrator()) {
-			return commodityRepository.findCount("", category, areaCode, schoolCode, status, recommend, used, keyword);
+			return commodityRepository.findCount("", categoryCode, areaCode, schoolCode, status, recommend, used,
+					keyword);
 		} else {
-			return commodityRepository.findCount(userInfo.getUsername(), category, areaCode, schoolCode, status,
+			return commodityRepository.findCount(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
 					recommend, used, keyword);
 		}
 	}

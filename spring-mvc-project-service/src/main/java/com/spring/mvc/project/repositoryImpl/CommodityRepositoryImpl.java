@@ -60,14 +60,14 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<CommodityInfo> findList(String username, String category, String areaCode, String schoolCode,
+	public List<CommodityInfo> findList(String username, String categoryCode, String areaCode, String schoolCode,
 			int status, int recommend, int used, String keyword, int pageIndex, int pageSize) {
 		Criteria crit = this.getSession().createCriteria(CommodityInfo.class);
 		if (StringUtils.hasText(username)) {
-			crit.add(Restrictions.eq("userName", username));
+			crit.add(Restrictions.eq("username", username));
 		}
-		if (StringUtils.hasText(category)) {
-			crit.add(Restrictions.eq("category", category));
+		if (StringUtils.hasText(categoryCode)) {
+			crit.add(Restrictions.eq("category", categoryCode));
 		}
 		//嵌套子查询
 		DetachedCriteria subCriteria = DetachedCriteria.forClass(UserInfo.class);
@@ -78,7 +78,7 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 		if (StringUtils.hasText(schoolCode)) {
 			subCriteria.add(Restrictions.like("schoolCode", schoolCode));
 		}
-		crit.add(Property.forName("username").eq(subCriteria));
+		crit.add(Property.forName("username").in(subCriteria));
 
 		if (status != 10) {
 			crit.add(Restrictions.eq("status", status));
@@ -109,14 +109,14 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 	}
 
 	@Override
-	public int findCount(String username, String category, String areaCode, String schoolCode, int status,
+	public int findCount(String username, String categoryCode, String areaCode, String schoolCode, int status,
 			int recommend, int used, String keyword) {
 		Criteria crit = this.getSession().createCriteria(CommodityInfo.class);
 		if (StringUtils.hasText(username)) {
-			crit.add(Restrictions.eq("userName", username));
+			crit.add(Restrictions.eq("username", username));
 		}
-		if (StringUtils.hasText(category)) {
-			crit.add(Restrictions.eq("category", category));
+		if (StringUtils.hasText(categoryCode)) {
+			crit.add(Restrictions.eq("category", categoryCode));
 		}
 		//嵌套子查询
 		DetachedCriteria subCriteria = DetachedCriteria.forClass(UserInfo.class);
@@ -127,7 +127,7 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 		if (StringUtils.hasText(schoolCode)) {
 			subCriteria.add(Restrictions.like("schoolCode", schoolCode));
 		}
-		crit.add(Property.forName("username").eq(subCriteria));
+		crit.add(Property.forName("username").in(subCriteria));
 		if (status != 10) {
 			crit.add(Restrictions.eq("status", status));
 		}

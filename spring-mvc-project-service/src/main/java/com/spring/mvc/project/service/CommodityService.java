@@ -50,8 +50,8 @@ public interface CommodityService {
 	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
-	public List<CommodityInfo> findList(String category, String areaCode, String schoolCode, int status, int recommend,
-			int used, String keyword, int pageIndex, int pageSize);
+	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword, int pageIndex, int pageSize);
 
 	/**
 	 * 根据条件查询商品数目
@@ -62,7 +62,7 @@ public interface CommodityService {
 	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
-	public int findCount(String category, String areaCode, String schoolCode, int status, int recommend, int used,
+	public int findCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend, int used,
 			String keyword);
 
 }
