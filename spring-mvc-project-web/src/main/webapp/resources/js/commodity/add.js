@@ -3,6 +3,16 @@
  */
 $(function(){
 	
+	$('.reset').click();
+	
+	//启用iCheck
+	$('input').iCheck({
+		checkboxClass: 'icheckbox_square-blue',
+		radioClass: 'iradio_square-blue',
+		increaseArea: '20%' // optional
+	});
+	
+
 	/**
 	 * 点击添加的图标的时候
 	 */
@@ -21,7 +31,7 @@ $(function(){
 	/**
 	 * 点击取消的时候
 	 */
-	$('.cancel').on('click',function(){
+	$('.goodsAdd').on('click',".cancel",function(){
 		
 		$('.goodsAdd').removeClass('col-sm-offset-2');
 		$('.goodsAdd').hide();
@@ -35,9 +45,12 @@ $(function(){
 	/**
 	 * 点击保存的时候
 	 */
-	$('.save').on('click',function(){
+	$('.goodsAdd').on('click',".save",function(){
 		
 		var value = $('#goods').val();
+		if(value == ''){
+			return;
+		}
 		var html='<p><input type="text" class="good" value="'+ value +'" style="width:'+ (value.length+1)*14 +'px"> <a href="javascript:void(0);" title="点击删除"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a><a href="javascript:void(0);" title="点击编辑"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a><input type="button" class="btn btn-info save" value="保存"> <input type="button" class="btn btn-default cancel" value="取消"> </p>';
 		$('.goodsList').append(html);
 		$('.goodsList').show();
@@ -84,5 +97,6 @@ $(function(){
 		
 	});
 	
+
 	
 });

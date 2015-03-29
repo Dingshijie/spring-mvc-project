@@ -106,15 +106,6 @@
 							</div>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="newCondition" class="col-sm-3 control-label">新旧程度:</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control" id="newCondition" name="newCondition" placeholder="新旧程度">
-							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="newConditionerror"></span>
-							</div>
-						</div>
-						<div class="form-group col-md-6">
 							<label for="used" class="col-sm-3 control-label">是否二手:</label>
 							<div class="col-sm-6 control-label">
 								<div class="col-sm-5 ">
@@ -125,7 +116,16 @@
 								</div>
 							</div>
 						</div>
-						
+						<div class="form-group col-md-10">
+							<label for="newCondition" class="col-sm-2 control-label">新旧程度:</label>
+							<div class="col-sm-10" style="padding-top: 7px;">
+								<input name="newCondition" type="radio" value="全新" checked>全新<span style="margin-right: 5px;"></span>
+								<input name="newCondition" type="radio" value="九成新">九成新<span style="margin-right: 5px;"></span>
+								<input name="newCondition" type="radio" value="八成新">八成新<span style="margin-right: 5px;"></span>
+								<input name="newCondition" type="radio" value="六成新">六成新<span style="margin-right: 5px;"></span>
+								<input name="newCondition" type="radio" value="六成以下">六成以下
+							</div>
+						</div>
 						<div class="form-group col-md-9">
 							<label for="goods" class="col-sm-2 control-label">商品清单:</label>
 							<div class="goodsList col-sm-10">
@@ -137,15 +137,12 @@
 							<div class="goodsPlus col-sm-1">
 								<a href="javascript:void(0);" title="点击添加"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 							</div>
-							<!-- <div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="goodserror"></span>
-							</div> -->
 						</div>
 						
 						<div class="form-group col-md-9">
 							<label for="description" class="col-sm-2 control-label">描述:</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="description" name="description" placeholder="描述">
+								<textarea id="description" name="description" placeholder="在此处填写描述" rows="5" cols="10"></textarea>
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="descriptionerror"></span>
@@ -154,12 +151,10 @@
 						
 						<div class="form-group col-md-9">
 							<label for="picture" class="col-sm-2 control-label">商品图片:</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control" id="picture" name="picture" placeholder="商品图片">
+							<div class="col-sm-9">
+								<input type="file" id="picture" name="picture" placeholder="商品图片">
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="pictureerror"></span>
-							</div>
+							<img src="${initParam.resourceRoot}/img/list-1.jpg" alt="" width="200px" height="200px" class="img-thumbnail">
 						</div>
 
 						
