@@ -50,19 +50,10 @@
 								<span class="help-block" id="branderror"></span>
 							</div>
 						</div>
-						<div class="form-group col-md-6">
-							<label for="typeCode" class="col-sm-3 control-label">商品型号:</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control" id="typeCode" name="typeCode" placeholder="商品型号(选填)"> 
-							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="typeCodeerror"></span>
-							</div>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="category" class="col-sm-3 control-label">所属分类:</label>
-							<div class="col-sm-6">
-								<select id="category" name="category" class="form-control" style="width: 100%; float: left;">
+						<div class="form-group col-md-9">
+							<label for="category" class="col-sm-2 control-label">所属分类:</label>
+							<div class="col-sm-8">
+								<select id="categoryCode" name="categoryCode" class="form-control" style="width: 45%; float: left;">
 									<option value="" selected="selected">所有类别</option>
 									<option value="11">11 女装</option>
 									<option value="12">12 男装</option>
@@ -73,10 +64,22 @@
 									<option value="17">17 生活用品</option>
 									<option value="18">18 学习用品</option>
 									<option value="91">91 其他</option>
-								</select>  
+								</select>
+								<select id="category" name="category" class="form-control" style="width: 45%; float: left;margin-left: 2%">
+									<option value="" selected="selected">所有类别</option>
+								</select>
+							</div>
+							<div class="col-sm-2" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+								<span class="help-block" id="categoryerror"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="typeCode" class="col-sm-3 control-label">商品型号:</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="typeCode" name="typeCode" placeholder="商品型号(选填)"> 
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="categoryerror"></span>
+								<span class="help-block" id="typeCodeerror"></span>
 							</div>
 						</div>
 						<div class="form-group col-md-6">

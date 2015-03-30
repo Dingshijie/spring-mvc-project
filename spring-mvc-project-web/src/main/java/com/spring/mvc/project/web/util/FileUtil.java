@@ -1,5 +1,6 @@
 package com.spring.mvc.project.web.util;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,5 +32,13 @@ public class FileUtil {
 		 * ZIP压缩文件
 		 */
 		ZIP
+	}
+
+	/**
+	 * 生成文件名
+	 * @return 文件名
+	 */
+	public static String generateFileName() {
+		return RandomStringUtils.random(10, 65, 90, true, false);
 	}
 }

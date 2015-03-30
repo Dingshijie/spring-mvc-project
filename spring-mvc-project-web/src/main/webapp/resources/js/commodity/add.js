@@ -97,6 +97,22 @@ $(function(){
 		
 	});
 	
-
+	/**
+	 * 点击大类选择的时候，加载小类
+	 */
+	$('#categoryCode').on('change',function(){
+		
+		var code = $(this).val();
+		$.get("HTTP://" + window.location.host + "/category/list/"+code,function(data){
+			
+			var html = "";
+			$('#category').find("option:not(:first)").remove();
+			for(var i = 0;i < data.length; i++){
+				html += '<option value="'+ data[i].code +'">'+ data[i].name +'</option>';
+			}
+			$('#category').append(html);
+		});
+		
+	});
 	
 });
