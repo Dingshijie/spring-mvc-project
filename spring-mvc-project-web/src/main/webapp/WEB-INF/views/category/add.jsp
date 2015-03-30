@@ -59,7 +59,7 @@
 									<option value="" selected="selected">所有类别</option>
 									<option value="11">11 女装</option>
 									<option value="12">12 男装</option>
-				 			  	<option value="13">13 鞋靴箱包</option>
+				 			  	    <option value="13">13 鞋靴箱包</option>
 									<option value="14">14 运动户外</option>
 									<option value="15">15 手机数码</option>
 									<option value="16">16 美妆配饰</option>
