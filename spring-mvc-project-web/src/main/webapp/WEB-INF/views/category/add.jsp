@@ -10,6 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>校园E+ 添加类别</title>
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="${initParam.resourceRoot}/lib/bootstrap/css/bootstrap.min.css">
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -35,7 +36,7 @@
 					<fieldset>
 						<legend>添加分类</legend>
 						<div class="form-group" style="margin-top: 20px;">
-							<label for="username" class="col-sm-4 control-label">代码:</label>
+							<label for="code" class="col-sm-4 control-label">代码:</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="code" name="code" placeholder="类别代码"> 
 							</div>
@@ -44,7 +45,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="password" class="col-sm-4 control-label">名称:</label>
+							<label for="name" class="col-sm-4 control-label">名称:</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="name" name="name" placeholder="类别名称"> 
 							</div>
@@ -53,7 +54,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="mobilPhone" class="col-sm-4 control-label">所属分类:</label>
+							<label for="category" class="col-sm-4 control-label">所属分类:</label>
 							<div class="col-sm-4">
 								<select id="category" name="category" class="form-control" style="width: 100%; float: left;">
 									<option value="" selected="selected">所有类别</option>
@@ -84,7 +85,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="hot" class="col-sm-4 control-label">是否设置为可用:</label>
+							<label for="enable" class="col-sm-4 control-label">是否设置为可用:</label>
 							<div class="col-sm-4 control-label">
 								<div class="col-sm-5">
 									<input name="enable" type="radio" value="1" checked>是

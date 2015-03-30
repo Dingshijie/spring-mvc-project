@@ -50,7 +50,7 @@ public interface CommodityRepository {
 	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
-	public List<CommodityInfo> findList(String username, String category, String areaCode, String schoolCode,
+	public List<CommodityInfo> findList(String username, String categoryCode, String areaCode, String schoolCode,
 			int status, int recommend, int used, String keyword, int pageIndex, int pageSize);
 
 	/**
@@ -62,7 +62,7 @@ public interface CommodityRepository {
 	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
-	public int findCount(String username, String category, String areaCode, String schoolCode, int status,
+	public int findCount(String username, String categoryCode, String areaCode, String schoolCode, int status,
 			int recommend, int used, String keyword);
 
 }

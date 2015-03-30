@@ -5,23 +5,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="renderer" content="webkit">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
-<!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="${initParam.resourceRoot}/lib/bootstrap/css/bootstrap.min.css">
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script type="text/javascript" src="${initParam.resourceRoot}/lib/jquery.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- list.css 文件必须放到bootstrap。min.cs之后 -->
-<link rel="stylesheet" href="${initParam.resourceRoot}/css/edupubcode/list.css">
-<script type="text/javascript" src="${initParam.resourceRoot}/js/edupubcode/list.js"></script>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>校园E+ 专业代码列表</title>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="${initParam.resourceRoot}/lib/bootstrap/css/bootstrap.min.css">
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- list.css 文件必须放到bootstrap。min.cs之后 -->
+	<link rel="stylesheet" href="${initParam.resourceRoot}/css/edupubcode/list.css">
+	<script type="text/javascript" src="${initParam.resourceRoot}/js/edupubcode/list.js"></script>
 </head>
 <body>
 	<c:import url="../common/manager-top.jsp"></c:import>
