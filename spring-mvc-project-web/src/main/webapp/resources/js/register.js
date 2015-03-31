@@ -218,7 +218,22 @@ $(function(){
 		$('#mobilPhoneerror').hide();
 	});
 	
-	
+	/**
+	 * 焦点定位和离开地址的输入框的时候
+	 */
+	$('#dormitory').on('blur',function(){
+		$('#dormitoryerror').removeClass("error").css('color','green').html("√");
+		var len = $.trim($('#dormitory').val()).length;
+		if(len==0){
+			$('#dormitoryerror').addClass("error").css('color','red').html("× 宿舍地址长度不能为空！");
+		}else if(len>128){
+			$('#dormitoryerror').addClass("error").css('color','red').html("× 宿舍地址长度应为最多为128个字符！");
+		}
+		$('#dormitoryerror').show();
+	});
+	$('#dormitory').on('focus',function(){
+		$('#dormitoryerror').hide();
+	});
 	
 	/**
 	 * 焦点定位和离开地址的输入框的时候
@@ -268,8 +283,12 @@ $(function(){
 			$('#schoolerror').show();
 		}
 		if($('#address').val() == ''){
-			$('#addresserror').addClass("error").css('color','red').html("× 街道地址长度不能为空！");
+			$('#addresserror').addClass("error").css('color','red').html("× 宿舍地址长度不能为空！");
 			$('#addresserror').show();
+		}
+		if($('#dormitory').val() == ''){
+			$('#dormitoryerror').addClass("error").css('color','red').html("× 宿舍地址长度不能为空！");
+			$('#dormitoryerror').show();
 		}
 		//检查是否有错误标记
 		var errorNum = $(".error").length;
@@ -282,6 +301,7 @@ $(function(){
 				"mobilPhone":"",
 				"areaCode":"",
 				"address":"",
+				"dormitory": "",
 				"schoolCode":"",
 				"areaName" : "",
 				"schoolName" : "",
@@ -293,6 +313,7 @@ $(function(){
 			user.areaCode = $('#area option:selected').val();
 			var city = ($('#city option:selected').text() == '市辖区' || $('#city option:selected').text() == '县') ? '' : $('#city option:selected').text();
 			user.areaName = $('#province option:selected').text() + city + $('#area option:selected').text();
+			user.dormitory = strUniCode($('#dormitory').val());
 			user.address = strUniCode($('#address').val());
 			user.schoolCode = $('#school option:selected').val();
 			var school = $('#school option:selected').text() == '请选择院校' ? '' : $('#school option:selected').text();

@@ -123,6 +123,15 @@
 								<span class="help-block" id="schoolerror">院校不能为空！</span>
 							</div>
 						</div>
+						<div class="form-group student">
+							<label for="dormitory" class="col-sm-2 control-label">宿舍地址:</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="dormitory" name="dormitory" placeholder="请输入宿舍地址"> 
+							</div>
+							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+								<span class="help-block" id="dormitoryerror"></span>
+							</div>
+						</div>
 						<div class="form-group">
 							<label for="address" class="col-sm-2 control-label">街道地址:</label>
 							<div class="col-sm-5">

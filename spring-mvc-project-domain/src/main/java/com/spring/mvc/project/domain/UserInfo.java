@@ -126,6 +126,10 @@ public class UserInfo implements Serializable {
 	@Length(min = 0, max = 24, message = "com.spring.mvc.project.validator.Length.message")
 	private String eduPubName;
 
+	@Column(name = "DORMITORY", length = 128)
+	@Length(min = 0, max = 128, message = "com.spring.mvc.project.validator.Length.message")
+	private String dormitory;
+
 	@Column(name = "ADDRESS", length = 128)
 	@Length(min = 0, max = 128, message = "com.spring.mvc.project.validator.Length.message")
 	private String address;
