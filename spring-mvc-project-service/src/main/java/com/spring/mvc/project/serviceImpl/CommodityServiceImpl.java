@@ -26,6 +26,10 @@ public class CommodityServiceImpl implements CommodityService {
 	@Override
 	@Transactional(readOnly = false)
 	public boolean add(CommodityInfo commodity) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		commodity.setUsername(userInfo.getUsername());
+
 		return commodityRepository.add(commodity);
 	}
 

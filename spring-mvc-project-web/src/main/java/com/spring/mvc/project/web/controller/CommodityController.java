@@ -1,7 +1,12 @@
 package com.spring.mvc.project.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.mvc.project.domain.CommodityInfo;
 import com.spring.mvc.project.service.CommodityService;
+import com.spring.mvc.project.web.util.FileUtil;
+import com.spring.mvc.project.web.util.FileUtil.FileType;
+import com.spring.mvc.project.web.util.WebUtils;
 
 @Controller
 @RequestMapping(value = "/commodity")
@@ -58,7 +67,24 @@ public class CommodityController {
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean add(CommodityInfo commodity) {
+	public boolean add(MultipartFile file, CommodityInfo commodity, HttpSession session, Model model) {
+
+		FileType fileType = FileUtil.getFileType(file);
+		if (fileType == null) {
+
+		} else {
+			String realPath = WebUtils.generateFileUploadPath(fileType);
+			File temp = new File(realPath);
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), temp);//上传文件
+				String description = "成功上传[" + file.getOriginalFilename() + "]";
+				String object = realPath.substring(WebUtils.getUploadPath().length());
+				System.out.println(description + ":" + object);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return commodityService.add(commodity);
 	}
 
