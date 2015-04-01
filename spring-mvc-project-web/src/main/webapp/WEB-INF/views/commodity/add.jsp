@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
 			<div id="mainList">
-				<form class="form-horizontal col-md-offset-1 col-md-11" id="myForm" role="form">
+				<form class="form-horizontal col-md-offset-1 col-md-11" id="myForm" role="form" action="${webRoot }/commodity/add" method="post" enctype="multipart/form-data" >
 					<fieldset>
 						<legend>添加商品</legend>
 						<div class="form-group col-md-6" style="margin-top: 20px;">
@@ -131,12 +132,13 @@
 							</div>
 						</div>
 						<div class="form-group col-md-9">
+							<input type="hidden" name="goods" value="">
 							<label for="goods" class="col-sm-2 control-label">商品清单:</label>
 							<div class="goodsList col-sm-10">
 							 	
 							</div>
 							<div class="goodsAdd col-sm-10" >
-								<input type="text" class="form-control" style="width:50%;" id="goods" name="goods" placeholder="商品清单"> <input type="button" class="btn btn-info save" value="保存"> <input type="button" class="btn btn-default cancel" value="取消">
+								<input type="text" class="form-control" style="width:50%;" id="goods" placeholder="商品清单"> <input type="button" class="btn btn-info save" value="保存"> <input type="button" class="btn btn-default cancel" value="取消">
 							</div>
 							<div class="goodsPlus col-sm-1">
 								<a href="javascript:void(0);" title="点击添加"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
@@ -152,19 +154,20 @@
 								<span class="help-block" id="descriptionerror"></span>
 							</div>
 						</div>
-						
 						<div class="form-group col-md-9">
 							<label for="picture" class="col-sm-2 control-label">商品图片:</label>
-							<div class="col-sm-9">
-								<input type="file" id="picture" name="picture" placeholder="商品图片">
+							<div class="col-sm-4">
+								<input type="file" id="file" name="file" placeholder="商品图片">
 							</div>
-							<img src="${initParam.resourceRoot}/img/list-1.jpg" alt="" width="200px" height="200px" class="img-thumbnail">
 						</div>
-
-						
+						<div class="form-group col-md-9">
+							<div class="localImag col-sm-9 col-sm-offset-2">
+								<img id="imgpreview" src="" alt="" width="200px" style="display: none" height="180px" class="img-thumbnail">		
+							</div>
+						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-6">
-							     <button type="button" id="btn-submit" class="btn btn-info col-sm-offset-1" >保存</button>
+							     <button type="submit" id="btn-submit" class="btn btn-info col-sm-offset-1" >保存</button>
 							     <button type="reset" class="btn reset" ></button>
 							     <button type="button" class="btn btn-default col-sm-offset-1" onclick="window.history.go(-1);" >返回</button>
 						    </div>
