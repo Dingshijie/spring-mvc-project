@@ -16,25 +16,29 @@ public class FileUtil {
 
 	public enum FileType {
 		/**
-		 * excel2003
+		 * JPG
 		 */
-		XLS,
+		JPG,
 		/**
-		 * excel2007
+		 * JPEG
 		 */
-		XLSX,
+		JPEG,
 		/**
-		 * CSV文件
+		 * GIF
 		 */
-		CSV,
+		GIF,
 		/**
-		 * DBF文件
+		 * PNG
 		 */
-		DBF,
+		PNG,
 		/**
-		 * ZIP压缩文件
+		 * BMP
 		 */
-		ZIP
+		BMP,
+		/**
+		 * XLSX
+		 */
+		XLSX
 	}
 
 	/**
@@ -61,5 +65,17 @@ public class FileUtil {
 		} catch (IllegalArgumentException e) {
 			return null;
 		}
+	}
+
+	/**
+	 * 获取文件大小（如果file==null或者file.isEmpty，则返回null）
+	 * @param file 文件
+	 * @return
+	 */
+	public static long getFileSize(MultipartFile file) {
+		if (file == null || file.isEmpty()) {
+			return 0;
+		}
+		return file.getSize();
 	}
 }

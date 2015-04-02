@@ -35,7 +35,7 @@ public class WebUtils {
 	/**
 	 * 上传路径
 	 */
-	private static String uploadPath = "/upload";
+	private static String uploadPath = "/workspace/spring-mvc-project/spring-mvc-project-web/src/main/webapp/resources";
 
 	/**
 	 * 导出路径
@@ -55,7 +55,7 @@ public class WebUtils {
 	 * @return 上传路径
 	 */
 	public static String generateUploadPath() {
-		String dir = (uploadPath + getFolderRelativePath()).replace(Constant.SEPARATOR_BACKSLASH,
+		String dir = (uploadPath + "/upload" + getFolderRelativePath()).replace(Constant.SEPARATOR_BACKSLASH,
 				Constant.SEPARATOR_SLASH);
 		mkdirs(dir);
 		return dir;

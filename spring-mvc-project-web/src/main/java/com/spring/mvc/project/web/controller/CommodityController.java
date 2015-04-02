@@ -70,7 +70,11 @@ public class CommodityController {
 	public boolean add(MultipartFile file, CommodityInfo commodity, HttpSession session, Model model) {
 
 		FileType fileType = FileUtil.getFileType(file);
+		long size = file.getSize();
 		if (fileType == null) {
+			//为上传文件
+		} else if (size > 4 * 1024 * 1024) {
+			//文件大小超限制
 
 		} else {
 			String realPath = WebUtils.generateFileUploadPath(fileType);
@@ -80,6 +84,8 @@ public class CommodityController {
 				String description = "成功上传[" + file.getOriginalFilename() + "]";
 				String object = realPath.substring(WebUtils.getUploadPath().length());
 				System.out.println(description + ":" + object);
+
+				commodity.setPicture(realPath.replace(WebUtils.getUploadPath(), ""));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
