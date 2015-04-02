@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <link rel="stylesheet" href="${initParam.resourceRoot}/css/common/manager-left.css"/>
@@ -8,6 +9,7 @@
 <div class="col-md-2 sidebar">
 	<div class="col-md-7 col-md-offset-5" style="padding-right: 0">
 		<ul class="nav nav-sidebar">
+			<shiro:hasAnyRoles  name="ADMIN, MANAGER">
 			<li <c:if test="${param.active=='usermanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/user/list.html">用户管理</a>
 				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='usermanager'}">style="display:inline-block"</c:if> >
 					<li <c:if test="${param.subactive=='userlist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/user/list.html">用户列表</a></li>
@@ -38,12 +40,17 @@
 					<li <c:if test="${param.subactive=='addedupubcode'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/edupubcode/add.html">添加专业代码</a></li>
 				</ul>
 			</li>
+			</shiro:hasAnyRoles >
+			<shiro:hasAnyRoles  name="ADMIN, MANAGER, BUSSINESS, STUDENT">
 			<li <c:if test="${param.active=='commoditymanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/commodity/list.html">商品管理</a>
 				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='commoditymanager'}">style="display:inline-block"</c:if> >
 					<li <c:if test="${param.subactive=='commoditylist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/commodity/list.html">商品列表</a></li>
+					<shiro:hasAnyRoles  name="BUSSINESS,STUDENT">
 					<li <c:if test="${param.subactive=='addcommodity'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/commodity/add.html">添加商品</a></li>
+					</shiro:hasAnyRoles >
 				</ul>
 			</li>
+			</shiro:hasAnyRoles >
 		</ul>
 	</div>
 </div>

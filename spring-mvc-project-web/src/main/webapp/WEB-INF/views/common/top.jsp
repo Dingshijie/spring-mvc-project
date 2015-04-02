@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" style="color: #337ab7" href="#">校园E+</a>
+          <a class="navbar-brand" style="color: #337ab7" href="${webRoot}/index.html" title="点击返回首页">校园E+</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -58,14 +58,20 @@
           </form>
           <ul class="nav navbar-nav navbar-right">
             <li><a class="tag-a" href="${webRoot}/index.html">首页</a></li>
-            <li><a class="tag-a" href="#">我的收藏</a></li>
-            <li class="dropdown">
+            
+            <!-- <li><a class="tag-a" href="#">我的收藏</a></li> -->
+             <shiro:hasAnyRoles name="ADMIN, MANAGER">
+		     <li><a href="${webRoot}/user/list.html">管理中心</a></li>
+             </shiro:hasAnyRoles>
+             <shiro:hasAnyRoles name="BUSSINESS, STUDENT">
+             <li class="dropdown">
             	<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">商家中心<span class="caret"></span></a>
             	<ul class="dropdown-menu" role="menu" style="min-width: 80px;">
-	                <li><a href="#">我发布的</a></li>
+	                <li><a href="${webRoot}/commodity/list.html">管理中心</a></li>
 	                <li><a href="#">我想合作</a></li>
              	</ul>
             </li>
+            </shiro:hasAnyRoles>
             <li class="dropdown">
             	<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">联系我们<span class="caret"></span></a>
             	<ul class="dropdown-menu" role="menu" style="min-width: 80px;">

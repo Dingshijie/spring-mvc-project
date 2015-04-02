@@ -18,13 +18,16 @@
           <a class="navbar-brand" style="color: #337ab7" href="#">校园E+</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
             <shiro:authenticated>
             	<li>
             		<a href="javascript:void(0);">欢迎您：<shiro:principal></shiro:principal></a>
             	</li>
             	<li>
             		<a class="tag-a" href="${webRoot}/logout.html">[退出]</a>
+            	</li>
+            	<li>
+            		<a class="btn" href="${webRoot}/index.html">返回首页</a>
             	</li>
             </shiro:authenticated>
           </ul>
