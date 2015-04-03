@@ -67,15 +67,14 @@ public class CommodityController {
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean add(@RequestParam(value = "file") MultipartFile file, CommodityInfo commodity, HttpSession session,
-			Model model) {
+	public boolean add(MultipartFile file, CommodityInfo commodity, HttpSession session, Model model) {
 
 		FileType fileType = FileUtil.getFileType(file);
-		long size = FileUtil.getFileSize(file);
-		if (fileType == null || FileType.XLSX.equals(fileType)) {
-			//上传的图片格式不正确
-		} else if (size <= 0 || size > 5 * 1024 * 1024) {
-			//上传的图片大小最好不要超过4M，这里我给了5M的空间，保证4M左右可以上传成功
+		long size = file.getSize();
+		if (fileType == null) {
+			//为上传文件
+		} else if (size > 4 * 1024 * 1024) {
+			//文件大小超限制
 
 		} else {
 			String realPath = WebUtils.generateFileUploadPath(fileType);
@@ -85,7 +84,8 @@ public class CommodityController {
 				String description = "成功上传[" + file.getOriginalFilename() + "]";
 				String object = realPath.substring(WebUtils.getUploadPath().length());
 				System.out.println(description + ":" + object);
-				commodity.setPicture(realPath);
+
+				commodity.setPicture(realPath.replace(WebUtils.getUploadPath(), ""));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

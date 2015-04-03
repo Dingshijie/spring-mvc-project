@@ -30,22 +30,20 @@
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
 			<div id="mainList">
-				<form class="form-horizontal col-md-offset-1 col-md-11" id="myForm" role="form" action="${webRoot }/commodity/add" method="post" enctype="multipart/form-data" >
+				<form class="form-horizontal col-md-offset-1 col-md-11" id="myForm" role="form" action="${webRoot }/commodity/add" method="post" enctype="multipart/form-data">
 					<fieldset>
 						<legend>添加商品</legend>
 						<div class="form-group col-md-6" style="margin-top: 20px;">
 							<label for="name" class="col-sm-3 control-label">商品名称:</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="name" name="name" placeholder="商品名称"> 
+								<input type="text" class="form-control" id="name" name="name" placeholder="商品名称（必填）"> 
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="nameerror"></span>
-							</div>
 						</div>
 						<div class="form-group col-md-6" style="margin-top: 20px;">
 							<label for="brand" class="col-sm-3 control-label">商品品牌:</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="brand" name="brand" placeholder="商品品牌(选填)"> 
+								<input type="text" class="form-control" id="brand" name="brand" placeholder="商品品牌（选填）"> 
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="branderror"></span>
@@ -70,14 +68,12 @@
 									<option value="" selected="selected">所有类别</option>
 								</select>
 							</div>
-							<div class="col-sm-2" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="categoryerror"></span>
-							</div>
+							<span class="help-block" id="categoryerror"></span>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="typeCode" class="col-sm-3 control-label">商品型号:</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="typeCode" name="typeCode" placeholder="商品型号(选填)"> 
+								<input type="text" class="form-control" id="typeCode" name="typeCode" placeholder="商品型号（选填）"> 
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="typeCodeerror"></span>
@@ -86,7 +82,7 @@
 						<div class="form-group col-md-6">
 							<label for="link" class="col-sm-3 control-label">商品链接:</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="link" name="link" placeholder="商品链接(选填)"> 
+								<input type="text" class="form-control" id="link" name="link" placeholder="商品链接（选填）"> 
 							</div>
 							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="linkerror"></span>
@@ -95,20 +91,16 @@
 						<div class="form-group col-md-6">
 							<label for="price" class="col-sm-3 control-label">商品价格:</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" style="width: 90%;display: inline-block;" id="price" name="price" placeholder="价格">&nbsp;元
+								<input type="text" class="form-control" style="width: 90%;display: inline-block;" id="price" name="price" placeholder="价格（必填）">&nbsp;元
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="priceerror"></span>
-							</div>
+							<span class="help-block" id="priceerror"></span>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="unit" class="col-sm-3 control-label">计量单位:</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="unit" name="unit" placeholder="计量单位">
+								<input type="text" class="form-control" id="unit" name="unit" placeholder="计量单位（必填）">
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="uniterror"></span>
-							</div>
+							<span class="help-block" id="uniterror" style="margin-top: 5px;"></span>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="used" class="col-sm-3 control-label">是否二手:</label>
@@ -143,6 +135,7 @@
 							<div class="goodsPlus col-sm-1">
 								<a href="javascript:void(0);" title="点击添加"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 							</div>
+							<span class="help-block" id="goodserror"></span>
 						</div>
 						
 						<div class="form-group col-md-9">
@@ -150,9 +143,7 @@
 							<div class="col-sm-6">
 								<textarea id="description" name="description" placeholder="在此处填写描述" rows="5" cols="10"></textarea>
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="descriptionerror"></span>
-							</div>
+							<span class="help-block" id="descriptionerror"></span>
 						</div>
 						<div class="form-group col-md-9">
 							<label for="picture" class="col-sm-2 control-label">商品图片:</label>
@@ -167,7 +158,8 @@
 						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-6">
-							     <button type="submit" id="btn-submit" class="btn btn-info col-sm-offset-1" >保存</button>
+
+							     <button type="submit" id="btn-submit"  class="btn btn-info col-sm-offset-1" >保存</button>
 							     <button type="reset" class="btn reset" ></button>
 							     <button type="button" class="btn btn-default col-sm-offset-1" onclick="window.history.go(-1);" >返回</button>
 						    </div>

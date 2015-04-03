@@ -182,6 +182,7 @@ legend{
 }
 
 .help-block {
+	font-size:12px;
 	display: none;
 	color: red;
 }

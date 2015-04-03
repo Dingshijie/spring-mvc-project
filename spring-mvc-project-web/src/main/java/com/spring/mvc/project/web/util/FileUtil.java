@@ -16,27 +16,27 @@ public class FileUtil {
 
 	public enum FileType {
 		/**
-		 * jpg
+		 * JPG
 		 */
 		JPG,
 		/**
-		 * jpeg
+		 * JPEG
 		 */
 		JPEG,
 		/**
-		 * gif
+		 * GIF
 		 */
 		GIF,
 		/**
-		 * png
+		 * PNG
 		 */
 		PNG,
 		/**
-		 * bmp
+		 * BMP
 		 */
 		BMP,
 		/**
-		 * excel2007
+		 * XLSX
 		 */
 		XLSX
 	}
@@ -67,6 +67,11 @@ public class FileUtil {
 		}
 	}
 
+	/**
+	 * 获取文件大小（如果file==null或者file.isEmpty，则返回null）
+	 * @param file 文件
+	 * @return
+	 */
 	public static long getFileSize(MultipartFile file) {
 		if (file == null || file.isEmpty()) {
 			return 0;
