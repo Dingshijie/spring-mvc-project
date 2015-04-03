@@ -31,6 +31,9 @@
 		<div class="show-grid">
 			<div id="mainList">
 				<form class="form-horizontal col-md-offset-1 col-md-11" id="myForm" role="form" action="${webRoot }/commodity/add" method="post" enctype="multipart/form-data">
+					<c:if test="${not empty  errorMsg }">
+				       <div class="alert alert-danger"><i class="iconfont"></i> ${errorMsg}</div>
+				    </c:if>
 					<fieldset>
 						<legend>添加商品</legend>
 						<div class="form-group col-md-6" style="margin-top: 20px;">

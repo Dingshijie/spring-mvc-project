@@ -66,6 +66,8 @@ $(function(){
 		});
 		if(val==''){
 			$('#goodserror').addClass('error').css('color','red').html("× 请添加商品清单！");
+		}else{
+			$('#goodserror').removeClass('error').css('color','green').html("√");
 		}
 		$('#goodserror').show();
 		$('[name="goods"]').val(val);
@@ -91,6 +93,8 @@ $(function(){
 		});
 		if(val==''){
 			$('#goodserror').addClass('error').css('color','red').html("× 请添加商品清单！");
+		}else{
+			$('#goodserror').removeClass('error').css('color','green').html("√");
 		}
 		$('[name="goods"]').val(val);
 		
@@ -129,6 +133,8 @@ $(function(){
 		});
 		if(val==''){
 			$('#goodserror').addClass('error').css('color','red').html("× 请添加商品清单！");
+		}else{
+			$('#goodserror').removeClass('error').css('color','green').html("√");
 		}
 		$('[name="goods"]').val(val);
 		

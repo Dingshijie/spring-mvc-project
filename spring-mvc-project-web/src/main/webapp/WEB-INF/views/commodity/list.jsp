@@ -25,6 +25,9 @@
 	<c:import url="../common/manager-top.jsp"></c:import>
 	<c:import url="../common/manager-left.jsp"><c:param name="active">commoditymanager</c:param><c:param name="subactive">commoditylist</c:param></c:import>
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
+		<c:if test="${not empty  successMsg }">
+			<div class="alert alert-success"><i class="iconfont"></i> ${successMsg}</div>
+		</c:if>
 		<div class="row">
 			<div class="col-md-12">
 				<form class="form-inline" role="form">

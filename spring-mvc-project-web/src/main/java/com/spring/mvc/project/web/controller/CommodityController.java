@@ -66,8 +66,7 @@ public class CommodityController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	@ResponseBody
-	public boolean add(MultipartFile file, CommodityInfo commodity, HttpSession session, Model model) {
+	public String add(MultipartFile file, CommodityInfo commodity, HttpSession session, Model model) {
 
 		FileType fileType = FileUtil.getFileType(file);
 		long size = file.getSize();
@@ -91,7 +90,16 @@ public class CommodityController {
 				e.printStackTrace();
 			}
 		}
-		return commodityService.add(commodity);
+		//回头将这两个情况给统成一个情况好了
+		//如果添加成功返回列表页面
+		if (commodityService.add(commodity)) {
+			model.addAttribute("successMsg", "添加成功！");
+			return "commodity/list";
+		} else {
+			//否则返回添加页面
+			model.addAttribute("errorMsg", "添加失败！");
+			return "commodity/add";
+		}
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
