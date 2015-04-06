@@ -83,7 +83,7 @@
 							</div>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="link" class="col-sm-3 control-label">商品链接:</label>
+							<label for="link" class="col-sm-3 control-label">商品介绍:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" id="link" name="link" placeholder="商品链接（选填）"> 
 							</div>
