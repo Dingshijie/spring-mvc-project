@@ -70,7 +70,7 @@
           				<tr class="city">
           					<th>城市:</th>
           					<td colspan="9">
-          						<span id="cityName" data-code="4101">郑州市</span>
+          						<span id="cityName" data-code="4101" data-name="郑州市">郑州市</span>
           						<span id="editCity">
           							<select id="province" name="province" class="form-control js-example-data-array-selected" style="width: 150px; float: left;" data-role="${user.role }">
 										<option value="">请选择</option>

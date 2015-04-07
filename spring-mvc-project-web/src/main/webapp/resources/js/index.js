@@ -6,7 +6,19 @@ $(function(){
 	 * 加载首页数据
 	 */
 	//默认首页上的地区是郑州市（code=4101）
-	var areaCode = $('#cityName').attr('data-code');
+	var areaCode = '';
+	var areaName = '';
+	if(getCookie("areaCode") == '' || getCookie("areaName") == ''){
+		areaCode = $('#cityName').attr('data-code');
+		areaName = $('#cityName').attr('data-name');
+	}else{
+		$('#cityName').html(getCookie("areaName"));
+		$('#cityName').attr('data-code',getCookie("areaCode"));
+		$('#cityName').attr('data-name',getCookie("areaName"));
+		areaCode = getCookie("areaCode");
+		areaName = getCookie("areaName");
+	}
+	
 	//设置首页上的地区
 	$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":areaCode},function(data){
 		var areahtml = '<th data-code="'+areaCode+'">区域:</th><td><a data-code="'+areaCode+'">不限</a></td>';
@@ -15,6 +27,7 @@ $(function(){
 		}
 		areahtml +='<td><button class="btn btn-default btn-xs" data-code="'+ areaCode +'">更多<span class="caret"></span></button></td>';
 		$('.area').empty().append(areahtml);
+
 	});
 	
 	//设置首页上的学校
@@ -26,6 +39,21 @@ $(function(){
 		schoolHtml +='<td><button class="btn btn-default btn-xs" data-code="'+ areaCode.substring(0,2) +'">更多<span class="caret"></span></button></td>';
 		$('.school').empty().append(schoolHtml);
 	});
+	
+	// 设置cook ======================================================================
+	function setCookie(name,value){
+		var exp = new Date(); 
+		exp.setTime(exp.getTime() + 60*60*1000);//时间设置为15分钟
+		document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+	}
+	// 获取cook ======================================================================
+	function getCookie(name){
+		var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+		if(arr=document.cookie.match(reg)) 
+			return unescape(arr[2]);
+		else
+			return null;
+	}
 	
 
 	/**
@@ -130,8 +158,12 @@ $(function(){
 			$('#areaerror').show();
 			return;
 		}
+		setCookie("areaCode",cityCode);
+		setCookie("areaName",cityName);
+		
 		$('#cityName').html(cityName);
 		$('#cityName').attr('data-code',cityCode);
+		$('#cityName').attr('data-name',cityName);
 		$("#cityName").show();
 		$('#editCity').hide();
 		$('#changeCity').show();
