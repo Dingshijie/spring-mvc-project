@@ -106,4 +106,5 @@ public class AreaServiceImpl implements AreaService {
 		}
 		return valueList;
 	}
+
 }

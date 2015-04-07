@@ -11,3 +11,17 @@
     color: #767676;
     text-align: center;
 }
+#changeCitySure{
+	display: none;	
+}
+#editCity{
+	display: none;
+}
+#changeCityCancel{
+	display: none;
+}
+.help-block {
+	font-size:12px;
+	display: none;
+	color: red;
+}
