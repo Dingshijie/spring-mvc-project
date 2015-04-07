@@ -443,7 +443,7 @@ public class UserInfo implements Serializable {
 	 */
 	@Transient
 	public boolean isManager() {
-		return Role.MANAGER.name().equals(role) || Role.ADMIN.name().equals(role);
+		return Role.MANAGER.equals(role) || Role.ADMIN.equals(role);
 	}
 
 	/**
@@ -452,7 +452,7 @@ public class UserInfo implements Serializable {
 	 */
 	@Transient
 	public boolean isAdministrator() {
-		return Role.ADMIN.name().equals(role);
+		return Role.ADMIN.equals(role);
 	}
 
 	@Override

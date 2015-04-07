@@ -54,9 +54,9 @@ $('.reset').click();
 			if(data == ''){
 				var html = "<div style='font-size:16px;text-align:center;line-height:120px;' class='alert-info' role='alert'><strong>提示</strong>：未查询到相关数据！</div>"
 			}else{
-				var html = "<table class='table table-hover table-striped'><colgroup><col width='5%'></col><col width='10%'></col><col width='10%'></col><col width='10%'></col><col width='10%'><col width='10%'></col><col width='10%'></col><col width='10%'></col><col width='10%'></col></colgroup><thead><tr><th>序号</th><th>名称</th><th>类别</th><th>价格</th><th>计量单位</th><th>是否在售</th><th>是否被推广</th><th>是否二手</th><th>操作</th></tr></thead><tbody>";
+				var html = "<table class='table table-hover table-striped'><colgroup><col width='5%'></col><col width='10%'></col><col width='10%'></col><col width='10%'></col><col width='10%'><col width='10%'></col><col width='10%'></col><col width='10%'></col><col width='10%'></col><col width='10%'></col></colgroup><thead><tr><th>序号</th><th>名称</th><th>类别</th><th>价格</th><th>计量单位</th><th>是否在售</th><th>是否被推广</th><th>是否二手</th><th>发布用户</th><th>操作</th></tr></thead><tbody>";
 				for(var i = 0; i < data.length; i++){
-					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].name +"</td><td>" + data[i].category + "</td><td>" + data[i].price + "元</td><td> " + data[i].unit + " </td><td> " + ((data[i].status=="1" || data[i].status=="0") ? (data[i].status=="1" ? "√": "×") : "× 注：被强制下架" ) + " </td><td> " + (data[i].recommend=="0" ? "×": "√") + " </td><td> " + (data[i].used=="0" ? "×": "√") + " </td><td><a href='HTTP://"+window.location.host+"/category/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
+					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].name +"</td><td>" + data[i].category + "</td><td>" + data[i].price + "元</td><td> " + data[i].unit + " </td><td> " + ((data[i].status=="1" || data[i].status=="0") ? (data[i].status=="1" ? "√": "×") : "× 注：被强制下架" ) + " </td><td> " + (data[i].recommend=="0" ? "×": "√") + " </td><td> " + (data[i].used=="0" ? "×": "√") + " </td><td> " + data[i].username+ " </td><td><a href='HTTP://"+window.location.host+"/category/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
 				}
 				html + "</tbody></table>";
 			}
@@ -184,8 +184,11 @@ $('.reset').click();
 	$('#keywordSearch').on('click',function(){
 		par.keyword = $('#keyword').val();
 		par.categoryCode = $('#category').val();
-		par.hot = $('#hot').val();
-		par.enable = $('#enable').val();
+		par.areaCode = $('#province').val();
+		par.schoolCode = $('#school').val();
+		par.status = $('#status').val();
+		par.recommend = $('#recommend').val();
+		par.used = $('#used').val();
 		
 		loadData(par);
 	});

@@ -2,6 +2,7 @@ package com.spring.mvc.project.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,9 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.spring.mvc.project.domain.CommodityInfo;
+import com.spring.mvc.project.domain.util.ExportField;
+import com.spring.mvc.project.domain.util.ExportField.DataType;
 import com.spring.mvc.project.service.CommodityService;
+import com.spring.mvc.project.web.util.ExportExcel2007;
 import com.spring.mvc.project.web.util.FileUtil;
 import com.spring.mvc.project.web.util.FileUtil.FileType;
 import com.spring.mvc.project.web.util.WebUtils;
@@ -44,7 +50,7 @@ public class CommodityController {
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	@ResponseBody
-	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
+	public List<JSONObject> findList(String categoryCode, String areaCode, String schoolCode, int status,
 			int recommend, int used, String keyword,
 			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex) {
@@ -107,4 +113,35 @@ public class CommodityController {
 	public boolean update(CommodityInfo commodity) {
 		return commodityService.update(commodity);
 	}
+
+	@RequestMapping(value = "export", method = RequestMethod.GET)
+	public ModelAndView export(String categoryCode, String areaCode, String schoolCode, int status, int recommend,
+			int used, String keyword) {
+		List<CommodityInfo> list = commodityService.findList(categoryCode, areaCode, schoolCode, status, recommend,
+				used, keyword);
+
+		List<ExportField> fields = new ArrayList<ExportField>();
+		setExportField(fields, list);
+		String filename = "商品信息";//"就业统计";
+		String sheetName = "sheet";
+		return new ModelAndView(new ExportExcel2007(filename, FileType.XLSX, sheetName, list, fields));
+	}
+
+	/**
+	 * 设置导处用户的信息项
+	 * @param fields
+	 * @param list
+	 */
+	public void setExportField(List<ExportField> fields, List<CommodityInfo> list) {
+		fields.add(new ExportField("name", "商品名称", DataType.STRING));
+		fields.add(new ExportField("category", "类别", DataType.STRING));
+		fields.add(new ExportField("price", "价格", DataType.STRING));
+		fields.add(new ExportField("unit", "计量单位", DataType.STRING));
+		fields.add(new ExportField("status", "是否在售", DataType.INT));
+		fields.add(new ExportField("recommend", "是否被推广", DataType.INT));
+		fields.add(new ExportField("used", "是否二手", DataType.INT));
+		fields.add(new ExportField("username", "发布用户", DataType.STRING));
+
+	}
+
 }

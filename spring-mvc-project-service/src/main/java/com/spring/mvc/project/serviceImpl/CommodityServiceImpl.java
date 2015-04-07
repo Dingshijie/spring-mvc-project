@@ -1,5 +1,6 @@
 package com.spring.mvc.project.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -81,17 +82,20 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
-	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
+	public List<JSONObject> findList(String categoryCode, String areaCode, String schoolCode, int status,
 			int recommend, int used, String keyword, int pageIndex, int pageSize) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		if (userInfo.isManager() || userInfo.isAdministrator()) {
-			return commodityRepository.findList("", categoryCode, areaCode, schoolCode, status, recommend, used,
+		List<Object[]> valuelist = new ArrayList<Object[]>();
+		if (userInfo.isManager()) {
+			valuelist = commodityRepository.findList("", categoryCode, areaCode, schoolCode, status, recommend, used,
 					keyword, pageIndex, pageSize);
 		} else {
-			return commodityRepository.findList(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
-					recommend, used, keyword, pageIndex, pageSize);
+			valuelist = commodityRepository.findList(userInfo.getUsername(), categoryCode, areaCode, schoolCode,
+					status, recommend, used, keyword, pageIndex, pageSize);
 		}
+
+		return changeEntityToJson(valuelist);
 	}
 
 	@Override
@@ -99,12 +103,51 @@ public class CommodityServiceImpl implements CommodityService {
 			String keyword) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		if (userInfo.isManager() || userInfo.isAdministrator()) {
+		if (userInfo.isManager()) {
 			return commodityRepository.findCount("", categoryCode, areaCode, schoolCode, status, recommend, used,
 					keyword);
 		} else {
 			return commodityRepository.findCount(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
 					recommend, used, keyword);
 		}
+	}
+
+	/**
+	 * 将返回类型转换成Json类型
+	 * @param valuelist
+	 * @return
+	 */
+	public List<JSONObject> changeEntityToJson(List<Object[]> valuelist) {
+		List<JSONObject> objList = new ArrayList<JSONObject>();
+		for (Object[] value : valuelist) {
+			JSONObject obj = new JSONObject();
+			obj.put("id", value[0]);
+			obj.put("name", value[1]);
+			obj.put("category",
+					value[2] == null ? "" : value[2].toString() + value[3] == null ? "" : value[3].toString());
+			obj.put("price", value[4]);
+			obj.put("unit", value[5]);
+			obj.put("status", value[6]);
+			obj.put("recommend", value[7]);
+			obj.put("used", value[8]);
+			obj.put("username", value[9]);
+			objList.add(obj);
+		}
+		return objList;
+	}
+
+	@Override
+	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		if (userInfo.isManager()) {
+			return commodityRepository.findList("", categoryCode, areaCode, schoolCode, status, recommend, used,
+					keyword);
+		} else {
+			return commodityRepository.findList(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
+					recommend, used, keyword);
+		}
+
 	}
 }

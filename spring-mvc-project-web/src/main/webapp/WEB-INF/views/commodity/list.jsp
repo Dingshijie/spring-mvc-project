@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +46,7 @@
 							<option value="91">91 其他</option>
 						</select>  
 					</div>
+					<shiro:hasAnyRoles name="ADMIN, MANAGER">
 					<div class="form-group">
 						<select id="province" name="province" class="form-control" style="width: auto; float: left;">
 							<option value="" selected="selected">全部省份</option>
@@ -86,6 +88,7 @@
 							<option value="" selected="selected">请选择院校</option>
 						</select>
 					</div>
+					</shiro:hasAnyRoles>
 					<div class="form-group">
 						<select id="status" name="status" class="form-control" style="width: auto;float: left">
 							<option value="10" selected="selected">全部</option>

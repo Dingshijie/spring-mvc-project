@@ -60,63 +60,154 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<CommodityInfo> findList(String username, String categoryCode, String areaCode, String schoolCode,
+	public List<Object[]> findList(String username, String categoryCode, String areaCode, String schoolCode,
 			int status, int recommend, int used, String keyword, int pageIndex, int pageSize) {
-		Criteria crit = this.getSession().createCriteria(CommodityInfo.class);
+
+		StringBuffer hql = new StringBuffer(
+				"SELECT id,name,category,(SELECT name FROM Category WHERE code= a.category) AS categoryName ,price,unit,status,recommend,used,username ");
+		hql.append("FROM CommodityInfo AS a WHERE 1=1 ");
 		if (StringUtils.hasText(username)) {
-			crit.add(Restrictions.eq("username", username));
+			hql.append("AND username=:username ");
+		} else {
+			hql.append("AND username IN (SELECT username from UserInfo WHERE 1=1 ");
+			if (StringUtils.hasText(areaCode)) {
+				hql.append("AND areaCode LIKE :areaCode ");
+			}
+			if (StringUtils.hasText(schoolCode)) {
+				hql.append("AND schoolCode LIKE :schoolCode ");
+			}
+			hql.append(") ");
 		}
 		if (StringUtils.hasText(categoryCode)) {
-			crit.add(Restrictions.eq("category", categoryCode));
+			hql.append("AND category LIKE :categoryCode ");
 		}
-		//嵌套子查询
-		DetachedCriteria subCriteria = DetachedCriteria.forClass(UserInfo.class);
-		subCriteria.setProjection(Projections.property("username"));
-		if (StringUtils.hasText(areaCode)) {
-			subCriteria.add(Restrictions.like("areaCode", areaCode + "%"));
-		}
-		if (StringUtils.hasText(schoolCode)) {
-			subCriteria.add(Restrictions.like("schoolCode", schoolCode));
-		}
-		crit.add(Property.forName("username").in(subCriteria));
-
 		if (status != 10) {
-			crit.add(Restrictions.eq("status", status));
+			hql.append("AND status LIKE :status ");
 		}
 		if (recommend != 10) {
-			crit.add(Restrictions.eq("recommend", recommend));
+			hql.append("AND recommend LIKE :recommend ");
 		}
 		if (used != 10) {
-			crit.add(Restrictions.eq("used", used));
+			hql.append("AND used LIKE :used ");
 		}
 
 		if (StringUtils.hasText(keyword)) {
-			crit.add(Restrictions.or(
-					Restrictions.eq("name", keyword),
-					Restrictions.or(
-							Restrictions.eq("brand", keyword),
-							Restrictions.or(
-									Restrictions.eq("typeCode", keyword),
-									Restrictions.or(Restrictions.eq("description", keyword),
-											Restrictions.eq("username", keyword))))));
+			hql.append("AND (name LIKE :keyword OR brand LIKE :keyword OR typeCode LIKE :keyword OR username LIKE :keyword) ");
+		}
+		hql.append("ORDER BY ADD_TIME DESC");
+
+		Query query = this.getSession().createQuery(hql.toString());
+
+		if (StringUtils.hasText(username)) {
+			query.setParameter("username", username);
+		} else {
+			if (StringUtils.hasText(areaCode)) {
+				query.setParameter("areaCode", areaCode + "%");
+			}
+			if (StringUtils.hasText(schoolCode)) {
+				query.setParameter("schoolCode", schoolCode + "%");
+			}
+		}
+		if (StringUtils.hasText(categoryCode)) {
+			query.setParameter("categoryCode", categoryCode + "%");
+		}
+		if (status != 10) {
+			query.setParameter("status", status);
+		}
+		if (recommend != 10) {
+			query.setParameter("recommend", recommend);
+		}
+		if (used != 10) {
+			query.setParameter("used", used);
+		}
+		if (StringUtils.hasText(keyword)) {
+			query.setParameter("keyword", keyword);
 		}
 		if (pageSize > 0) {
-			crit.setMaxResults(pageSize);
-			crit.setFirstResult((pageIndex - 1) * pageSize);
+			query.setMaxResults(pageSize);
+			query.setFirstResult((pageIndex - 1) * pageSize);
 		}
 
-		return crit.list();
+		return query.list();
 	}
 
 	@Override
 	public int findCount(String username, String categoryCode, String areaCode, String schoolCode, int status,
 			int recommend, int used, String keyword) {
+		StringBuffer hql = new StringBuffer("SELECT count(id) FROM CommodityInfo AS a WHERE 1=1 ");
+		if (StringUtils.hasText(username)) {
+			hql.append("AND username=:username ");
+		} else {
+			hql.append("AND username IN (SELECT username from UserInfo WHERE 1=1 ");
+			if (StringUtils.hasText(areaCode)) {
+				hql.append("AND areaCode LIKE :areaCode ");
+			}
+			if (StringUtils.hasText(schoolCode)) {
+				hql.append("AND schoolCode LIKE :schoolCode ");
+			}
+			hql.append(") ");
+		}
+		if (StringUtils.hasText(categoryCode)) {
+			hql.append("AND category LIKE :categoryCode ");
+		}
+		if (status != 10) {
+			hql.append("AND status LIKE :status ");
+		}
+		if (recommend != 10) {
+			hql.append("AND recommend LIKE :recommend ");
+		}
+		if (used != 10) {
+			hql.append("AND used LIKE :used ");
+		}
+
+		if (StringUtils.hasText(keyword)) {
+			hql.append("AND (name LIKE :keyword OR brand LIKE :keyword OR typeCode LIKE keyword OR username LIKE keyword) ");
+		}
+		hql.append("ORDER BY ADD_TIME DESC");
+
+		Query query = this.getSession().createQuery(hql.toString());
+
+		if (StringUtils.hasText(username)) {
+			query.setParameter("username", username);
+		} else {
+			if (StringUtils.hasText(areaCode)) {
+				query.setParameter("areaCode", areaCode + "%");
+			}
+			if (StringUtils.hasText(schoolCode)) {
+				query.setParameter("schoolCode", schoolCode + "%");
+			}
+		}
+		if (StringUtils.hasText(categoryCode)) {
+			query.setParameter("categoryCode", categoryCode + "%");
+		}
+		if (status != 10) {
+			query.setParameter("status", status);
+		}
+		if (recommend != 10) {
+			query.setParameter("recommend", recommend);
+		}
+		if (used != 10) {
+			query.setParameter("used", used);
+		}
+		if (StringUtils.hasText(keyword)) {
+			query.setParameter("keyword", keyword);
+		}
+		return Integer.parseInt(query.uniqueResult().toString());
+	}
+
+	/**
+	 * 导出用
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CommodityInfo> findList(String username, String categoryCode, String areaCode, String schoolCode,
+			int status, int recommend, int used, String keyword) {
 		Criteria crit = this.getSession().createCriteria(CommodityInfo.class);
 		if (StringUtils.hasText(username)) {
 			crit.add(Restrictions.eq("username", username));
 		}
 		if (StringUtils.hasText(categoryCode)) {
-			crit.add(Restrictions.eq("category", categoryCode));
+			crit.add(Restrictions.like("category", categoryCode + "%"));
 		}
 		//嵌套子查询
 		DetachedCriteria subCriteria = DetachedCriteria.forClass(UserInfo.class);
@@ -128,6 +219,7 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 			subCriteria.add(Restrictions.like("schoolCode", schoolCode));
 		}
 		crit.add(Property.forName("username").in(subCriteria));
+
 		if (status != 10) {
 			crit.add(Restrictions.eq("status", status));
 		}
@@ -137,6 +229,7 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 		if (used != 10) {
 			crit.add(Restrictions.eq("used", used));
 		}
+
 		if (StringUtils.hasText(keyword)) {
 			crit.add(Restrictions.or(
 					Restrictions.eq("name", keyword),
@@ -147,8 +240,8 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 									Restrictions.or(Restrictions.eq("description", keyword),
 											Restrictions.eq("username", keyword))))));
 		}
-		crit.setProjection(Projections.rowCount());
-		return Integer.parseInt(crit.uniqueResult().toString());
+
+		return crit.list();
 	}
 
 }
