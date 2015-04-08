@@ -25,3 +25,19 @@
 	display: none;
 	color: red;
 }
+.modal{
+	display: none;
+}
+.modal .modal-content{border-radius:0px;}
+.modal .nav-tabs>li{width:50%;text-align:center;background-color:#2a6496;border:0px;}
+.modal .nav-tabs>li>a{border:0px;color:#FFF;margin-right:0px;font-size:16px;}
+.modal .nav-tabs>li>a:hover{background-color:transparent;}
+.modal .nav-tabs>li.active>a{color:#000;}
+.modal .nav-tabs>li.active>a:hover{background-color: #FFF;}
+.modal .tab-content{min-height:100px;padding:15px 25px;}
+.modal .form-horizontal{width:80%;margin:10px auto;}
+.modal .radio{font-size:16px;margin-bottom:15px;}
+.modal-header{
+	text-align:center;background-color:#2a6496;border:0px;
+	color:#FFF;margin-right:0px;font-size:16px;
+}

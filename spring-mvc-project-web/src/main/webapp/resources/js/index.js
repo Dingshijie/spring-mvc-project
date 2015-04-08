@@ -209,14 +209,45 @@ $(function(){
 	 * 点击地区上的“更多”
 	 */
 	$('.area').on('click','.btn',function(){
-		console.log('aa');
+		$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":areaCode},function(data){
+			var areahtml = "<table class='table' style='padding: 10px'><colgroup><col width='30%'></col><col width='30%'></col><col width='30%'></col></colgroup>";
+			for(var i=0;i < data.length  ;i++){
+				if(i%3==2){
+					areahtml += "<tr>";
+				}
+				areahtml += "<td style='padding: 10px;'><input name='area' type='checkbox' value='"+data[i].code+"'>"+ data[i].name +"</td>"
+				if(i%3==1){
+					areahtml += "</tr>";
+				}
+			}
+			areahtml +='</table>';
+			$(this).find('.modal-body').empty().append(areahtml);
+
+		});
+		$('#moreAreaModal').modal('show');
 	});
 	
 	/**
 	 * 点击学校上的“更多”
 	 */
 	$('.school').on('click','.btn',function(){
-		console.log('aa');
+		
+		$.get("HTTP://"+ window.location.host + "/school/list/"+areaCode.substring(0,2),function(data){
+			var schoolHtml = "<table class='table' style='padding: 10px'><colgroup><col width='30%'></col><col width='30%'></col><col width='30%'></col></colgroup>";
+			for(var i=0; i< data.length  ;i++){
+				
+				if(i%3==2){
+					schoolHtml += "<tr>";
+				}
+				schoolHtml += "<td style='padding: 10px;'><input name='school' type='checkbox' value='"+data[i].code+"'>"+ data[i].name +"</a></td>"
+				if(i%3==1){
+					schoolHtml += "</tr>";
+				}
+			}
+			schoolHtml +='</table>';
+			$('.school').empty().append(schoolHtml);
+		});
+		$('#moreSchoolModal').modal('show');
 	});
 	
 });
