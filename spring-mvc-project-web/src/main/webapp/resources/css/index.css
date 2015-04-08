@@ -27,6 +27,7 @@
 }
 .modal{
 	display: none;
+	
 }
 .modal .modal-content{border-radius:0px;}
 .modal .nav-tabs>li{width:50%;text-align:center;background-color:#2a6496;border:0px;}

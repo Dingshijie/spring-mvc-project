@@ -8,13 +8,21 @@ $(function(){
 	//默认首页上的地区是郑州市（code=4101）
 	var areaCode = '';
 	var areaName = '';
-	if(getCookie("areaCode") == '' || getCookie("areaName") == ''){
+	
+	if(getCookie("areaCode") == null || getCookie("areaName") == null){
+		
 		areaCode = $('#cityName').attr('data-code');
 		areaName = $('#cityName').attr('data-name');
+		
+		setCookie("areaCode",areaCode);
+		setCookie("areaName",areaName);
 	}else{
 		$('#cityName').html(getCookie("areaName"));
 		$('#cityName').attr('data-code',getCookie("areaCode"));
 		$('#cityName').attr('data-name',getCookie("areaName"));
+		
+		$('#id_city').attr('data-code',getCookie("areaCode"));
+		$('#id_city').html(getCookie("areaName"));
 		areaCode = getCookie("areaCode");
 		areaName = getCookie("areaName");
 	}
@@ -138,6 +146,7 @@ $(function(){
 	 * 点击取消
 	 */
 	$('#changeCityCancel').on('click',function(){
+		$('#areaerror').hide();
 		$("#cityName").show();
 		$('#editCity').hide();
 		$('#changeCity').show();
@@ -169,6 +178,8 @@ $(function(){
 		$('#changeCity').show();
 		$('#changeCitySure').hide();
 		$('#changeCityCancel').hide();
+		
+		window.location.reload();
 		
 	});
 	
@@ -209,19 +220,29 @@ $(function(){
 	 * 点击地区上的“更多”
 	 */
 	$('.area').on('click','.btn',function(){
-		$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":areaCode},function(data){
+		
+		var code = '';
+		if(getCookie("areaCode") == '' ){
+			code = $('#cityName').attr('data-code');
+			
+		}else{
+			code = getCookie("areaCode");
+		}
+		
+		$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":code},function(data){
 			var areahtml = "<table class='table' style='padding: 10px'><colgroup><col width='30%'></col><col width='30%'></col><col width='30%'></col></colgroup>";
-			for(var i=0;i < data.length  ;i++){
-				if(i%3==2){
+			for(var i=0;i < data.length ;i++){
+				if(i%3==0){
 					areahtml += "<tr>";
 				}
-				areahtml += "<td style='padding: 10px;'><input name='area' type='checkbox' value='"+data[i].code+"'>"+ data[i].name +"</td>"
-				if(i%3==1){
+				areahtml += "<td style='padding: 10px;'><input name='area' type='radio' value='"+data[i].code+"'>"+ data[i].name +"</td>"
+				if(i%3==2){
 					areahtml += "</tr>";
 				}
 			}
 			areahtml +='</table>';
-			$(this).find('.modal-body').empty().append(areahtml);
+			console.log($('#moreAreaModal').find('.modal-body'));
+			$('#moreAreaModal').find('.modal-body').empty().append(areahtml);
 
 		});
 		$('#moreAreaModal').modal('show');
@@ -232,20 +253,28 @@ $(function(){
 	 */
 	$('.school').on('click','.btn',function(){
 		
-		$.get("HTTP://"+ window.location.host + "/school/list/"+areaCode.substring(0,2),function(data){
+		var code = '';
+		if(getCookie("areaCode") == '' ){
+			code = $('#cityName').attr('data-code');
+			
+		}else{
+			code = getCookie("areaCode");
+		}
+		
+		$.get("HTTP://"+ window.location.host + "/school/list/"+code.substring(0,2),function(data){
 			var schoolHtml = "<table class='table' style='padding: 10px'><colgroup><col width='30%'></col><col width='30%'></col><col width='30%'></col></colgroup>";
 			for(var i=0; i< data.length  ;i++){
 				
-				if(i%3==2){
+				if(i%3==0){
 					schoolHtml += "<tr>";
 				}
-				schoolHtml += "<td style='padding: 10px;'><input name='school' type='checkbox' value='"+data[i].code+"'>"+ data[i].name +"</a></td>"
-				if(i%3==1){
+				schoolHtml += "<td style='padding: 10px;'><input name='school' type='radio' value='"+data[i].code+"'>"+ data[i].name +"</a></td>"
+				if(i%3==2){
 					schoolHtml += "</tr>";
 				}
 			}
 			schoolHtml +='</table>';
-			$('.school').empty().append(schoolHtml);
+			$('#moreSchoolModal').find('.modal-body').empty().append(schoolHtml);
 		});
 		$('#moreSchoolModal').modal('show');
 	});

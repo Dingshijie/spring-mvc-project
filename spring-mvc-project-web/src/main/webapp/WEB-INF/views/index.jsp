@@ -52,7 +52,7 @@
           </p>
           	<div class="form-group">
           		<div class="form-group">
-          			所有分类  > 城市:郑州市 > 区域:高新区
+          			已选择：<span id="id_category" data-code="">所有分类</span> > <span id="id_city" data-code="">郑州市</span> > <span id="id_area" data-code="">高新区</span>
           		</div>
           		<table class="table table-condensed" style="margin-bottom:0px;">
           		<colgroup><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col></colgroup>
@@ -270,7 +270,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Modal title</h4>
+	        <h4 class="modal-title">请选择所在地区</h4>
 	      </div>
 	      <div class="modal-body">
 	        
@@ -288,7 +288,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Modal title</h4>
+	        <h4 class="modal-title">请选择所在学校</h4>
 	      </div>
 	      <div class="modal-body">
 	       
