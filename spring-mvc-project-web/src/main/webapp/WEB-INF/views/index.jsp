@@ -190,66 +190,17 @@
 			</div>
           </div>
           <div class="row">
-            <div class="col-xs-6 col-lg-4 col-md-4">
-              <img src="${initParam.resourceRoot}/img/list-1.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4 col-md-4">
-              <img src="${initParam.resourceRoot}/img/list-2.jpg" alt="..." style="width:100%;height: 200px;" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus.  </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4 col-md-4">
-              <img src="${initParam.resourceRoot}/img/list-3.jpg" alt="..." style="width:100%;height: 200px;" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus.  </p>            
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="${initParam.resourceRoot}/img/list-4.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-               <img src="${initParam.resourceRoot}/img/list-5.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="${initParam.resourceRoot}/img/list-6.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="${initParam.resourceRoot}/img/list-7.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="${initParam.resourceRoot}/img/list-8.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="${initParam.resourceRoot}/img/list-9.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="${initParam.resourceRoot}/img/list-10.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="${initParam.resourceRoot}/img/list-11.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="${initParam.resourceRoot}/img/list-12.jpg" alt="..." style="width:100%;height: 200px" class="img-responsive img-thumbnail">
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
+          	<div id="content">
+				<div id="loadContentWrap">
+					<div id="loadingImg">
+						<img width="580px" height="435px" src="${initParam.resourceRoot}/img/loading.gif" />
+					</div>
+				</div>
+				<div class="pagging clearfix">
+					<ul class="pagination pageWrap pull-right">
+					</ul>
+				</div>
+			</div>
           </div><!--/row-->
         </div><!--/.col-xs-12.col-sm-9-->
 
