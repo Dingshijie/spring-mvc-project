@@ -19,6 +19,7 @@ import org.joda.time.DateTime;
 import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spring.mvc.project.domain.util.Constant;
 
 @Entity
@@ -63,6 +64,7 @@ public class CommodityInfo implements Serializable {
 
 	@Length(min = 1, message = "com.spring.mvc.project.validator.Length.message")
 	@Column(name = "GOODS", nullable = false)
+	@JsonIgnore
 	private String goods;//商品清单，两个内容之间用“;”隔开
 
 	@Length(min = 0, max = 512, message = "com.spring.mvc.project.validator.Length.message")
@@ -89,6 +91,9 @@ public class CommodityInfo implements Serializable {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	@Column(name = "ADD_TIME")
 	private Date addTime = new DateTime().toDate();//添加日期
+
+	@Column(name = "VIEWS", nullable = false)
+	private int views = 0;//浏览次数
 
 	@NotBlank(message = "com.spring.mvc.project.validator.NotBlank.message")
 	@Column(name = "USERNAME", length = 24)
@@ -213,6 +218,14 @@ public class CommodityInfo implements Serializable {
 
 	public void setNewCondition(String newCondition) {
 		this.newCondition = newCondition;
+	}
+
+	public int getViews() {
+		return views;
+	}
+
+	public void setViews(int views) {
+		this.views = views;
 	}
 
 	public Date getAddTime() {

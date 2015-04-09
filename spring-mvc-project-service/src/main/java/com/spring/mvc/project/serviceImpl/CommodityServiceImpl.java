@@ -99,6 +99,20 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
+	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		if (userInfo.isManager()) {
+			return commodityRepository.findList("", categoryCode, areaCode, schoolCode, status, recommend, used,
+					keyword);
+		} else {
+			return commodityRepository.findList(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
+					recommend, used, keyword);
+		}
+	}
+
+	@Override
 	public int findCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend, int used,
 			String keyword) {
 		Subject currentUser = SecurityUtils.getSubject();
@@ -137,17 +151,32 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
-	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
+	public List<JSONObject> findAllList(String categoryCode, String areaCode, String schoolCode, int status,
 			int recommend, int used, String keyword) {
-		Subject currentUser = SecurityUtils.getSubject();
-		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		if (userInfo.isManager()) {
-			return commodityRepository.findList("", categoryCode, areaCode, schoolCode, status, recommend, used,
-					keyword);
-		} else {
-			return commodityRepository.findList(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
-					recommend, used, keyword);
+		List<CommodityInfo> list = commodityRepository.findList("", categoryCode, areaCode, schoolCode, status,
+				recommend, used, keyword);
+		List<JSONObject> jsonList = new ArrayList<JSONObject>();
+		for (int i = 0; i < list.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("id", list.get(i).getId());
+			obj.put("name", list.get(i).getName());
+			obj.put("brand", list.get(i).getBrand());
+			obj.put("price", list.get(i).getPrice());
+			obj.put("unit", list.get(i).getUnit());
+			obj.put("picture", list.get(i).getPicture());
+			obj.put("typeCode", list.get(i).getTypeCode());
+			obj.put("used", list.get(i).getUsed());
+			obj.put("views", list.get(i).getViews());
+			obj.put("username", list.get(i).getUsername());
+			jsonList.add(obj);
 		}
-
+		return jsonList;
 	}
+
+	@Override
+	public int findAllCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend,
+			int used, String keyword) {
+		return commodityRepository.findCount("", categoryCode, areaCode, schoolCode, status, recommend, used, keyword);
+	}
+
 }

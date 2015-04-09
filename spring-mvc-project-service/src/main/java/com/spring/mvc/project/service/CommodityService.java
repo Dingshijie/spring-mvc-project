@@ -55,11 +55,13 @@ public interface CommodityService {
 			int recommend, int used, String keyword, int pageIndex, int pageSize);
 
 	/**
-	 * 根据条件查询商品列表(导出用)
+	 * 根据条件查询商品列表
 	 * @param category 类别
 	 * @param status 状态，在售或下架
 	 * @param recommend 是否在推广
 	 * @param used 是否是二手
+	 * @param pageIndex 页码数
+	 * @param pageSize 每页显示的条目数
 	 * @return
 	 */
 	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
@@ -76,5 +78,28 @@ public interface CommodityService {
 	 */
 	public int findCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend, int used,
 			String keyword);
+
+	/**
+	 * 根据条件查询商品列表(导出用)
+	 * @param category 类别
+	 * @param status 状态，在售或下架
+	 * @param recommend 是否在推广
+	 * @param used 是否是二手
+	 * @return
+	 */
+	public List<JSONObject> findAllList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword);
+
+	/**
+	 * 根据条件查询商品数目
+	 * @param category 类别
+	 * @param status 状态，在售或下架
+	 * @param recommend 是否在推广
+	 * @param used 是否是二手
+	 * @param pageSize 每页显示的条目数
+	 * @return
+	 */
+	public int findAllCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend,
+			int used, String keyword);
 
 }

@@ -60,7 +60,7 @@ public class CommodityController {
 
 	@RequestMapping(value = "count", method = RequestMethod.GET)
 	@ResponseBody
-	public int findList(String categoryCode, String areaCode, String schoolCode, int status, int recommend, int used,
+	public int findCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend, int used,
 			String keyword) {
 		return commodityService.findCount(categoryCode, areaCode, schoolCode, status, recommend, used, keyword);
 	}
@@ -112,6 +112,24 @@ public class CommodityController {
 	@ResponseBody
 	public boolean update(CommodityInfo commodity) {
 		return commodityService.update(commodity);
+	}
+
+	@RequestMapping(value = "list/all", method = RequestMethod.GET)
+	@ResponseBody
+	public List<JSONObject> findAllList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex) {
+		List<JSONObject> list = commodityService.findAllList(categoryCode, areaCode, schoolCode, status, recommend,
+				used, keyword);
+		return list;
+	}
+
+	@RequestMapping(value = "count/all", method = RequestMethod.GET)
+	@ResponseBody
+	public int findAllCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend,
+			int used, String keyword) {
+		return commodityService.findAllCount(categoryCode, areaCode, schoolCode, status, recommend, used, keyword);
 	}
 
 	@RequestMapping(value = "export", method = RequestMethod.GET)

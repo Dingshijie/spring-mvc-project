@@ -5,46 +5,89 @@ $(function(){
 	/**
 	 * 加载首页数据
 	 */
-	//默认首页上的地区是郑州市（code=4101）
+	//默认首页上的地区是郑州市（code=4101）	
+	var cityCode = '';
+	var cityName = '';
 	var areaCode = '';
 	var areaName = '';
+	var schoolCode = '';
+	var schoolName = '';
 	
-	if(getCookie("areaCode") == null || getCookie("areaName") == null){
+	var par={
+		categoryCode: "",
+		areaCode: "",
+		schoolCode: "",
+		status: 1,
+		recommend: 10,
+		used: 10,
+		keyword: "",
+		pageSize: 10,
+		pageIndex: 1
+	}
+	/**
+	 * 设置城市
+	 */
+	if(getCookie("cityCode") == null || getCookie("cityName") == null){
 		
-		areaCode = $('#cityName').attr('data-code');
-		areaName = $('#cityName').attr('data-name');
+		cityCode = $('#cityName').attr('data-code');
+		cityName = $('#cityName').attr('data-name');
 		
-		setCookie("areaCode",areaCode);
-		setCookie("areaName",areaName);
+		setCookie("cityCode",cityCode);
+		setCookie("cityName",cityName);
 	}else{
-		$('#cityName').html(getCookie("areaName"));
-		$('#cityName').attr('data-code',getCookie("areaCode"));
-		$('#cityName').attr('data-name',getCookie("areaName"));
+		$('#cityName').html(getCookie("cityName"));
+		$('#cityName').attr('data-code',getCookie("cityCode"));
+		$('#cityName').attr('data-name',getCookie("cityName"));
 		
-		$('#id_city').attr('data-code',getCookie("areaCode"));
-		$('#id_city').html(getCookie("areaName"));
+		$('#id_city').attr('data-code',getCookie("cityCode"));
+		$('#id_city').html(getCookie("cityName"));
+		cityCode = getCookie("cityCode");
+		cityName = getCookie("cityName");
+	}
+	/**
+	 * 设置区域
+	 */
+	if(getCookie("areaCode") == null || getCookie("areaName") == null){
+		$('#id_area').hide();
+	}else{
+		$('#id_area').attr('data-code',getCookie("areaCode"));
+		$('#id_area').html(getCookie("areaName"));
 		areaCode = getCookie("areaCode");
 		areaName = getCookie("areaName");
+		$('#id_area').show();
+	}
+	/**
+	 * 设置学校
+	 */
+	if(getCookie("schoolCode") == null || getCookie("schoolName") == null){
+		$('#id_school').hide();
+	}else{
+		$('#id_school').attr('data-code',getCookie("schoolCode"));
+		$('#id_school').html(getCookie("schoolName"));
+		schoolCode = getCookie("schoolCode");
+		schoolName = getCookie("schoolName");
+		$('#id_school').show();
 	}
 	
+	
 	//设置首页上的地区
-	$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":areaCode},function(data){
-		var areahtml = '<th data-code="'+areaCode+'">区域:</th><td><a data-code="'+areaCode+'">不限</a></td>';
+	$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":cityCode},function(data){
+		var areahtml = '<th data-code="'+cityCode+'">区域:</th><td><a data-code="'+cityCode+'">不限</a></td>';
 		for(var i=0; i < 7 && i< data.length  ;i++){
 			areahtml += '<td><a data-code="'+data[i].code+'"> '+ data[i].name +' </a></td>';
 		}
-		areahtml +='<td><button class="btn btn-default btn-xs" data-code="'+ areaCode +'">更多<span class="caret"></span></button></td>';
+		areahtml +='<td><button class="btn btn-default btn-xs" data-code="'+ cityCode +'">更多<span class="caret"></span></button></td>';
 		$('.area').empty().append(areahtml);
 
 	});
 	
 	//设置首页上的学校
-	$.get("HTTP://"+ window.location.host + "/school/list/"+areaCode.substring(0,2),function(data){
+	$.get("HTTP://"+ window.location.host + "/school/list/"+cityCode.substring(0,2),function(data){
 		var schoolHtml = '<th data-code="">学校:</th><td><a data-code="">不限</a></td>';
 		for(var i=0; i < 7 && i< data.length  ;i++){
 			schoolHtml += '<td><a data-code="'+data[i].code+'"> '+ data[i].name +' </a></td>';
 		}
-		schoolHtml +='<td><button class="btn btn-default btn-xs" data-code="'+ areaCode.substring(0,2) +'">更多<span class="caret"></span></button></td>';
+		schoolHtml +='<td><button class="btn btn-default btn-xs" data-code="'+ cityCode.substring(0,2) +'">更多<span class="caret"></span></button></td>';
 		$('.school').empty().append(schoolHtml);
 	});
 	
@@ -73,6 +116,15 @@ $(function(){
 	 * 此处的作用是将class是js-example-data-array-selected的select控件可以做select2使用，相当于初始化
 	 */
 	$(".js-example-data-array-selected").select2({
+		
+	});
+	
+	/**
+	 * 加载页面数据
+	 */
+	console.log("加载页面数据");
+	$.get("HTTP://"+ window.location.host +"/commodity/list/all",par,function(data){
+		
 		
 	});
 	
@@ -167,8 +219,8 @@ $(function(){
 			$('#areaerror').show();
 			return;
 		}
-		setCookie("areaCode",cityCode);
-		setCookie("areaName",cityName);
+		setCookie("cityCode",cityCode);
+		setCookie("cityName",cityName);
 		
 		$('#cityName').html(cityName);
 		$('#cityName').attr('data-code',cityCode);
@@ -187,11 +239,11 @@ $(function(){
 	 * 选择省份
 	 */
 	$('#province').on('change',function(){
-		areaCode = $(this).val() || ""; 
-		if(areaCode==""){
+		cityCode = $(this).val() || ""; 
+		if(cityCode==""){
 			return;
 		}
-		$.get("HTTP://"+window.location.host+"/area/list/city",{"areaCode":areaCode},function(cityData){
+		$.get("HTTP://"+window.location.host+"/area/list/city",{"areaCode":cityCode},function(cityData){
 			
 			//省份改变且不为空的时候直接将地区的不能为空的信息和学校不能为空的信息隐藏
 			$('#areaerror').hide();
@@ -215,6 +267,39 @@ $(function(){
 			}
 		});
 	});
+	/**
+	 * 点击地区上的“a标签”
+	 */
+	$('.area').on('click','a',function(){
+		
+		var code = $(this).attr('data-code');
+		var name = $(this).text();
+		setCookie("areaCode",code);
+		setCookie("areaName",code);
+		
+		$('#id_area').attr('data-code',getCookie("areaCode"));
+		$('#id_area').html(getCookie("areaName"));
+		$('#id_area').show();
+		
+		
+	});
+	
+	/**
+	 * 点击学校上的“a标签”
+	 */
+	$('.school').on('click','a',function(){
+		
+		var code = $(this).attr('data-code');
+		var name = $(this).text();
+		setCookie("schoolCode",code);
+		setCookie("schoolName",code);
+		
+		$('#id_school').attr('data-code',getCookie("schoolCode"));
+		$('#id_school').html(getCookie("schoolName"));
+		$('#id_school').show();
+		
+		
+	});
 	
 	/**
 	 * 点击地区上的“更多”
@@ -222,11 +307,11 @@ $(function(){
 	$('.area').on('click','.btn',function(){
 		
 		var code = '';
-		if(getCookie("areaCode") == '' ){
+		if(getCookie("cityCode") == '' ){
 			code = $('#cityName').attr('data-code');
 			
 		}else{
-			code = getCookie("areaCode");
+			code = getCookie("cityCode");
 		}
 		
 		$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":code},function(data){
@@ -254,11 +339,11 @@ $(function(){
 	$('.school').on('click','.btn',function(){
 		
 		var code = '';
-		if(getCookie("areaCode") == '' ){
+		if(getCookie("cityCode") == '' ){
 			code = $('#cityName').attr('data-code');
 			
 		}else{
-			code = getCookie("areaCode");
+			code = getCookie("cityCode");
 		}
 		
 		$.get("HTTP://"+ window.location.host + "/school/list/"+code.substring(0,2),function(data){

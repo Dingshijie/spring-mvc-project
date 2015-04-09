@@ -52,7 +52,7 @@
           </p>
           	<div class="form-group">
           		<div class="form-group">
-          			已选择：<span id="id_category" data-code="">所有分类</span> > <span id="id_city" data-code="">郑州市</span> > <span id="id_area" data-code="">高新区</span>
+          			已选择：<span id="id_category" data-code="">所有分类</span> > <span id="id_city" data-code="">郑州市</span> > <span id="id_area" data-code="">高新区</span> > <span id="id_school" data-code="">郑州大学</span>
           		</div>
           		<table class="table table-condensed" style="margin-bottom:0px;">
           		<colgroup><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col></colgroup>
@@ -120,25 +120,25 @@
           				</tr>
           				<tr class="area">
           					<th>区域:</th>
-          					<td><a >金水区</a></td>
-          					<td><a >中原区</a></td>
-          					<td><a >二七区</a></td>
-          					<td><a >管城回族区</a></td>
-          					<td><a >惠济区</a></td>
-          					<td><a >上街区</a></td>
-          					<td><a >高新区</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>金水区</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>中原区</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>二七区</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>管城回族区</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>惠济区</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>上街区</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>高新区</a></td>
           					
           				</tr>
           				<tr class="school">
           					<th>学校:</th>
-          					<td><a >郑州大学（新校区）</a></td>
-          					<td><a >郑州大学（老校区）</a></td>
-          					<td><a >河南农业大学</a></td>
-          					<td><a >河南中医学院大学</a></td>
-          					<td><a >河南教育学院</a></td>
-          					<td><a >华北水利水电学院</a></td>
-          					<td><a >河南工业大学</a></td>
-          					<td><a >郑州轻工业学院</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>郑州大学（新校区）</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>郑州大学（老校区）</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>河南农业大学</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>河南中医学院大学</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>河南教育学院</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>华北水利水电学院</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>河南工业大学</a></td>
+          					<td><a href="javascript:void(0)" data-code=''>郑州轻工业学院</a></td>
           					<td><button style="" class="btn btn-default btn-xs">更多<span class="caret"></span></button></td>
           				</tr>
           			</tbody>
