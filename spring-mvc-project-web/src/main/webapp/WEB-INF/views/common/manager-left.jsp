@@ -45,6 +45,9 @@
 				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='commoditymanager'}">style="display:inline-block"</c:if> >
 					<li <c:if test="${param.subactive=='commoditylist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/commodity/list.html">商品列表</a></li>
 					<li <c:if test="${param.subactive=='addcommodity'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/commodity/add.html">添加商品</a></li>
+					<c:if test="${param.subactive=='commoditydetail'}">
+					<li class="active" style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:void(0);">商品详情</a></li>
+					</c:if>
 				</ul>
 			</li>
 		</ul>

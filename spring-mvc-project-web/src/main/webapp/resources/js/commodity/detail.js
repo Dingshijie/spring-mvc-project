@@ -1,5 +1,5 @@
 /**
- * manager-left.js
+ * 商品详细信息的js
  */
 $(function(){
 	
