@@ -112,7 +112,7 @@ public class WebUtils {
 	private static String getFolderRelativePath() {
 		UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
 		return Constant.SEPARATOR_SLASH + new SimpleDateFormat("yyyyMMdd").format(new DateTime().toDate())
-				+ Constant.SEPARATOR_SLASH + user.getAreaCode() + Constant.SEPARATOR_SLASH + user.getUsername();
+				+ Constant.SEPARATOR_SLASH + user.getAreaCode() + Constant.SEPARATOR_SLASH + user.getId();
 	}
 
 	/**
