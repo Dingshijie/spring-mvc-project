@@ -57,7 +57,7 @@
           		<table class="table table-condensed" style="margin-bottom:0px;">
           		<colgroup><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col></colgroup>
           			<tbody>
-          				<tr>
+          				<tr class="hot">
           					<th>热门:</th>
           					<td><a >连衣裙</a></td>
           					<td><a >短裤</a></td>
@@ -75,7 +75,7 @@
           						<span id="cityName" data-code="4101" data-name="郑州市">郑州市</span>
           						<span id="editCity">
           							<select id="province" name="province" class="form-control js-example-data-array-selected" style="width: 150px; float: left;" data-role="${user.role }">
-										<option value="">请选择</option>
+										<option value="" selected="selected">请选择</option>
 										<option value="11">北京市</option>
 										<option value="12">天津市</option>
 										<option value="13">河北省</option>
@@ -196,7 +196,7 @@
 						<img width="580px" height="435px" src="${initParam.resourceRoot}/img/loading.gif" />
 					</div>
 				</div>
-				<div class="pagging clearfix">
+				<div class="pagging clearfix col-md-12">
 					<ul class="pagination pageWrap pull-right">
 					</ul>
 				</div>
@@ -227,8 +227,9 @@
 	        
 	      </div>
 	      <div class="modal-footer">
+	      	<span class="help-block" >未选择任何地区</span>
 	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-	        <button type="button" class="btn btn-primary">确定</button>
+	        <button type="button" class="btn btn-primary btn-sure">确定</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -245,8 +246,9 @@
 	       
 	      </div>
 	      <div class="modal-footer">
+	      	<span class="help-block" >未选择任何学校</span>
 	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-	        <button type="button" class="btn btn-primary">确定</button>
+	        <button type="button" class="btn btn-primary btn-sure">确定</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

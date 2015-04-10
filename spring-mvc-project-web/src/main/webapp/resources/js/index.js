@@ -14,13 +14,13 @@ $(function(){
 	var schoolName = '';
 	
 	var par={
-		categoryCode: "",
-		areaCode: "",
-		schoolCode: "",
+		categoryCode: getCookie('categoryCode') || "",
+		areaCode: getCookie('areaCode') || "",
+		schoolCode: getCookie('schoolCode') || "",
 		status: 1,
 		recommend: 10,
-		used: 10,
-		keyword: "",
+		used: getCookie('used') || 10,
+		keyword: getCookie('keyword') || "",
 		pageSize: 12,
 		pageIndex: 1
 	}
@@ -72,9 +72,9 @@ $(function(){
 	
 	//设置首页上的地区
 	$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":cityCode},function(data){
-		var areahtml = '<th data-code="'+cityCode+'">区域:</th><td><a data-code="'+cityCode+'">不限</a></td>';
+		var areahtml = '<th data-code="'+cityCode+'">区域:</th><td><a href="javascript:void(0);" data-code="'+cityCode+'" data-name="不限">不限</a></td>';
 		for(var i=0; i < 7 && i< data.length  ;i++){
-			areahtml += '<td><a data-code="'+data[i].code+'"> '+ data[i].name +' </a></td>';
+			areahtml += '<td><a href="javascript:void(0);" data-code="'+data[i].code+'" data-name="'+ data[i].name +'"> '+ data[i].name +' </a></td>';
 		}
 		areahtml +='<td><button class="btn btn-default btn-xs" data-code="'+ cityCode +'">更多<span class="caret"></span></button></td>';
 		$('.area').empty().append(areahtml);
@@ -83,9 +83,9 @@ $(function(){
 	
 	//设置首页上的学校
 	$.get("HTTP://"+ window.location.host + "/school/list/"+cityCode.substring(0,2),function(data){
-		var schoolHtml = '<th data-code="">学校:</th><td><a data-code="">不限</a></td>';
+		var schoolHtml = '<th data-code="">学校:</th><td><a href="javascript:void(0);" data-code="" data-name="不限">不限</a></td>';
 		for(var i=0; i < 7 && i< data.length  ;i++){
-			schoolHtml += '<td><a data-code="'+data[i].code+'"> '+ data[i].name +' </a></td>';
+			schoolHtml += '<td><a href="javascript:void(0);" data-code="'+data[i].code+'" data-name="'+ data[i].name +'"> '+ data[i].name +' </a></td>';
 		}
 		schoolHtml +='<td><button class="btn btn-default btn-xs" data-code="'+ cityCode.substring(0,2) +'">更多<span class="caret"></span></button></td>';
 		$('.school').empty().append(schoolHtml);
@@ -158,7 +158,7 @@ $(function(){
 			}else{
 				var html = "";
 				for (var i = 0;i < data.length; i++) {
-					html += '<div class="col-xs-6 col-lg-4 col-md-4"><img src="${initParam.resourceRoot}/'+ data[i].picture+ '" alt="图片加载失败" style="width:100%;height: 200px" class="img-responsive img-thumbnail"><p>'+ data[i].name+ '</p><p>'+ data[i].price + '</p></div>';
+					html += '<div class="col-xs-6 col-lg-4 col-md-4"><img src="/resources/'+ data[i].picture+ '" alt="图片加载失败" style="width:100%;height: 200px" class="img-responsive img-thumbnail"><p>'+ data[i].name+ '</p><p>'+ data[i].price + '</p></div>';
 				}
 			}
 			setting.pageWrap.empty().append(html);
@@ -336,6 +336,10 @@ $(function(){
 		$('#changeCity').hide();
 		$('#changeCitySure').show();
 		$('#changeCityCancel').show();
+		//重置省、市的内容
+		$('#province').val('').trigger("change");
+		$('#city').val('').trigger("change");
+		
 	});
 	
 	/**
@@ -375,6 +379,22 @@ $(function(){
 		$('#changeCitySure').hide();
 		$('#changeCityCancel').hide();
 		
+		//地区的代码设置不限
+		setCookie("areaCode",cityCode);
+		setCookie("areaName",'不限');
+		
+		$('#id_area').attr('data-code',getCookie("areaCode"));
+		$('#id_area').html(getCookie("areaName"));
+		$('#id_area').show();
+		
+		//高校的代码设置：不限
+		setCookie("schoolCode",'');
+		setCookie("schoolName",'不限');
+		
+		$('#id_school').attr('data-code',getCookie("schoolCode"));
+		$('#id_school').html(getCookie("schoolName"));
+		$('#id_school').show();
+		
 		window.location.reload();
 		
 	});
@@ -411,21 +431,38 @@ $(function(){
 			}
 		});
 	});
+	
+	/**
+	 * 点击热门的a标签
+	 */
+	$('.hot').on('click','a',function(){
+		var code = $(this).attr('data-code');
+		var name = $(this).attr('data-name');
+		setCookie("categoryCode",code);
+		setCookie("categoryName",name);
+		
+		$('#id_category').attr('data-code',getCookie("categoryCode"));
+		$('#id_category').html(getCookie("categoryName"));
+		$('#id_category').show();
+		
+		window.location.reload();
+	});
+	
 	/**
 	 * 点击地区上的“a标签”
 	 */
 	$('.area').on('click','a',function(){
 		
 		var code = $(this).attr('data-code');
-		var name = $(this).text();
+		var name = $(this).attr('data-name');
 		setCookie("areaCode",code);
-		setCookie("areaName",code);
+		setCookie("areaName",name);
 		
 		$('#id_area').attr('data-code',getCookie("areaCode"));
 		$('#id_area').html(getCookie("areaName"));
 		$('#id_area').show();
 		
-		
+		window.location.reload();
 	});
 	
 	/**
@@ -436,13 +473,13 @@ $(function(){
 		var code = $(this).attr('data-code');
 		var name = $(this).text();
 		setCookie("schoolCode",code);
-		setCookie("schoolName",code);
+		setCookie("schoolName",name);
 		
 		$('#id_school').attr('data-code',getCookie("schoolCode"));
 		$('#id_school').html(getCookie("schoolName"));
 		$('#id_school').show();
 		
-		
+		window.location.reload();
 	});
 	
 	/**
@@ -464,17 +501,16 @@ $(function(){
 				if(i%3==0){
 					areahtml += "<tr>";
 				}
-				areahtml += "<td style='padding: 10px;'><input name='area' type='radio' value='"+data[i].code+"'>"+ data[i].name +"</td>"
+				areahtml += "<td style='padding: 10px;'><input name='area' type='radio' value='"+data[i].code+"' data-name='"+ data[i].name +"'>"+ data[i].name +"</td>"
 				if(i%3==2){
 					areahtml += "</tr>";
 				}
 			}
 			areahtml +='</table>';
-			console.log($('#moreAreaModal').find('.modal-body'));
 			$('#moreAreaModal').find('.modal-body').empty().append(areahtml);
-
+			$('#moreAreaModal').modal('show');
 		});
-		$('#moreAreaModal').modal('show');
+		
 	});
 	
 	/**
@@ -497,7 +533,7 @@ $(function(){
 				if(i%3==0){
 					schoolHtml += "<tr>";
 				}
-				schoolHtml += "<td style='padding: 10px;'><input name='school' type='radio' value='"+data[i].code+"'>"+ data[i].name +"</a></td>"
+				schoolHtml += "<td style='padding: 10px;'><input name='school' type='radio' value='"+data[i].code+"' data-name='"+ data[i].name +"'>"+ data[i].name +"</a></td>"
 				if(i%3==2){
 					schoolHtml += "</tr>";
 				}
@@ -508,4 +544,53 @@ $(function(){
 		$('#moreSchoolModal').modal('show');
 	});
 	
+	/**
+	 * 点击地区，选择确定的时候
+	 */
+	$("#moreAreaModal").on('click','.btn-sure',function(){
+		var input = $('#moreAreaModal').find('.modal-body').find('input[name="area"]:checked');
+		
+		if(input.length == 0){
+			$('#moreAreaModal').find('.help-block').show();
+		}else{
+			$('#moreAreaModal').find('.help-block').hide();
+			var code = input.val();
+			var name = input.attr('data-name');
+			
+			setCookie("areaCode",code);
+			setCookie("areaName",name);
+			
+			$('#id_area').attr('data-code',getCookie("areaCode"));
+			$('#id_area').html(getCookie("areaName"));
+			$('#id_area').show();
+			
+			$("#moreAreaModal").modal('hide');
+			
+			window.location.reload();
+		}
+	});
+	
+	/**
+	 * 点击学校，选择确定的时候
+	 */
+	$("#moreSchoolModal").on('click','.btn-sure',function(){
+		var input = $('#moreSchoolModal').find('.modal-body').find('input[name="school"]:checked');
+		
+		if(input.length == 0){
+			$('#moreSchoolModal').find('.help-block').show();
+		}else{
+			var code = input.val();
+			var name = input.attr('data-name');
+			setCookie("schoolCode",code);
+			setCookie("schoolName",name);
+			
+			$('#id_school').attr('data-code',getCookie("schoolCode"));
+			$('#id_school').html(getCookie("schoolName"));
+			$('#id_school').show();
+
+			$("#moreSchoolModal").modal('hide');
+			
+			window.location.reload();
+		}
+	});
 });
