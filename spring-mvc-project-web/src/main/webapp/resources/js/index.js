@@ -158,7 +158,7 @@ $(function(){
 			}else{
 				var html = "";
 				for (var i = 0;i < data.length; i++) {
-					html += '<div class="col-xs-6 col-lg-4 col-md-4"><img src="/resources/'+ data[i].picture+ '" alt="图片加载失败" style="width:100%;height: 200px" class="img-responsive img-thumbnail"><p>'+ data[i].name+ '</p><p>'+ data[i].price + '</p></div>';
+					html += '<div class="col-xs-6 col-lg-4 col-md-4"><a href="HTTP://'+window.location.host+'/commodity/detail/'+ data[i].id +'" title="点击查看详情"><img src="/resources/'+ data[i].picture+ '" alt="图片加载失败" style="width:100%;height: 200px" class="img-responsive img-thumbnail"></a><p>'+ data[i].name+ '</p><p>'+ data[i].price + '</p></div>';
 				}
 			}
 			setting.pageWrap.empty().append(html);

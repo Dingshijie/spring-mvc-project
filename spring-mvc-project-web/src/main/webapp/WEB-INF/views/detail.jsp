@@ -22,9 +22,8 @@
 	
 </head>
 <body>
-	<c:import url="../common/manager-top.jsp"></c:import>
-	<c:import url="../common/manager-left.jsp"><c:param name="active">commoditymanager</c:param><c:param name="subactive">commoditydetail</c:param></c:import>
-	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
+		<c:import url="common/top.jsp"></c:import>
+		<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
 			<div id="mainList">
 				<div class="row col-md-12">
@@ -47,18 +46,6 @@
 				  </div>
 				</div>
 				<div class="col-md-12 highlight">
-					<div class="form-group bg-primary col-md-offset-1">
-						设置推荐：
-						<input type="radio" >是 <span style="margin-right: 15px;"></span><input type="radio" >否
-					</div>
-					<div class="form-group bg-danger col-md-offset-1">
-						强制下架：
-						<input type="radio" >是 <span style="margin-right: 15px;"></span><input type="radio" >否
-					</div>
-					<div class="form-group col-md-offset-1">
-						<input class="btn btn-info" type="submit" value="保存">
-						<input class="btn btn-default" type="submit" value="取消">
-					</div>
 				</div>
 			</div>
 		</div>

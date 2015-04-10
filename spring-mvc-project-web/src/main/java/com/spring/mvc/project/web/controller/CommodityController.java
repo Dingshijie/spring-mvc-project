@@ -132,6 +132,32 @@ public class CommodityController {
 		return commodityService.findAllCount(categoryCode, areaCode, schoolCode, status, recommend, used, keyword);
 	}
 
+	/**
+	 * 点击商品查看详情的时候用
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "detail/{id}", method = RequestMethod.GET)
+	public String findCommodityDetail(@PathVariable(value = "id") String id, Model model) {
+		CommodityInfo commodityInfo = commodityService.find(id);
+		model.addAttribute("commodity", commodityInfo);
+		return "detail";
+	}
+
+	/**
+	 * 管理中心点击查看详情的时候用
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public String findCommodity(@PathVariable(value = "id") String id, Model model) {
+		CommodityInfo commodityInfo = commodityService.find(id);
+		model.addAttribute("commodity", commodityInfo);
+		return "commodity/detail";
+	}
+
 	@RequestMapping(value = "export", method = RequestMethod.GET)
 	public ModelAndView export(String categoryCode, String areaCode, String schoolCode, int status, int recommend,
 			int used, String keyword) {
