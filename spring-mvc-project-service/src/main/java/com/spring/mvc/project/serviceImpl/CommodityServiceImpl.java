@@ -51,7 +51,7 @@ public class CommodityServiceImpl implements CommodityService {
 	public boolean update(String paramter, String id) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		CommodityInfo CommodityInfo = find(id);
+		CommodityInfo CommodityInfo = findById(id);
 		//		if (userInfo.isManager() || userInfo.isAdministrator()) {
 		StringBuffer sql = new StringBuffer();
 		JSONObject jsonObject = new JSONObject();
@@ -77,8 +77,35 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
-	public CommodityInfo find(String id) {
-		return commodityRepository.find(id);
+	public CommodityInfo findById(String id) {
+		return commodityRepository.findById(id);
+	}
+
+	@Override
+	public JSONObject find(String id) {
+		Object[] obj = commodityRepository.find(id);
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("id", obj[0]);
+		jsonObj.put("name", obj[1]);
+		jsonObj.put("brand", obj[2]);
+		jsonObj.put("link", obj[3]);
+		jsonObj.put("price", obj[4]);
+		jsonObj.put("unit", obj[5]);
+		jsonObj.put("picture", obj[6]);
+		jsonObj.put("used", obj[7]);//
+		jsonObj.put("newCondition", obj[8]);
+		jsonObj.put("status", obj[9]);
+		jsonObj.put("recommend", obj[10]);
+		jsonObj.put("goods", obj[11]);
+		jsonObj.put("description", obj[12]);
+		jsonObj.put("views", obj[13]);
+		jsonObj.put("addTime", obj[14]);//
+		jsonObj.put("username", obj[15]);
+		jsonObj.put("realName", obj[16]);
+		jsonObj.put("mobilePhone", obj[17]);
+		jsonObj.put("telPhone", obj[18]);
+		jsonObj.put("companyName", obj[19]);
+		return jsonObj;
 	}
 
 	@Override

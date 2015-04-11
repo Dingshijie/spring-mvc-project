@@ -65,12 +65,6 @@ public class CommodityController {
 		return commodityService.findCount(categoryCode, areaCode, schoolCode, status, recommend, used, keyword);
 	}
 
-	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public CommodityInfo find(@PathVariable(value = "id") String id) {
-		return commodityService.find(id);
-	}
-
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String add(MultipartFile file, CommodityInfo commodity, HttpSession session, Model model) {
 
@@ -140,8 +134,8 @@ public class CommodityController {
 	 */
 	@RequestMapping(value = "detail/{id}", method = RequestMethod.GET)
 	public String findCommodityDetail(@PathVariable(value = "id") String id, Model model) {
-		CommodityInfo commodityInfo = commodityService.find(id);
-		model.addAttribute("commodity", commodityInfo);
+		JSONObject commodity = commodityService.find(id);
+		model.addAttribute("commodity", commodity);
 		return "detail";
 	}
 
@@ -151,9 +145,9 @@ public class CommodityController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)
 	public String findCommodity(@PathVariable(value = "id") String id, Model model) {
-		CommodityInfo commodityInfo = commodityService.find(id);
+		CommodityInfo commodityInfo = commodityService.findById(id);
 		model.addAttribute("commodity", commodityInfo);
 		return "commodity/detail";
 	}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -27,26 +28,39 @@
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
 			<div id="mainList">
+				<fieldset>
+				<legend>商品信息 </legend>
 				<div class="row col-md-12">
 				  <div class="col-md-4">
 				    <a href="#" class="thumbnail">
-				      <img src="..." alt="..."  style="width:100%;height: 250px" >
+				      <img src="/resources${commodity.picture }" alt="..."  style="width:100%;height: 250px" >
 				    </a>
 				  </div>
 				  <div class="col-md-6">
 					<ul class="list-unstyled">
-						<li>商品名称</li>
-						<li>价格</li>
-						<li>描述</li>
-						<li>商家店</li>
-						<li>用户真实姓名</li>
-						<li>联系方式</li>
-						<li>...</li>
-						<li><a href="" title="点击查看商品详情">链接</a></li>
+						<li>商品名称：${commodity.name }</li>
+						<c:if test="${commodity.brand != '' }">
+							<li>商品品牌：${commodity.brand }</li>
+						</c:if>
+						<li> <fmt:formatNumber value="${commodity.price }" type="currency"/> 元 / ${commodity.unit }</li>
+						<li>商品清单：${commodity.goods }</li>
+						<c:if test="${commodity.description != '' }">
+							<li>描述：${commodity.description }</li>
+						</c:if>
+						<c:if test="${commodity.addTime != '' }">
+							<li>上架时间：${commodity.addTime }</li>
+						</c:if>
+						<li>浏览次数：${commodity.views } 次</li>
+						<c:if test="${commodity.link != '' }">
+							<li>商品链接：<a>${commodity.link }</a></li>
+						</c:if>
 					</ul>
 				  </div>
 				</div>
-				<div class="col-md-12 highlight">
+				</fieldset>
+				<fieldset>
+				<legend>商品管理  </legend>
+				<div class="col-md-12 ">
 					<div class="form-group bg-primary col-md-offset-1">
 						设置推荐：
 						<input type="radio" >是 <span style="margin-right: 15px;"></span><input type="radio" >否
@@ -60,6 +74,7 @@
 						<input class="btn btn-default" type="submit" value="取消">
 					</div>
 				</div>
+				</fieldset>
 			</div>
 		</div>
 	</div>

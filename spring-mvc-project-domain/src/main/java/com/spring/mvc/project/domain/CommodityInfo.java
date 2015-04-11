@@ -40,7 +40,7 @@ public class CommodityInfo implements Serializable {
 	private String name;//商品名称
 
 	@Length(min = 0, max = 64, message = "com.spring.mvc.project.validator.Length.message")
-	@Column(name = "BRANK", length = 64)
+	@Column(name = "BRAND", length = 64)
 	private String brand;//商品品牌
 
 	@Length(min = 0, max = 64, message = "com.spring.mvc.project.validator.Length.message")
