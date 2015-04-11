@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSONObject;
 import com.spring.mvc.project.domain.CommodityInfo;
 import com.spring.mvc.project.domain.UserInfo;
+import com.spring.mvc.project.domain.util.Constant;
 import com.spring.mvc.project.repository.CommodityRepository;
 import com.spring.mvc.project.service.CommodityService;
 
@@ -96,7 +97,13 @@ public class CommodityServiceImpl implements CommodityService {
 		jsonObj.put("newCondition", obj[8]);
 		jsonObj.put("status", obj[9]);
 		jsonObj.put("recommend", obj[10]);
-		jsonObj.put("goods", obj[11]);
+		//将商品清单转换成列表形式
+		List<String> goodlist = new ArrayList<String>();
+		String[] goods = obj[11].toString().split(Constant.SEPARATO_SEMICOLON);
+		for (String good : goods) {
+			goodlist.add(good);
+		}
+		jsonObj.put("goods", goodlist);
 		jsonObj.put("description", obj[12]);
 		jsonObj.put("views", obj[13]);
 		jsonObj.put("addTime", obj[14]);//

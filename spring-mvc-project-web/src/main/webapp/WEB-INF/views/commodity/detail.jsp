@@ -37,24 +37,34 @@
 				    </a>
 				  </div>
 				  <div class="col-md-6">
-					<ul class="list-unstyled">
-						<li>商品名称：${commodity.name }</li>
-						<c:if test="${commodity.brand != '' }">
-							<li>商品品牌：${commodity.brand }</li>
-						</c:if>
-						<li> <fmt:formatNumber value="${commodity.price }" type="currency"/> 元 / ${commodity.unit }</li>
-						<li>商品清单：${commodity.goods }</li>
-						<c:if test="${commodity.description != '' }">
-							<li>描述：${commodity.description }</li>
-						</c:if>
-						<c:if test="${commodity.addTime != '' }">
-							<li>上架时间：${commodity.addTime }</li>
-						</c:if>
-						<li>浏览次数：${commodity.views } 次</li>
-						<c:if test="${commodity.link != '' }">
-							<li>商品链接：<a>${commodity.link }</a></li>
-						</c:if>
-					</ul>
+				  	<dl class="dl-horizontal">
+					  <dt>商品名称</dt>
+					  <dd>${commodity.name }</dd>
+					  <c:if test="${commodity.brand != '' }">
+						  <dt>商品品牌</dt>
+						  <dd>${commodity.brand }</dd>
+					  </c:if>
+					  <dt>价格</dt>
+					  <dd><span class="price-symbol">¥</span><strong class="price-current"><fmt:formatNumber value="${commodity.price }" pattern="#,#00.00"></fmt:formatNumber></strong>  元 / ${commodity.unit }</dd>
+					  <dt>商品清单</dt>
+					  <c:forEach items="${commodity.goodsList }" var="good">
+					  <dd>${good}</dd>
+					  </c:forEach>
+					  <c:if test="${commodity.description != '' }">
+						  <dt>描述</dt>
+						  <dd>${commodity.description }</dd>
+					  </c:if>
+					  <c:if test="${commodity.addTime != '' }">
+					  	  <dt>上架时间</dt>
+						  <dd><fmt:formatDate value="${commodity.addTime }" pattern="yyyy-MM-dd HH:mm:ss" timeZone="GMT+8"/></dd>
+					  </c:if>
+					  <dt>浏览次数</dt>
+					  <dd><strong class="views">${commodity.views }</strong> 次</dd>
+					 <c:if test="${commodity.link != '' }">
+						 <dt>相关链接</dt>
+						 <dd>${commodity.link }</dd>
+					 </c:if>
+					</dl>
 				  </div>
 				</div>
 				</fieldset>

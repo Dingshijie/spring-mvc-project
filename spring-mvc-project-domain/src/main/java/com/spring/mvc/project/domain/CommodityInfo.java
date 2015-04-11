@@ -246,15 +246,16 @@ public class CommodityInfo implements Serializable {
 
 	//获取包装清单列表形式
 	@Transient
-	public List<String> getGoodslist() {
-		List<String> goodslist = new ArrayList<String>();
+	private List<String> goodsList = new ArrayList<String>();
+
+	public List<String> getGoodsList() {
 		String[] Goods = this.goods.split(Constant.SEPARATO_SEMICOLON);
 		for (String good : Goods) {
 			if (StringUtils.hasText(good)) {
-				goodslist.add(good);
+				goodsList.add(good);
 			}
 		}
-		return goodslist;
+		return goodsList;
 	}
 
 }
