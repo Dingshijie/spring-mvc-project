@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
@@ -66,7 +67,8 @@ public class CommodityController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String add(MultipartFile file, CommodityInfo commodity, HttpSession session, Model model) {
+	public String add(MultipartFile file, CommodityInfo commodity, HttpServletRequest request, HttpSession session,
+			Model model) {
 
 		FileType fileType = FileUtil.getFileType(file);
 		long size = file.getSize();
@@ -76,6 +78,7 @@ public class CommodityController {
 			//文件大小超限制
 
 		} else {
+
 			String realPath = WebUtils.generateFileUploadPath(fileType);
 			File temp = new File(realPath);
 			try {
@@ -83,6 +86,21 @@ public class CommodityController {
 				String description = "成功上传[" + file.getOriginalFilename() + "]";
 				String object = realPath.substring(WebUtils.getUploadPath().length());
 				System.out.println(description + ":" + object);
+
+				//将图片上传到tomcat服务器
+				String path = session.getServletContext().getRealPath("resources")
+						+ realPath.replace(WebUtils.uploadPath, "");
+				String dirpath = path.substring(0, path.lastIndexOf("/"));
+				File tempdir = new File(dirpath);
+				System.out.println(path);
+				File tempfile = new File(path);
+
+				if (!tempdir.exists()) {
+					tempdir.mkdirs();
+				}
+				tempfile.createNewFile();
+
+				FileUtils.copyInputStreamToFile(file.getInputStream(), tempfile);//上传文件
 
 				commodity.setPicture(realPath.replace(WebUtils.getUploadPath(), ""));
 			} catch (IOException e) {

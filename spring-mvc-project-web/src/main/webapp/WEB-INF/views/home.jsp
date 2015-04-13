@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
+<%
+	String contextPath = request.getContextPath();
+	String path = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort() + contextPath;
+%>
 <!DOCTYPE html>
 <html>
 <head>
