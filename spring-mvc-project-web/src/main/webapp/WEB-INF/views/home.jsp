@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
+<%
+	String contextPath = request.getContextPath();
+	String path = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort() + contextPath;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,5 +29,6 @@
 	  <p></p>
 	  <p><a class="btn btn-primary btn-lg" href="${webRoot}/index.html" role="button">Go ！</a></p>
 	</div>
+	<img alt="" src="<%=path%>/upload/20150413/110101/4a4d34164b8feba2014b90185cf30000/PNBBDKXKFK.JPG">
 </body>
 </html>
