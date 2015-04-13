@@ -263,4 +263,11 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 		return crit.list();
 	}
 
+	@Override
+	public boolean addViews(String id) {
+		String sql = "UPDATE CommodityInfo SET views=views+1 WHERE id=:id";
+		Query query = this.getSession().createQuery(sql);
+		query.setParameter("id", id);
+		return query.executeUpdate() != 0;
+	}
 }

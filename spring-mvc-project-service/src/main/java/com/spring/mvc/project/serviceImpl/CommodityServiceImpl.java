@@ -213,4 +213,10 @@ public class CommodityServiceImpl implements CommodityService {
 		return commodityRepository.findCount("", categoryCode, areaCode, schoolCode, status, recommend, used, keyword);
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public boolean addViews(String id) {
+		return commodityRepository.addViews(id);
+	}
+
 }

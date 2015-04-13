@@ -183,6 +183,12 @@ public class CommodityController {
 		return new ModelAndView(new ExportExcel2007(filename, FileType.XLSX, sheetName, list, fields));
 	}
 
+	@RequestMapping(value = "addviews/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean addViews(@PathVariable(value = "id") String id) {
+		return commodityService.addViews(id);
+	}
+
 	/**
 	 * 设置导处用户的信息项
 	 * @param fields
