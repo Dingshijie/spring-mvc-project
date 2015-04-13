@@ -34,11 +34,18 @@ public interface CommodityRepository {
 	public void delete(CommodityInfo commodity);
 
 	/**
+	 * 通过商品的id，查询商品的信息
+	 * @param id
+	 * @return
+	 */
+	public CommodityInfo findById(String id);
+
+	/**
 	 * 通过商品的id,查询商品的信息
 	 * @param id
 	 * @return
 	 */
-	public CommodityInfo find(String id);
+	public Object[] find(String id);
 
 	/**
 	 * 根据条件查询商品列表

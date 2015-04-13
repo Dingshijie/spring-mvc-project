@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -17,8 +18,8 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
 	
-	<link rel="stylesheet" href="${initParam.resourceRoot}/css/commodity/detail.css">
-	<script type="text/javascript" src="${initParam.resourceRoot}/js/commodity/detail.js"></script>
+	<link rel="stylesheet" href="${initParam.resourceRoot}/css//detail.css">
+	<script type="text/javascript" src="${initParam.resourceRoot}/js/detail.js"></script>
 	
 </head>
 <body>
@@ -26,27 +27,60 @@
 		<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
 			<div id="mainList">
+			<fieldset>
+				<legend>商品信息 </legend>
 				<div class="row col-md-12">
 				  <div class="col-md-4">
 				    <a href="#" class="thumbnail">
-				      <img src="..." alt="..."  style="width:100%;height: 250px" >
+				      <img src="/resources${commodity.picture }" alt="..."  style="width:100%;height: 250px" >
 				    </a>
 				  </div>
 				  <div class="col-md-6">
-					<ul class="list-unstyled">
-						<li>商品名称</li>
-						<li>价格</li>
-						<li>描述</li>
-						<li>商家店</li>
-						<li>用户真实姓名</li>
-						<li>联系方式</li>
-						<li>...</li>
-						<li><a href="" title="点击查看商品详情">链接</a></li>
-					</ul>
+				  	<dl class="dl-horizontal">
+					  <dt>商品名称</dt>
+					  <dd>${commodity.name }</dd>
+					  <c:if test="${commodity.brand != '' }">
+						  <dt>商品品牌</dt>
+						  <dd>${commodity.brand }</dd>
+					  </c:if>
+					  <dt>价格</dt>
+					  <dd><span class="price-symbol">¥</span><strong class="price-current"><fmt:formatNumber value="${commodity.price }" pattern="#,#00.00"></fmt:formatNumber></strong>  元 / ${commodity.unit }</dd>
+					  <dt>商品清单</dt>
+					  <c:forEach items="${commodity.goods }" var="good">
+					  <dd>${good}</dd>
+					  </c:forEach>
+					  <c:if test="${commodity.description != '' }">
+						  <dt>描述</dt>
+						  <dd>${commodity.description }</dd>
+					  </c:if>
+					  <c:if test="${commodity.addTime != '' }">
+					  	  <dt>上架时间</dt>
+						  <dd><fmt:formatDate value="${commodity.addTime }" pattern="yyyy-MM-dd HH:mm:ss" timeZone="GMT+8"/></dd>
+					  </c:if>
+					  <dt>浏览次数</dt>
+					  <dd><strong class="views">${commodity.views }</strong> 次</dd>
+					  <c:if test="${commodity.realName != '' }">
+					   	 <dt>商家</dt>
+					 	 <dd>${commodity.realName }</dd>
+					  </c:if>
+					  <c:if test="${commodity.companyName != '' }">
+					   	 <dt>店铺名</dt>
+					 	 <dd>${commodity.companyName }</dd>
+					  </c:if>
+					 <dt>联系方式</dt>
+					 <dd>${commodity.mobilePhone }</dd>
+					 <c:if test="${commodity.telPhone != '' }">
+						 <dt>固定电话</dt>
+						 <dd>${commodity.telPhone }</dd>
+					 </c:if>
+					 <c:if test="${commodity.link != '' }">
+						 <dt>相关链接</dt>
+						 <dd>${commodity.link }</dd>
+					 </c:if>
+					</dl>
 				  </div>
 				</div>
-				<div class="col-md-12 highlight">
-				</div>
+			</fieldset>
 			</div>
 		</div>
 	</div>

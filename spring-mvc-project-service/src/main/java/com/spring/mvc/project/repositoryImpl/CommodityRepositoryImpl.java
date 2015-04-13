@@ -54,8 +54,27 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 	}
 
 	@Override
-	public CommodityInfo find(String id) {
+	public CommodityInfo findById(String id) {
 		return (CommodityInfo) this.getSession().get(CommodityInfo.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Object[] find(String id) {
+
+		StringBuffer hql = new StringBuffer(
+				"SELECT c.id,c.name,c.brand,c.link,c.price,c.unit,c.picture,c.used,c.new_condition,c.status,c.recommend,c.goods,c.description,c.views,c.add_time,u.username,u.real_name,u.mobile_phone,u.tel_phone,u.company_name FROM ");
+		hql.append("(SELECT id,name,brand,link,price,unit,picture,used,new_condition,recommend,status,goods,description,views,add_time,username ");
+		hql.append("FROM commodity_info WHERE id=:id) c ");
+		hql.append("LEFT JOIN (SELECT username,real_name,mobile_phone,tel_phone,company_name FROM user_info ) u ");
+		hql.append("ON u.username=c.username ");
+		Query query = this.getSession().createSQLQuery(hql.toString());
+		query.setParameter("id", id);
+		List<Object[]> objList = query.list();
+		if (objList != null && objList.size() > 0) {
+			return objList.get(0);
+		}
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
