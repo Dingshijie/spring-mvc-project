@@ -48,7 +48,10 @@ $(function(){
 	 * 设置区域
 	 */
 	if(getCookie("areaCode") == null || getCookie("areaName") == null){
-		$('#id_area').hide();
+		
+		$('#id_area').html('不限');
+		
+		//$('#id_area').hide();
 	}else{
 		$('#id_area').attr('data-code',getCookie("areaCode"));
 		$('#id_area').html(getCookie("areaName"));
@@ -60,7 +63,8 @@ $(function(){
 	 * 设置学校
 	 */
 	if(getCookie("schoolCode") == null || getCookie("schoolName") == null){
-		$('#id_school').hide();
+		$('#id_school').html('不限');
+		//$('#id_school').hide();
 	}else{
 		$('#id_school').attr('data-code',getCookie("schoolCode"));
 		$('#id_school').html(getCookie("schoolName"));
