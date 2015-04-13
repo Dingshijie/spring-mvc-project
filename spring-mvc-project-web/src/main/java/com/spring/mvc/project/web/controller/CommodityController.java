@@ -88,7 +88,8 @@ public class CommodityController {
 				System.out.println(description + ":" + object);
 
 				//将图片上传到tomcat服务器
-				String path = session.getServletContext().getRealPath("") + realPath.replace(WebUtils.uploadPath, "");
+				String path = session.getServletContext().getRealPath("resources")
+						+ realPath.replace(WebUtils.uploadPath, "");
 				String dirpath = path.substring(0, path.lastIndexOf("/"));
 				File tempdir = new File(dirpath);
 				System.out.println(path);
