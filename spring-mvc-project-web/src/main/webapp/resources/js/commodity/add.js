@@ -262,6 +262,8 @@ $(function(){
 		var len = link.length;
 		if (len > 64){
 			$('#linkerror').addClass("error").css('color','red').html("× 商品链接不能超过64个字符！");
+		}else if((link.substring(0,4)).toUpperCase() != "HTTP" ){
+			$('#linkerror').addClass("error").css('color','red').html("× 商品链接请带上http或https！");
 		}
 		$('#linkerror').show();
 	});

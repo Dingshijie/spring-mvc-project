@@ -92,22 +92,6 @@ public class CommodityController {
 						+ realPath.replace(WebUtils.uploadPath, "");
 				String dirpath = path.substring(0, path.lastIndexOf("/"));
 				File tempdir = new File(dirpath);
-				System.out.println(path);
-				File tempfile = new File(path);
-
-				if (!tempdir.exists()) {
-					tempdir.mkdirs();
-				}
-				tempfile.createNewFile();
-
-				FileUtils.copyInputStreamToFile(file.getInputStream(), tempfile);//上传文件
-
-				//将图片上传到tomcat服务器
-				String path = session.getServletContext().getRealPath("resources")
-						+ realPath.replace(WebUtils.uploadPath, "");
-				String dirpath = path.substring(0, path.lastIndexOf("/"));
-				File tempdir = new File(dirpath);
-				System.out.println(path);
 				File tempfile = new File(path);
 
 				if (!tempdir.exists()) {

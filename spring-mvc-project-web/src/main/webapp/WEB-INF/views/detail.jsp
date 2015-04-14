@@ -76,7 +76,7 @@
 					 </c:if>
 					 <c:if test="${commodity.link != '' }">
 						 <dt>相关链接</dt>
-						 <dd><a href="HTTP://${commodity.link }">${commodity.link }</a></dd>
+						 <dd><a href="${commodity.link }">${commodity.link }</a></dd>
 					 </c:if>
 					</dl>
 				  </div>
