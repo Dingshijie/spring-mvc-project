@@ -109,4 +109,11 @@ public interface CommodityService {
 	public int findAllCount(String categoryCode, String areaCode, String schoolCode, int status, int recommend,
 			int used, String keyword);
 
+	/**
+	 * 增加浏览次数
+	 * @param id
+	 * @return
+	 */
+	public boolean addViews(String id);
+
 }

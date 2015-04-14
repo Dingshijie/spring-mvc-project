@@ -102,6 +102,21 @@ public class CommodityController {
 
 				FileUtils.copyInputStreamToFile(file.getInputStream(), tempfile);//上传文件
 
+				//将图片上传到tomcat服务器
+				String path = session.getServletContext().getRealPath("resources")
+						+ realPath.replace(WebUtils.uploadPath, "");
+				String dirpath = path.substring(0, path.lastIndexOf("/"));
+				File tempdir = new File(dirpath);
+				System.out.println(path);
+				File tempfile = new File(path);
+
+				if (!tempdir.exists()) {
+					tempdir.mkdirs();
+				}
+				tempfile.createNewFile();
+
+				FileUtils.copyInputStreamToFile(file.getInputStream(), tempfile);//上传文件
+
 				commodity.setPicture(realPath.replace(WebUtils.getUploadPath(), ""));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -181,6 +196,12 @@ public class CommodityController {
 		String filename = "商品信息";//"就业统计";
 		String sheetName = "sheet";
 		return new ModelAndView(new ExportExcel2007(filename, FileType.XLSX, sheetName, list, fields));
+	}
+
+	@RequestMapping(value = "addviews/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean addViews(@PathVariable(value = "id") String id) {
+		return commodityService.addViews(id);
 	}
 
 	/**

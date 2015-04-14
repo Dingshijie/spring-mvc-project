@@ -32,6 +32,7 @@
 				<div class="row col-md-12">
 				  <div class="col-md-4">
 				    <a href="#" class="thumbnail">
+				    	<input type="hidden" id="id" value="${commodity.id }">
 				      <img src="/resources${commodity.picture }" alt="..."  style="width:100%;height: 250px" >
 				    </a>
 				  </div>
@@ -75,7 +76,7 @@
 					 </c:if>
 					 <c:if test="${commodity.link != '' }">
 						 <dt>相关链接</dt>
-						 <dd>${commodity.link }</dd>
+						 <dd><a href="HTTP://${commodity.link }">${commodity.link }</a></dd>
 					 </c:if>
 					</dl>
 				  </div>
