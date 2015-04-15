@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
@@ -226,13 +227,13 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 			crit.add(Restrictions.eq("username", username));
 		}
 		if (StringUtils.hasText(categoryCode)) {
-			crit.add(Restrictions.like("category", categoryCode + "%"));
+			crit.add(Restrictions.like("category", categoryCode, MatchMode.START));
 		}
 		//嵌套子查询
 		DetachedCriteria subCriteria = DetachedCriteria.forClass(UserInfo.class);
 		subCriteria.setProjection(Projections.property("username"));
 		if (StringUtils.hasText(areaCode)) {
-			subCriteria.add(Restrictions.like("areaCode", areaCode + "%"));
+			subCriteria.add(Restrictions.like("areaCode", areaCode, MatchMode.START));
 		}
 		if (StringUtils.hasText(schoolCode)) {
 			subCriteria.add(Restrictions.like("schoolCode", schoolCode));
