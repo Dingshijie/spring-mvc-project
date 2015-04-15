@@ -41,6 +41,12 @@
 				</ul>
 			</li>
 			</shiro:hasAnyRoles >
+			<li <c:if test="${param.active=='selfinfomanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/user/detail.html">个人中心</a>
+				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='selfinfomanager'}">style="display:inline-block"</c:if> >
+					<li <c:if test="${param.subactive=='detail'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/user/detail.html">个人信息</a></li>
+					<li <c:if test="${param.subactive=='password'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/user/password.html">修改密码</a></li>
+				</ul>
+			</li>
 			<li <c:if test="${param.active=='commoditymanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/commodity/list.html">商品管理</a>
 				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='commoditymanager'}">style="display:inline-block"</c:if> >
 					<li <c:if test="${param.subactive=='commoditylist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/commodity/list.html">商品列表</a></li>

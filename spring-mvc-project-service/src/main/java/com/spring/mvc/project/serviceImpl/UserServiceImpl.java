@@ -1,5 +1,6 @@
 package com.spring.mvc.project.serviceImpl;
 
+import java.security.MessageDigest;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -49,34 +50,34 @@ public class UserServiceImpl implements UserService {
 	public boolean add(UserInfo userInfo) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo user = (UserInfo) currentUser.getPrincipal();
-		//		if ((user.isManager() && !userInfo.isManager()) || (user.isAdministrator() && !userInfo.isAdministrator())) {
-		return userRepository.add(userInfo);
-		//		}
-		//		return false;
+		if ((user.isManager() && !userInfo.isManager()) || (user.isAdministrator() && !userInfo.isAdministrator())) {
+			return userRepository.add(userInfo);
+		}
+		return false;
 	}
 
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "rawtypes" })
 	@Override
 	@Transactional(readOnly = false)
 	public boolean update(String paramter, String id) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo user = (UserInfo) currentUser.getPrincipal();
 		UserInfo userInfo = find(id);
-		//		if ((user.isManager() && !userInfo.isManager()) || (user.isAdministrator() && !userInfo.isAdministrator())) {
-		StringBuffer sql = new StringBuffer();
-		JSONObject jsonObject = new JSONObject();
-		jsonObject = JSONObject.parseObject(paramter);
-		Set set = jsonObject.keySet();
-		Iterator iterator = set.iterator();
-		while (iterator.hasNext()) {
-			String key = iterator.next().toString();
-			String value = jsonObject.get(key).toString();
-			sql.append(",");
-			sql.append(key + "='" + value + "'");
+		if ((user.isManager() && !userInfo.isManager()) || (user.isAdministrator() && !userInfo.isAdministrator())) {
+			StringBuffer sql = new StringBuffer();
+			JSONObject jsonObject = new JSONObject();
+			jsonObject = JSONObject.parseObject(paramter);
+			Set set = jsonObject.keySet();
+			Iterator iterator = set.iterator();
+			while (iterator.hasNext()) {
+				String key = iterator.next().toString();
+				String value = jsonObject.get(key).toString();
+				sql.append(",");
+				sql.append(key + "='" + value + "'");
+			}
+			return userRepository.update(sql.toString().replaceFirst(",", ""), id);
 		}
-		return userRepository.update(sql.toString().replaceFirst(",", ""), id);
-		//		}
-		//		return false;
+		return false;
 	}
 
 	@Override
@@ -102,4 +103,59 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findCount(role, areaCode, schoolCode, keyword);
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public boolean ModifyPassword(String id, String password) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		if (userInfo.getId().equals(id)) {
+			return userRepository.ModifyPassword(id, password);
+		}
+		return false;
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public boolean ResetPassword(String id) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		if (userInfo.isManager()) {
+			//密码重置设置为6个1
+			String password = MD5("111111");
+			return userRepository.ModifyPassword(id, password);
+		}
+		return false;
+	}
+
+	/**
+	 * MD5加密
+	 * @param input
+	 * @return
+	 */
+	public String MD5(String input) {
+		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+
+		try {
+			byte[] btInput = input.getBytes();
+			// 获得MD5摘要算法的 MessageDigest 对象
+			MessageDigest mdInst = MessageDigest.getInstance("MD5");
+			// 使用指定的字节更新摘要
+			mdInst.update(btInput);
+			// 获得密文
+			byte[] md = mdInst.digest();
+			// 把密文转换成十六进制的字符串形式
+			int j = md.length;
+			char str[] = new char[j * 2];
+			int k = 0;
+			for (int i = 0; i < j; i++) {
+				byte byte0 = md[i];
+				str[k++] = hexDigits[byte0 >>> 4 & 0xf];
+				str[k++] = hexDigits[byte0 & 0xf];
+			}
+			return new String(str);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

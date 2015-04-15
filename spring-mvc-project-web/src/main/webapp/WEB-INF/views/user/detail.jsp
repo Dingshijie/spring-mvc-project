@@ -27,7 +27,10 @@
 </head>
 <body>
 	
-	<div class="container-fluid col-md-10 col-md-offset-2">
+	<c:import url="../common/manager-top.jsp"></c:import>
+	<c:import url="../common/manager-left.jsp"><c:param name="active">selfinfomanager</c:param><c:param name="subactive">detail</c:param></c:import>
+	
+	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="row show-grid">
 			<div id="mainList" class="col-md-8 col-md-offset-2">
 					<fieldset>

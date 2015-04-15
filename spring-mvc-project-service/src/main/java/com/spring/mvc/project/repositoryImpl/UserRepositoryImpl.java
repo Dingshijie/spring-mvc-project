@@ -126,4 +126,13 @@ public class UserRepositoryImpl implements UserRepository {
 		return Integer.parseInt(crit.uniqueResult().toString());
 	}
 
+	@Override
+	public boolean ModifyPassword(String id, String password) {
+		String hql = "UPDATE UserInfo set password=:password WHERE id=:id";
+		Query query = this.getSession().createQuery(hql.toString());
+		query.setParameter("id", id);
+		query.setParameter("password", password);
+		return query.executeUpdate() != 0;
+	}
+
 }

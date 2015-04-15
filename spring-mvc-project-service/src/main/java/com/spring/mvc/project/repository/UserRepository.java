@@ -72,4 +72,12 @@ public interface UserRepository {
 	 */
 	public int findCount(Role role, String areaCode, String schoolCode, String keyword);
 
+	/**
+	 * 修改密码
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	public boolean ModifyPassword(String id, String password);
+
 }

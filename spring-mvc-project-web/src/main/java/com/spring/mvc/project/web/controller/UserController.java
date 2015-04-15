@@ -3,6 +3,8 @@ package com.spring.mvc.project.web.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +42,12 @@ public class UserController {
 		return userService.add(user);
 	}
 
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean update(String paramter, String id) {
+		return userService.update(paramter, id);
+	}
+
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public String userListHtml(Model model) {
 		//进入到注册的页面
@@ -66,15 +74,18 @@ public class UserController {
 		return userService.findCount(role, areaCode, schoolCode, keyword);
 	}
 
-	@RequestMapping(value = "export", method = RequestMethod.GET)
-	public ModelAndView export(Role role, String areaCode, String schoolCode, String keyword) {
-		List<UserInfo> list = userService.findList(role, areaCode, schoolCode, keyword, 0, 0);
+	/**
+	 * 进入到个人信息的界面
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "detail.html", method = RequestMethod.GET)
+	public String selfInfo(Model model) {
 
-		List<ExportField> fields = new ArrayList<ExportField>();
-		setExportField(fields, list);
-		String filename = "用户信息";//"就业统计";
-		String sheetName = "sheet";
-		return new ModelAndView(new ExportExcel2007(filename, FileType.XLSX, sheetName, list, fields));
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo user = (UserInfo) currentUser.getPrincipal();
+		model.addAttribute("user", user);
+		return "user/detail";
 	}
 
 	@RequestMapping(value = "detail/{id}", method = RequestMethod.GET)
@@ -85,10 +96,15 @@ public class UserController {
 		return "user/detail";
 	}
 
-	@RequestMapping(value = "update", method = RequestMethod.POST)
-	@ResponseBody
-	public boolean update(String paramter, String id) {
-		return userService.update(paramter, id);
+	@RequestMapping(value = "export", method = RequestMethod.GET)
+	public ModelAndView export(Role role, String areaCode, String schoolCode, String keyword) {
+		List<UserInfo> list = userService.findList(role, areaCode, schoolCode, keyword, 0, 0);
+
+		List<ExportField> fields = new ArrayList<ExportField>();
+		setExportField(fields, list);
+		String filename = "用户信息";//"就业统计";
+		String sheetName = "sheet";
+		return new ModelAndView(new ExportExcel2007(filename, FileType.XLSX, sheetName, list, fields));
 	}
 
 	/**
@@ -105,6 +121,16 @@ public class UserController {
 		fields.add(new ExportField("role", "角色", DataType.STRING));
 		fields.add(new ExportField("enable", "是否在用", DataType.INT));
 		fields.add(new ExportField("authentication", "认证信息", DataType.STRING));
+	}
+
+	/**
+	 * 修改密码
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	public boolean ModifyPassword(String id, String password) {
+		return userService.ModifyPassword(id, password);
 	}
 
 }
