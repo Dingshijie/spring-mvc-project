@@ -129,7 +129,7 @@ public class CommodityController {
 	@ResponseBody
 	public List<JSONObject> findAllList(String categoryCode, String areaCode, String schoolCode, int status,
 			int recommend, int used, String keyword,
-			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+			@RequestParam(value = "pageSize", defaultValue = "12") int pageSize,
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex) {
 		List<JSONObject> list = commodityService.findAllList(categoryCode, areaCode, schoolCode, status, recommend,
 				used, keyword);

@@ -90,28 +90,28 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 		} else {
 			hql.append("AND username IN (SELECT username from UserInfo WHERE 1=1 ");
 			if (StringUtils.hasText(areaCode)) {
-				hql.append("AND areaCode LIKE :areaCode ");
+				hql.append("AND areaCode LIKE ':areaCode||'%' ");
 			}
 			if (StringUtils.hasText(schoolCode)) {
-				hql.append("AND schoolCode LIKE :schoolCode ");
+				hql.append("AND schoolCode LIKE ':schoolCode||'%' ");
 			}
 			hql.append(") ");
 		}
 		if (StringUtils.hasText(categoryCode)) {
-			hql.append("AND category LIKE :categoryCode ");
+			hql.append("AND category LIKE ':categoryCode||'%' ");
 		}
 		if (status != 10) {
-			hql.append("AND status LIKE :status ");
+			hql.append("AND status=:status ");
 		}
 		if (recommend != 10) {
-			hql.append("AND recommend LIKE :recommend ");
+			hql.append("AND recommend=:recommend ");
 		}
 		if (used != 10) {
-			hql.append("AND used LIKE :used ");
+			hql.append("AND used=:used ");
 		}
 
 		if (StringUtils.hasText(keyword)) {
-			hql.append("AND (name LIKE :keyword OR brand LIKE :keyword OR typeCode LIKE :keyword OR username LIKE :keyword) ");
+			hql.append("AND (name LIKE '%'||:keyword||'%' OR brand LIKE '%'||:keyword||'%' OR typeCode LIKE '%'||:keyword||'%' OR username LIKE '%'||:keyword||'%') ");
 		}
 		hql.append("ORDER BY ADD_TIME DESC");
 
@@ -121,14 +121,14 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 			query.setParameter("username", username);
 		} else {
 			if (StringUtils.hasText(areaCode)) {
-				query.setParameter("areaCode", areaCode + "%");
+				query.setParameter("areaCode", areaCode);
 			}
 			if (StringUtils.hasText(schoolCode)) {
-				query.setParameter("schoolCode", schoolCode + "%");
+				query.setParameter("schoolCode", schoolCode);
 			}
 		}
 		if (StringUtils.hasText(categoryCode)) {
-			query.setParameter("categoryCode", categoryCode + "%");
+			query.setParameter("categoryCode", categoryCode);
 		}
 		if (status != 10) {
 			query.setParameter("status", status);
@@ -159,28 +159,28 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 		} else {
 			hql.append("AND username IN (SELECT username from UserInfo WHERE 1=1 ");
 			if (StringUtils.hasText(areaCode)) {
-				hql.append("AND areaCode LIKE :areaCode ");
+				hql.append("AND areaCode LIKE ':areaCode||'%' ");
 			}
 			if (StringUtils.hasText(schoolCode)) {
-				hql.append("AND schoolCode LIKE :schoolCode ");
+				hql.append("AND schoolCode LIKE ':schoolCode||'%' ");
 			}
 			hql.append(") ");
 		}
 		if (StringUtils.hasText(categoryCode)) {
-			hql.append("AND category LIKE :categoryCode ");
+			hql.append("AND category LIKE ':categoryCode||'%' ");
 		}
 		if (status != 10) {
-			hql.append("AND status LIKE :status ");
+			hql.append("AND status=:status ");
 		}
 		if (recommend != 10) {
-			hql.append("AND recommend LIKE :recommend ");
+			hql.append("AND recommend=:recommend ");
 		}
 		if (used != 10) {
-			hql.append("AND used LIKE :used ");
+			hql.append("AND used=:used ");
 		}
 
 		if (StringUtils.hasText(keyword)) {
-			hql.append("AND (name LIKE :keyword OR brand LIKE :keyword OR typeCode LIKE keyword OR username LIKE keyword) ");
+			hql.append("AND (name LIKE '%'||:keyword||'%' OR brand LIKE '%'||:keyword||'%' OR typeCode LIKE '%'||:keyword||'%' OR username LIKE '%'||:keyword||'%') ");
 		}
 		hql.append("ORDER BY ADD_TIME DESC");
 
@@ -190,14 +190,14 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 			query.setParameter("username", username);
 		} else {
 			if (StringUtils.hasText(areaCode)) {
-				query.setParameter("areaCode", areaCode + "%");
+				query.setParameter("areaCode", areaCode);
 			}
 			if (StringUtils.hasText(schoolCode)) {
-				query.setParameter("schoolCode", schoolCode + "%");
+				query.setParameter("schoolCode", schoolCode);
 			}
 		}
 		if (StringUtils.hasText(categoryCode)) {
-			query.setParameter("categoryCode", categoryCode + "%");
+			query.setParameter("categoryCode", categoryCode);
 		}
 		if (status != 10) {
 			query.setParameter("status", status);

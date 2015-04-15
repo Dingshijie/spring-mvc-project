@@ -37,7 +37,7 @@
             	</li>
             </shiro:user>
           </ul>
-          <form class="navbar-form navbar-left" role="search">
+          <form class="navbar-form navbar-left search-form" role="search">
             <div class="input-group">
               <div class="input-group-btn">
 			    <div class="btn-group">
@@ -45,14 +45,14 @@
 			    	全部&nbsp;<span class="caret"></span>
 			    </button>
 			    <ul class="dropdown-menu" role="menu" style="min-width: 80px;"><!-- 重写下来出来的列表的最小宽度由160px改成100px -->
-				    <li><a href="javascript:void(0)" class="scope" data-used="">全部</a></li>
-					<li><a href="javascript:void(0)" class="scope" data-used="true">二手</a></li>
+				    <li><a href="javascript:void(0)" class="scope" data-used="10">全部</a></li>
+					<li><a href="javascript:void(0)" class="scope" data-used="1">二手</a></li>
 				</ul>
 				</div>
 			  </div>
-			  <input type="text" class="form-control" size="40" placeholder="请输入商品名称、商家等" aria-label="...">
+			  <input type="text" class="form-control" id="keyword" size="40" placeholder="请输入商品名称、商家等" aria-label="...">
 			  <div class="input-group-btn">
-			  	<button type="button" class="btn btn-success">搜索</button>
+			  	<button type="button" class="btn btn-success" id="btn-search">搜索</button>
 			  </div>
 			</div>
           </form>

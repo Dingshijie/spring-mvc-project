@@ -38,16 +38,16 @@
       <div class="row row-offcanvas row-offcanvas-right">
 		 <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
-         	<a href="javascritp:void(0);" class="list-group-item active" data-code="">所有分类</a>
-            <a href="#" class="list-group-item" data-code='11'>女装</a>
-            <a href="#" class="list-group-item" data-code='12'>男装</a>
-            <a href="#" class="list-group-item" data-code='13'>鞋靴箱包</a>
-            <a href="#" class="list-group-item" data-code='14'>运动户外</a>
-            <a href="#" class="list-group-item" data-code='15'>手机数码</a>
-            <a href="#" class="list-group-item" data-code='16'>美妆配饰</a>
-            <a href="#" class="list-group-item" data-code='17'>生活用品</a>
-            <a href="#" class="list-group-item" data-code='18'>学习用品</a>
-            <a href="#" class="list-group-item" data-code='91'>其他</a>
+         	<a href="javascritp:void(0);" class="list-group-item active" data-code="" data-name="所有分类">所有分类</a>
+            <a href="#" class="list-group-item" data-code='11' data-name='女装'>女装</a>
+            <a href="#" class="list-group-item" data-code='12' data-name='男装'>男装</a>
+            <a href="#" class="list-group-item" data-code='13' data-name='鞋靴箱包'>鞋靴箱包</a>
+            <a href="#" class="list-group-item" data-code='14' data-name='运动户外'>运动户外</a>
+            <a href="#" class="list-group-item" data-code='15' data-name='手机数码'>手机数码</a>
+            <a href="#" class="list-group-item" data-code='16' data-name='美妆配饰'>美妆配饰</a>
+            <a href="#" class="list-group-item" data-code='17' data-name='生活用品'>生活用品</a>
+            <a href="#" class="list-group-item" data-code='18' data-name='学习用品'>学习用品</a>
+            <a href="#" class="list-group-item" data-code='91' data-name='其他'>其他</a>
           </div>
         </div><!--/.sidebar-offcanvas-->
         <div class="col-xs-12 col-sm-10">
@@ -56,22 +56,22 @@
           </p>
           	<div class="form-group">
           		<div class="form-group">
-          			已选择：<span id="id_category" data-code="">所有分类</span> > <span id="id_city" data-code="">郑州市</span> > <span id="id_area" data-code="">高新区</span> > <span id="id_school" data-code="">郑州大学</span>
+          			已选择：<span class="btn btn-default btn-xs" id="id_category" data-code="">所有分类</span> > <span class="btn btn-default btn-xs" id="id_city" data-code="">郑州市</span> > <span class="btn btn-default btn-xs" id="id_area" data-code="">不限</span> > <span class="btn btn-default btn-xs" id="id_school" data-code="">不限</span>
           		</div>
           		<table class="table table-condensed" style="margin-bottom:0px;">
           		<colgroup><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col><col width="10%"></col></colgroup>
           			<tbody>
           				<tr class="hot">
           					<th>热门:</th>
-          					<td><a >连衣裙</a></td>
-          					<td><a >短裤</a></td>
-          					<td><a >高跟鞋</a></td>
-          					<td><a >女式包包</a></td>
-          					<td><a >篮球</a></td>
-          					<td><a >自行车</a></td>
-          					<td><a >手机</a></td>
-          					<td><a >电脑</a></td>
-          					<td><a >台灯</a></td>
+          					<td><a href="javascript:void(0)" data-code='1101' data-name='连衣裙'>连衣裙</a></td>
+          					<td><a href="javascript:void(0)" data-code='1104' data-name='短裤'>短裤</a></td>
+          					<td><a href="javascript:void(0)" data-code='1305' data-name='高跟鞋'>高跟鞋</a></td>
+          					<td><a href="javascript:void(0)" data-code='1308' data-name='女式包包'>女式包包</a></td>
+          					<td><a href="javascript:void(0)" data-code='1404' data-name='篮球'>篮球</a></td>
+          					<td><a href="javascript:void(0)" data-code='1407' data-name='自行车'>自行车</a></td>
+          					<td><a href="javascript:void(0)" data-code='1501' data-name='手机'>手机</a></td>
+          					<td><a href="javascript:void(0)" data-code='1502' data-name='电脑'>电脑</a></td>
+          					<td><a href="javascript:void(0)" data-code='1702' data-name='台灯'>台灯</a></td>
           				</tr>
           				<tr class="city">
           					<th>城市:</th>

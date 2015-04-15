@@ -5,14 +5,16 @@ $(function(){
 	/**
 	 * 加载首页数据
 	 */
-	//默认首页上的地区是郑州市（code=4101）	
+	//默认首页上的地区是郑州市（code=4101）
+	var categoryCode = '';
+	var categoryName = '';
 	var cityCode = '';
 	var cityName = '';
 	var areaCode = '';
 	var areaName = '';
 	var schoolCode = '';
 	var schoolName = '';
-	
+	var user = 10;
 	var par={
 		categoryCode: getCookie('categoryCode') || "",
 		areaCode: getCookie('areaCode') || "",
@@ -20,9 +22,21 @@ $(function(){
 		status: 1,
 		recommend: 10,
 		used: getCookie('used') || 10,
-		keyword: getCookie('keyword') || "",
+		keyword: "",
 		pageSize: 12,
 		pageIndex: 1
+	}
+	/**
+	 * 设置类别
+	 */
+	if(getCookie("categoryCode") == null || getCookie("categoryName") == null){
+		
+	}else{
+		categoryCode = getCookie("categoryCode");
+		categoryName = getCookie("categoryName");
+		
+		$('#id_category').attr('data-code',getCookie("categoryCode"));
+		$('#id_category').html(getCookie("categoryName"));
 	}
 	/**
 	 * 设置城市
@@ -76,7 +90,7 @@ $(function(){
 	
 	//设置首页上的地区
 	$.get("HTTP://"+ window.location.host + "/area/list/area",{"areaCode":cityCode},function(data){
-		var areahtml = '<th data-code="'+cityCode+'">区域:</th><td><a href="javascript:void(0);" data-code="'+cityCode+'" data-name="不限">不限</a></td>';
+		var areahtml = '<th data-code="'+cityCode+'">区域:</th><td><a class="btn btn-info btn-xs" href="javascript:void(0);" data-code="'+cityCode+'" data-name="不限">不限</a></td>';
 		for(var i=0; i < 7 && i< data.length  ;i++){
 			areahtml += '<td><a href="javascript:void(0);" data-code="'+data[i].code+'" data-name="'+ data[i].name +'"> '+ data[i].name +' </a></td>';
 		}
@@ -87,7 +101,7 @@ $(function(){
 	
 	//设置首页上的学校
 	$.get("HTTP://"+ window.location.host + "/school/list/"+cityCode.substring(0,2),function(data){
-		var schoolHtml = '<th data-code="">学校:</th><td><a href="javascript:void(0);" data-code="" data-name="不限">不限</a></td>';
+		var schoolHtml = '<th data-code="">学校:</th><td><a class="btn btn-info btn-xs" href="javascript:void(0);" data-code="" data-name="不限">不限</a></td>';
 		for(var i=0; i < 7 && i< data.length  ;i++){
 			schoolHtml += '<td><a href="javascript:void(0);" data-code="'+data[i].code+'" data-name="'+ data[i].name +'"> '+ data[i].name +' </a></td>';
 		}
@@ -138,7 +152,7 @@ $(function(){
 		
 
 			
-		// 首次初始化后加载
+	// 首次初始化后加载
 	loadData(par);
 
 	loadPage = function() {
@@ -293,6 +307,7 @@ $(function(){
 		var top = $(this).offset().top;
 		
 		var code = $(this).attr('data-code');
+		var name = $(this).attr('data-name');
 		if(code == ''){
 			$('#popover').hide();
 		}else{
@@ -300,13 +315,13 @@ $(function(){
 				if(data != ''){
 					var len = Math.ceil((data.length + 1)/3);
 					
-					var html = "<table class='table' style='padding: 10px'><colgroup><col width='30%'></col><col width='30%'></col><col width='30%'></col></colgroup><tr><td style='padding: 10px;'><a href='#'>全部</a></td>";
+					var html = "<table class='table' style='padding: 10px'><colgroup><col width='30%'></col><col width='30%'></col><col width='30%'></col></colgroup><tr><td style='padding: 10px;'><a class='item' href='javascript:void(0);' data-code='"+code+"' data-name='"+name+"（全部）'>全部</a></td>";
 					for(var i = 0;i < data.length; i++){
 
 						if(i%3==2){
 							html += "<tr>";
 						}
-						html += "<td style='padding: 10px;'><a href='#'>"+ data[i].name +"</a></td>"
+						html += "<td style='padding: 10px;'><a class='item' href='javascript:void(0);' data-code='"+data[i].code+"' data-name='"+data[i].name+"'>"+ data[i].name +"</a></td>"
 						if(i%3==1){
 							html += "</tr>";
 						}
@@ -321,6 +336,44 @@ $(function(){
 		
 		return;
 		
+	});
+	/**
+	 * 点击大分类
+	 */
+	$('.list-group-item').on('click',function(){
+		
+		
+		categoryCode = $(this).attr('data-code');
+		categoryName = $(this).attr('data-name');
+		
+		setCookie("categoryCode",categoryCode);
+		setCookie("categoryName",categoryName);
+		
+		
+		$('#id_category').attr('data-code',getCookie("categoryCode"));
+		$('#id_category').html(getCookie("categoryName"));
+		$('#id_category').show();
+		
+		window.location.reload();
+		
+	});
+	/**
+	 * 点击小分类
+	 */
+	$('#popover').on('click','.item',function(){
+		console.log('aa');
+		
+		categoryCode = $(this).attr('data-code');
+		categoryName = $(this).attr('data-name');
+		
+		setCookie("categoryCode",categoryCode);
+		setCookie("categoryName",categoryName);
+		
+		$('#id_category').attr('data-code',getCookie("categoryCode"));
+		$('#id_category').html(getCookie("categoryName"));
+		$('#id_category').show();
+		
+		window.location.reload();
 	});
 	
 	/**
@@ -596,5 +649,18 @@ $(function(){
 			
 			window.location.reload();
 		}
+	});
+	
+	/**
+	 * 点击搜索加载页面
+	 */
+	$('.search-form').on('click','#btn-search',function(){
+		par.categoryCode =  getCookie('categoryCode') || "";
+		par.areaCode = getCookie('areaCode') || "";
+		par.schoolCode = getCookie('schoolCode') || "";
+		par.used = getCookie('used') || 10;
+		par.keyword = $('.search-form').find('#keyword').val() || "";
+		
+		loadData(par);
 	});
 });
