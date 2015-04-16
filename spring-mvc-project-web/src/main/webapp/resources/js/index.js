@@ -174,12 +174,8 @@ $(function(){
 			if(data == ''){
 				var html = "<div style='font-size:16px;text-align:center;line-height:120px;' class='alert-info' role='alert'><strong>提示</strong>：未查询到相关数据！</div>"
 			}else{
-				var html = "";
-				for (var i = 0;i < data.length; i++) {
-					html += '<div class="col-xs-6 col-lg-4 col-md-4"><a href="HTTP://'+window.location.host+'/commodity/detail/'+ data[i].id +'" target="_blank" title="点击查看详情"><img src="/resources'+ data[i].picture+ '" alt="图片加载失败" style="width:100%;height: 200px" class="img-responsive img-thumbnail"></a><p>'+ data[i].name+ '</p><p>'+ data[i].price + '</p>'+ (data[i].recommend ==1 ? '<p><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>推荐</p>':'') +'<p>浏览次数：'+ data[i].views +'次</p></div>';
-				}
+				setting.pageWrap.empty().html(($.templates("#commodityListTmpl")).render(data));
 			}
-			setting.pageWrap.empty().append(html);
 		});
 
 		$.get("HTTP://" + window.location.host + "/commodity/count/all", par,function(data) {
@@ -190,6 +186,11 @@ $(function(){
 
 	}
 
+	$('#loadContentWrap').on('click','a',function(){
+		var id = $(this).attr('data-id');
+		window.open("HTTP://"+window.location.host+"/commodity/detail/"+id,"_blank");
+	});
+	
 	/**
 	 * 分页
 	 */

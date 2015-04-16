@@ -45,7 +45,7 @@
 						  <dd>${commodity.brand }</dd>
 					  </c:if>
 					  <dt>价格</dt>
-					  <dd><span class="price-symbol">¥</span><strong class="price-current"><fmt:formatNumber value="${commodity.price }" pattern="#,#00.00"></fmt:formatNumber></strong>  元 / ${commodity.unit }</dd>
+					  <dd><span class="price-symbol">¥</span><strong class="price-current"><fmt:formatNumber value="${commodity.price }" pattern="#,###,#00.00"></fmt:formatNumber></strong>  元 / ${commodity.unit }</dd>
 					  <dt>商品清单</dt>
 					  <c:forEach items="${commodity.goods }" var="good">
 					  <dd>${good}</dd>

@@ -45,4 +45,29 @@
 #id_category,#id_city,#id_area,#id_school{
 	color:#f76120;
 }
-
+.price-symbol{
+	display: inline-block;
+	font-size: 18px;
+	vertical-align: top;
+	color: #f76120;
+	
+}
+.price-current{
+	display: inline-block;
+	font-size: 20px;
+	color: #f76120;
+}
+.views{
+	display: inline-block;
+	font-size: 16px;
+	color: #f76120;
+}
+.unimportant{
+	color:#999;
+}
+p{
+	margin: 0 0 5px;
+}
+img {
+	margin-bottom: 10px;
+}

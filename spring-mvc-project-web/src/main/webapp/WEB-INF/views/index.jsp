@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <%
@@ -27,10 +28,27 @@
 	<!-- select2 css和js -->
 	<link rel="stylesheet" href="${initParam.resourceRoot}/lib/select2/css/select2.min.css" />
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
+	<!-- jsrender -->
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/jsrender.min.js"></script>
 	
 	<!-- index.css 文件必须放到bootstrap.min.cs之后 -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/js/index.js"></script>
 	<link rel="stylesheet" href="${initParam.resourceRoot}/css/index.css"/>
+	<script id="commodityListTmpl" type="text/x-jsrender">
+		<div class="commodity col-xs-6 col-lg-4 col-md-4">
+			 <div class="thumbnail">
+			<a href="javascript:void(0);" data-id="{{:id}}" title="点击查看详情"><img src="/resources{{:picture}}" alt="图片加载失败" style="width:100%;height: 200px" class="img-responsive img-thumbnail"></a>
+			<p><a href="javascript:void(0);" data-id="{{:id}}" title="点击查看详情">{{:name}}</a></p>
+			<p><span class="price-symbol">¥</span> <strong class="price-current">{{:price }}</strong>  <span class="unimportant">元 / {{:unit }} </span></p>
+			<p><span class="unimportant">浏览次数</span>：<strong class="views">{{:views}}</strong> <span class="unimportant">次</span>
+				 {{if recommend == 1}}
+					<span class="glyphicon glyphicon-thumbs-up" style="margin-left:25px;color:#2a6496" aria-hidden="true"></span> <span class="unimportant">本周推荐</span>
+				{{/if}}
+			</p>
+			<p><span class="unimportant">本商品是由用户：</span><strong> {{:username}} </strong><span class="unimportant">发布</span></p>
+			</div>
+		</div>
+	</script>
 </head>
 <body>
 	<c:import url="common/top.jsp"></c:import>

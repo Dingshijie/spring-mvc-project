@@ -1,5 +1,6 @@
 package com.spring.mvc.project.serviceImpl;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -195,7 +196,8 @@ public class CommodityServiceImpl implements CommodityService {
 			obj.put("id", list.get(i).getId());
 			obj.put("name", list.get(i).getName());
 			obj.put("brand", list.get(i).getBrand());
-			obj.put("price", list.get(i).getPrice());
+			DecimalFormat decimalFormat = new DecimalFormat("#,###,#00.00");
+			obj.put("price", decimalFormat.format(list.get(i).getPrice()));
 			obj.put("unit", list.get(i).getUnit());
 			obj.put("picture", list.get(i).getPicture());
 			obj.put("typeCode", list.get(i).getTypeCode());
