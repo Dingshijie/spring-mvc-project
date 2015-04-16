@@ -201,6 +201,7 @@ public class CommodityServiceImpl implements CommodityService {
 			obj.put("typeCode", list.get(i).getTypeCode());
 			obj.put("used", list.get(i).getUsed());
 			obj.put("views", list.get(i).getViews());
+			obj.put("recommend", list.get(i).getRecommend());
 			obj.put("username", list.get(i).getUsername());
 			jsonList.add(obj);
 		}
