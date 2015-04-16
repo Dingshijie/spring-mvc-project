@@ -220,8 +220,8 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<CommodityInfo> findList(String username, String categoryCode, String areaCode, String schoolCode,
-			int status, int recommend, int used, String keyword) {
+	public List<CommodityInfo> findAllList(String username, String categoryCode, String areaCode, String schoolCode,
+			int status, int recommend, int used, String keyword, int pageSize, int pageIndex) {
 		Criteria crit = this.getSession().createCriteria(CommodityInfo.class);
 		if (StringUtils.hasText(username)) {
 			crit.add(Restrictions.eq("username", username));
@@ -261,6 +261,10 @@ public class CommodityRepositoryImpl implements CommodityRepository {
 											Restrictions.eq("username", keyword))))));
 		}
 
+		if (pageSize > 0) {
+			crit.setMaxResults(pageSize);
+			crit.setFirstResult((pageIndex - 1) * pageSize);
+		}
 		return crit.list();
 	}
 

@@ -45,7 +45,7 @@
 					<span class="glyphicon glyphicon-thumbs-up" style="margin-left:25px;color:#2a6496" aria-hidden="true"></span> <span class="unimportant">本周推荐</span>
 				{{/if}}
 			</p>
-			<p><span class="unimportant">本商品是由用户：</span><strong> {{:username}} </strong><span class="unimportant">发布</span></p>
+			<p><span class="unimportant">本商品是由用户：</span>{{:username}} <span class="unimportant">发布</span></p>
 			</div>
 		</div>
 	</script>

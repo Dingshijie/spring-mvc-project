@@ -134,16 +134,16 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
-	public List<CommodityInfo> findList(String categoryCode, String areaCode, String schoolCode, int status,
-			int recommend, int used, String keyword) {
+	public List<CommodityInfo> findAllList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword, int pageIndex, int pageSize) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager()) {
-			return commodityRepository.findList("", categoryCode, areaCode, schoolCode, status, recommend, used,
-					keyword);
+			return commodityRepository.findAllList("", categoryCode, areaCode, schoolCode, status, recommend, used,
+					keyword, pageIndex, pageSize);
 		} else {
-			return commodityRepository.findList(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
-					recommend, used, keyword);
+			return commodityRepository.findAllList(userInfo.getUsername(), categoryCode, areaCode, schoolCode, status,
+					recommend, used, keyword, pageIndex, pageSize);
 		}
 	}
 
@@ -186,10 +186,10 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
-	public List<JSONObject> findAllList(String categoryCode, String areaCode, String schoolCode, int status,
-			int recommend, int used, String keyword) {
-		List<CommodityInfo> list = commodityRepository.findList("", categoryCode, areaCode, schoolCode, status,
-				recommend, used, keyword);
+	public List<JSONObject> findCommodityList(String categoryCode, String areaCode, String schoolCode, int status,
+			int recommend, int used, String keyword, int pageSize, int pageIndex) {
+		List<CommodityInfo> list = commodityRepository.findAllList("", categoryCode, areaCode, schoolCode, status,
+				recommend, used, keyword, pageSize, pageIndex);
 		List<JSONObject> jsonList = new ArrayList<JSONObject>();
 		for (int i = 0; i < list.size(); i++) {
 			JSONObject obj = new JSONObject();

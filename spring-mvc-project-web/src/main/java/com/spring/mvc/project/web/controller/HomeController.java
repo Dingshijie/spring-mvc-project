@@ -26,4 +26,19 @@ public class HomeController {
 		return "manager";
 	}
 
+	@RequestMapping(value = "/question.html", method = RequestMethod.GET)
+	public String questionHtml(Model model) {
+		return "question";
+	}
+
+	@RequestMapping(value = "/suggestions.html", method = RequestMethod.GET)
+	public String suggestionsHtml(Model model) {
+		return "suggestions";
+	}
+
+	@RequestMapping(value = "/contact.html", method = RequestMethod.GET)
+	public String contactHtml(Model model) {
+		return "contact";
+	}
+
 }

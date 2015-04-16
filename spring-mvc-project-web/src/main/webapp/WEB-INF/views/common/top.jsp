@@ -75,10 +75,10 @@
             <li class="dropdown">
             	<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">联系我们<span class="caret"></span></a>
             	<ul class="dropdown-menu" role="menu" style="min-width: 80px;">
-	                <li><a href="#">常见问题</a></li>
-	                <li><a href="#">投诉建议</a></li>
+	                <li><a href="${webRoot}/question.html">常见问题</a></li>
+	                <li><a href="${webRoot}/suggestions.html">投诉建议</a></li>
 	                <li class="divider"></li>
-	                <li><a href="#">联系客服</a></li>
+	                <li><a href="${webRoot}/contact.html">联系客服</a></li>
              	</ul>
             </li>
           </ul>

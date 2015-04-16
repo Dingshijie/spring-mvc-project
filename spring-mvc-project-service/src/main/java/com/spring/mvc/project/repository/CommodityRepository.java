@@ -80,8 +80,8 @@ public interface CommodityRepository {
 	 * @param used 是否是二手
 	 * @return List<CommodityInfo>
 	 */
-	public List<CommodityInfo> findList(String username, String categoryCode, String areaCode, String schoolCode,
-			int status, int recommend, int used, String keyword);
+	public List<CommodityInfo> findAllList(String username, String categoryCode, String areaCode, String schoolCode,
+			int status, int recommend, int used, String keyword, int pageSize, int pageIndex);
 
 	/**
 	 * 增加浏览次数

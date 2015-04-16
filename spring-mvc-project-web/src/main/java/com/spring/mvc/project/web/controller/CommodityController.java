@@ -131,8 +131,8 @@ public class CommodityController {
 			int recommend, int used, String keyword,
 			@RequestParam(value = "pageSize", defaultValue = "12") int pageSize,
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex) {
-		List<JSONObject> list = commodityService.findAllList(categoryCode, areaCode, schoolCode, status, recommend,
-				used, keyword);
+		List<JSONObject> list = commodityService.findCommodityList(categoryCode, areaCode, schoolCode, status,
+				recommend, used, keyword, pageSize, pageIndex);
 		return list;
 	}
 
@@ -172,8 +172,8 @@ public class CommodityController {
 	@RequestMapping(value = "export", method = RequestMethod.GET)
 	public ModelAndView export(String categoryCode, String areaCode, String schoolCode, int status, int recommend,
 			int used, String keyword) {
-		List<CommodityInfo> list = commodityService.findList(categoryCode, areaCode, schoolCode, status, recommend,
-				used, keyword);
+		List<CommodityInfo> list = commodityService.findAllList(categoryCode, areaCode, schoolCode, status, recommend,
+				used, keyword, 0, 0);
 
 		List<ExportField> fields = new ArrayList<ExportField>();
 		setExportField(fields, list);

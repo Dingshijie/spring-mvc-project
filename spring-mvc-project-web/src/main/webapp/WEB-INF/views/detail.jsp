@@ -18,7 +18,7 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
 	
-	<link rel="stylesheet" href="${initParam.resourceRoot}/css//detail.css">
+	<link rel="stylesheet" href="${initParam.resourceRoot}/css/detail.css">
 	<script type="text/javascript" src="${initParam.resourceRoot}/js/detail.js"></script>
 	
 </head>
