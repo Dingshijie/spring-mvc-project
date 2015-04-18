@@ -53,7 +53,7 @@ $(function(){
 			}else{
 				var html = "<table class='table table-hover table-striped'><colgroup><col width='5%'></col><col width='10%'></col><col width='10%'></col><col width='20%'></col><col width='15%'></col><col width='15%'></col><col width='10%'></col></colgroup><thead><tr><th>序号</th><th>学历层次</th><th>专业代码</th><th>专业名称</th><th>专业学科门类</th><th>专业学科中类</th><th>操作</th></tr></thead><tbody>";
 				for(var i = 0; i < data.length; i++){
-					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].category + "</td><td>" + data[i].code +"</td><td>" + data[i].name + "</td><td> " + data[i].firstName + " </td><td> " + data[i].secondName + " </td><td><a href='HTTP://"+window.location.host+"/edupubcode/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
+					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].category + "</td><td>" + data[i].code +"</td><td>" + data[i].name + "</td><td> " + data[i].firstName + " </td><td> " + data[i].secondName + " </td><td><a href='HTTP://"+window.location.host+"/edupubcode/find/"+ data[i].id +"' title='点击查看详情'>查看详情</a></td></tr>";
 				}
 				html + "</tbody></table>";
 			}

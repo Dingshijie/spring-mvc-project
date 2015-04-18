@@ -36,8 +36,18 @@ public class EduPubCodeRepositoryImpl implements EduPubCodeRepository {
 	}
 
 	@Override
-	public void update(EduPubCode eduPubCode) {
+	public boolean update(EduPubCode eduPubCode) {
 		this.getSession().update(eduPubCode);
+		String hql = "UPDATE EduPubCode SET eduLevel=:eduLevel,name=:name,firstCode=:firstCode,firstName=:firstName,secondCode=:secondCode,secondName=:secondName WHERE id=:id";
+		Query query = this.getSession().createQuery(hql.toString());
+		query.setParameter("eduLevel", eduPubCode.getEduLevel());
+		query.setParameter("name", eduPubCode.getName());
+		query.setParameter("firstCode", eduPubCode.getFirstCode());
+		query.setParameter("firstName", eduPubCode.getFirstName());
+		query.setParameter("secondCode", eduPubCode.getSecondCode());
+		query.setParameter("secondName", eduPubCode.getSecondName());
+		query.setParameter("id", eduPubCode.getId());
+		return query.executeUpdate() != 0;
 	}
 
 	@Override
@@ -46,9 +56,10 @@ public class EduPubCodeRepositoryImpl implements EduPubCodeRepository {
 	}
 
 	@Override
-	public boolean isExist(String fieldName, String fieldValue) {
-		String sql = "SELECT COUNT(id) FROM EduPubCode WHERE " + fieldName + "=:fieldValue";
+	public boolean isExist(String eduLevel, String fieldName, String fieldValue) {
+		String sql = "SELECT COUNT(id) FROM EduPubCode WHERE eduLevel=:eduLevel AND " + fieldName + "=:fieldValue";
 		Query query = this.getSession().createQuery(sql);
+		query.setParameter("eduLevel", eduLevel);
 		query.setParameter("fieldValue", fieldValue);
 		return Integer.parseInt(query.uniqueResult().toString()) != 0;
 	}

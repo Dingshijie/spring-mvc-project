@@ -20,7 +20,7 @@ public interface EduPubCodeRepository {
 	 * @param id
 	 * @return
 	 */
-	public void update(EduPubCode eduPubCode);
+	public boolean update(EduPubCode eduPubCode);
 
 	/**
 	 * 根据id查询专业代码
@@ -31,11 +31,12 @@ public interface EduPubCodeRepository {
 
 	/**
 	 * 查询数据库中fieldName字段是否有值为fieldValue
+	 * @param eduLevel
 	 * @param fieldName
 	 * @param fieldValue
 	 * @return
 	 */
-	public boolean isExist(String fieldName, String fieldValue);
+	public boolean isExist(String eduLevel, String fieldName, String fieldValue);
 
 	/**
 	 * 删除专业代码

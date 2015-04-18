@@ -30,11 +30,12 @@ public interface EduPubCodeService {
 
 	/**
 	 * 查询数据库中fieldName字段是否有值为fieldValue
+	 * @param eduLevel学历层次
 	 * @param fieldName
 	 * @param fieldValue
 	 * @return
 	 */
-	public boolean isExist(String fieldName, String fieldValue);
+	public boolean isExist(String eduLevel, String fieldName, String fieldValue);
 
 	/**
 	 * 删除专业代码

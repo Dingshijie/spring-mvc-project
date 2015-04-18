@@ -38,6 +38,9 @@
 				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='edupubcodemanager'}">style="display:inline-block"</c:if> >
 					<li <c:if test="${param.subactive=='edupubcodelist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/edupubcode/list.html">专业代码列表</a></li>
 					<li <c:if test="${param.subactive=='addedupubcode'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/edupubcode/add.html">添加专业代码</a></li>
+					<c:if test="${param.subactive=='edupubcodedetail'}">
+					<li class="active" style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:void(0);">专业代码详情</a></li>
+					</c:if>
 				</ul>
 			</li>
 			</shiro:hasAnyRoles >

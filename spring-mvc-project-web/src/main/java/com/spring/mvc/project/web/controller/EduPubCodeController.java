@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,15 +57,16 @@ public class EduPubCodeController {
 	}
 
 	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public EduPubCode find(String id) {
-		return eduPubCodeService.find(id);
+	public String find(@PathVariable(value = "id") String id, Model model) {
+		EduPubCode eduPubCode = eduPubCodeService.find(id);
+		model.addAttribute("edupubcode", eduPubCode);
+		return "edupubcode/detail";
 	}
 
 	@RequestMapping(value = "exist", method = RequestMethod.GET)
 	@ResponseBody
-	public boolean isExist(String fieldName, String fieldValue) {
-		return eduPubCodeService.isExist(fieldName, fieldValue);
+	public boolean isExist(String eduLevel, String fieldName, String fieldValue) {
+		return eduPubCodeService.isExist(eduLevel, fieldName, fieldValue);
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)

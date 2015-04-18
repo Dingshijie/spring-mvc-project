@@ -40,8 +40,7 @@ public class EduPubCodeServiceImpl implements EduPubCodeService {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		if (userInfo.isManager()) {
-			eduPubCodeRepository.update(eduPubCode);
-			return true;
+			return eduPubCodeRepository.update(eduPubCode);
 		}
 		return false;
 	}
@@ -52,8 +51,8 @@ public class EduPubCodeServiceImpl implements EduPubCodeService {
 	}
 
 	@Override
-	public boolean isExist(String fieldName, String fieldValue) {
-		return eduPubCodeRepository.isExist(fieldName, fieldValue);
+	public boolean isExist(String eduLevel, String fieldName, String fieldValue) {
+		return eduPubCodeRepository.isExist(eduLevel, fieldName, fieldValue);
 	}
 
 	@Override
