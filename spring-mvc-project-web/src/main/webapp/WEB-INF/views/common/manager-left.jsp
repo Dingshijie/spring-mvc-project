@@ -20,6 +20,9 @@
 				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='categorymanager'}">style="display:inline-block"</c:if> >
 					<li <c:if test="${param.subactive=='categorylist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/category/list.html">类别列表</a></li>
 					<li <c:if test="${param.subactive=='addcategory'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/category/add.html">添加类别</a></li>
+					<c:if test="${param.subactive=='categorydetail'}">
+					<li class="active" style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:void(0);">类别详情</a></li>
+					</c:if>
 				</ul>
 			</li>
 			<li <c:if test="${param.active=='areamanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/area/list.html">地区管理</a>

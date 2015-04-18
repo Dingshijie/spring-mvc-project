@@ -31,6 +31,13 @@ public interface CategoryService {
 
 	/**
 	 * 更新类别信息
+	 * @param category
+	 * @return
+	 */
+	public boolean update(Category category);
+
+	/**
+	 * 更新类别信息
 	 * @param fieldName
 	 * @param fieldValue
 	 * @param id

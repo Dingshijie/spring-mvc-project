@@ -48,6 +48,11 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 	}
 
 	@Override
+	public void update(Category category) {
+		this.getSession().update(category);
+	}
+
+	@Override
 	public boolean update(String fieldName, Object fieldValue, String id) {
 		String hql = "UPDATE Category SET" + fieldName + "=:fieldValue WHERE id=:id";
 		Query query = this.getSession().createQuery(hql);

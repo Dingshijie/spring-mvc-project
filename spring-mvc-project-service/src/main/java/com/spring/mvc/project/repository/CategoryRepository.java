@@ -29,6 +29,13 @@ public interface CategoryRepository {
 	public boolean add(Category category);
 
 	/**
+	 * 更新新的类别
+	 * @param category
+	 * @return
+	 */
+	public void update(Category category);
+
+	/**
 	 * 更新类别信息
 	 * @param fieldName
 	 * @param fieldValue

@@ -41,9 +41,10 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public Category find(String id) {
-		return categoryService.find(id);
+	public String find(@PathVariable(value = "id") String id, Model model) {
+		Category category = categoryService.find(id);
+		model.addAttribute("category", category);
+		return "category/detail";
 	}
 
 	@RequestMapping(value = "exist", method = RequestMethod.GET)
@@ -60,8 +61,8 @@ public class CategoryController {
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean update(String fieldName, Object fieldValue, String id) {
-		return categoryService.update(fieldName, fieldValue, id);
+	public boolean update(Category category) {
+		return categoryService.update(category);
 	}
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
@@ -110,4 +111,5 @@ public class CategoryController {
 		fields.add(new ExportField("hot", "是否热门", DataType.INT));
 		fields.add(new ExportField("enable", "是否在用", DataType.INT));
 	}
+
 }

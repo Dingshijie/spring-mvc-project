@@ -49,6 +49,19 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	@Transactional(readOnly = false)
 	@CacheEvict(value = "appCache", allEntries = true)
+	public boolean update(Category category) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		if (userInfo.isManager()) {
+			categoryService.update(category);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	@CacheEvict(value = "appCache", allEntries = true)
 	public boolean update(String fieldName, Object fieldValue, String id) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
