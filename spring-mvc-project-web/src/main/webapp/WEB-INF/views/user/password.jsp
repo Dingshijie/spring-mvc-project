@@ -15,7 +15,9 @@
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/jquery.min.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
-		
+	<!-- md5 的 js 文件 -->
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/md5.js"></script>
+	
 	<!-- 页面的和css 文件必须放到bootstrap。min.cs之后-->
 	<script type="text/javascript" src="${initParam.resourceRoot}/js/user/password.js"></script>
 	<link rel="stylesheet" href="${initParam.resourceRoot}/css/user/password.css" />
@@ -27,9 +29,47 @@
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="row show-grid">
 			<div id="mainList" class="col-md-8 col-md-offset-2">
+				<form class="form-horizontal col-md-offset-1 col-md-10" id="myForm" role="form">
 				<fieldset>
-					<legend>重置密码</legend>
+					<legend>修改密码</legend>
+					<div class="alert" role="alert">...</div>
+					<div class="form-group" style="margin-top: 20px;">
+						<label for="oldpassword" class="col-sm-4 text-right">请输入旧密码</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="请输入旧密码"> 
+						</div>
+						<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<span class="help-block" id="oldpassworderror"></span>
+						</div>
+					</div>
+					<div class="form-group" style="margin-top: 20px;">
+						<label for="newpassword" class="col-sm-4 text-right">请设置新密码</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="请设置新密码"> 
+						</div>
+						<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<span class="help-block" id="newpassworderror"></span>
+						</div>
+					</div>
+					<div class="form-group" style="margin-top: 20px;">
+						<label for="password" class="col-sm-4 text-right">请再次输入新密码</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password" name="password" placeholder="请再次输入新密码"> 
+						</div>
+						<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<span class="help-block" id="passworderror"></span>
+						</div>
+					</div>
+					<div class="form-group" style="margin-top: 20px;">
+						<div class="col-sm-2 col-sm-offset-3">
+							<button class="btn btn-info btn-sure" type="button">提交</button>
+						</div>
+						<div class="col-sm-2">
+							<button class="btn btn-default btn-cancel" type="button">返回</button>
+						</div>
+					</div>
 				</fieldset>
+				</form>
 			</div>
 		</div>	
 	</div>

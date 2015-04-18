@@ -123,14 +123,50 @@ public class UserController {
 		fields.add(new ExportField("authentication", "认证信息", DataType.STRING));
 	}
 
+	@RequestMapping(value = "password.html", method = RequestMethod.GET)
+	public String passwordHTML(Model model) {
+		return "user/password";
+	}
+
 	/**
 	 * 修改密码
 	 * @param id
 	 * @param password
 	 * @return
 	 */
-	public boolean ModifyPassword(String id, String password) {
-		return userService.ModifyPassword(id, password);
+	@RequestMapping(value = "verifypassword", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean verifyPassword(String password) {
+		Subject currentUser = SecurityUtils.getSubject();
+		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
+		if (password.equals(userInfo.getPassword()))
+			return true;
+		return false;
+
+	}
+
+	/**
+	 * 修改密码
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping(value = "modifypassword", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean ModifyPassword(String password) {
+		return userService.ModifyPassword(password);
+	}
+
+	/**
+	 * 重置密码
+	 * @param id
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping(value = "resetpassword", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean ResetPassword(String id) {
+		return userService.ResetPassword(id);
 	}
 
 }

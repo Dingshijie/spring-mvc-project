@@ -240,7 +240,7 @@ $(function(){
 	$('#mobilPhone').on('blur',function(){
 		var fieldName = $('#mobilPhone').attr('name');
 		var mobilePhone = $('#mobilPhone').val();
-		$.get('HTTP://'+window.location.host+'/user/exsit',{"fieldName":fieldName,"fieldValue":mobilePhone},function(data){
+		$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":mobilePhone},function(data){
 			if(data){
 				$('#mobilPhoneerror').addClass("error").html("× 该手机已被注册");
 			}
@@ -253,7 +253,7 @@ $(function(){
 	$('#email').on('blur',function(){
 		var fieldName = $('#email').attr('name');
 		var email = $('#email').val();
-		$.get('HTTP://'+window.location.host+'/user/exsit',{"fieldName":fieldName,"fieldValue":email},function(data){
+		$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":email},function(data){
 			if(data){
 				$('#emailerror').addClass("error").html("× 该邮箱已被注册");
 			}

@@ -63,7 +63,8 @@ public class UserServiceImpl implements UserService {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo user = (UserInfo) currentUser.getPrincipal();
 		UserInfo userInfo = find(id);
-		if ((user.isManager() && !userInfo.isManager()) || (user.isAdministrator() && !userInfo.isAdministrator())) {
+		if ((user.isManager() && !userInfo.isManager()) || (user.isAdministrator() && !userInfo.isAdministrator())
+				|| user.getId().equals(id)) {
 			StringBuffer sql = new StringBuffer();
 			JSONObject jsonObject = new JSONObject();
 			jsonObject = JSONObject.parseObject(paramter);
@@ -105,11 +106,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public boolean ModifyPassword(String id, String password) {
+	public boolean ModifyPassword(String password) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
-		if (userInfo.getId().equals(id)) {
-			return userRepository.ModifyPassword(id, password);
+		if (userInfo != null) {
+			return userRepository.ModifyPassword(userInfo.getId(), password);
 		}
 		return false;
 	}

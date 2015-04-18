@@ -84,7 +84,7 @@ public interface UserService {
 	 * @param password
 	 * @return
 	 */
-	public boolean ModifyPassword(String id, String password);
+	public boolean ModifyPassword(String password);
 
 	/**
 	 * 重置密码
