@@ -39,9 +39,10 @@ public class AreaController {
 	}
 
 	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public Area find(@PathVariable(value = "id") String id) {
-		return areaService.find(id);
+	public String find(@PathVariable(value = "id") String id, Model model) {
+		Area area = areaService.find(id);
+		model.addAttribute("area", area);
+		return "area/detail";
 	}
 
 	@RequestMapping(value = "exist", method = RequestMethod.GET)

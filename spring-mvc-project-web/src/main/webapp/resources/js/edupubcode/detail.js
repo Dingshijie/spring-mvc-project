@@ -158,32 +158,6 @@ $(function(){
 	});
 	
 	/**
-	 * 焦点专业代码输入框的时候
-	 */
-	$('#code').on('blur',function(){
-		$('#codeerror').removeClass("error").css('color','green').html("√");
-		var code = $('#code').val();
-		var len = code.length;
-		if(len==0){
-			$('#codeerror').addClass("error").css('color','red').html("× 专业代码不能为空！");
-		}else if(len !=6 ){
-			$('#codeerror').addClass("error").css('color','red').html("× 专业代码只能为6个字符！");
-		}else{
-			var fieldName = $('#code').attr('name');
-
-			$.get('HTTP://'+window.location.host+'/edupubcode/exist',{"eduLevel":$('#eduLevel').val(),"fieldName":fieldName,"fieldValue":code},function(data){
-				if(data){
-					$('#codeerror').addClass("error").css('color','red').html("× 该专业代码已存在！");
-				}
-			});
-		}
-		$('#codeerror').show();
-	});
-	$('#code').on('focus',function(){
-		$('#codeerror').hide();
-	});
-	
-	/**
 	 * 焦点专业名输入框的时候
 	 */
 	$('#name').on('blur',function(){
@@ -194,7 +168,7 @@ $(function(){
 			$('#nameerror').addClass("error").css('color','red').html("× 专业名不能为空！");
 		}else if(len < 2 || len > 32){
 			$('#nameerror').addClass("error").css('color','red').html("× 专业名长度只能为2到32个字符！");
-		}else{
+		}else if(name != $('#name').attr('data-value')){
 			var fieldName = $('#name').attr('name');
 
 			$.get('HTTP://'+window.location.host+'/edupubcode/exist',{"eduLevel":$('#eduLevel').val(),"fieldName":fieldName,"fieldValue":name},function(data){

@@ -26,6 +26,9 @@
 				<ul class="nav nav-sidebar-custom col-md-10 col-md-offset-2" <c:if test="${param.active=='areamanager'}">style="display:inline-block"</c:if> >
 					<li <c:if test="${param.subactive=='arealist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/area/list.html">地区列表</a></li>
 					<li <c:if test="${param.subactive=='addarea'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/area/add.html">添加地区</a></li>
+					<c:if test="${param.subactive=='areadetail'}">
+					<li class="active" style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:void(0);">地区详情</a></li>
+					</c:if>
 				</ul>
 			</li>
 			<li <c:if test="${param.active=='schoolmanager'}">class="active"</c:if> style="white-space:nowrap; display:inline-block;width: 100%"><a href="${webRoot}/school/list.html">学校管理</a>
@@ -39,7 +42,7 @@
 					<li <c:if test="${param.subactive=='edupubcodelist'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/edupubcode/list.html">专业代码列表</a></li>
 					<li <c:if test="${param.subactive=='addedupubcode'}">class="active"</c:if> style="white-space:nowrap; display:inline;width: 100%"><a href="${webRoot}/edupubcode/add.html">添加专业代码</a></li>
 					<c:if test="${param.subactive=='edupubcodedetail'}">
-					<li class="active" style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:void(0);">专业代码详情</a></li>
+					<li class="active" style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:void(0);">专业详情</a></li>
 					</c:if>
 				</ul>
 			</li>

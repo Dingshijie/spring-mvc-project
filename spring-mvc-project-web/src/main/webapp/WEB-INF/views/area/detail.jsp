@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>校园E+ 添加专业代码</title>
+	<title>校园E+ 添加 地区</title>
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="${initParam.resourceRoot}/lib/bootstrap/css/bootstrap.min.css">
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -22,72 +22,62 @@
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
 	
 	<!-- 页面的和css 文件必须放到bootstrap.min.cs之后-->
-	<script type="text/javascript" src="${initParam.resourceRoot}/js/edupubcode/detail.js"></script>
-	<link rel="stylesheet" href="${initParam.resourceRoot}/css/edupubcode/detail.css" />
+	<script type="text/javascript" src="${initParam.resourceRoot}/js/area/detail.js"></script>
+	<link rel="stylesheet" href="${initParam.resourceRoot}/css/area/detail.css" />
 </head>
 <body>
 	<c:import url="../common/manager-top.jsp"></c:import>
-	<c:import url="../common/manager-left.jsp"><c:param name="active">edupubcodemanager</c:param><c:param name="subactive">edupubcodedetail</c:param></c:import>
+	<c:import url="../common/manager-left.jsp"><c:param name="active">areamanager</c:param><c:param name="subactive">areadetail</c:param></c:import>
 	
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
 			<div id="mainList">
 				<form class="form-horizontal col-md-offset-1 col-md-10" id="myForm" role="form">
 					<fieldset>
-						<legend>专业详情</legend>
-						<input type="hidden" id="id" value="${edupubcode.id }">
-						<div class="form-group" style="margin-top: 20px;">
-							<label for="eduLevel" class="col-sm-2 control-label">学历类别:</label>
-							<div class="col-sm-4">
-								<select id="eduLevel" name="eduLevel" class="form-control" style="width:100%;float: left;">
-									<option value="">请选择</option>
-			                        <option value="${edupubcode.eduLevel }" selected="selected">${edupubcode.category }</option>
-			                    </select> 
-							</div>
-							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="eduLevelerror"></span>
-							</div>
-						</div>
+						<legend>地区详情</legend>
+						<input type="hidden" id="id" value="${area.id }">
 						<div class="form-group">
-							<label for="firstCode" class="col-sm-2 control-label">专业学科大类:</label>
+							<label for="code" class="col-sm-2 control-label">地区代码:</label>
 							<div class="col-sm-4">
-							<select id="firstCode" name="firstCode" class="form-control" style="width:100%;float: left;">
-								<option value="">请选择</option>
-		                        <option value="${edupubcode.firstCode }" selected="selected">${edupubcode.firstName }</option>
-		                    </select>
+								<input type="text" class="form-control" id="code" name="code" disabled="disabled" value="${area.code }" placeholder="请输入地区代码"> 
 							</div>
-							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="firstCodeerror"></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="secondCode" class="col-sm-2 control-label">专业学科中类:</label>
-							<div class="col-sm-4">
-							<select id="secondCode" name="secondCode" class="form-control" style="width:100%;float: left;">
-		                        <option value="">请选择</option>
-		                        <option value="${edupubcode.secondCode }" selected="selected">${edupubcode.secondName }</option>
-		                    </select>
-							</div>
-							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
-								<span class="help-block" id="secondCodeerror"></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="code" class="col-sm-2 control-label">专业代码:</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="code" name="code" disabled="disabled" value="${edupubcode.code }" placeholder="请输入专业代码"> 
-							</div>
-							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="codeerror"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="name" class="col-sm-2 control-label">专业名称:</label>
+							<label for="name" class="col-sm-2 control-label">地区名称:</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="name" name="name" value="${edupubcode.name }" data-value="${edupubcode.name }" placeholder="请输入专业名称"> 
+								<input type="text" class="form-control" id="name" name="name" value="${area.name }" data-value="${area.name }" placeholder="请输入地区名称"> 
 							</div>
-							<div class="col-sm-4" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
 								<span class="help-block" id="nameerror"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="display" class="col-sm-2 control-label">显示名称:</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="display" name="display" value="${area.display }" data-value="${area.display }" placeholder="请输入地区显示名称"> 
+							</div>
+							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+								<span class="help-block" id="displayerror"></span>
+							</div>
+						</div>
+						<div class="form-group" style="margin-top: 20px;">
+							<label for="typeCode" class="col-sm-2 control-label">地区类型:</label>
+							<div class="col-sm-4">
+								<select id="typeCode" name="typeCode" class="form-control  js-example-data-array-selected" style="width:auto;float: left;">
+			                        <option value="">请选择</option>
+			                        <option value="1" <c:if test="${area.typeCode==1 }">selected="selected"</c:if> >直辖市</option>
+			                        <option value="2" <c:if test="${area.typeCode==2 }">selected="selected"</c:if>>省会城市</option>
+			                        <option value="3" <c:if test="${area.typeCode==3 }">selected="selected"</c:if>>计划单列市</option>
+			                        <option value="4" <c:if test="${area.typeCode==4 }">selected="selected"</c:if>>地级市</option>
+			                        <option value="5" <c:if test="${area.typeCode==5 }">selected="selected"</c:if>>县级市</option>
+			                        <option value="6" <c:if test="${area.typeCode==6 }">selected="selected"</c:if>>县</option>
+			                    </select> 
+							</div>
+							<div class="col-sm-3" style="margin-top: 5px;padding-left: 0px;margin-left: 0px;">
+								<span class="help-block" id="typeCodeerror"></span>
 							</div>
 						</div>
 						<div class="form-group">

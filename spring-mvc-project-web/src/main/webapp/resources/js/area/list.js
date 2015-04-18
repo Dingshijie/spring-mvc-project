@@ -53,7 +53,7 @@ $(function(){
 			}else{
 				var html = "<table class='table table-hover table-striped'><colgroup><col width='5%'></col><col width='15%'></col><col width='15%'></col><col width='15%'></col><col width='15%'></col><col width='20%'></col></colgroup><thead><tr><th>序号</th><th>地区代码</th><th>地区名称</th><th>显示名称</th><th>地区类型</th><th>操作</th></tr></thead><tbody>";
 				for(var i = 0; i < data.length; i++){
-					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].code +"</td><td>" + data[i].name + "</td><td>" + data[i].display + "</td><td> " + data[i].typeName + " </td><td><a href='HTTP://"+window.location.host+"/area/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
+					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].code +"</td><td>" + data[i].name + "</td><td>" + data[i].display + "</td><td> " + data[i].typeName + " </td><td><a href='HTTP://"+window.location.host+"/area/find/"+ data[i].id +"' title='点击查看详情'>查看详情</a></td></tr>";
 				}
 				html + "</tbody></table>";
 			}
