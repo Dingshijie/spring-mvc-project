@@ -1,4 +1,6 @@
-
+/**
+ * selfinfo.js
+ */
 $(function(){
 	
 	/**
@@ -658,23 +660,5 @@ $(function(){
 		
 			$('#zyxl').val("").trigger("change");
 		});
-	});
-	/**
-	 * 设置为商家用户
-	 */
-	$('.btn-bussiness').on('click',function(){
-		console.log("btn-bussiness");
-	});
-	/**
-	 * 重置密码
-	 */
-	$('.btn-resetpassword').on('click',function(){
-		console.log("btn-resetpassword");
-	});
-	/**
-	 * 停用账户
-	 */
-	$('.btn-stopaccount').on('click',function(){
-		console.log("btn-stopaccount");
 	});
 });

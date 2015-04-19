@@ -61,13 +61,13 @@
             
             <!-- <li><a class="tag-a" href="#">我的收藏</a></li> -->
              <shiro:hasAnyRoles name="ADMIN, MANAGER">
-		     <li><a href="${webRoot}/user/list.html">管理中心</a></li>
+		     <li><a href="${webRoot}/user/selfinfo.html">管理中心</a></li>
              </shiro:hasAnyRoles>
              <shiro:hasAnyRoles name="BUSSINESS, STUDENT">
              <li class="dropdown">
             	<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">商家中心<span class="caret"></span></a>
             	<ul class="dropdown-menu" role="menu" style="min-width: 80px;">
-	                <li><a href="${webRoot}/commodity/list.html">管理中心</a></li>
+	                <li><a href="${webRoot}/user/selfinfo.html">管理中心</a></li>
 	                <li><a href="#">我想合作</a></li>
              	</ul>
             </li>

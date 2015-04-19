@@ -56,7 +56,7 @@ $(function(){
 			}else{
 				var html = "<table class='table table-hover table-striped'><colgroup><col width='5%'></col><col width='15%'></col><col width='15%'></col><col width='15%'></col><col width='15%'></col><col width='20%'></col></colgroup><thead><tr><th>序号</th><th>用户名</th><th>电话</th><th>地区</th><th>角色</th><th>操作</th></tr></thead><tbody>";
 				for(var i = 0; i < data.length; i++){
-					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].username +"</td><td>" + data[i].mobilPhone + "</td><td>" + data[i].areaName + "</td><td> " + data[i].role + " </td><td><a href='HTTP://"+window.location.host+"/user/detail/"+ data[i].id +"' target='_blank' title='点击查看详情'>查看详情</a></td></tr>";
+					html += "<tr data-id='"+ data[i].id +"'><td>"+ (i+1) +"</td><td>" + data[i].username +"</td><td>" + data[i].mobilPhone + "</td><td>" + data[i].areaName + "</td><td> " + data[i].role + " </td><td><a href='HTTP://"+window.location.host+"/user/detail/"+ data[i].id +"' title='点击查看详情'>查看详情</a></td></tr>";
 				}
 				html + "</tbody></table>";
 			}

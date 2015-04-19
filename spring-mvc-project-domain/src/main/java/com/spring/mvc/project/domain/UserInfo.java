@@ -150,7 +150,7 @@ public class UserInfo implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "AUTHENTICATION", length = 16)
-	private Authentication authentication = Authentication.NOT_APPLY;
+	private Authentication authentication = Authentication.AUDIT;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ROLE", length = 16)

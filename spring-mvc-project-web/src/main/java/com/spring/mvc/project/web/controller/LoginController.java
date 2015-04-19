@@ -43,7 +43,7 @@ public class LoginController {
 				if (currentUser.hasRole(UserInfo.Role.ADMIN.name())
 						|| currentUser.hasRole(UserInfo.Role.MANAGER.name())) {
 					//管理员登陆
-					return "redirect:/user/list.html";
+					return "redirect:/user/selfinfo.html";
 				} else if (currentUser.hasRole(UserInfo.Role.BUSSINESS.name())) {
 					//商家用户登陆
 				}

@@ -1,10 +1,10 @@
-/*
- * detail.css 
- *
+/**
+ * detail.css
  */
 body {
 	background-color: #ECECEC;
 }
+
 div.show-grid  header {
 
 	border-bottom: 1px solid rgba(86, 61, 124, .2);
@@ -23,9 +23,14 @@ div.show-grid  header {
 	min-height: 25em;
 }
 
+
 #mainList {
 	background-color: #f9f9f9;
-	min-height: 25em;
+	min-height: 35em;
+	margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #mainDetail {
@@ -107,3 +112,4 @@ fieldset{width:95%;margin:0px auto 20px auto;border:1px solid #e5e5e5;padding:20
 	display: none;
 }
 
+ 

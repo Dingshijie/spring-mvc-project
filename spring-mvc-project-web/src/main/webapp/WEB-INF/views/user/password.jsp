@@ -27,8 +27,8 @@
 	<c:import url="../common/manager-left.jsp"><c:param name="active">selfinfomanager</c:param><c:param name="subactive">password</c:param></c:import>
 	
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
-		<div class="row show-grid">
-			<div id="mainList" class="col-md-8 col-md-offset-2">
+		<div class="show-grid">
+			<div id="mainList">
 				<form class="form-horizontal col-md-offset-1 col-md-10" id="myForm" role="form">
 				<fieldset>
 					<legend>修改密码</legend>

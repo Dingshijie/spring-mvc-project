@@ -79,13 +79,13 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "detail.html", method = RequestMethod.GET)
+	@RequestMapping(value = "selfinfo.html", method = RequestMethod.GET)
 	public String selfInfo(Model model) {
 
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo user = (UserInfo) currentUser.getPrincipal();
 		model.addAttribute("user", user);
-		return "user/detail";
+		return "user/selfinfo";
 	}
 
 	@RequestMapping(value = "detail/{id}", method = RequestMethod.GET)

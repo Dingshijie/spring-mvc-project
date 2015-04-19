@@ -45,9 +45,10 @@ public class SchoolController {
 	}
 
 	@RequestMapping(value = "find/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public SchoolInfo find(String id) {
-		return schoolService.find(id);
+	public String find(@PathVariable(value = "id") String id, Model model) {
+		SchoolInfo schoolInfo = schoolService.find(id);
+		model.addAttribute("school", schoolInfo);
+		return "school/detail";
 	}
 
 	@RequestMapping(value = "exist", method = RequestMethod.GET)

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -23,13 +22,13 @@
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
 	
 	<!-- 页面的和css 文件必须放到bootstrap。min.cs之后-->
-	<script type="text/javascript" src="${initParam.resourceRoot}/js/user/detail.js"></script>
-	<link rel="stylesheet" href="${initParam.resourceRoot}/css/user/detail.css" />
+	<script type="text/javascript" src="${initParam.resourceRoot}/js/user/selfinfo.js"></script>
+	<link rel="stylesheet" href="${initParam.resourceRoot}/css/user/selfinfo.css" />
 </head>
 <body>
 	
 	<c:import url="../common/manager-top.jsp"></c:import>
-	<c:import url="../common/manager-left.jsp"><c:param name="active">usermanager</c:param><c:param name="subactive">userdetail</c:param></c:import>
+	<c:import url="../common/manager-left.jsp"><c:param name="active">selfinfomanager</c:param><c:param name="subactive">selfinfo</c:param></c:import>
 	
 	<div class="container-fluid col-md-10 col-md-offset-2" style="padding: 20px;">
 		<div class="show-grid">
@@ -53,36 +52,6 @@
 								<c:if test="${user.role =='BUSSINESS' }"><span>商家</span></c:if>
 								<c:if test="${user.role =='STUDENT' }"><span>学生</span></c:if>
 							</small>
-							<shiro:hasRole name="ADMIN">
-								<c:if test="${user.role =='STUDENT' }">
-									<button type="button" class="btn btn-xs btn-info btn-bussiness" value="">设置为商家用户</button>
-								</c:if>
-								<c:if test="${user.role !='ADMIN' }">
-								<button type="button" class="btn btn-xs btn-warning btn-resetpassword" value="">重置密码</button>
-								<button type="button" class="btn btn-xs btn-danger btn-stopaccount" value="">强制停用该账号</button>
-								</c:if>
-								<c:if test="${user.authentication =='AUDITD' }">
-								<button type="button" class="btn btn-xs btn-danger btn-audit" value="">撤销认证</button>
-								</c:if>
-								<c:if test="${user.authentication =='AUDIT' }">
-								<button type="button" class="btn btn-xs btn-success btn-auditd" value="">认证通过</button>
-								</c:if>
-							</shiro:hasRole>
-							<shiro:hasRole name="MANAGER">
-								<c:if test="${user.role =='STUDENT' }">
-									<button type="button" class="btn btn-xs btn-info btn-bussiness" value="">设置为商家用户</button>
-								</c:if>
-								<c:if test="${user.role =='STUDENT' || user.role =='BUSSINESS' }">
-									<button type="button" class="btn btn-xs btn-warning btn-resetpassword" value="">重置密码</button>
-									<button type="button" class="btn btn-xs btn-danger btn-stopaccount" value="">强制停用该账号</button>
-									<c:if test="${user.authentication =='AUDITD' }">
-									<button type="button" class="btn btn-xs btn-danger btn-audit" value="">撤销认证</button>
-									</c:if>
-									<c:if test="${user.authentication =='AUDIT' }">
-									<button type="button" class="btn btn-xs btn-success btn-auditd" value="">认证通过</button>
-									</c:if>
-								</c:if>
-							</shiro:hasRole>
 							<input type="hidden" id="id" value="${user.id }">
 						</h3>
 						</div>
