@@ -157,7 +157,7 @@ public class UserInfo implements Serializable {
 	private Role role = Role.VISITOR;
 
 	@Column(name = "ENABLE")
-	private int enable = 1;//（仅限于修改Role 为manager的用户，其余用户全部默认为1）1表示账户在用，
+	private int enable = 1;//（仅限于修改Role 为manager的用户，其余用户全部默认为1）1表示账户在用，0表示已经停用
 
 	public enum Authentication {
 		/**

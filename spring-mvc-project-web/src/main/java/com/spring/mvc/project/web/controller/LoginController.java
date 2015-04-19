@@ -1,5 +1,7 @@
 package com.spring.mvc.project.web.controller;
 
+import javax.security.sasl.AuthenticationException;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -40,6 +42,11 @@ public class LoginController {
 			try {
 				currentUser.login(token);
 
+				if (((UserInfo) currentUser.getPrincipal()).getEnable() == 0) {
+					SecurityUtils.getSubject().logout();
+					throw new AuthenticationException("account for user [" + username + "] is forbidden to use");
+				}
+
 				if (currentUser.hasRole(UserInfo.Role.ADMIN.name())
 						|| currentUser.hasRole(UserInfo.Role.MANAGER.name())) {
 					//管理员登陆
@@ -52,6 +59,9 @@ public class LoginController {
 			} catch (UnknownAccountException e) {
 				logger.info("Unknown account login");
 				model.addAttribute("errorMsg", "没有该账户信息！");
+			} catch (AuthenticationException e) {
+				logger.info("account is forbidden to use");
+				model.addAttribute("errorMsg", "该账户被强制停用！");
 			} catch (Exception e) {
 				logger.info(e.getMessage());
 				model.addAttribute("errorMsg", "用户名或密码错误！");

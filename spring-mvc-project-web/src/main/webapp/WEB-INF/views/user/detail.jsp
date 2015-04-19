@@ -35,6 +35,7 @@
 		<div class="show-grid">
 			<div id="mainList">
 					<fieldset>
+						<div class="alert text-center"></div>
 						<div class="row">
 						<div class="col-xs-6 col-md-2">
 							 <a href="#" class="thumbnail">
@@ -58,8 +59,13 @@
 									<button type="button" class="btn btn-xs btn-info btn-bussiness" value="">设置为商家用户</button>
 								</c:if>
 								<c:if test="${user.role !='ADMIN' }">
-								<button type="button" class="btn btn-xs btn-warning btn-resetpassword" value="">重置密码</button>
-								<button type="button" class="btn btn-xs btn-danger btn-stopaccount" value="">强制停用该账号</button>
+									<button type="button" class="btn btn-xs btn-warning btn-resetpassword" value="">重置密码</button>
+									<c:if test="${user.enable=='1' }">
+									<button type="button" class="btn btn-xs btn-danger btn-stopaccount" value="">强制停用该账号</button>
+									</c:if>
+									<c:if test="${user.enable=='0' }">
+									<button type="button" class="btn btn-xs btn-info btn-startaccount" value="">启用该账号</button>
+									</c:if>
 								</c:if>
 								<c:if test="${user.authentication =='AUDITD' }">
 								<button type="button" class="btn btn-xs btn-danger btn-audit" value="">撤销认证</button>
@@ -74,7 +80,12 @@
 								</c:if>
 								<c:if test="${user.role =='STUDENT' || user.role =='BUSSINESS' }">
 									<button type="button" class="btn btn-xs btn-warning btn-resetpassword" value="">重置密码</button>
+									<c:if test="${user.enable=='1' }">
 									<button type="button" class="btn btn-xs btn-danger btn-stopaccount" value="">强制停用该账号</button>
+									</c:if>
+									<c:if test="${user.enable=='0' }">
+									<button type="button" class="btn btn-xs btn-info btn-startaccount" value="">启用该账号</button>
+									</c:if>
 									<c:if test="${user.authentication =='AUDITD' }">
 									<button type="button" class="btn btn-xs btn-danger btn-audit" value="">撤销认证</button>
 									</c:if>

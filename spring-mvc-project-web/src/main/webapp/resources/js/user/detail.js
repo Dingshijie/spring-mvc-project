@@ -663,18 +663,110 @@ $(function(){
 	 * 设置为商家用户
 	 */
 	$('.btn-bussiness').on('click',function(){
-		console.log("btn-bussiness");
+		var id = $("#id").val();
+		var paramter = "{'role':'BUSSINESS'}"; 
+		$.post('HTTP://'+window.location.host+'/user/update',{"id":id,"paramter":paramter},function(data){
+			if(data){
+				$('.alert').removeClass('alert-danger').addClass('alert-success').html('设置成功！').show();
+			}else{
+				$('.alert').removeClass('alert-success').addClass('alert-danger').html('设置失败！').show();
+			}
+			setTimeout(function(){
+				$('.alert').html('').hide();
+				location.reload();
+			}, 1000);
+		});
 	});
 	/**
 	 * 重置密码
 	 */
 	$('.btn-resetpassword').on('click',function(){
-		console.log("btn-resetpassword");
+		var id = $("#id").val();
+		$.post('HTTP://'+window.location.host+'/user/resetpassword',{"id":id},function(data){
+			if(data){
+				$('.alert').removeClass('alert-danger').addClass('alert-success').html('重置密码成功！').show();
+			}else{
+				$('.alert').removeClass('alert-success').addClass('alert-danger').html('重置密码失败！').show();
+			}
+			setTimeout(function(){
+				$('.alert').html('').hide();
+				location.reload();
+			}, 1000);
+		});
 	});
 	/**
 	 * 停用账户
 	 */
 	$('.btn-stopaccount').on('click',function(){
-		console.log("btn-stopaccount");
+		var id = $("#id").val();
+		var paramter = "{'enable':'0'}"; 
+		$.post('HTTP://'+window.location.host+'/user/update',{"id":id,"paramter":paramter},function(data){
+			if(data){
+				$('.alert').removeClass('alert-danger').addClass('alert-success').html('设置成功！').show();
+			}else{
+				$('.alert').removeClass('alert-success').addClass('alert-danger').html('设置失败！').show();
+			}
+			setTimeout(function(){
+				$('.alert').html('').hide();
+				location.reload();
+			}, 1000);
+		});
+	});
+	
+	/**
+	 * 启用该账号
+	 */
+	$('.btn-startaccount').on('click',function(){
+		var id = $("#id").val();
+		var paramter = "{'enable':'1'}"; 
+		$.post('HTTP://'+window.location.host+'/user/update',{"id":id,"paramter":paramter},function(data){
+			if(data){
+				$('.alert').removeClass('alert-danger').addClass('alert-success').html('设置成功！').show();
+			}else{
+				$('.alert').removeClass('alert-success').addClass('alert-danger').html('设置失败！').show();
+			}
+			setTimeout(function(){
+				$('.alert').html('').hide();
+				location.reload();
+			}, 1000);
+		});
+	});
+	
+	/**
+	 * 撤销认证
+	 */
+	$('.btn-audit').on('click',function(){
+		var id = $("#id").val();
+		var paramter = "{'authentication':'AUDIT'}"; 
+		$.post('HTTP://'+window.location.host+'/user/update',{"id":id,"paramter":paramter},function(data){
+			if(data){
+				$('.alert').removeClass('alert-danger').addClass('alert-success').html('设置成功！').show();
+			}else{
+				$('.alert').removeClass('alert-success').addClass('alert-danger').html('设置失败！').show();
+			}
+			setTimeout(function(){
+				$('.alert').html('').hide();
+				location.reload();
+			}, 1000);
+		});
+	});
+	
+	/**
+	 * 认证通过
+	 */
+	$('.btn-auditd').on('click',function(){
+		var id = $("#id").val();
+		var paramter = "{'authentication':'AUDITD'}"; 
+		$.post('HTTP://'+window.location.host+'/user/update',{"id":id,"paramter":paramter},function(data){
+			if(data){
+				$('.alert').removeClass('alert-danger').addClass('alert-success').html('设置成功！').show();
+			}else{
+				$('.alert').removeClass('alert-success').addClass('alert-danger').html('设置失败！').show();
+			}
+			setTimeout(function(){
+				$('.alert').html('').hide();
+				location.reload();
+			}, 1000);
+		});
 	});
 });
