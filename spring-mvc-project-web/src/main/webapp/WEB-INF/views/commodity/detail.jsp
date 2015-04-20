@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <c:set var="webRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -17,6 +18,9 @@
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/jquery.min.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/bootstrap/js/bootstrap.min.js"></script>
+	<!-- iCheck css和JavaScript文件 -->
+	<link href="${initParam.resourceRoot}/lib/iCheck/skins/square/blue.css" rel="stylesheet">
+	<script type="text/javascript" src="${initParam.resourceRoot}/lib/iCheck/js/icheck.min.js"></script>
 	
 	<link rel="stylesheet" href="${initParam.resourceRoot}/css/commodity/detail.css">
 	<script type="text/javascript" src="${initParam.resourceRoot}/js/commodity/detail.js"></script>
@@ -64,27 +68,61 @@
 						 <dt>相关链接</dt>
 						 <dd>${commodity.link }</dd>
 					 </c:if>
+					 <dd> <input type="button" class="btn btn-xs btn-info btn-edit" value="编辑商品信息"> </dd>
 					</dl>
 				  </div>
 				</div>
 				</fieldset>
+				<shiro:hasAnyRoles name="ADMIN, MANAGER">
 				<fieldset>
+				<div class="alert text-center"></div>
+				<input type="hidden" id="id" value="${commodity.id }">
 				<legend>商品管理  </legend>
 				<div class="col-md-12 ">
-					<div class="form-group bg-primary col-md-offset-1">
-						设置推荐：
-						<input type="radio" >是 <span style="margin-right: 15px;"></span><input type="radio" >否
+					<div class="form-group bg-success col-md-offset-1">
+						设置推荐：<input type="hidden" id="recommend" value="${commodity.recommend }">
+						<input type="radio" name="recommend" <c:if test="${commodity.recommend==1 }">checked="checked"</c:if> value="1" >是 <span style="margin-right: 15px;"></span><input type="radio" name="recommend" <c:if test="${commodity.recommend==0 }">checked="checked"</c:if> value="0" >否
 					</div>
+					<c:if test="${commodity.status==1 || commodity.status==2 }">
 					<div class="form-group bg-danger col-md-offset-1">
-						强制下架：
-						<input type="radio" >是 <span style="margin-right: 15px;"></span><input type="radio" >否
+						强制下架：<input type="hidden" id="status" value="${commodity.status }">
+						<input type="radio" name="status" <c:if test="${commodity.status==2 }">checked="checked"</c:if> value="2">是 <span style="margin-right: 15px;"></span><input type="radio" name="status" value="1" <c:if test="${commodity.status==1 }">checked="checked"</c:if> >否
 					</div>
+					</c:if>
 					<div class="form-group col-md-offset-1">
-						<input class="btn btn-info" type="submit" value="保存">
-						<input class="btn btn-default" type="submit" value="取消">
+						<input class="btn btn-info btn-submit" type="submit" value="保存">
+						<input class="btn btn-default btn-cancel" type="button" onclick="window.history.go(-1);" value="取消">
 					</div>
+					<span class="text-left remark">注：强制下架选择否的时候，为使商品上架</span>
 				</div>
 				</fieldset>
+				</shiro:hasAnyRoles>
+				<shiro:hasAnyRoles name="BUSSINESS, STUDENT">
+				<fieldset>
+				<div class="alert text-center"></div>
+				<input type="hidden" id="id" value="${commodity.id }">
+				<legend>商品管理  </legend>
+				<div class="col-md-12 ">
+					<c:if test="${commodity.status==0 }">
+					<div class="form-group bg-danger col-md-offset-1">
+						下架：
+						<input type="radio" name="status" checked value="0">是 <span style="margin-right: 15px;"></span><input type="radio" name="status" value="1" >否
+					</div>
+					</c:if>
+					<c:if test="${commodity.status==1 }">
+					<div class="form-group bg-danger col-md-offset-1">
+						上架：
+						<input type="radio" name="status" checked value="1">是 <span style="margin-right: 15px;"></span><input type="radio" name="status" value="0"  >否
+					</div>
+					</c:if>
+					<div class="form-group col-md-offset-1">
+						<input class="btn btn-info btn-submit" type="submit" value="保存">
+						<input class="btn btn-default btn-cancel" type="button" onclick="window.history.go(-1);" value="取消">
+					</div>
+					<span class="text-left remark">注：下架选择否的时候，为使商品上架；上架选择否的时候，为使商品下架。选择项为商品对应的当前的状态。</span>
+				</div>
+				</fieldset>
+				</shiro:hasAnyRoles>
 			</div>
 		</div>
 	</div>

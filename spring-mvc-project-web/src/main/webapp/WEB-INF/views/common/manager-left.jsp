@@ -69,6 +69,9 @@
 					<c:if test="${param.subactive=='commoditydetail'}">
 					<li class="active" style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:void(0);">商品详情</a></li>
 					</c:if>
+					<c:if test="${param.subactive=='modifycommodity'}">
+					<li class="active" style="white-space:nowrap; display:inline;width: 100%"><a href="javascript:void(0);">编辑商品</a></li>
+					</c:if>
 				</ul>
 			</li>
 		</ul>

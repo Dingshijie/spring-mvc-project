@@ -121,6 +121,12 @@ public class CommodityController {
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	@ResponseBody
+	public boolean modify(String paramter, String id) {
+		return commodityService.modify(paramter, id);
+	}
+
+	@RequestMapping(value = "modify", method = RequestMethod.POST)
+	@ResponseBody
 	public boolean update(CommodityInfo commodity) {
 		return commodityService.update(commodity);
 	}
@@ -167,6 +173,19 @@ public class CommodityController {
 		CommodityInfo commodityInfo = commodityService.findById(id);
 		model.addAttribute("commodity", commodityInfo);
 		return "commodity/detail";
+	}
+
+	/**
+	 * 管理中心点击查看详情的时候用
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "find", method = RequestMethod.GET)
+	public String findCommodityById(String id, Model model) {
+		CommodityInfo commodityInfo = commodityService.findById(id);
+		model.addAttribute("commodityinfo", commodityInfo);
+		return "commodity/modify";
 	}
 
 	@RequestMapping(value = "export", method = RequestMethod.GET)

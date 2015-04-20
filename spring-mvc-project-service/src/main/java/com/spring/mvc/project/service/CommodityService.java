@@ -26,7 +26,7 @@ public interface CommodityService {
 	 * @param fieldName
 	 * @param fieldValue
 	 */
-	public boolean update(String paramter, String id);
+	public boolean modify(String paramter, String id);
 
 	/**
 	 * 删除商品

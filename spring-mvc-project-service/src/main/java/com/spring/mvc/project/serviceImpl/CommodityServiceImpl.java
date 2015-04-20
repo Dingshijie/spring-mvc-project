@@ -48,27 +48,29 @@ public class CommodityServiceImpl implements CommodityService {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	@Transactional(readOnly = false)
-	public boolean update(String paramter, String id) {
+	public boolean modify(String paramter, String id) {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		CommodityInfo CommodityInfo = findById(id);
-		//		if (userInfo.isManager() || userInfo.isAdministrator()) {
-		StringBuffer sql = new StringBuffer();
-		JSONObject jsonObject = new JSONObject();
-		jsonObject = JSONObject.parseObject(paramter);
-		Set set = jsonObject.keySet();
-		Iterator iterator = set.iterator();
-		while (iterator.hasNext()) {
-			String key = iterator.next().toString();
-			String value = jsonObject.get(key).toString();
-			sql.append(",");
-			sql.append(key + "='" + value + "'");
+		if (userInfo.isManager() || userInfo.isAdministrator()
+				|| CommodityInfo.getUsername().equals(userInfo.getUsername())) {
+			StringBuffer sql = new StringBuffer();
+			JSONObject jsonObject = new JSONObject();
+			jsonObject = JSONObject.parseObject(paramter);
+			Set set = jsonObject.keySet();
+			Iterator iterator = set.iterator();
+			while (iterator.hasNext()) {
+				String key = iterator.next().toString();
+				String value = jsonObject.get(key).toString();
+				sql.append(",");
+				sql.append(key + "='" + value + "'");
+			}
+			return commodityRepository.update(sql.toString().replaceFirst(",", ""), id);
 		}
-		return commodityRepository.update(sql.toString().replaceFirst(",", ""), id);
-		//		}
-		//		return false;
+		return false;
 	}
 
 	@Override
