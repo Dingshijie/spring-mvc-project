@@ -104,7 +104,6 @@ fieldset{width:95%;margin:0px auto 20px auto;border:1px solid #e5e5e5;padding:20
 .goodsList{
     line-height: 1.42857;
     padding: 6px 12px;
-    display: none;
 }
 .goodsList>p>a{
 	margin-left: 5px;

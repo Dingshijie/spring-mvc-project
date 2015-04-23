@@ -333,7 +333,7 @@ $(function(){
 		}
 		
 		if($('#name').val() == ''){
-			$('#nameerror').addClass("error").css('color','red').html("× 地区名称不能为空！");
+			$('#nameerror').addClass("error").css('color','red').html("× 商品名称不能为空！");
 			$('#nameerror').show();
 		}
 		if($('#category').val() == ''){
