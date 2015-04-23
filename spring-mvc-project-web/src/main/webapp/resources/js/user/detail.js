@@ -242,7 +242,8 @@ $(function(){
 		var mobilePhone = $('#mobilPhone').val();
 		$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":mobilePhone},function(data){
 			if(data){
-				$('#mobilPhoneerror').addClass("error").html("× 该手机已被注册");
+				$('#mobilPhoneerror').addClass("error").css('color','red').html("× 该手机已被注册");
+				$('#mobilPhoneerror').show();
 			}
 		});
 	});
@@ -255,7 +256,8 @@ $(function(){
 		var email = $('#email').val();
 		$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":email},function(data){
 			if(data){
-				$('#emailerror').addClass("error").html("× 该邮箱已被注册");
+				$('#emailerror').addClass("error").css('color','red').html("× 该邮箱已被注册");
+				$('#emailerror').show();
 			}
 		});
 	});
