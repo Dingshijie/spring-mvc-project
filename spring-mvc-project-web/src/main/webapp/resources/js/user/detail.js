@@ -189,6 +189,12 @@ $(function(){
 			}else if(!reg.test(value)){
 				$('#mobilPhoneerror').addClass("error").html("× 格式不正确！");
 			}else{
+				$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":field,"fieldValue":value},function(data){
+					if(data){
+						$('#mobilPhoneerror').addClass("error").css('color','red').html("× 该手机已被注册");
+						return false;
+					}
+				});
 				return true;
 			}
 			$('#mobilPhoneerror').show();
@@ -217,6 +223,12 @@ $(function(){
 			}else if(!reg.test(value)){
 				$('#emailerror').addClass("error").html("× 格式不正确！");
 			}else{
+				$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":field,"value":email},function(data){
+					if(data){
+						$('#emailerror').addClass("error").css('color','red').html("× 该邮箱已被注册");
+						return false;
+					}
+				});
 				return true;
 			}
 			$('#emailerror').show();
@@ -242,7 +254,8 @@ $(function(){
 		var mobilePhone = $('#mobilPhone').val();
 		$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":mobilePhone},function(data){
 			if(data){
-				$('#mobilPhoneerror').addClass("error").html("× 该手机已被注册");
+				$('#mobilPhoneerror').addClass("error").css('color','red').html("× 该手机已被注册");
+				$('#mobilPhoneerror').show();
 			}
 		});
 	});
@@ -255,7 +268,8 @@ $(function(){
 		var email = $('#email').val();
 		$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":email},function(data){
 			if(data){
-				$('#emailerror').addClass("error").html("× 该邮箱已被注册");
+				$('#emailerror').addClass("error").css('color','red').html("× 该邮箱已被注册");
+				$('#emailerror').show();
 			}
 		});
 	});
