@@ -105,4 +105,15 @@ div.show-grid  header {
 #myModal,.alert,#alertModal{
 	display: none;
 }
-
+.photo{
+	display: none;
+}
+.companyPicture{
+	display: none;
+}
+.idCardHead{
+	display: none;
+}
+.idCardBack{
+	display: none;
+}

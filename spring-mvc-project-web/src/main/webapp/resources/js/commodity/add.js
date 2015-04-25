@@ -326,7 +326,6 @@ $(function(){
 	});
 	
 	$('#myForm').on('submit',function(e){
-		console.log($('[name="goods"]').val());
 		if($('[name="goods"]').val()==''){
 			$('#goodserror').addClass('error').css('color','red').html("× 请填写商品清单！");
 			$('#goodserror').show();

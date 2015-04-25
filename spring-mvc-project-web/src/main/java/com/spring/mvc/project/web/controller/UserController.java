@@ -1,8 +1,14 @@
 package com.spring.mvc.project.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.mvc.project.domain.UserInfo;
@@ -21,7 +28,9 @@ import com.spring.mvc.project.domain.util.ExportField;
 import com.spring.mvc.project.domain.util.ExportField.DataType;
 import com.spring.mvc.project.service.UserService;
 import com.spring.mvc.project.web.util.ExportExcel2007;
+import com.spring.mvc.project.web.util.FileUtil;
 import com.spring.mvc.project.web.util.FileUtil.FileType;
+import com.spring.mvc.project.web.util.WebUtils;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -46,6 +55,50 @@ public class UserController {
 	@ResponseBody
 	public boolean update(String paramter, String id) {
 		return userService.update(paramter, id);
+	}
+
+	@RequestMapping(value = "update/img", method = RequestMethod.POST)
+	public String update(MultipartFile file, String attribute, String id, HttpServletRequest request,
+			HttpSession session, Model model) {
+		FileType fileType = FileUtil.getFileType(file);
+		long size = file.getSize();
+		if (fileType == null) {
+			//为上传文件
+		} else if (size > 4 * 1024 * 1024) {
+			//文件大小超限制
+
+		} else {
+
+			String realPath = WebUtils.generateFileUploadPath(fileType);
+			File temp = new File(realPath);
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), temp);//上传文件
+				String description = "成功上传[" + file.getOriginalFilename() + "]";
+				String object = realPath.substring(WebUtils.getUploadPath().length());
+				System.out.println(description + ":" + object);
+
+				//将图片上传到tomcat服务器
+				String path = session.getServletContext().getRealPath("resources")
+						+ realPath.replace(WebUtils.uploadPath, "");
+				String dirpath = path.substring(0, path.lastIndexOf("/"));
+				File tempdir = new File(dirpath);
+				File tempfile = new File(path);
+
+				if (!tempdir.exists()) {
+					tempdir.mkdirs();
+				}
+				tempfile.createNewFile();
+
+				FileUtils.copyInputStreamToFile(file.getInputStream(), tempfile);//上传文件
+
+				userService
+						.update("{'" + attribute + "':'" + realPath.replace(WebUtils.getUploadPath(), "") + "'}", id);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return "redirect:/user/selfinfo.html";
 	}
 
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
@@ -84,7 +137,8 @@ public class UserController {
 
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo user = (UserInfo) currentUser.getPrincipal();
-		model.addAttribute("user", user);
+		UserInfo userInfo = userService.find(user.getId());
+		model.addAttribute("user", userInfo);
 		return "user/selfinfo";
 	}
 
