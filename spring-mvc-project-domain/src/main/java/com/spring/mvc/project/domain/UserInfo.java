@@ -457,8 +457,22 @@ public class UserInfo implements Serializable {
 
 	@Override
 	public String toString() {
-
-		return this.username;
+		return String.format("%s [ %s ]", this.username, getRoleName());
 	}
 
+	@JsonIgnore
+	public String getRoleName() {
+		if (this.role == Role.ADMIN)
+			return "超级管理员";
+		else if (this.role == Role.MANAGER)
+			return "管理员";
+		else if (this.role == Role.BUSSINESS)
+			return "商家";
+		else if (this.role == Role.STUDENT)
+			return "学生";
+		else if (this.role == Role.VISITOR)
+			return "游客";
+		else
+			return "未登录";
+	}
 }
