@@ -326,14 +326,13 @@ $(function(){
 	});
 	
 	$('#myForm').on('submit',function(e){
-		console.log($('[name="goods"]').val());
 		if($('[name="goods"]').val()==''){
 			$('#goodserror').addClass('error').css('color','red').html("× 请填写商品清单！");
 			$('#goodserror').show();
 		}
 		
 		if($('#name').val() == ''){
-			$('#nameerror').addClass("error").css('color','red').html("× 地区名称不能为空！");
+			$('#nameerror').addClass("error").css('color','red').html("× 商品名称不能为空！");
 			$('#nameerror').show();
 		}
 		if($('#category').val() == ''){

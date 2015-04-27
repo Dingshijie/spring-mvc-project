@@ -126,9 +126,53 @@ public class CommodityController {
 	}
 
 	@RequestMapping(value = "modify", method = RequestMethod.POST)
-	@ResponseBody
-	public boolean update(CommodityInfo commodity) {
-		return commodityService.update(commodity);
+	public String update(MultipartFile file, CommodityInfo commodity, HttpServletRequest request, HttpSession session,
+			Model model) {
+
+		FileType fileType = FileUtil.getFileType(file);
+		long size = file.getSize();
+		if (fileType == null) {
+			//为上传文件
+		} else if (size > 4 * 1024 * 1024) {
+			//文件大小超限制
+
+		} else {
+
+			String realPath = WebUtils.generateFileUploadPath(fileType);
+			File temp = new File(realPath);
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), temp);//上传文件
+				String description = "成功上传[" + file.getOriginalFilename() + "]";
+				String object = realPath.substring(WebUtils.getUploadPath().length());
+				System.out.println(description + ":" + object);
+
+				//将图片上传到tomcat服务器
+				String path = session.getServletContext().getRealPath("resources")
+						+ realPath.replace(WebUtils.uploadPath, "");
+				String dirpath = path.substring(0, path.lastIndexOf("/"));
+				File tempdir = new File(dirpath);
+				File tempfile = new File(path);
+
+				if (!tempdir.exists()) {
+					tempdir.mkdirs();
+				}
+				tempfile.createNewFile();
+
+				FileUtils.copyInputStreamToFile(file.getInputStream(), tempfile);//上传文件
+
+				commodity.setPicture(realPath.replace(WebUtils.getUploadPath(), ""));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (commodityService.update(commodity)) {
+			model.addAttribute("successMsg", "修改成功！");
+		} else {
+			//否则返回添加页面
+			model.addAttribute("errorMsg", "修改失败！");
+		}
+		return "commodity/list";
 	}
 
 	@RequestMapping(value = "list/all", method = RequestMethod.GET)

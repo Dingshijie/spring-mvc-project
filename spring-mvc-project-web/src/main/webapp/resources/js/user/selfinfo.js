@@ -191,6 +191,12 @@ $(function(){
 			}else if(!reg.test(value)){
 				$('#mobilPhoneerror').addClass("error").html("× 格式不正确！");
 			}else{
+				$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":field,"fieldValue":value},function(data){
+					if(data){
+						$('#mobilPhoneerror').addClass("error").css('color','red').html("× 该手机已被注册");
+						return false;
+					}
+				});
 				return true;
 			}
 			$('#mobilPhoneerror').show();
@@ -219,6 +225,12 @@ $(function(){
 			}else if(!reg.test(value)){
 				$('#emailerror').addClass("error").html("× 格式不正确！");
 			}else{
+				$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":field,"value":email},function(data){
+					if(data){
+						$('#emailerror').addClass("error").css('color','red').html("× 该邮箱已被注册");
+						return false;
+					}
+				});
 				return true;
 			}
 			$('#emailerror').show();
@@ -233,7 +245,18 @@ $(function(){
 			}
 			$('#addresserror').show();
 			return false;
+		}else if(field=='companyName'){
+			$('#companyNameerror').removeClass("error").html('');
+			var len = value.length;
+			if(len > 64){
+				$('#companyNameerror').addClass("error").html("× 长度最大为64位");
+			}else{
+				return true;
+			}
+			$('#companyNameerror').show();
+			return false;
 		}
+		return false;
 	}
 	
 	$('#mobilPhone').on('focus',function(){
@@ -244,7 +267,8 @@ $(function(){
 		var mobilePhone = $('#mobilPhone').val();
 		$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":mobilePhone},function(data){
 			if(data){
-				$('#mobilPhoneerror').addClass("error").html("× 该手机已被注册");
+				$('#mobilPhoneerror').addClass("error").css('color','red').html("× 该手机已被注册");
+				$('#mobilPhoneerror').show();
 			}
 		});
 	});
@@ -257,7 +281,8 @@ $(function(){
 		var email = $('#email').val();
 		$.get('HTTP://'+window.location.host+'/user/exist',{"fieldName":fieldName,"fieldValue":email},function(data){
 			if(data){
-				$('#emailerror').addClass("error").html("× 该邮箱已被注册");
+				$('#emailerror').addClass("error").css('color','red').html("× 该邮箱已被注册");
+				$('#emailerror').show();
 			}
 		});
 	});
@@ -660,5 +685,194 @@ $(function(){
 		
 			$('#zyxl').val("").trigger("change");
 		});
+	});
+	
+	/**
+	 * 切换头像photo 的image
+	 */
+	$('#photo').on('change',function(){
+		
+		$('.photo').show();
+		
+		var docObj=document.getElementById("photo");
+		var imgObjPreview=document.getElementById("photopreview");
+		if(docObj.files && docObj.files[0]){
+			//火狐下，直接设img属性
+			imgObjPreview.style.display = 'block';
+			imgObjPreview.style.width = '200px';
+			imgObjPreview.style.height = '180px';
+			//imgObjPreview.src = docObj.files[0].getAsDataURL();
+			//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+		}else{
+			//IE下，使用滤镜
+			docObj.select();
+			var imgSrc = document.selection.createRange().text;
+			var localImagId = document.getElementById("localImag");
+			//必须设置初始大小
+			localImagId.style.width = "200px";
+			localImagId.style.height = "180px";
+			//图片异常的捕捉，防止用户修改后缀来伪造图片
+			try{
+				localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+				localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+			}catch(e){
+				alert("您上传的图片格式不正确，请重新选择!");
+			}
+			imgObjPreview.style.display = 'none';
+			document.selection.empty();
+		}
+		
+	});
+	
+	
+	/**
+	 * 点击取消
+	 */
+	$('.photo-cancel').on('click',function(){
+		$('.photo').hide();
+		location.reload();
+		e.preventDefault();
+	});
+	
+	/**
+	 * 切换头像photo 的image
+	 */
+	$('#companyPicture').on('change',function(){
+		
+		$('.companyPicture').show();
+		
+		var docObj=document.getElementById("companyPicture");
+		var imgObjPreview=document.getElementById("companyPicturePreview");
+		if(docObj.files && docObj.files[0]){
+			//火狐下，直接设img属性
+			imgObjPreview.style.display = 'block';
+			imgObjPreview.style.width = '200px';
+			imgObjPreview.style.height = '180px';
+			//imgObjPreview.src = docObj.files[0].getAsDataURL();
+			//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+		}else{
+			//IE下，使用滤镜
+			docObj.select();
+			var imgSrc = document.selection.createRange().text;
+			var localImagId = document.getElementById("localImag");
+			//必须设置初始大小
+			localImagId.style.width = "200px";
+			localImagId.style.height = "180px";
+			//图片异常的捕捉，防止用户修改后缀来伪造图片
+			try{
+				localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+				localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+			}catch(e){
+				alert("您上传的图片格式不正确，请重新选择!");
+			}
+			imgObjPreview.style.display = 'none';
+			document.selection.empty();
+		}
+		
+	});
+	
+	/**
+	 * 点击取消
+	 */
+	$('.companyPicture-cancel').on('click',function(){
+		$('.companyPicture').hide();
+		location.reload();
+		e.preventDefault();
+	});
+	
+	/**
+	 * 切换头像photo 的image
+	 */
+	$('#idCardHead').on('change',function(){
+		
+		$('.idCardHead').show();
+		
+		var docObj=document.getElementById("idCardHead");
+		var imgObjPreview=document.getElementById("idCardHeadPreview");
+		if(docObj.files && docObj.files[0]){
+			//火狐下，直接设img属性
+			imgObjPreview.style.display = 'block';
+			imgObjPreview.style.width = '200px';
+			imgObjPreview.style.height = '180px';
+			//imgObjPreview.src = docObj.files[0].getAsDataURL();
+			//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+		}else{
+			//IE下，使用滤镜
+			docObj.select();
+			var imgSrc = document.selection.createRange().text;
+			var localImagId = document.getElementById("localImag");
+			//必须设置初始大小
+			localImagId.style.width = "200px";
+			localImagId.style.height = "180px";
+			//图片异常的捕捉，防止用户修改后缀来伪造图片
+			try{
+				localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+				localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+			}catch(e){
+				alert("您上传的图片格式不正确，请重新选择!");
+			}
+			imgObjPreview.style.display = 'none';
+			document.selection.empty();
+		}
+		
+	});
+	
+	/**
+	 * 点击取消
+	 */
+	$('.idCardHead-cancel').on('click',function(){
+		$('.idCardHead').hide();
+		location.reload();
+		e.preventDefault();
+	});
+	
+	/**
+	 * 切换头像photo 的image
+	 */
+	$('#idCardBack').on('change',function(){
+		
+		$('.idCardBack').show();
+		
+		var docObj=document.getElementById("idCardBack");
+		var imgObjPreview=document.getElementById("idCardBackPreview");
+		if(docObj.files && docObj.files[0]){
+			//火狐下，直接设img属性
+			imgObjPreview.style.display = 'block';
+			imgObjPreview.style.width = '200px';
+			imgObjPreview.style.height = '180px';
+			//imgObjPreview.src = docObj.files[0].getAsDataURL();
+			//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+			imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+		}else{
+			//IE下，使用滤镜
+			docObj.select();
+			var imgSrc = document.selection.createRange().text;
+			var localImagId = document.getElementById("localImag");
+			//必须设置初始大小
+			localImagId.style.width = "200px";
+			localImagId.style.height = "180px";
+			//图片异常的捕捉，防止用户修改后缀来伪造图片
+			try{
+				localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+				localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+			}catch(e){
+				alert("您上传的图片格式不正确，请重新选择!");
+			}
+			imgObjPreview.style.display = 'none';
+			document.selection.empty();
+		}
+		
+	});
+	
+	/**
+	 * 点击取消
+	 */
+	$('.idCardBack-cancel').on('click',function(){
+		$('.idCardBack').hide();
+		location.reload();
+		e.preventDefault();
 	});
 });

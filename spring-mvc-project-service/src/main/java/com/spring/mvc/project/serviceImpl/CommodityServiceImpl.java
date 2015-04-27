@@ -42,8 +42,42 @@ public class CommodityServiceImpl implements CommodityService {
 		Subject currentUser = SecurityUtils.getSubject();
 		UserInfo userInfo = (UserInfo) currentUser.getPrincipal();
 		//添加权限，管理员可以更新，用户自己也可以更新
-		commodityRepository.update(commodity);
+		CommodityInfo commodityInfo = findById(commodity.getId());
+		if (userInfo.isManager() || userInfo.getUsername().equals(commodityInfo.getUsername())) {
 
+			if (!commodity.getName().equals(commodityInfo.getName())) {
+				commodityInfo.setName(commodity.getName());
+			}
+			if (!commodity.getBrand().equals(commodityInfo.getBrand())) {
+				commodityInfo.setBrand(commodity.getBrand());
+			}
+			if (!commodity.getTypeCode().equals(commodityInfo.getTypeCode())) {
+				commodityInfo.setTypeCode(commodity.getTypeCode());
+			}
+			if (!commodity.getLink().equals(commodityInfo.getLink())) {
+				commodityInfo.setLink(commodity.getLink());
+			}
+			if (commodity.getPrice() != commodityInfo.getPrice()) {
+				commodityInfo.setPrice(commodity.getPrice());
+			}
+			if (!commodity.getUnit().equals(commodityInfo.getUnit())) {
+				commodityInfo.setUnit(commodity.getUnit());
+			}
+			if (!commodity.getUnit().equals(commodityInfo.getUnit())) {
+				commodityInfo.setUnit(commodity.getUnit());
+			}
+			if (!commodity.getGoods().equals(commodityInfo.getGoods())) {
+				commodityInfo.setGoods(commodity.getGoods());
+			}
+			if (!commodity.getDescription().equals(commodityInfo.getDescription())) {
+				commodityInfo.setDescription(commodity.getDescription());
+			}
+			if (commodity.getPicture() != null && !commodity.getPicture().equals(commodityInfo.getPicture())) {
+				commodityInfo.setPicture(commodity.getPicture());
+			}
+			commodityRepository.update(commodityInfo);
+
+		}
 		return true;
 
 	}

@@ -106,25 +106,25 @@
 							<colgroup><col width="15%"></col><col width="35%"></col><col width="15%"></col><col width="35%"></col></colgroup>
 							<tr>
 								<th>姓名</th>
-								<td>
-									<div class="value"><span data-key="realName">${user.realName }</span></div>
+								<td><span data-key="realName">${user.realName }</span>
+									<%-- <div class="value"><span data-key="realName">${user.realName }</span></div>
 									<!-- 这里设置如果已经申请认证或者正在认证中不可以修改姓名和身份证号 -->
 									<c:if test="${user.authentication =='NOT_APPLY' || user.authentication =='NOT_PASS'}">
 									<div class="edit" style="display:none;"><input id="realName" class="form-control" name="realName" type="text" value="${user.realName }" style="width:140px;"/></div>
 									<a href="#" title="点击修改"><span class="update glyphicon glyphicon-pencil"></span></a>
 									<button style="display:none;" class="btn btn-info update-sure">确定</button><button style="display:none;" class="btn btn-link update-cancel">取消</button>
 									<span class="help-block" id="realNameerror"></span>
-									</c:if>
+									</c:if> --%>
 								</td>
 								<th>身份证号</th>
-								<td>
-									<div class="value"><span data-key="idCardNum">${user.idCardNum }</span></div>
+								<td><span data-key="idCardNum">${user.idCardNum }</span>
+									<%-- <div class="value"><span data-key="idCardNum">${user.idCardNum }</span></div>
 									<c:if test="${user.authentication =='NOT_APPLY' || user.authentication =='NOT_PASS'}">
 									<div class="edit" style="display:none;"><input id="idCardNum" class="form-control" name="idCardNum" type="text" value="${user.idCardNum }" style="width:140px;"/></div>
 									<a href="#" title="点击修改"><span class="update glyphicon glyphicon-pencil"></span></a>
 									<button style="display:none;" class="btn btn-info update-sure">确定</button><button style="display:none;" class="btn btn-link update-cancel">取消</button>
 									<span class="help-block" id="idCardNumerror"></span>
-									</c:if>
+									</c:if> --%>
 								</td>
 							</tr>
 							<tr>

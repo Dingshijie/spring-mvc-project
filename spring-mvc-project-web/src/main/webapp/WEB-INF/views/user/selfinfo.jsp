@@ -37,7 +37,7 @@
 						<div class="row">
 						<div class="col-xs-6 col-md-2">
 							 <a href="#" class="thumbnail">
-							  <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							  <img src="/resources${user.photo }" alt="...">
 							 </a>
 						</div>
 						<h3>
@@ -64,25 +64,25 @@
 							<colgroup><col width="15%"></col><col width="35%"></col><col width="15%"></col><col width="35%"></col></colgroup>
 							<tr>
 								<th>姓名</th>
-								<td>
-									<div class="value"><span data-key="realName">${user.realName }</span></div>
+								<td><span data-key="realName">${user.realName }</span>
+									<%-- <div class="value"><span data-key="realName">${user.realName }</span></div>
 									<!-- 这里设置如果已经申请认证或者正在认证中不可以修改姓名和身份证号 -->
 									<c:if test="${user.authentication =='NOT_APPLY' || user.authentication =='NOT_PASS'}">
 									<div class="edit" style="display:none;"><input id="realName" class="form-control" name="realName" type="text" value="${user.realName }" style="width:140px;"/></div>
 									<a href="#" title="点击修改"><span class="update glyphicon glyphicon-pencil"></span></a>
 									<button style="display:none;" class="btn btn-info update-sure">确定</button><button style="display:none;" class="btn btn-link update-cancel">取消</button>
 									<span class="help-block" id="realNameerror"></span>
-									</c:if>
+									</c:if> --%>
 								</td>
 								<th>身份证号</th>
-								<td>
-									<div class="value"><span data-key="idCardNum">${user.idCardNum }</span></div>
+								<td><span data-key="idCardNum">${user.idCardNum }</span>
+									<%-- <div class="value"><span data-key="idCardNum">${user.idCardNum }</span></div>
 									<c:if test="${user.authentication =='NOT_APPLY' || user.authentication =='NOT_PASS'}">
 									<div class="edit" style="display:none;"><input id="idCardNum" class="form-control" name="idCardNum" type="text" value="${user.idCardNum }" style="width:140px;"/></div>
 									<a href="#" title="点击修改"><span class="update glyphicon glyphicon-pencil"></span></a>
 									<button style="display:none;" class="btn btn-info update-sure">确定</button><button style="display:none;" class="btn btn-link update-cancel">取消</button>
 									<span class="help-block" id="idCardNumerror"></span>
-									</c:if>
+									</c:if> --%>
 								</td>
 							</tr>
 							<tr>
@@ -198,48 +198,76 @@
 							<div class="row">
 							 <div class="col-md-12">
 							 	<table class="table table-condensed" style="margin-top:0px;">
-							 		<colgroup><col width="30%"></col><col width="20%"></col><col width="10%"></col><col width="40%"></col></colgroup>
+							 		<colgroup><col width="30%"></col><col width="70%"></col></colgroup>
 							 		<tr>
 							 			<th>店铺名称</th>
-							 			<td>${user.companyName }</td>
+							 			<td>
+								 			<div class="value"><span data-key="companyName">${user.companyName }</span></div>
+								 			<div class="edit" style="display:none;"><input id="companyName" class="form-control" name="companyName" type="text" value="${user.companyName }" style="width:140px;"/></div>
+											<a href="#" title="点击修改"><span class="update glyphicon glyphicon-pencil"></span></a>
+											<button style="display:none;" class="btn btn-info update-sure">确定</button><button style="display:none;" class="btn btn-link update-cancel">取消</button>
+											<span class="help-block" id="companyNameerror"></span>
+							 			</td>
 							 		</tr>
 							 	</table>
 							 </div>
+							 <div class="row">
 							  <div class="col-md-2 col-md-offset-2">
-							    <a href="#" class="thumbnail">
-							      <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							    <div class="thumbnail localImag">
+							      	<img id="photopreview" src="/resources${user.photo }" alt="...">
 							      <div class="caption">
-							        <h6>头像</h6>
+							      	<form  class="form-horizontal" role="form" action="${webRoot }/user/update/img" method="post" enctype="multipart/form-data">
+							      	 <input type="hidden" name="id" value="${user.id }">
+							      	 <input type="hidden" name="attribute" value="photo">
+							         <p><input type="file" id="photo" name="file" placeholder="个人头像"></p>
+							         <p class="photo"><button class="btn btn-xs btn-primary photo-sure" type="submit">保存</button>  <button type="button" class="btn btn-xs btn-default photo-cancel">取消</button></p>
+							      	</form>
 							      </div>
-							    </a>
+							    </div >
 							  </div>
 							   <div class="col-xs-6 col-md-2">
-							    <a href="#" class="thumbnail">
-							      <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							    <div class="thumbnail">
+							      <img id="companyPicturePreview" src="/resources${user.companyPicture }" alt="...">
 							      <div class="caption">
-							        <h6>店铺图片</h6>
+							      	<form  class="form-horizontal" role="form" action="${webRoot }/user/update/img" method="post" enctype="multipart/form-data">
+							      	 <input type="hidden" name="id" value="${user.id }">
+							      	 <input type="hidden" name="attribute" value="companyPicture">
+							         <p><input type="file" id="companyPicture" name="file" placeholder="个人头像"></p>
+							         <p class="companyPicture"><button class="btn btn-xs btn-primary companyPicture-sure" type="submit">保存</button>  <button type="button" class="btn btn-xs btn-default companyPicture-cancel">取消</button></p>
+							      	</form>
 							      </div>
-							    </a>
+							    </div>
 							  </div>
 							   <div class="col-xs-6 col-md-2">
-							    <a href="#" class="thumbnail">
-							      <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							     <div class="thumbnail">
+							      <img id="idCardHeadPreview" src="/resources${user.idCardHead }" alt="...">
 							      <div class="caption">
-							        <h6>身份证正面</h6>
+							      	<form  class="form-horizontal" role="form" action="${webRoot }/user/update/img" method="post" enctype="multipart/form-data">
+							      	 <input type="hidden" name="id" value="${user.id }">
+							      	 <input type="hidden" name="attribute" value="idCardHead">
+							         <p><input type="file" id="idCardHead" name="file" placeholder="个人头像"></p>
+							         <p class="idCardHead"><button class="btn btn-xs btn-primary idCardHead-sure" type="submit">保存</button>  <button type="button" class="btn btn-xs btn-default idCardHead-cancel">取消</button></p>
+							      	</form>
 							      </div>
-							    </a>
+							    </div>
 							  </div>
 							   <div class="col-xs-6 col-md-2">
-							    <a href="#" class="thumbnail">
-							      <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							    <div class="thumbnail">
+							      <img id="idCardBackPreview" src="/resources${user.idCardBack }" alt="...">
 							      <div class="caption">
-							        <h6>身份证反面</h6>
+							      	<form  class="form-horizontal" role="form" action="${webRoot }/user/update/img" method="post" enctype="multipart/form-data">
+							      	 <input type="hidden" name="id" value="${user.id }">
+							      	 <input type="hidden" name="attribute" value="idCardBack">
+							         <p><input type="file" id="idCardBack" name="file" placeholder="个人头像"></p>
+							         <p class="idCardBack"><button class="btn btn-xs btn-primary idCardBack-sure" type="submit">保存</button>  <button type="button" class="btn btn-xs btn-default idCardBack-cancel">取消</button></p>
+							      	</form>
 							      </div>
-							    </a>
+							    </div>
 							  </div>
 							</div>
 						</div>
-					</fieldset>
+					</div>
+				</fieldset>
 			</div>
 		</div>	
 	</div>
