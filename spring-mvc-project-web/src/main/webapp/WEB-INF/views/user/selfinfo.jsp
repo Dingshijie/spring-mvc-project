@@ -185,11 +185,11 @@
 							<tr>
 								<th>注册时间</th>
 								<td><fmt:formatDate value="${user.registerDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-								<th>上次登录时间</th>
+								<th>最后登录时间</th>
 								<td><fmt:formatDate value="${user.lastLoginDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 							</tr>
 							<tr>
-								<th>上次登录ip</th>
+								<th>最后登录ip</th>
 								<td>${user.ip }</td>
 							</tr>
 						</table>
