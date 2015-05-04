@@ -1,5 +1,6 @@
 package com.spring.mvc.project.web.realm;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -12,6 +13,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,8 +51,9 @@ public class UserRealm extends AuthorizingRealm {
 		logger.info("User is: " + String.valueOf(user == null));
 		if (user != null) {
 			logger.info("Make User Principal");
-
-			userService.updateLastLogin(user.getId(), new DateTime().toDate(), user.getIp());
+			Subject currentUser = SecurityUtils.getSubject();
+			String ip = currentUser.getSession().getHost();
+			userService.updateLastLogin(user.getId(), new DateTime().toDate(), ip);
 			return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
 		} else {
 			logger.info("UnknownAccountException");
