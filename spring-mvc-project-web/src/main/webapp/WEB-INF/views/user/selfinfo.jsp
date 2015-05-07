@@ -37,7 +37,7 @@
 						<div class="row">
 						<div class="col-xs-6 col-md-2">
 							 <a href="#" class="thumbnail">
-							  <img src="/resources${user.photo }" alt="...">
+							  <img src="/resources${user.photo }" style="width: 150px;height: 120px" alt="">
 							 </a>
 						</div>
 						<h3>
@@ -214,7 +214,7 @@
 							 <div class="row">
 							  <div class="col-md-2 col-md-offset-2">
 							    <div class="thumbnail localImag">
-							      	<img id="photopreview" src="/resources${user.photo }" alt="...">
+							      	<img id="photopreview" style="width: 150px;height: 150px" title="头像" src="/resources${user.photo }" alt="">
 							      <div class="caption">
 							      	<form  class="form-horizontal" role="form" action="${webRoot }/user/update/img" method="post" enctype="multipart/form-data">
 							      	 <input type="hidden" name="id" value="${user.id }">
@@ -222,12 +222,13 @@
 							         <p><input type="file" id="photo" name="file" placeholder="个人头像"></p>
 							         <p class="photo"><button class="btn btn-xs btn-primary photo-sure" type="submit">保存</button>  <button type="button" class="btn btn-xs btn-default photo-cancel">取消</button></p>
 							      	</form>
+							      	<h6>头像</h6>
 							      </div>
 							    </div >
 							  </div>
 							   <div class="col-xs-6 col-md-2">
 							    <div class="thumbnail">
-							      <img id="companyPicturePreview" src="/resources${user.companyPicture }" alt="...">
+							      <img id="companyPicturePreview" style="width: 150px;height: 150px" title="店铺图片"  src="/resources${user.companyPicture }" alt="">
 							      <div class="caption">
 							      	<form  class="form-horizontal" role="form" action="${webRoot }/user/update/img" method="post" enctype="multipart/form-data">
 							      	 <input type="hidden" name="id" value="${user.id }">
@@ -235,12 +236,13 @@
 							         <p><input type="file" id="companyPicture" name="file" placeholder="个人头像"></p>
 							         <p class="companyPicture"><button class="btn btn-xs btn-primary companyPicture-sure" type="submit">保存</button>  <button type="button" class="btn btn-xs btn-default companyPicture-cancel">取消</button></p>
 							      	</form>
+							      	<h6>店铺图片</h6>
 							      </div>
 							    </div>
 							  </div>
 							   <div class="col-xs-6 col-md-2">
 							     <div class="thumbnail">
-							      <img id="idCardHeadPreview" src="/resources${user.idCardHead }" alt="...">
+							      <img id="idCardHeadPreview" style="width: 150px;height: 150px" title="身份证正面" src="/resources${user.idCardHead }" alt="">
 							      <div class="caption">
 							      	<form  class="form-horizontal" role="form" action="${webRoot }/user/update/img" method="post" enctype="multipart/form-data">
 							      	 <input type="hidden" name="id" value="${user.id }">
@@ -248,12 +250,13 @@
 							         <p><input type="file" id="idCardHead" name="file" placeholder="个人头像"></p>
 							         <p class="idCardHead"><button class="btn btn-xs btn-primary idCardHead-sure" type="submit">保存</button>  <button type="button" class="btn btn-xs btn-default idCardHead-cancel">取消</button></p>
 							      	</form>
+							      	<h6>身份证正面</h6>
 							      </div>
 							    </div>
 							  </div>
 							   <div class="col-xs-6 col-md-2">
 							    <div class="thumbnail">
-							      <img id="idCardBackPreview" src="/resources${user.idCardBack }" alt="...">
+							      <img id="idCardBackPreview" style="width: 150px;height: 150px" title="身份证反面" src="/resources${user.idCardBack }" alt="">
 							      <div class="caption">
 							      	<form  class="form-horizontal" role="form" action="${webRoot }/user/update/img" method="post" enctype="multipart/form-data">
 							      	 <input type="hidden" name="id" value="${user.id }">
@@ -261,6 +264,7 @@
 							         <p><input type="file" id="idCardBack" name="file" placeholder="个人头像"></p>
 							         <p class="idCardBack"><button class="btn btn-xs btn-primary idCardBack-sure" type="submit">保存</button>  <button type="button" class="btn btn-xs btn-default idCardBack-cancel">取消</button></p>
 							      	</form>
+							      	<h6>身份证反面</h6>
 							      </div>
 							    </div>
 							  </div>

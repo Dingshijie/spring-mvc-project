@@ -39,7 +39,7 @@
 						<div class="row">
 						<div class="col-xs-6 col-md-2">
 							 <a href="#" class="thumbnail">
-							  <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							  <img src="/resources${user.photo }" style="width: 150px;height: 120px" alt="">
 							 </a>
 						</div>
 						<h3>
@@ -249,7 +249,7 @@
 							 </div>
 							  <div class="col-md-2 col-md-offset-2">
 							    <a href="#" class="thumbnail">
-							      <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							      <img id="photopreview" style="width: 150px;height: 150px" title="头像" src="/resources${user.photo }" alt="">
 							      <div class="caption">
 							        <h6>头像</h6>
 							      </div>
@@ -257,7 +257,7 @@
 							  </div>
 							   <div class="col-xs-6 col-md-2">
 							    <a href="#" class="thumbnail">
-							      <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							      <img id="companyPicturePreview" style="width: 150px;height: 150px" title="店铺图片"  src="/resources${user.companyPicture }" alt="">
 							      <div class="caption">
 							        <h6>店铺图片</h6>
 							      </div>
@@ -265,7 +265,7 @@
 							  </div>
 							   <div class="col-xs-6 col-md-2">
 							    <a href="#" class="thumbnail">
-							      <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							      <img id="idCardHeadPreview" style="width: 150px;height: 150px" title="身份证正面" src="/resources${user.idCardHead }" alt="">
 							      <div class="caption">
 							        <h6>身份证正面</h6>
 							      </div>
@@ -273,7 +273,7 @@
 							  </div>
 							   <div class="col-xs-6 col-md-2">
 							    <a href="#" class="thumbnail">
-							      <img src="${initParam.resourceRoot}/img/loading.gif" alt="...">
+							      <img id="idCardBackPreview" style="width: 150px;height: 150px" title="身份证反面" src="/resources${user.idCardBack }" alt="">
 							      <div class="caption">
 							        <h6>身份证反面</h6>
 							      </div>
