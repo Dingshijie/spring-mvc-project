@@ -69,9 +69,6 @@
           </div>
         </div><!--/.sidebar-offcanvas-->
         <div class="col-xs-12 col-sm-10">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
           	<div class="form-group">
           		<div class="form-group">
           			已选择：<span class="btn btn-default btn-xs" id="id_category" data-code="">所有分类</span> > <span class="btn btn-default btn-xs" id="id_city" data-code="">郑州市</span> > <span class="btn btn-default btn-xs" id="id_area" data-code="">不限</span> > <span class="btn btn-default btn-xs" id="id_school" data-code="">不限</span>
