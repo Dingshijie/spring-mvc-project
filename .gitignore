@@ -1,1 +1,6 @@
 .classpath
+<<<<<<< HEAD
+.settings/
+=======
+/.settings/
+>>>>>>> branch 'master' of https://github.com/Dingshijie/spring-mvc-project.git
