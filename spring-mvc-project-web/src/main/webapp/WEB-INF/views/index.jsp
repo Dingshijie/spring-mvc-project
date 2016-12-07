@@ -30,7 +30,7 @@
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/select2/js/select2.min.js"></script>
 	<!-- jsrender -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/lib/jsrender.min.js"></script>
-	
+		
 	<!-- index.css 文件必须放到bootstrap.min.cs之后 -->
 	<script type="text/javascript" src="${initParam.resourceRoot}/js/index.js"></script>
 	<link rel="stylesheet" href="${initParam.resourceRoot}/css/index.css"/>
@@ -272,6 +272,5 @@
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
-	
 </body>
 </html>
